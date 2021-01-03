@@ -4,7 +4,7 @@
             <div class="modal-content"> <button type="button" class="close" data-dismiss="modal"
                     aria-label="Close"></button>
                 <div class="modal-body">
-                    <div class="bl-logo-title">Thay Đổi Mật Khẩu aa</div>
+                    <div class="bl-logo-title">Thay Đổi Mật Khẩu</div>
                     <p class="p-text">Nhập mật khẩu mới và xác nhận <br> để thay đổi</p>
                     <div class="bl-input form-horizontal">
                         <div class="row">
