@@ -9,7 +9,6 @@
 @include('customer.partials.featured_script')
 
 <script src="{{asset('plugins\menu\Multi-Level-Sidebar-Menu-HC-MobileNav\dist\hc-offcanvas-nav.js')}}"></script>
-
 <script>
     const num2Word2 = function () {
         var t = ["không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"],
@@ -45,7 +44,6 @@
         }
     }();
 </script>
-
 
 <script>
     // Check user agent
