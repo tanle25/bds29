@@ -1,0 +1,113 @@
+.banner-home {
+    @include media-breakpoint-up(lg) {
+        height: 550px;
+    }
+    .banner-item {
+        @include media-breakpoint-up(lg) {
+            height: 550px;
+        }
+    }
+}
+
+.section-filter-home,
+.nav-search {
+    max-width: 1120px;
+    padding-bottom: 50px;
+    .search-type {
+        .search-type-item {
+            label {
+                background-color: white;
+                color: $secondary;
+                cursor: pointer;
+            }
+            input[type="radio"]:checked + label {
+                background-color: $dark;
+                color: #fff;
+            }
+        }
+    }
+
+    .search-field {
+        background-color: $dark;
+        .realty-type {
+            padding: 10px;
+            width: 200px;
+            option {
+                padding: 10px;
+            }
+        }
+        .address-input {
+            flex-grow: 1;
+        }
+        button {
+            flex: 0 0 20%;
+            display: block;
+        }
+    }
+
+    .search-criteria {
+        flex-wrap: wrap;
+        .search-input {
+            @include media-breakpoint-up(xs) {
+                flex: 0 0 100%;
+            }
+            @include media-breakpoint-up(md) {
+                flex: 0 0 20%;
+            }
+        }
+    }
+}
+
+.select2-container--default .select2-results__option[aria-disabled="true"] {
+    display: none;
+}
+
+.select2-container--default .select2-selection--single {
+    border-radius: 0;
+}
+
+.home-posts .nav-link {
+    &.active {
+        color: $dark !important;
+        border-bottom: 5px solid $info;
+    }
+}
+
+.owl-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.404);
+    &.next-slide {
+        right: -8px;
+    }
+    &.prev-slide {
+        left: -8px;
+    }
+}
+
+.item-district {
+    .clicked {
+        background-color: $info;
+        color: #fff;
+    }
+}
+
+.partner-item {
+    &:hover {
+        transition: 0.2s;
+        box-shadow: 0px 4px 5px rgba(39, 39, 39, 0.432);
+    }
+}
+
+.home-title {
+    @include media-breakpoint-down(md) {
+        font-size: 1.5rem !important;
+    }
+}
