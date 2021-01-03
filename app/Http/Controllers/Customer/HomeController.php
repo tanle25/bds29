@@ -48,6 +48,6 @@ class HomeController extends Controller
         }
         $partners = Partner::where('rank', 1)->take(10)->get();
 
-        return view('customer.home', compact('partners', 'random_realties', 'home_projects', 'provinces', 'featured_district', 'home_featured_cats', 'home_featured_post'));
+        return view('customer.pages.home.index', compact('partners', 'random_realties', 'home_projects', 'provinces', 'featured_district', 'home_featured_cats', 'home_featured_post'));
     }
 }

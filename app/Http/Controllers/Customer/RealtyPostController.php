@@ -47,7 +47,7 @@ class RealtyPostController extends Controller
         }
         $post_ranks = PostRank::select('*')->groupBy('rank_code')->get()->sortBy('rank_code');
 
-        return view('customer.user_profile.create_post', compact('provinces', 'post_ranks'));
+        return view('customer.pages.user_profile.create_post', compact('provinces', 'post_ranks'));
     }
 
     function list() {
@@ -242,7 +242,7 @@ class RealtyPostController extends Controller
 
         $post_ranks = PostRank::select('*')->groupBy('rank_code')->get()->sortBy('rank_code');
 
-        return view('customer.user_profile.update_post', compact(
+        return view('customer.pages.user_profile.update_post', compact(
             'realty_post',
             'house_image',
             'house_design_image',
@@ -326,7 +326,7 @@ class RealtyPostController extends Controller
         if (!$realties) {
             return abort(404);
         }
-        return view('customer.pages.realty', compact('realties'));
+        return view('customer.pages.realty_post.index', compact('realties'));
     }
 
     public function show($slug)
@@ -365,7 +365,7 @@ class RealtyPostController extends Controller
 
         $side_lists = $this->related_realty_service->getRelatedRealty($realty_post->type, $realty->type, $province_code, null);
 
-        return view('customer.pages.realty-details', compact(['newest_post', 'realty_post', 'realty', 'images', 'side_lists']));
+        return view('customer.pages.realty_post.realty-details', compact(['newest_post', 'realty_post', 'realty', 'images', 'side_lists']));
     }
 
     public function searchByParam($search_slug, Request $request)
@@ -406,14 +406,14 @@ class RealtyPostController extends Controller
         $query_list = request()->filter;
         $title = $this->getTitleFromQuery($query_list);
 
-        return view('customer.pages.realty', compact('realties', 'side_lists', 'title'));
+        return view('customer.pages.realty_post.index', compact('realties', 'side_lists', 'title'));
     }
 
     public function showListCustomer()
     {
         $user = auth()->user();
         $realty_posts = RealtyPost::where('created_by', $user->id)->with('realty')->get();
-        return view('customer.user_profile.list_realty_post', compact('realty_posts'));
+        return view('customer.pages.user_profile.list_realty_post', compact('realty_posts'));
     }
 
     protected function getTitleFromQuery($query_list)

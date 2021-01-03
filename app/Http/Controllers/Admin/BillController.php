@@ -14,7 +14,7 @@ class BillController extends Controller
     {
         $user = Auth::user();
         $bill = Bill::where(['id' => $id, 'owner_id' => $user->id])->first();
-        return view('customer.user_profile.bill_confirm', compact('bill'));
+        return view('customer.pages.user_profile.bill_confirm', compact('bill'));
     }
 
     public function listBillAdmin()

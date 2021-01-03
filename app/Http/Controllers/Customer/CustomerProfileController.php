@@ -14,7 +14,7 @@ class CustomerProfileController extends Controller
 {
     public function showInformation()
     {
-        return view('customer.user_profile.infomation');
+        return view('customer.pages.user_profile.infomation');
     }
 
     public function updateInformation(CustomerInfomationUpdateRequest $request)

@@ -31,7 +31,7 @@ class CustomerRechargeController extends Controller
             $bank_list = [];
         }
         $vnpay_banks = Bank::all();
-        return view('customer.user_profile.recharge', compact('bank_list', 'vnpay_banks'));
+        return view('customer.pages.user_profile.recharge', compact('bank_list', 'vnpay_banks'));
     }
 
     public function showAccountBalance()
@@ -39,7 +39,7 @@ class CustomerRechargeController extends Controller
         $user = Auth::user();
         $wallet = $user->wallet;
         $history = Activity::where(['causer_id' => $user->id, 'subject_type' => 'App\Models\AccountBalance'])->get();
-        return view('customer.user_profile.account_balance', compact('wallet', 'history'));
+        return view('customer.pages.user_profile.account_balance', compact('wallet', 'history'));
     }
 
     public function recharge(\App\Http\Requests\RechargeRequest $request)
