@@ -17,12 +17,12 @@ Trang chủ
 
  @section('content')
 
-    @include('customer.contents.banner_home')
-    @include('customer.contents.list_bds_hot')
-    @include('customer.contents.home_post_v2')
-    @include('customer.contents.hot_realty')
+    @include('customer.pages.home.contents.banner_home')
+    @include('customer.pages.home.contents.list_bds_hot')
+    @include('customer.pages.home.contents.home_post_v2')
+    @include('customer.pages.home.contents.hot_realty')
     @if($home_projects->isNotEmpty())
-        @include('customer.contents.home_project_v2')
+        @include('customer.pages.home.contents.home_project_v2')
     @endif
     <section class="container">
         <div class="d-flex">

@@ -1,4 +1,4 @@
-@extends('customer.user_profile.index')
+@extends('customer.pages.user_profile.index')
 
 @section('form')
     <div>

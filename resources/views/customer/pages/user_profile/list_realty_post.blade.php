@@ -1,4 +1,4 @@
-@extends('customer.user_profile.index')
+@extends('customer.pages.user_profile.index')
 @section('css')
     @parent
     <link rel="stylesheet" href="{{asset('template/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
