@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\PostCategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\PostRankController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\ProvinceController;
 use App\Http\Controllers\Admin\RealtyPostController as AdminRealtyPostController;
 use App\Http\Controllers\Admin\SeoController;
 use App\Http\Controllers\Admin\SlugController;
@@ -166,13 +167,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::post('contact/destroy/{id}', [ContactController::class, 'destroy'])->name('admin.contacts.destroy');
 
     //Admin manager
-    Route::get('admin-manager', [AdminManagerController::class, 'index'])->name('admin.admin_manager.index')->middleware('auth:admin');
-    Route::get('admin-manager/create', [AdminManagerController::class, 'create'])->name('admin.admin_manager.create')->middleware('auth:admin');
-    Route::post('admin-manager/create', [AdminManagerController::class, 'store'])->name('admin.admin_manager.store')->middleware('auth:admin');
-    Route::get('admin-manager/edit/{id}', [AdminManagerController::class, 'edit'])->name('admin.admin_manager.edit')->middleware('auth:admin');
-    Route::post('admin-manager/edit/{id}', [AdminManagerController::class, 'update'])->name('admin.admin_manager.update')->middleware('auth:admin');
-    Route::post('admin-manager/destroy/{id}', [AdminManagerController::class, 'destroy'])->name('admin.admin_manager.destroy')->middleware('auth:admin');
-    Route::get('admin-manager/list', [AdminManagerController::class, 'list'])->name('admin.admin_manager.list')->middleware('auth:admin');
+    Route::get('admin-manager', [AdminManagerController::class, 'index'])->name('admin.admin_manager.index');
+    Route::get('admin-manager/create', [AdminManagerController::class, 'create'])->name('admin.admin_manager.create');
+    Route::post('admin-manager/create', [AdminManagerController::class, 'store'])->name('admin.admin_manager.store');
+    Route::get('admin-manager/edit/{id}', [AdminManagerController::class, 'edit'])->name('admin.admin_manager.edit');
+    Route::post('admin-manager/edit/{id}', [AdminManagerController::class, 'update'])->name('admin.admin_manager.update');
+    Route::post('admin-manager/destroy/{id}', [AdminManagerController::class, 'destroy'])->name('admin.admin_manager.destroy');
+    Route::get('admin-manager/list', [AdminManagerController::class, 'list'])->name('admin.admin_manager.list');
     //customer
+    //Admin manager
+    Route::get('province', [ProvinceController::class, 'index'])->name('admin.province.index');
+    Route::get('province/create', [ProvinceController::class, 'create'])->name('admin.province.create');
+    Route::post('province/create', [ProvinceController::class, 'store'])->name('admin.province.store');
+    Route::get('province/edit/{code}', [ProvinceController::class, 'edit'])->name('admin.province.edit');
+    Route::post('province/edit/{code}', [ProvinceController::class, 'update'])->name('admin.province.update');
+    Route::post('province/destroy/{code}', [ProvinceController::class, 'destroy'])->name('admin.province.destroy');
+    Route::get('province/list', [ProvinceController::class, 'list'])->name('admin.province.list');
 
 });
