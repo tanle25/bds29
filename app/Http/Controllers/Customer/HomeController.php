@@ -30,7 +30,7 @@ class HomeController extends Controller
             $provinces = Province::orderBy('slug')->get();
         }
         $featured_district_code = $widgets->where('name', 'bds_noi_bat')->first()->data_array->districts ?? [];
-        $featured_district = District::whereIn('code', $featured_district_code)->get();
+        $featured_district = District::withCount('realty_posts')->whereIn('code', $featured_district_code)->get();
 
         $current_post_categories = $widgets->where('name', 'tin_tuc_noi_bat')->first()->data_array->post_categories ?? [];
         $home_featured_cats = PostCategory::whereIn('id', $current_post_categories)

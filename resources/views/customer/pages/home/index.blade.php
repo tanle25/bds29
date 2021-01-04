@@ -24,7 +24,13 @@ Trang chủ
     @endif
     @include('customer.pages.home.contents.banner_2')
     @include('customer.pages.home.contents.why_choose_us')
-    @include('customer.pages.home.contents.home_post_v2')
+    @include('customer.pages.home.contents.realty_by_address')
+
+
+    {{-- @include('customer.pages.home.contents.home_post_v2') --}}
+
+
+
     <section class="container">
         <div class="d-flex">
             <h3 class="font-18 home-title color-dark">Doanh nghiệp nổi bật</h3>
