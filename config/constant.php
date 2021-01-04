@@ -231,4 +231,16 @@ return [
             ],
         ],
     ],
+
+    'province_type' => [
+        'tinh' => 'Tỉnh',
+        'thanh-pho' => 'Thành phố',
+    ],
+
+    'district_type' => [
+        'huyen' => 'Huyện',
+        'quan' => 'Quận',
+        'thanh-pho' => 'Thành phố',
+        'thi-xa' => 'Thị xã',
+    ],
 ];

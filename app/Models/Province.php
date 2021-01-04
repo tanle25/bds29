@@ -11,6 +11,15 @@ class Province extends Model
 
     protected $table = 'provinces';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'name',
+        'slug',
+        'name_with_type',
+        'code',
+    ];
+
     public function districts()
     {
         return $this->hasMany('App\Models\District', 'parent_code', 'code');
@@ -27,4 +36,10 @@ class Province extends Model
             'id',
         );
     }
+
+    public function details()
+    {
+        return $this->hasOne('App\Models\ProvinceDetail', 'province_id', 'id');
+    }
+
 }

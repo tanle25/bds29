@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProvinceRequest;
 use App\Models\Province;
+use App\Models\ProvinceDetail;
+use DataTables;
 use Illuminate\Http\Request;
 
 class ProvinceController extends Controller
@@ -14,7 +17,7 @@ class ProvinceController extends Controller
     }
 
     function list(Request $request) {
-
+        $provinces = Province::withCount(['districts']);
         return DataTables::eloquent($provinces)
             ->addColumn('action', function ($province) {
                 return '
@@ -31,38 +34,36 @@ class ProvinceController extends Controller
         return view('admin.pages.provinces.create');
     }
 
-    public function store(Request $request)
+    public function store(ProvinceRequest $request)
     {
-        $request->validate([
-            'name' => 'required|max:255',
-        ]);
-
-        $province = province::findOrCreateFromString($request->name);
-        $province->type = $request->type;
-        $province->save();
+        $data = $request->all();
+        $province = Province::create($data);
+        $data['province_id'] = $province->id;
+        $province_details = ProvinceDetail::create($data);
         if ($request->submit == 'save') {
-            return redirect()->route('admin.province.edit', $province->id)->with('success', 'Cập nhật thành công dự án');
+            return redirect()->route('admin.province.edit', $province->id)->with('success', 'Tạo mới thành công tỉnh');
         }
-        return redirect()->route('admin.province.index')->with('success', 'Cập nhật thành công dự án');
+        return redirect()->route('admin.province.index')->with('success', 'Tạo mới thành công tỉnh');
     }
 
     public function edit($id)
     {
         $province = Province::findOrFail($id);
-
         return view('admin.pages.provinces.edit', compact('province'));
     }
 
-    public function update(Request $request, $id)
+    public function update(ProvinceRequest $request, $id)
     {
-        $request->validate([
-            'name' => 'required|max:255',
-        ]);
+        $province = Province::with('details')->findOrFail($id);
+        $data = $request->all();
+        $province->update($data);
+        if ($province->details) {
+            $province->details->update($data);
+        } else {
+            $data['province_id'] = $province->id;
+            $province_details = ProvinceDetail::create($data);
+        }
 
-        $province = province::findOrFail($id);
-        $province->name = $request->name;
-        $province->type = $request->type;
-        $province->save();
         if ($request->submit == 'save') {
             return redirect()->route('admin.province.edit', $province->id)->with('success', 'Cập nhật thành công dự án');
         }

@@ -14,7 +14,7 @@
     <div class="container-fluid ">
         <form action="{{route('admin.province.store')}}" method="post" class="row">
             @csrf
-            @include('admin.pages.tags.form')
+            @include('admin.pages.provinces.form')
         </form>
     </div>
 </section>

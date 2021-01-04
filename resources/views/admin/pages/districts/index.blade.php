@@ -17,16 +17,16 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Danh sách tỉnh thành</h3>
-              <a href="{{route('admin.province.create')}}" class="btn btn-info p-1 float-right">Thêm mới</a>
+              <a href="{{route('admin.district.create')}}" class="btn btn-info p-1 float-right">Thêm mới</a>
             </div>
             <div class="card-body">
-              <table id="provinces-table" class="table table-bordered table-hover">
+              <table id="districts-table" class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                        <th>Mã tỉnh</th>
+                        <th>Mã huyện</th>
                         <th>Tên</th>
-                        <th>Số huyện</th>
-                        <th>Tên đầy đủ</th>
+                        <th>Số xã</th>
+                        <th>Trực thuộc</th>
                         <th>Thao tác</th>
                     </tr>
                   </thead>
@@ -47,23 +47,23 @@
     <script src="{{asset('template/AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
     <script>
         $(function () {
-            $("#provinces-table").dataTable({
+            $("#districts-table").dataTable({
                 processing: true,
                 serverSide: true,
                 scrollX: true,
                 autoWidth:false,
-                ajax: "/admin/province/list",
+                ajax: "/admin/district/list",
                 columns: [
                     { "data": "code","name": 'code', 'width': '10px'},
                     { "data": "name" , 'name': 'type'},
-                    { "data": "districts_count", "searchable": false , "orderable": false},
-                    { "data": "name_with_type", 'name': 'name_with_type' },
+                    { "data": "communes_count", "searchable": false , "orderable": false},
+                    { "data": "province", 'name': 'province.name' },
                     { "data": "action", 'width': '90px'},
                 ],
             })
         });
 
-         function destroyProvince(url){
+         function destroyDistrict(url){
             $.ajax({
                 url: url,
                 type: 'post',
@@ -81,14 +81,14 @@
             })
         }
 
-        $(document).on('click', '.province-destroy', function(e){
+        $(document).on('click', '.district-destroy', function(e){
             e.preventDefault();
             var url = $(this).attr('href');
-            swalConfirm('Xóa tỉnh này!').then((result) => {
+            swalConfirm('Xóa huyện này!').then((result) => {
                 if (result.value) {
                     destroyProvince(url);
 					setTimeout(() => {
-						$('#provinces-table').DataTable().ajax.reload();
+						$('#districts-table').DataTable().ajax.reload();
 					}, 1000);
                 }
             });

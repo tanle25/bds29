@@ -1,6 +1,6 @@
 @extends('admin.main_layout')
 @section('title')
-    Sửa tỉnh thành
+    Quản lý huyện thị
 @endsection
 @section('css')
     @parent
@@ -9,18 +9,17 @@
 @endsection
 
 @section('content')
-@include('admin.partials.content_header', ['title' => 'Sửa tỉnh thành'])
+@include('admin.partials.content_header', ['title' => 'Thêm huyện mới'])
 <section class="content" >
     <div class="container-fluid ">
-        <form action="{{route('admin.province.update', $province->id)}}" method="post" class="row">
+        <form action="{{route('admin.district.store')}}" method="post" class="row">
             @csrf
-            @include('admin.pages.provinces.form')
+            @include('admin.pages.districts.form')
         </form>
     </div>
 </section>
 @endsection
 
 @section('script')
-@parent
 <script src="{{asset('/template/ckeditor/ckeditor.js')}}"></script>
 @endsection
