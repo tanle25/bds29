@@ -7,6 +7,7 @@ use App\Models\Partner;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\Project;
+use App\Models\Province;
 use App\Models\RealtyPost;
 use Illuminate\Http\Request;
 use Str;
@@ -31,6 +32,8 @@ class SlugController extends Controller
                 return $this->getSlug(Project::class, $request->string);
             case 'partner':
                 return $this->getSlug(Partner::class, $request->string);
+            case 'province':
+                return $this->getSlug(Province::class, $request->string);
             default:
                 # code...
                 break;

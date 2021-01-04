@@ -64,6 +64,7 @@
 </div>
 
 @section('script')
+    @parent
     <script>
         // get slug
         $('#tag_name').on('blur', function () {

@@ -8,6 +8,19 @@ class District extends Model
 {
     protected $table = 'districts';
 
+    protected $fillable = [
+        'name',
+        'slug',
+        'name_with_type',
+        'code',
+        'parent_code',
+        'path',
+        'type',
+        'path_with_type',
+    ];
+
+    public $timestamps = false;
+
     public function communes()
     {
         return $this->hasMany('App\Models\Commune', 'parent_code', 'code');
@@ -33,5 +46,10 @@ class District extends Model
             'code',
             'id',
         );
+    }
+
+    public function details()
+    {
+        return $this->hasOne('App\Models\DistrictDetail', 'district_id', 'id');
     }
 }
