@@ -10,7 +10,7 @@
     }
 }
 
-$fonts: 400, 500, 600, 700;
+$fonts: 300, 400, 500, 600, 700;
 
 @each $breakpoint in map-keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {

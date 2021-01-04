@@ -41,10 +41,10 @@ class HomeController extends Controller
 
         $home_projects = Project::whereIn('id', $home_projects)->with('realty_posts', 'realty_posts.realty')->take(6)->get();
 
-        $home_projects = $this->project_service->getProjectDetails($home_projects)->chunk(3);
+        $home_projects = $this->project_service->getProjectDetails($home_projects);
         $random_realties = RealtyPost::with('realty', 'realty.district')->orderByDesc('id')->take(50)->get();
-        if ($random_realties->count() >= 8) {
-            $random_realties = $random_realties->random(8)->sortByDesc('rank');
+        if ($random_realties->count() >= 6) {
+            $random_realties = $random_realties->random(6)->sortByDesc('rank');
         }
         $partners = Partner::where('rank', 1)->take(10)->get();
 

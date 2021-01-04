@@ -1,10 +1,10 @@
 .banner-home {
     @include media-breakpoint-up(lg) {
-        height: 550px;
+        height: calc(100vh - 134px);
     }
     .banner-item {
         @include media-breakpoint-up(lg) {
-            height: 550px;
+            height: calc(100vh - 134px);
         }
     }
 }
@@ -109,5 +109,17 @@
 .home-title {
     @include media-breakpoint-down(md) {
         font-size: 1.5rem !important;
+    }
+}
+
+.second-banner {
+    h2 {
+        word-spacing: 2px;
+    }
+}
+
+.why-choose-us {
+    h3 {
+        letter-spacing: 1px;
     }
 }

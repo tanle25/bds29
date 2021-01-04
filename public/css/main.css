@@ -14583,6 +14583,10 @@ body.hc-nav-open {
   font-size: 1.2rem !important;
 }
 
+.font-weight-300 {
+  font-weight: 300 !important;
+}
+
 .font-weight-400 {
   font-weight: 400 !important;
 }
@@ -14614,6 +14618,10 @@ body.hc-nav-open {
 
   .font-sm-12 {
     font-size: 1.2rem !important;
+  }
+
+  .font-weight-sm-300 {
+    font-weight: 300 !important;
   }
 
   .font-weight-sm-400 {
@@ -14650,6 +14658,10 @@ body.hc-nav-open {
     font-size: 1.2rem !important;
   }
 
+  .font-weight-md-300 {
+    font-weight: 300 !important;
+  }
+
   .font-weight-md-400 {
     font-weight: 400 !important;
   }
@@ -14684,6 +14696,10 @@ body.hc-nav-open {
     font-size: 1.2rem !important;
   }
 
+  .font-weight-lg-300 {
+    font-weight: 300 !important;
+  }
+
   .font-weight-lg-400 {
     font-weight: 400 !important;
   }
@@ -14716,6 +14732,10 @@ body.hc-nav-open {
 
   .font-xl-12 {
     font-size: 1.2rem !important;
+  }
+
+  .font-weight-xl-300 {
+    font-weight: 300 !important;
   }
 
   .font-weight-xl-400 {
@@ -14780,6 +14800,10 @@ body.hc-nav-open {
   height: 150px !important;
 }
 
+.height-240 {
+  height: 240px !important;
+}
+
 @media (min-width: 576px) {
   .height-sm-180 {
     height: 180px !important;
@@ -14791,6 +14815,10 @@ body.hc-nav-open {
 
   .height-sm-150 {
     height: 150px !important;
+  }
+
+  .height-sm-240 {
+    height: 240px !important;
   }
 }
 
@@ -14806,6 +14834,10 @@ body.hc-nav-open {
   .height-md-150 {
     height: 150px !important;
   }
+
+  .height-md-240 {
+    height: 240px !important;
+  }
 }
 
 @media (min-width: 992px) {
@@ -14820,6 +14852,10 @@ body.hc-nav-open {
   .height-lg-150 {
     height: 150px !important;
   }
+
+  .height-lg-240 {
+    height: 240px !important;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -14833,6 +14869,10 @@ body.hc-nav-open {
 
   .height-xl-150 {
     height: 150px !important;
+  }
+
+  .height-xl-240 {
+    height: 240px !important;
   }
 }
 
@@ -17702,6 +17742,15 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
      object-fit: cover !important;
 }
 
+.app-bar {
+  background-color: #333;
+  color: white;
+}
+
+.app-bar a:first-child {
+  border-right: 2px solid white;
+}
+
 .desktop-menu .menu-item {
   position: relative;
 }
@@ -17758,13 +17807,13 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 
 @media (min-width: 992px) {
   .banner-home {
-    height: 550px;
+    height: calc(100vh - 134px);
   }
 }
 
 @media (min-width: 992px) {
   .banner-home .banner-item {
-    height: 550px;
+    height: calc(100vh - 134px);
   }
 }
 
@@ -17879,6 +17928,14 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
   .home-title {
     font-size: 1.5rem !important;
   }
+}
+
+.second-banner h2 {
+  word-spacing: 2px;
+}
+
+.why-choose-us h3 {
+  letter-spacing: 1px;
 }
 
 .sidebar-post-link {

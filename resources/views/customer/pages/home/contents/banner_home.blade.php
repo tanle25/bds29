@@ -1,7 +1,6 @@
 @php
     $banners = explode(',', $theme_options['Banner'] ?? '');
     $banner_mobile = explode(',', $theme_options['Banner_mobile'] ?? '');
-
 @endphp
 
 @section('css')
@@ -12,7 +11,7 @@
         }
     </style>
 @endsection
-<section class="banner-home position-relative">
+<section class="banner-home position-relative d-flex align-items-center">
     @if (Agent::isMobile())
     <div class="banner-home-slider owl-carousel" style="z-index: 1">
             @foreach ($banner_mobile as $item)
@@ -25,7 +24,7 @@
         </div>
     @else
         <div class="banner-home-slider owl-carousel position-absolute h-100" style="z-index: -1">
-            @foreach ($banner_mobile as $item)
+            @foreach ($banners as $item)
                 @if ($item)
                     <div class="item w-100 banner-item">
                         <img src="{{$item}}" alt="" style="height: 100%; object-fit:cover" srcset="">
@@ -35,7 +34,7 @@
         </div>
     @endif
 
-	<div class="container mx-auto clearfix pt-md-5 ">
+	<div class="container mx-auto pt-1">
 
 		<div class="divtext text-center  d-none d-md-block">
 			<h2><strong> BẤT ĐỘNG SẢN DỄ DÀNG</strong></h2>

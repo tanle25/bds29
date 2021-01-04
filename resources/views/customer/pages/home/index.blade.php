@@ -18,12 +18,13 @@ Trang chủ
  @section('content')
 
     @include('customer.pages.home.contents.banner_home')
-    @include('customer.pages.home.contents.list_bds_hot')
-    @include('customer.pages.home.contents.home_post_v2')
     @include('customer.pages.home.contents.hot_realty')
     @if($home_projects->isNotEmpty())
         @include('customer.pages.home.contents.home_project_v2')
     @endif
+    @include('customer.pages.home.contents.banner_2')
+    @include('customer.pages.home.contents.why_choose_us')
+    @include('customer.pages.home.contents.home_post_v2')
     <section class="container">
         <div class="d-flex">
             <h3 class="font-18 home-title color-dark">Doanh nghiệp nổi bật</h3>

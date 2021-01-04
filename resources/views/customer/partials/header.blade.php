@@ -20,7 +20,7 @@
 <div class="navigation sticky-top bg-white">
     <div class="header-container p-md-3 border-bottom">
         <header class="" id="top" role="banner">
-            <section class="menu-desktop d-none d-md-flex align-items-center">
+            <section class=" container menu-desktop d-none d-md-flex justify-content-center align-items-center">
                 <div class="navbar-header">
                     <div class="" id="brand">
                         <a href="/"><img style="max-height: 75px" src="{{$logo}}" alt="brand"></a>
@@ -41,7 +41,7 @@
                     </div>
                     @endforeach
                 </nav>
-                <div class="ml-auto d-block pr-3">
+                <div class="d-block pr-3">
                     <a style="position: relative; width: auto; top:0; z-index:2"  href="#" class="pl-3 d-xl-none menu-open font-15 text-secondary" ><i class="far fa-bars"></i></a>
                 </div>
                 <div class="header-right ml-auto d-none d-xl-flex align-items-center">
