@@ -70,7 +70,6 @@ class DistrictController extends Controller
         } else {
             $data['district_id'] = $district->id;
             $district_details = DistrictDetail::create($data);
-            dd($district_details);
         }
 
         if ($request->submit == 'save') {
