@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BankController;
 use App\Http\Controllers\Admin\BillController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DistrictController;
+use App\Http\Controllers\Admin\FilemanagerController;
 use App\Http\Controllers\Admin\GroundController;
 use App\Http\Controllers\Admin\HomeController as HomeAdminController;
 use App\Http\Controllers\Admin\MenuCategoryController;
@@ -62,6 +63,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::group(['prefix' => 'laravel-filemanager'], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();
     });
+    Route::get('filemanager', [FileManagerController::class, 'index'])->name('admin.filemanager.index');
     //post controler
     Route::get('post', [PostController::class, 'index'])->name('admin.post.index');
     Route::get('post/create', [PostController::class, 'create'])->name('admin.post.create');
