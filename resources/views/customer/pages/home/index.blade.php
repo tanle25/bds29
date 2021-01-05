@@ -20,40 +20,38 @@ Trang chủ
     @include('customer.pages.home.contents.banner_home')
     @include('customer.pages.home.contents.hot_realty')
     @if($home_projects->isNotEmpty())
-        @include('customer.pages.home.contents.home_project_v2')
+    @include('customer.pages.home.contents.home_project_v2')
     @endif
     @include('customer.pages.home.contents.banner_2')
     @include('customer.pages.home.contents.why_choose_us')
     @include('customer.pages.home.contents.realty_by_address')
 
-
-    {{-- @include('customer.pages.home.contents.home_post_v2') --}}
-
-
-
     <section class="container">
         <div class="d-flex">
-            <h3 class="font-18 home-title color-dark">Doanh nghiệp nổi bật</h3>
+            <h3 class="font-18 home-title color-dark text-center mx-auto">Doanh nghiệp nổi bật</h3>
         </div>
         <div class="owl-carousel partner-slider mb-5">
             @foreach ($partners as $partner)
-                <div class="item d-flex align-items-center  p-2" style="height: 120px;" >
-                    <div class="w-100 border h-100 p-2 partner-item">
-                        <img style="height: 100%; object-fit:contain" src="{{$partner->logo}}" alt="">
-                    </div>
+            <div class="item d-flex align-items-center  p-2" style="height: 120px;" >
+                <div class="w-100 border h-100 p-2 partner-item">
+                    <img style="height: 100%; object-fit:contain" src="{{$partner->logo}}" alt="">
                 </div>
+            </div>
             @endforeach
         </div>
     </section>
-    @isset($horizontal_advertisments)
+
+    @include('customer.pages.home.contents.contact')
+
+    {{-- @isset($horizontal_advertisments)
         @include('customer.components.advertisments.horizontal', ['items' => $horizontal_advertisments])
-    @endisset
-@endsection
+    @endisset --}}
+    @endsection
 
 
-@section('script')
-@parent
-<script>
+    @section('script')
+    @parent
+    <script>
     $('.horizon-advertisment').owlCarousel({
         loop:true,
         autoplay: true,

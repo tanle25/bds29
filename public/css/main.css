@@ -14876,6 +14876,38 @@ body.hc-nav-open {
   }
 }
 
+.letter-spacing-1 {
+  letter-spacing: 1px !important;
+}
+
+.letter-spacing-2 {
+  letter-spacing: 2px !important;
+}
+
+.letter-spacing-3 {
+  letter-spacing: 3px !important;
+}
+
+.letter-spacing-4 {
+  letter-spacing: 4px !important;
+}
+
+.word-spacing-1 {
+  word-spacing: 1px !important;
+}
+
+.word-spacing-2 {
+  word-spacing: 2px !important;
+}
+
+.word-spacing-3 {
+  word-spacing: 3px !important;
+}
+
+.word-spacing-4 {
+  word-spacing: 4px !important;
+}
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)

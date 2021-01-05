@@ -25,7 +25,7 @@ return [
         '3' => 'Tin đã duyệt',
         '4' => 'Tin rác',
     ],
-    'provinces' => [72],
+    'provinces' => [38],
     'realty_post_type' => [
         '1' => [
             'name' => 'Bán',
