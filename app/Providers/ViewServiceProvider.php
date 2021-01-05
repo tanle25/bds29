@@ -42,7 +42,7 @@ class ViewServiceProvider extends ServiceProvider
                 $theme_options[$item->key] = $item->value;
             };
             View::composer(
-                ['customer.main', 'mails.*', 'customer.partials.*', 'auth.*', 'customer.contents.banner_home', 'customer.pages.contacts.*'], function ($view) use ($theme_options) {
+                ['customer.main', 'mails.*', 'customer.partials.*', 'auth.*', 'customer.pages.home.contents.banner_home', 'customer.pages.contacts.*'], function ($view) use ($theme_options) {
                     $view->with('theme_options', $theme_options);
                 }
             );
