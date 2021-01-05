@@ -1,5 +1,4 @@
 <?php
-
 return [
     'price_type' => [
         '0' => [

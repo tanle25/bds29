@@ -55,7 +55,7 @@
                 ajax: "/admin/district/list",
                 columns: [
                     { "data": "code","name": 'code', 'width': '10px'},
-                    { "data": "name" , 'name': 'type'},
+                    { "data": "name" , 'name': 'name'},
                     { "data": "communes_count", "searchable": false , "orderable": false},
                     { "data": "province", 'name': 'province.name' },
                     { "data": "action", 'width': '90px'},
