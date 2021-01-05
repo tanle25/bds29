@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class DistrictRequest extends FormRequest
+class CommuneRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,10 +32,10 @@ class DistrictRequest extends FormRequest
             'path' => 'required|max:255',
             'path_with_type' => 'required|max:255',
             'parent_code' => 'required|numeric',
-            'code' => 'numeric|required|unique:districts,code,' . $id,
+            'code' => 'numeric|required|unique:communes,code,' . $id,
             'type' => [
                 'required',
-                Rule::in(['quan', 'huyen', 'thi-xa', 'thanh-pho']),
+                Rule::in(['xa', 'phuong', 'thi-tran']),
             ],
 
             'area' => 'nullable|numeric',
@@ -54,7 +54,7 @@ class DistrictRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => "Tên huyện",
+            'name' => "Tên xã",
             'name_with_type' => "Tên đầy đủ",
             'type' => 'Phân loại',
             'path' => 'Đường dẫn',
@@ -65,7 +65,7 @@ class DistrictRequest extends FormRequest
             'full_description' => 'Mô tả đầy đủ',
             'avatar' => 'Ảnh đại diện',
             'images' => 'Album ảnh',
-            'code' => 'Mã tỉnh',
+            'code' => 'Mã xã',
         ];
     }
 }

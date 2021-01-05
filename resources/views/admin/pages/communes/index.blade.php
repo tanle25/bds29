@@ -1,6 +1,6 @@
 @extends('admin.main_layout')
 @section('title')
-    Danh sách tỉnh thành
+    Danh sách xã phường
 @endsection
 @section('css')
     @parent
@@ -9,23 +9,22 @@
 @endsection
 
 @section('content')
-@include('admin.partials.content_header', ['title' => 'Quản lý tỉnh thành'])
+@include('admin.partials.content_header', ['title' => 'Quản lý xã phường'])
 <section class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Danh sách tỉnh thành</h3>
-              <a href="{{route('admin.district.create')}}" class="btn btn-info p-1 float-right">Thêm mới</a>
+              <h3 class="card-title">Danh sách xã phường</h3>
+              <a href="{{route('admin.commune.create')}}" class="btn btn-info p-1 float-right">Thêm mới</a>
             </div>
             <div class="card-body">
-              <table id="districts-table" class="table table-bordered table-hover">
+              <table id="communes-table" class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                        <th>Mã huyện</th>
+                        <th>Mã xã</th>
                         <th>Tên</th>
-                        <th>Số xã</th>
                         <th>Trực thuộc</th>
                         <th>Thao tác</th>
                     </tr>
@@ -47,23 +46,22 @@
     <script src="{{asset('template/AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
     <script>
         $(function () {
-            $("#districts-table").dataTable({
+            $("#communes-table").dataTable({
                 processing: true,
                 serverSide: true,
                 scrollX: true,
                 autoWidth:false,
-                ajax: "/admin/district/list",
+                ajax: "/admin/commune/list",
                 columns: [
                     { "data": "code","name": 'code', 'width': '10px'},
-                    { "data": "name" , 'name': 'name'},
-                    { "data": "communes_count", "searchable": false , "orderable": false},
-                    { "data": "province", 'name': 'province.name' },
+                    { "data": "name_with_type" , 'name': 'name_with_type'},
+                    { "data": "district", 'name': 'district.path_with_type' },
                     { "data": "action", 'width': '90px'},
                 ],
             })
         });
 
-         function destroyDistrict(url){
+         function destroyCommune(url){
             $.ajax({
                 url: url,
                 type: 'post',
@@ -81,14 +79,14 @@
             })
         }
 
-        $(document).on('click', '.district-destroy', function(e){
+        $(document).on('click', '.commune-destroy', function(e){
             e.preventDefault();
             var url = $(this).attr('href');
-            swalConfirm('Xóa huyện này!').then((result) => {
+            swalConfirm('Xóa xã này!').then((result) => {
                 if (result.value) {
-                    destroyProvince(url);
+                    destroyCommune(url);
 					setTimeout(() => {
-						$('#districts-table').DataTable().ajax.reload();
+						$('#communes-table').DataTable().ajax.reload();
 					}, 1000);
                 }
             });

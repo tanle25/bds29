@@ -4,8 +4,10 @@ use App\Http\Controllers\Admin\AdminManagerController;
 use App\Http\Controllers\Admin\AdvertismentController;
 use App\Http\Controllers\Admin\BankController;
 use App\Http\Controllers\Admin\BillController;
+use App\Http\Controllers\Admin\CommuneController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DistrictController;
+use App\Http\Controllers\Admin\FilemanagerController;
 use App\Http\Controllers\Admin\GroundController;
 use App\Http\Controllers\Admin\HomeController as HomeAdminController;
 use App\Http\Controllers\Admin\MenuCategoryController;
@@ -62,6 +64,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::group(['prefix' => 'laravel-filemanager'], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();
     });
+    Route::get('filemanager', [FileManagerController::class, 'index'])->name('admin.filemanager.index');
     //post controler
     Route::get('post', [PostController::class, 'index'])->name('admin.post.index');
     Route::get('post/create', [PostController::class, 'create'])->name('admin.post.create');
@@ -192,4 +195,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::post('district/edit/{id}', [DistrictController::class, 'update'])->name('admin.district.update');
     Route::post('district/destroy/{id}', [DistrictController::class, 'destroy'])->name('admin.district.destroy');
     Route::get('district/list', [DistrictController::class, 'list'])->name('admin.district.list');
+    //Cummune manager
+    Route::get('commune', [CommuneController::class, 'index'])->name('admin.commune.index');
+    Route::get('commune/create', [CommuneController::class, 'create'])->name('admin.commune.create');
+    Route::post('commune/create', [CommuneController::class, 'store'])->name('admin.commune.store');
+    Route::get('commune/edit/{id}', [CommuneController::class, 'edit'])->name('admin.commune.edit');
+    Route::post('commune/edit/{id}', [CommuneController::class, 'update'])->name('admin.commune.update');
+    Route::post('commune/destroy/{id}', [CommuneController::class, 'destroy'])->name('admin.commune.destroy');
+    Route::get('commune/list', [CommuneController::class, 'list'])->name('admin.commune.list');
 });

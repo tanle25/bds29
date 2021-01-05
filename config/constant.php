@@ -1,5 +1,4 @@
 <?php
-
 return [
     'price_type' => [
         '0' => [
@@ -242,5 +241,11 @@ return [
         'quan' => 'Quận',
         'thanh-pho' => 'Thành phố',
         'thi-xa' => 'Thị xã',
+    ],
+
+    'commune_type' => [
+        'xa' => 'Xã',
+        'phuong' => 'Phường',
+        'thi-tran' => 'Thị trấn',
     ],
 ];

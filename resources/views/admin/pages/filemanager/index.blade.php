@@ -5,8 +5,8 @@
 
 @section('content')
 
-@include('admin.partials.content_header', ['title' => 'Quản lý File'])
+@include('admin.partials.content_header', ['title' => 'Quản lý hình ảnh'])
 
-<iframe src="/admin/laravel-filemanager" style="width: 100%; height: 800px; overflow: hidden; border: none;"></iframe>
+<iframe src="/admin/laravel-filemanager?type=image" style="width: 100%; height: 800px; overflow: hidden; border: none;"></iframe>
 
 @endsection
