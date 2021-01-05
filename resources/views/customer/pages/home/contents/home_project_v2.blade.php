@@ -2,11 +2,8 @@
 	<div class="container">
         <div class="p-0">
             <div>
-                <div class="text-center">
-                    <h3 class="font-18 home-title color-dark">Dự án nổi bật</h3>
-                    {{-- <div class="ml-auto d-flex align-items-center">
-                        <a href="/du-an-bat-dong-san" class="text-dark">Xem tất cả <i class="fas fa-long-arrow-alt-right"></i></a>
-                    </div> --}}
+                <div class="text-center mb-5">
+                    <h2 class="font-18 home-title color-dark">Dự án nổi bật</h2>
                 </div>
                 <div class="project-container owl-carousel">
                     @foreach ($home_projects as $item)

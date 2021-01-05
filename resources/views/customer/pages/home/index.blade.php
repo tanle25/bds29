@@ -27,8 +27,8 @@ Trang chủ
     @include('customer.pages.home.contents.realty_by_address')
 
     <section class="container">
-        <div class="d-flex">
-            <h3 class="font-18 home-title color-dark text-center mx-auto">Doanh nghiệp nổi bật</h3>
+        <div class="d-flex my-5">
+            <h2 class="font-18 home-title color-dark text-center mx-auto">Doanh nghiệp nổi bật</h2>
         </div>
         <div class="owl-carousel partner-slider mb-5">
             @foreach ($partners as $partner)

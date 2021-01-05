@@ -1,14 +1,10 @@
 <section class="random-realty py-3 py-lg-5 section hrm-bg-secondary">
 	<div class="container">
         <div class="d-md-flex justify-content-center">
-            <h3 class="font-18 color-dark home-title">Bất động sản dành cho bạn</h3>
-            {{-- <div class="ml-auto d-flex align-items-center ">
-                <a href="/ban" class="px-md-2 border-md-right secondary-text">Tin nhà đất bán mới nhất</a>
-                <a href="/cho-thue" class="px-md-2 secondary-text">Tin nhà đất cho thuê mới nhất</a>
-            </div> --}}
+            <h2 class="color-dark home-title">Bất động sản dành cho bạn</h2>
         </div>
 
-        <div class="row pt-3">
+        <div class="row pt-4">
             @foreach ($random_realties as $index => $item)
             <div class="item col-md-4 my-2 wow fadeIn"
             data-wow-offset="1"
@@ -17,6 +13,9 @@
                 @include('customer.components.realty_post.realty_block', ['item' => $item])
             </div>
             @endforeach
+        </div>
+        <div class="text-center">
+            <a href="/dat-dong-san" class="main-text letter-spacing-1 btn btn-outline-primary font-14 font-weight-500 mx-auto mt-4 py-2 px-4">Xem thêm</a>
         </div>
     </div>
 </section>
