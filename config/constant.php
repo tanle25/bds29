@@ -242,4 +242,10 @@ return [
         'thanh-pho' => 'Thành phố',
         'thi-xa' => 'Thị xã',
     ],
+
+    'commune_type' => [
+        'xa' => 'Xã',
+        'phuong' => 'Phường',
+        'thi-tran' => 'Thị trấn',
+    ],
 ];
