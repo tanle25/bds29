@@ -2,13 +2,15 @@
     <div class="row">
         @foreach ($featured_district->take(4) as $index => $district)
         <div class="col-12 col-md-6">
-            <div class="row
+            <div class="row no-gutters
             @if ($index >= 2)
             flex-row-reverse
             @endif
             ">
                 <div class="col-12 col-md-6">
-                    <img src="{{$district->details->avatar ?? ''}}" alt="">
+                    <div class="embed-responsive embed-responsive-1by1 w-100">
+                        <img class="embed-responsive-item" src="{{$district->details->avatar ?? ''}}" alt="">
+                    </div>
                 </div>
                 <div class="col-12 col-md-6 p-5 d-flex align-items-center flex-column text-center">
                     <a href=""><h3 class="font-weight-600">{{$district->name}}</h3></a>

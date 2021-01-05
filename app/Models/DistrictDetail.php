@@ -20,4 +20,9 @@ class DistrictDetail extends Model
         'full_description',
     ];
 
+    public function getAvatarAttribute($avatar)
+    {
+        $array = explode(',', $avatar);
+        return $array[0] ?? '';
+    }
 }
