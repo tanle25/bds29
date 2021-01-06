@@ -123,7 +123,7 @@
                         <div class="post-description">
                             <h2 class="font-15 pb-2 widget-title">Thông tin chi tiết</h2>
                             <p class="font-9" style="line-height: 30px">
-                                {{$realty_post->description ?? ''}}
+                                {!! nl2br(e($realty_post->description ?? ''))!!}
                             </p>
                         </div>
                         <div class="bg-light w-100 py-2 px-3 text-center">
