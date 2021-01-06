@@ -1,34 +1,21 @@
 <div class="why-choose-us">
     <div class="text-center mb-5">
-        <h2 class="mb-3">Vì Sao Chọn Chúng Tôi</h2>
-        <span><em>Chúng tôi khác biệt vì chúng tôi có nhiều năm kinh nghiệm và cách tiếp cận của chúng tôi là <br>
-            làm việc trực tiếp với khách hàng cho mọi thứ chúng tôi phát triển</em></span>
+        <h2 class="mb-3">{{$home_why_choose->title ?? ''}}</h2>
+        <span><em>{!! nl2br($home_why_choose->slogan ?? '') !!}</em></span>
     </div>
-    <div class="row container mx-auto">
-        <div class="col-md-4 text-center">
-            <div class="text-center">
-                <div class="font-20"><i class="fal fa-desktop"></i></div>
-            </div>
-            <h3 class="font-weight-500 font-11 pt-2">BÁN NHÀ CỦA BẠN</h3>
-            <hr style="width: 60px">
-            <div class="font-9">Lorem ipsum dolor sit amet, consectetur <br> adipisicing elit, sed do eiusmod tempor incididunt <br> ut labore et dolore magna aliqua.</div>
-        </div>
-        <div class="col-md-4 text-center">
-            <div class="text-center">
-                <div class="font-20"><i class="fal fa-desktop"></i></div>
-            </div>
-            <h3 class="font-weight-500 font-11 pt-2">BÁN NHÀ CỦA BẠN</h3>
-            <hr style="width: 60px">
-            <div class="font-9">Lorem ipsum dolor sit amet, consectetur <br> adipisicing elit, sed do eiusmod tempor incididunt <br> ut labore et dolore magna aliqua.</div>
-        </div>
-        <div class="col-md-4 text-center">
-            <div class="text-center">
-                <div class="font-20"><i class="fal fa-desktop"></i></div>
-            </div>
-            <h3 class="font-weight-500 font-11 pt-2">BÁN NHÀ CỦA BẠN</h3>
-            <hr style="width: 60px">
-            <div class="font-9">Lorem ipsum dolor sit amet, consectetur <br> adipisicing elit, sed do eiusmod tempor incididunt <br> ut labore et dolore magna aliqua.</div>
-        </div>
+    <div class="row container mx-auto mb-5 pb-4">
+        @isset($home_why_choose->item)
+            @foreach ($home_why_choose->item as $section)
+                <div class="col-md-4 text-center">
+                    <div class="text-center">
+                        <div class="font-20"><i class="{{$section->icon ?? ''}}"></i></div>
+                    </div>
+                    <h3 class="font-weight-500 font-11 pt-2">{{$section->title ?? ''}}</h3>
+                    <hr style="width: 60px">
+                    <div class="font-9">{!! nl2br($section->content ?? '') !!}</div>
+                </div>
+            @endforeach
+        @endisset
     </div>
     <div class="row container mx-auto mt-5">
         <div class="col-md-4 text-center">

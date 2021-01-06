@@ -1,6 +1,6 @@
 <div class="bg-secondary second-banner">
     <div class="container my-5 py-5">
-        <div class="row">
+        <div class="row py-5">
             <div class="col-md-6 ">
                 <div class="text-light font-14">
                     <span class="font-weight-300">Mua bán thật dễ dàng</span>

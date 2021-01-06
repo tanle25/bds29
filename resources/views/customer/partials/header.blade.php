@@ -28,7 +28,7 @@
                 </div>
                 <nav class="d-flex align-items-center desktop-menu">
                     @foreach ($main_menu as $item)
-                    <div class="menu-item p-3 @if(isset($item->childs) && $item->childs != []) has-child @endif"><a class="font-weight-bold main-text font-9" href="{{$item->href ?? '#'}}"> {{$item->title}}</a>
+                    <div class="menu-item p-3 @if(isset($item->childs) && $item->childs != []) has-child @endif"><a class="font-weight-400 text-uppercase main-text font-8" href="{{$item->href ?? '#'}}"> {{$item->title}}</a>
                         @isset($item->childs)
                             @if ($item->childs->isNotEmpty())
                                 <ul class="child-navigation submenu-1 border px-3 bg-white rounded shadow-10">
@@ -55,11 +55,15 @@
                         <a href="/dang-tin" class="ml-2 font-9 hrm-btn-info p-2"><strong>Đăng tin</strong></a>
                     </div>
                     @else
-                    <div class="login-logout">
-                        <a href="#" class="text-dark px-2 font-9" data-toggle="modal" data-target="#register">Đăng ký</a>
-                        <a href="#" class="text-dark font-9" data-toggle="modal" data-target="#popup-login"><span class="border-left px-2">Đăng nhập</span></a>
+                    <div class="login-logout d-flex align-items-center text-uppercase">
+                        <div href="/dang-tin" class="ml-2 btn font-8 btn-info" data-toggle="modal" data-target="#popup-login"><span>Đăng tin</span></div>
+                        <div class="p-2">
+                            <div class="btn border rounded">
+                                <a href="#" class="text-info px-2 font-8" data-toggle="modal" data-target="#register">Đăng ký</a>
+                                <a href="#" class="text-info font-8" data-toggle="modal" data-target="#popup-login"><span class="border-left px-2">Đăng nhập</span></a>
+                            </div>
+                        </div>
 
-                        <span href="/dang-tin" class="ml-2 btn font-9 btn-outline-info" data-toggle="modal" data-target="#popup-login"><strong>Đăng tin</strong></span>
                     </div>
                     @endif
                 </div>
