@@ -122,8 +122,8 @@
 					<div class="about-content mt-4">
                         <div class="post-description">
                             <h2 class="font-15 pb-2 widget-title">Thông tin chi tiết</h2>
-                            <p class="font-9" style="white-space: pre-line; line-height: 30px">
-                                {{trim($realty_post->description) ?? ''}}
+                            <p class="font-9" style="line-height: 30px">
+                                {{$realty_post->description ?? ''}}
                             </p>
                         </div>
                         <div class="bg-light w-100 py-2 px-3 text-center">
@@ -286,7 +286,11 @@
 <div class="fixed-bottom d-flex bg-white d-block d-lg-none">
     <a style="line-height: 1.7em" class="px-3 font-14 d-block py-2" href="mailto:{{$author->email ?? ''}}"><i class="fas fa-envelope"></i></a>
     <a style="line-height: 1.7em" class="px-3 font-14 d-block py-2" href="mailto:{{$author->email ?? ''}}"><i class="fas fa-sms"></i></a>
-    <a style="line-height: 1.7em" class="font-11 btn btn-success rounded-0 w-100 d-block w-100 py-2" href="tel:{{$author->phone_number ?? ''}}"><i class="fas fa-phone-alt"></i> 0{{number_format($author->phone_number ?? 0, 0, ' ', ' ') ??''}}</a>
+    <a style="line-height: 1.7em" class="font-11 btn btn-success rounded-0 w-100 d-block w-100 py-2" href="tel:{{$author->phone_number ?? ''}}"><i class="fas fa-phone-alt"></i>
+        @if (is_numeric($author->phone_number ?? 0))
+        0{{number_format($author->phone_number ?? 0, 0, ' ', ' ') ??''}}</a>
+        @endif
+    </a>
 </div>
 
 
