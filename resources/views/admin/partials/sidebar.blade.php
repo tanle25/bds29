@@ -202,7 +202,7 @@
                 </li>
 
                 <li class="nav-item has-treeview">
-                    <a href="/admin/admin-mamager" class="nav-link">
+                    <a href="/admin/admin-manager" class="nav-link">
                         <i class="fas fa-user nav-icon"></i>
                         <p>
                             Quản trị viên

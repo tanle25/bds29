@@ -25,10 +25,10 @@ class AdminManagerRequest extends FormRequest
     {
         $user_id = request()->id;
         return [
-            'name' => 'required|max:255|string',
+            'fullname' => 'required|max:255|string',
             'username' => 'required|max:255|string|unique:admins,username,' . $user_id,
-            'password' => 'required|max:255|string|unique:admins,email,' . $user_id,
-            'email' => 'required|max:255|email',
+            'password' => 'required|max:255|string' . $user_id,
+            'email' => 'required|max:255|email|unique:admins,email,' . $user_id,
             'phone_number' => 'nullable|max:255',
         ];
     }
@@ -41,10 +41,11 @@ class AdminManagerRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'Họ và tên',
+            'fullname' => 'Họ và tên',
             'username' => 'Tên đăng nhập',
             'password' => 'Mật khẩu',
             'phone_number' => 'Số điện thoại',
+            'email' => 'Email',
         ];
     }
 }

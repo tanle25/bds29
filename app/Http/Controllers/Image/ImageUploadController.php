@@ -63,6 +63,9 @@ class ImageUploadController extends Controller
         $image = ThemeOption::get('watermark_logo');
         if ($image) {
             $link = explode(',', $image)[0] ?? null;
+            if (!$link) {
+                return null;
+            }
             $watermark = Str::replaceFirst('/storage', '', $link);
 
             return storage_path('app/public' . $watermark);
