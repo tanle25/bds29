@@ -4,29 +4,28 @@
         <button type="button" class="btnSave ml-auto btn btn-info float-right p-1">Lưu thông tin</button>
     </div>
     <div class="card-body">
-          <div class="form-group ">
-              <label class="control-label">Favicon</label>
-              @include('admin.components.button_file_manager', ['id' => 'favicon',
-                  'input_name' => 'favicon',
-                  'current_input' => $theme_options['favicon'] ?? ''
-              ])
-          </div>
-
-          <div class="form-group ">
-              <label class="control-label">Logo công ty</label>
-              @include('admin.components.button_file_manager', ['id' => 'logo',
-                  'input_name' => 'logo',
-                  'current_input' => $theme_options['logo'] ?? ''
-              ])
-          </div>
-
-          <div class="form-group ">
-            <label class="control-label">Tem ảnh</label>
-            @include('admin.components.button_file_manager', ['id' => 'watermark_logo',
-                'input_name' => 'watermark_logo',
-                'current_input' => $theme_options['watermark_logo'] ?? ''
+        <div class="form-group ">
+            <label class="control-label">Favicon</label>
+            @include('admin.components.button_file_manager', ['id' => 'favicon',
+                'input_name' => 'favicon',
+                'current_input' => $theme_options['favicon'] ?? ''
             ])
         </div>
-    <!-- /.card -->
+
+        <div class="form-group ">
+            <label class="control-label">Logo công ty</label>
+            @include('admin.components.button_file_manager', ['id' => 'logo',
+                'input_name' => 'logo',
+                'current_input' => $theme_options['logo'] ?? ''
+            ])
+        </div>
+
+        <div class="form-group ">
+        <label class="control-label">Tem ảnh</label>
+        @include('admin.components.button_file_manager', ['id' => 'watermark_logo',
+            'input_name' => 'watermark_logo',
+            'current_input' => $theme_options['watermark_logo'] ?? ''
+        ])
+        </div>
     </div>
 </div>
