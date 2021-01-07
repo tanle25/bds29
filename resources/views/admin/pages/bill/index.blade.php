@@ -3,18 +3,11 @@
 Trang chủ
 @endsection
 @section('css')
-<<<<<<< HEAD
-    @parent
-    <link rel="stylesheet" href="{{asset('template/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-    <link rel="stylesheet" href="{{asset('template/AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
-    <script src="{{asset('plugins/datatable/Select-1.3.1/css/select.bootstrap.min.css')}}"></script>
-=======
 @parent
 <link rel="stylesheet" href="{{asset('template/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet"
     href="{{asset('template/AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{asset('plugins/Select-1.3.1/css/select.bootstrap4.min.css')}}">
->>>>>>> core_admin
 @endsection
 
 @section('content')
@@ -91,52 +84,6 @@ Trang chủ
 @endsection
 
 @section('script')
-<<<<<<< HEAD
-    <script src="{{asset('template/AdminLTE/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('template/AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('template/AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('template/AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('plugins/datatable/Select-1.3.1/js/dataTables.select.min.js')}}"></script>
-    <script>
-      $(function () {
-        var table = $("#bill-table").DataTable({
-            processing: true,
-            scrollX: true,
-            autoWidth:false,
-            select: {
-                style: 'multi'
-            }
-        });
-        console.log(table);
-        $('#bill-table').on( 'click', 'tbody tr', function () {
-            if ( table.row( this, { selected: true } ).any() ) {
-                table.row( this ).deselect();
-            }
-            else {
-                table.row( this ).select();
-            }
-            console.log(table.row(this));
-        });
-
-      });
-      $(document).on('click', '.bill-destroy', function (e) {
-            e.preventDefault();
-            var url = $(this).attr('href');
-            Swal.fire({
-                title: 'Xóa đơn này?',
-                text: "Bạn không thể hoàn tác!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Vẫn xóa!',
-            })
-            .then((result) => {
-                if (result.value) {
-                   window.location = url;
-                }
-            });
-=======
 <script src="{{asset('template/AdminLTE/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('template/AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('template/AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
@@ -169,7 +116,6 @@ Trang chủ
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Vẫn xóa!',
->>>>>>> core_admin
         })
         .then((result) => {
             if (result.value) {

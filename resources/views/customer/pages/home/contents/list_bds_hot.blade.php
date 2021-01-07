@@ -76,7 +76,7 @@
 
                             </div>
                             <div class="order-1 col-12 bg-white px-2 pt-2 pb-md-0 pb-2">
-                                <a href="${item.link}" class="d-block main-text hrm-truncate" style="max-height: 2.6em; line-height: 1.2em">
+                                <a href="${item.link}" class="d-block main-text hrm-truncate" style="height: 2.6em; line-height: 1.2em">
                                     <span class="font-9 ${titleColor}" style="font-weight: 500">${item.title}</span>
                                 </a>
                             </div>

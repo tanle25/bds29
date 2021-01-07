@@ -27,7 +27,7 @@
                 @if ($item->rank == 3)
                 text-info
                 @endif
-                " style="font-weight: 500; max-height: 2.56em; line-height: 1.3em"
+                " style="font-weight: 500; height: 2.6em; line-height: 1.3em"
                 >{{$item->title}}
             </a>
         </div>
