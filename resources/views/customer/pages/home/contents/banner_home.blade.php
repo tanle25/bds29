@@ -15,7 +15,7 @@
 <section class="banner-home position-relative">
     @if (Agent::isMobile())
     <div class="banner-home-slider owl-carousel" style="z-index: 1">
-            @foreach ($banner_mobile as $item)
+            @foreach ($banner as $item)
                 @if ($item)
                     <div class="item img-responsive">
                         <img src="{{$item}}" alt=""  srcset="">
