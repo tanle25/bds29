@@ -302,7 +302,6 @@
 <script>
 
     hideBlockByHeight($('.post-description'), '200px');
-
     $(document).on('click', '.show-hidden-block' , function(){
         toggleHiddenBlock($('.post-description'), "200px");
         if ($(this).data('open') == 2) {

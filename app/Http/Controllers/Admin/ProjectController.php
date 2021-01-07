@@ -62,7 +62,6 @@ class ProjectController extends Controller
 
     public function update(ProjectRequest $request, $id)
     {
-
         $data = $request->all();
         $commune = Commune::where('code', $request->commune_code)->first();
         $data['full_address'] = $request->street . ", " . $commune->path_with_type;
