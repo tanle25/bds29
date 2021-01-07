@@ -92,7 +92,7 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::post('featured/add', [FeaturedPostController::class, 'addRealtyToUserFeatured'])->name('customer.featured_post.add');
     Route::post('featured/remove', [FeaturedPostController::class, 'removeRealtyFromUserFeatured'])->name('customer.featured_post.remove');
     // get geo
-    Route::get('get-geo-by-mane', [LocationController::class, 'getGeoByName'])->name('customer.location.get_geo_by_name');
+    Route::get('get-geo-by-name', [LocationController::class, 'getGeoByName'])->name('customer.location.get_geo_by_name');
 
 });
 
