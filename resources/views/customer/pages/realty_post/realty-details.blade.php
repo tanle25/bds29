@@ -114,7 +114,7 @@
                                         </span>
                                     </a>
                                     @include('customer.components.share_button')
-                                    <a class="btn btn-map" data-toggle="modal" data-target="#show-map"><i class="far fa-map-marker text-info font-12"></i> Vị trí</a>
+                                    <a class="btn btn-map" href="#map-show" ><i class="far fa-map-marker text-info font-12"></i> Vị trí</a>
                                 </div>
                             </div>
                         </div>
@@ -178,6 +178,11 @@
                     @endif
 
                     <div class="mt-4 pb-4">
+                        <h2 class="font-15 pb-2" id="map-show">Xem trên bản đồ</h2>
+                        <div id="map" style="width: 100%; height:290px"></div>
+                    </div>
+
+                    <div class="mt-4 pb-4">
                         <h2 class="font-15 pb-2">Bất động sản cùng khu vực</h2>
                         <div>
                             <div class="realted-post-slider2 @if(Agent::isDesktop()) owl-carousel @endif ">
@@ -189,6 +194,7 @@
                             </div>
                         </div>
                     </div>
+
 
                     <div class="mt-4">
                         <h2 class="font-15 pb-2">Bất động sản nổi bật</h2>
@@ -227,7 +233,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="show-map" class="modal fade" role="dialog">
+	{{-- <div id="show-map" class="modal fade" role="dialog">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -238,45 +244,43 @@
 				</div>
 			</div>
 		</div>
-    </div>
+    </div> --}}
     <div id="fb-root"></div>
 
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Thông tin liên hệ</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Thông tin liên hệ</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-advisory">
+                        <div class="form-group row py-2 m-0">
+                            <span class="col-4">Họ và tên</span>
+                            <input name="name" id="customer-name" type="text" class="col-7 input ml-2 form-control" placeholder="Họ tên khách hàng (bắt buộc)" value="" value="">
+                        </div>
+                        <div class="form-group row py-2 m-0">
+                            <span class="col-4">Email</span>
+                            <input name="name" id="customer-email" type="text" class="col-7 input ml-2 form-control" placeholder="Email" value="">
+                        </div>
+                        <div class="form-group row py-2 m-0">
+                            <span class="col-4">Số điện thoại</span>
+                            <input name="name" id="customer-phone" type="text" class="col-7 input ml-2 form-control" placeholder="Số điện thoại (bắt buộc)" value="" required>
+                        </div>
+                        <div class="form-group row py-2 m-0">
+                            <span class="col-4">Lời nhắn</span>
+                            <textarea name="message" id="customer-message" class="col-7 form-control ml-2" cols="20" rows="5" placeholder="Lời nhắn"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-info send-contact-btn">Gửi yêu cầu</button>
+                </div>
             </div>
-            <div class="modal-body">
-                <form class="form-advisory">
-                    <div class="form-group row py-2 m-0">
-                        <span class="col-4">Họ và tên</span>
-                        <input name="name" id="customer-name" type="text" class="col-7 input ml-2 form-control" placeholder="Họ tên khách hàng (bắt buộc)" value="" value="">
-                    </div>
-                    <div class="form-group row py-2 m-0">
-                        <span class="col-4">Email</span>
-                        <input name="name" id="customer-email" type="text" class="col-7 input ml-2 form-control" placeholder="Email" value="">
-                    </div>
-                    <div class="form-group row py-2 m-0">
-                        <span class="col-4">Số điện thoại</span>
-                        <input name="name" id="customer-phone" type="text" class="col-7 input ml-2 form-control" placeholder="Số điện thoại (bắt buộc)" value="" required>
-                    </div>
-                    <div class="form-group row py-2 m-0">
-                        <span class="col-4">Lời nhắn</span>
-                        <textarea name="message" id="customer-message" class="col-7 form-control ml-2" cols="20" rows="5" placeholder="Lời nhắn"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-            <button type="button" class="btn btn-info send-contact-btn">Gửi yêu cầu</button>
-            </div>
-        </div>
-
         </div>
   </div>
 @endsection

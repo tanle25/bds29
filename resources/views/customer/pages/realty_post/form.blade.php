@@ -612,13 +612,23 @@
 
     function initMap() {
         // The location of Uluru
-        var hanoi = { lat: 21.027964, lng: 105.8510132 };
+        @isset($realty)
+            var current = {
+                lat: {{$realty->google_map_lat ?? 21.027964}},
+                lng: {{$realty->google_map_lng ?? 105.8510132}},
+            };
+            @else
+            var current = {
+                lat:  21.027964,
+                lng: 105.8510132
+            };
+        @endisset
         // The map, centered at Uluru
         var map = new google.maps.Map(
-            document.getElementById('map'), { zoom: 17, center: hanoi, optimized: true });
+            document.getElementById('map'), { zoom: 17, center: current, optimized: true });
         // The marker, positioned at Uluru
         var marker = new google.maps.Marker({
-            position: hanoi,
+            position: current,
             map: map,
             draggable: true,
         });

@@ -497,7 +497,7 @@
             function changeMarker(address){
                 let link = `/get-geo-by-mane?search_string=${address}`
                 getPlace(link).then(data => {
-                    geo = data.candidates[0].geometry.location;
+                    geo = data.results[0].geometry.location;
                     marker.setPosition( new google.maps.LatLng( geo.lat, geo.lng ) );
                     map.panTo( new google.maps.LatLng( geo.lat, geo.lng ));
                     $('[name="google_map_lat"]').val(geo.lat);
