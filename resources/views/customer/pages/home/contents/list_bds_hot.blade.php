@@ -5,7 +5,7 @@
             <a href="/bat-dong-san" class="text-dark">Xem tất cả <i class="fas fa-long-arrow-alt-right"></i></a>
 		</div>
 		<div class="tab-bds">
-			<div class="type-listing owl-carousel ">
+			<div class="type-listing owl-carousel">
                 @foreach ($featured_district as $index => $item)
                 <div class="item-district bg-light">
                     <span class="@if($index == 0) clicked  @endif font-500 font-9 btn btn-outline-info rounded-0" href="/api/get-realty-post?filter[huyen]={{$item->code}}">{{$item->name_with_type}}</span>
@@ -66,7 +66,7 @@
                             break;
                     }
                     var element= `
-                    <div class="block realty ${isMobile() ? 'mt-3' : ''}">
+                    <div class="block realty wow fadeIn ${isMobile() ? 'mt-3' : ''}">
                         <div class="realty-container flex-wrap border rounded d-flex d-md-block">
                             <div class="overflow-hidden col-5 px-0 col-md-12 order-2 bg-white">
                                 <a href="${item.link}"class="d-block ml-2 ml-md-0 img-wraper height-md-180 height-120">
@@ -81,7 +81,7 @@
                                 </a>
                             </div>
                             <div class="realty-body col-7 col-md-12  bg-white order-3 px-2">
-                                <div class="font-9 pt-2">
+                                <div class="font-9 pt-2 " style="height: 2.6em; line-height: 1.2em">
                                     ${item.commune}, ${item.district}
                                 </div>
                                 <div class="imeta-3 text-muted mt-2 font-9">
@@ -126,6 +126,8 @@
                     }
                 });
             }
+
+
             $('.item-district span').on('click', function(e){
                 $('.item-district span').removeClass('clicked');
                 $(this).addClass('clicked');
@@ -137,6 +139,16 @@
                 });
             })
             $('.item-district > span:first').trigger('click');
+
+            function changeDistrict() {
+                var index = Math.floor(Math.random() * 10);
+                $('.item-district > span').eq(index).trigger('click');
+            }
+            var timeInterval = setInterval( changeDistrict , 10000);
+
+            $('.item-district').on('mousedown', function(){
+                clearInterval(timeInterval);
+            });
         })
     </script>
 @endsection
