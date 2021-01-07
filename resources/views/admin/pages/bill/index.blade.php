@@ -2,13 +2,6 @@
 @section('title')
 Trang chủ
 @endsection
-@section('css')
-@parent
-<link rel="stylesheet" href="{{asset('template/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-<link rel="stylesheet"
-    href="{{asset('template/AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
-<link rel="stylesheet" href="{{asset('plugins/Select-1.3.1/css/select.bootstrap4.min.css')}}">
-@endsection
 
 @section('content')
 @include('admin.partials.content_header', ['title' => 'Hóa đơn nạp tiền'])
@@ -82,14 +75,10 @@ Trang chủ
     <img src="" alt="">
 </section>
 @endsection
+@include('admin.components.datatable_resource')
+
 
 @section('script')
-<script src="{{asset('template/AdminLTE/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('template/AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-<script src="{{asset('template/AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('template/AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-<script src="{{asset('plugins/Select-1.3.1/js/dataTables.select.min.js')}}"></script>
-
 <script>
     $(function () {
         var table = $("#bill-table").DataTable({

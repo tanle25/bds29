@@ -277,7 +277,7 @@
                 <input
                 id="date-picker"
                 @isset($project)
-                value="{{Carbon\Carbon::parse( $project->start_time)->format('d/m/Y') ?? ''}}"
+                value="{{Carbon\Carbon::parse( $project->start_time)->format('d/m/Y') ?? Carbon\Carbon::now()->format('d/m/Y')}}"
                 @endisset
                 class="date-picker form-control"
                 type="text"
@@ -294,7 +294,7 @@
                 <input
                 id="date-picker"
                 @isset($project)
-                value="{{Carbon\Carbon::parse( $project->launch_time)->format('d/m/Y') ?? ''}}"
+                value="{{Carbon\Carbon::parse( $project->launch_time)->format('d/m/Y') ?? Carbon\Carbon::now()->format('d/m/Y')}}"
                 @endisset
                 class="date-picker form-control"
                 type="text"

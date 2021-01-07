@@ -92,7 +92,7 @@
 
 @section('script')
 @parent
-<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWTx7bREpM5B6JKdbzOvMW-RRlhkukmVE&callback=initMap"> </script>
+<script defer src="https://maps.googleapis.com/maps/api/js?key={{config('api_keys.google_map')}}&callback=initMap"> </script>
     <script>
         async function getPlace(url) {
             let data = await fetch(url).then(res => res.json());
@@ -150,7 +150,7 @@
             })
 
             function changeMarker(address){
-                let link = `/get-geo-by-mane?search_string=${address}`
+                let link = `/get-geo-by-name?search_string=${address}`
                 getPlace(link).then(data => {
                     geo = data.results[0].geometry.location;
                     marker.setPosition( new google.maps.LatLng( geo.lat, geo.lng));
@@ -163,7 +163,7 @@
 
             $('#street').on('input', function(e){
                 var address = getFullAddress();
-                let link = `/get-geo-by-mane?search_string=${address}`;
+                let link = `/get-geo-by-name?search_string=${address}`;
                 clearTimeout(search);
                 search = setTimeout(function(){
                         var list_place = getPlace(link).then(data => {
