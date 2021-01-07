@@ -92,7 +92,7 @@
 
 @section('script')
 @parent
-<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWTx7bREpM5B6JKdbzOvMW-RRlhkukmVE&callback=initMap"> </script>
+<script defer src="https://maps.googleapis.com/maps/api/js?key={{config('api_keys.google_map')}}&callback=initMap"> </script>
     <script>
         async function getPlace(url) {
             let data = await fetch(url).then(res => res.json());

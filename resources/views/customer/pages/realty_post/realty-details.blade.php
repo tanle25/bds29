@@ -294,7 +294,7 @@
 </div>
 
 
-<script defer src="https://maps.googleapis.com/maps/api/js?key={{env('GOOGLEMAP_KEY')}}&callback=initMap"> </script>
+<script defer src="https://maps.googleapis.com/maps/api/js?key={{config('api_keys.google_map')}}&callback=initMap"> </script>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=369134871016071&autoLogAppEvents=1" nonce="KzqM94bd"></script>
 <script src="https://sp.zalo.me/plugins/sdk.js"></script>
 
