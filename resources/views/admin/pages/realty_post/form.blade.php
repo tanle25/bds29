@@ -457,13 +457,11 @@
 
         function getFullAddress(){
             $address = $('[name="street"]').val() + ',' + $('#commune option:selected').text() + ',' + $('#district option:selected').text() + ',' + $('#province option:selected').text();
-
             return $address;
         }
 
         function initMap() {
             // The location of Uluru
-
             @isset($realty)
             var current = {
                 lat: {{$realty->google_map_lat ?? 21.027964}},

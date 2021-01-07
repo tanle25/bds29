@@ -230,45 +230,6 @@ class RealtyPostController extends Controller
 
         $author = User::find($realty_post->created_by);
 
-        //Do khách hàng muốn trừ tiền cả khi chưa duyệt
-
-        // try {
-        //     DB::beginTransaction();
-        //     if ($author && $request->status !== 1) {
-        //         $realty_post_payment = $realty_post->payment;
-        //         $author_wallet = $author->wallet;
-
-        //         if ($author_wallet && $realty_post_payment->status == 1 && $author_wallet->main_account < $realty_post_payment->total) {
-        //             return redirect()->route('admin.realty_post.edit', $realty_post->id)->with('warning', 'Tài khoản khách hàng không đủ');
-        //         }
-
-        //         if ($author_wallet && $realty_post_payment->status == 1 && $author_wallet->main_account > $realty_post_payment->total) {
-        //             $author_wallet->main_account -= $realty_post_payment->total;
-        //             $realty_post_payment->status = 2;
-        //             $author_wallet->save();
-        //             $realty_post_payment->save();
-        //             $realty_post->status = $request->status;
-        //             $realty_post->save();
-        //             activity()
-        //                 ->causedBy(auth()->user())
-        //                 ->performedOn($author_wallet)
-        //                 ->withProperties([
-        //                     'amount_of_money' => -$realty_post_payment->total,
-        //                     'main_account' => $author_wallet->main_account,
-        //                 ])
-        //                 ->log('Duyệt tin rao bất động sản');
-        //             DB::commit();
-        //         } else {
-        //             $realty_post->status = $request->status;
-        //             $realty_post->save();
-        //             DB::commit();
-        //         }
-        //     }
-        // } catch (\Exception $e) {
-        //     return $e->getMessage();
-        //     DB::rollback();
-        // }
-
         if ($request->submit == 'save') {
             return redirect()->route('admin.realty_post.edit', $realty_post->id)->with('success', 'Cập nhật thành công tin rao');
         }

@@ -432,6 +432,8 @@
                     @endisset
                     @isset($realty_post->open_at)
                     value="{{Carbon\Carbon::parse($realty_post->open_at)->format('d/m/Y')}}"
+                    @else
+                    value="{{Carbon\Carbon::now()->format('d/m/Y')}}"
                     @endisset
                     >
                     @error('open_at')
@@ -452,6 +454,8 @@
                     @endisset
                     @isset($realty_post->open_at)
                     value="{{Carbon\Carbon::parse($realty_post->close_at)->format('d/m/Y')}}"
+                    @else
+                    value="{{Carbon\Carbon::now()->addMonthsNoOverflow(1)->format('d/m/Y')}}"
                     @endisset
                     >
                     @error('close_at')

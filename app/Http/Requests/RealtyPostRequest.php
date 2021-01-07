@@ -31,7 +31,7 @@ class RealtyPostRequest extends FormRequest
     public function rules()
     {
         $id = request()->id;
-        $string_now = Carbon::now()->format('d/m/Y');
+        $string_now = Carbon::yesterday()->format('d/m/Y');
         return [
             'title' => 'required|max:255',
             'realty_post_type' => 'required|numeric|max:2',

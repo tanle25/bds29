@@ -8,6 +8,7 @@ use App\Models\Commune;
 use App\Models\District;
 use App\Models\Project;
 use App\Models\Province;
+use Carbon\Carbon;
 use DataTables;
 
 class ProjectController extends Controller
@@ -33,6 +34,9 @@ class ProjectController extends Controller
         $data = $request->all();
         $commune = Commune::where('code', $request->commune_code)->first();
         $data['full_address'] = $request->street . ", " . $commune->path_with_type;
+
+        $data['start_time'] = Carbon::createFromFormat('d/m/Y', $request->start_time);
+        $data['launch_time'] = Carbon::createFromFormat('d/m/Y', $request->launch_time);
 
         $project = Project::create($data);
         if ($request->submit == 'save') {
@@ -62,6 +66,9 @@ class ProjectController extends Controller
         $data = $request->all();
         $commune = Commune::where('code', $request->commune_code)->first();
         $data['full_address'] = $request->street . ", " . $commune->path_with_type;
+
+        $data['start_time'] = Carbon::createFromFormat('d/m/Y', $request->start_time);
+        $data['launch_time'] = Carbon::createFromFormat('d/m/Y', $request->launch_time);
 
         $project = Project::findOrFail($id);
 
