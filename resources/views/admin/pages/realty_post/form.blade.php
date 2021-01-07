@@ -552,7 +552,6 @@
 
             // get slug
         $('#title').on('blur', function () {
-            console.log('jsdf');
             getSlug('realty_post', $(this).val(), $('#slug'));
         });
 
