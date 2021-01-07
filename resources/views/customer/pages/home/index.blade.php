@@ -43,7 +43,6 @@ Trang chủ
     @endisset
 @endsection
 
-
 @section('script')
 @parent
 <script>

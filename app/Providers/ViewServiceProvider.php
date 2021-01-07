@@ -125,7 +125,7 @@ class ViewServiceProvider extends ServiceProvider
 
         if (Schema::hasTable('advertisments')) {
             View::composer(
-                ['customer.home'], function ($view) {
+                ['customer.pages.home.index'], function ($view) {
                     $advertisments = Advertisment::where('status', 1)->get();
                     $view->with([
                         'horizontal_advertisments' => $advertisments->where('type', 2),
