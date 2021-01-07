@@ -448,7 +448,7 @@
 @section('script')
 @parent
     <script src="{{asset('template/dropzone-5.7.0/dist/dropzone.js')}}"></script>
-    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWTx7bREpM5B6JKdbzOvMW-RRlhkukmVE&callback=initMap"> </script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key={{env(GOOGLEMAP_KEY)}}&callback=initMap"> </script>
     <script>
         async function getPlace(url) {
             let data = await fetch(url).then(res => res.json());
