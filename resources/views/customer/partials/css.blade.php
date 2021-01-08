@@ -1,11 +1,5 @@
-<link rel="stylesheet" href="{{asset('template\AdminLTE\plugins\select2\css\select2.min.css')}}">
-<link rel="stylesheet" href="{{asset('template\AdminLTE\plugins\select2-bootstrap4-theme\select2-bootstrap4.min.css')}}">
-<link rel="stylesheet"  href="{{asset('plugins/owl-carousel/owl.carousel.css')}}"/>
 <link rel="stylesheet"  href="{{asset('plugins/fontawesome-pro/css/all.min.css')}}"/>
-{{-- <link rel="stylesheet"  href="{{asset('css/jquery.fancybox.min.css')}}"/> --}}
 <link rel="stylesheet"  href="{{asset('css/main.css')}}"/>
-{{-- <link rel="stylesheet" href="{{asset('plugins\menu\Multi-Level-Sidebar-Menu-HC-MobileNav\dist\hc-offcanvas-nav.css')}}">
- --}}
 <style>
     /*==================Preloader======================*/
     /* The Loader */

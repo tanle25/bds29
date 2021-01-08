@@ -37,7 +37,7 @@
         <div class="container">
             <div class="row pb-4">
                 <div class="col-md-4 text-light text-center">
-                    <a href="/"><img src="{{$logo}}" alt="brand"></a>
+                    <a href="/"><img class="lazy" data-src="{{$logo}}" alt="brand"></a>
                     <strong class="d-block text-light font-9 text-center mt-2">{{$theme_options['Tên_công_ty'] ?? ''}}</strong class="d-block text-light">
                     <div class="mb-1">
                         <i class="fal fa-map-marker-alt" style="width: 20px"></i> <span class="font-9">{{$theme_options['Trụ_sở'] ?? ''}}</span>
@@ -62,7 +62,7 @@
             @if (Auth::check())
             <div class="login-logout">
                 <a class="text-dark font-9 py-2" href="/tai-khoan">
-                    <img src="{{auth()->user()->profile_image_path ?? '/images/empty-avatar.jpg'}}" style="width: 50px; height:50px" alt="">
+                    <img class="lazy" data-src="{{auth()->user()->profile_image_path ?? '/images/empty-avatar.jpg'}}" style="width: 50px; height:50px" alt="">
                     <span class="px-2">{{auth()->user()->name}}</span>
                 </a>
                 <a href="/dang-tin" class="font-10 font-500 hrm-btn-info p-2"><strong>Đăng tin</strong></a>
