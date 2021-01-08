@@ -42,8 +42,6 @@ class ImageUploadController extends Controller
         if (isset($theme_options['watermark_position']) && in_array($theme_options['watermark_position'], $position_list)) {
             $this->watermark_position = $theme_options['watermark_position'];
         }
-
-        dd($this->watermark_size, $this->watermark_position, $this->watermark_opacity);
     }
 
     public function store(Request $request)
