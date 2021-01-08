@@ -6,14 +6,14 @@
 @endsection
 
 @section('form')
-<div class="table-wraper col-12" style="overflow: scroll;">
+<div class="table-wraper col-12 py-3" >
     <table id="realty-post-table" class="table table-bordered table-hover bg-white">
         <thead>
           <tr>
-              <th>ID</th>
+              <th>TT</th>
               <th>Ảnh</th>
               <th>Link bài đăng</th>
-              <th>Thời gian đăng tin</th>
+              <th>Thời gian</th>
               <th>Trạng thái</th>
               <th>Thao tác</th>
           </tr>
@@ -21,16 +21,16 @@
         <tbody>
             @foreach ($realty_posts as $key => $post)
             <tr>
-                <td>{{$post->id ?? ''}}</td>
+                <td class="font-8"><strong>{{$key + 1}}</strong></td>
                 <td style="height:50px; width: 80px">
                     <div>
                         <img  class="img-fluid" src="{{$post->thumb ?? ''}}" alt="{{$post->title ?? ''}}">
                     </div>
                 </td>
-                <td><a class="font-9" href="{{route('customer.realty_post.show', $post->slug)}}">{{$post->title ?? ''}}</a> </td>
-                <td class="font-9">{{Carbon\Carbon::parse($post->open_at)->format('d/m/Y') ?? ''}} - {{ Carbon\Carbon::parse($post->close_at ?? '')->format('d/m/Y') ?? ''}}</td>
-                <td><span class="font-9">{{config('constant.realty_post_status.' . $post->status)}}</span></td>
-                <td><a class="font-9" href="{{route('customer.realty_post.edit', $post->id)}}">Sửa</a></td>
+                <td><a class="font-8 main-text" href="{{route('customer.realty_post.show', $post->slug)}}">{{$post->title ?? ''}}</a> </td>
+                <td class="font-8">{{Carbon\Carbon::parse($post->open_at)->format('d/m/Y') ?? ''}} - {{ Carbon\Carbon::parse($post->close_at ?? '')->format('d/m/Y') ?? ''}}</td>
+                <td><span class="font-8">{{config('constant.realty_post_status.' . $post->status)}}</span></td>
+                <td><a class="font-8" href="{{route('customer.realty_post.edit', $post->id)}}">Sửa</a></td>
             </tr>
             @endforeach
         </tbody>
@@ -46,11 +46,15 @@
 <script src="{{asset('template/AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
 <script>
  $("#realty-post-table").dataTable({
-    "autoWidth": true,
     "scrollX": true,
-    "columnDefs": [
-        { "width": "200px", "targets": 2 }
-    ]
- });
+    columns: [
+            {'width': '10px'},
+            {'width':'40px', 'orderable': false },
+            {  },
+            { },
+            { },
+            {'orderable': false},
+        ],
+    });
 </script>
 @endsection

@@ -412,7 +412,7 @@ class RealtyPostController extends Controller
     public function showListCustomer()
     {
         $user = auth()->user();
-        $realty_posts = RealtyPost::where('created_by', $user->id)->with('realty')->get();
+        $realty_posts = RealtyPost::where('created_by', $user->id)->with('realty')->orderByDesc('realty_posts.id')->get();
         return view('customer.pages.user_profile.list_realty_post', compact('realty_posts'));
     }
 
