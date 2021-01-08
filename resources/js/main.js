@@ -1,3 +1,4 @@
+require('default-passive-events');
 window.$ = window.jQuery = require('jquery');
 require('./web/bootstrap.bundle');
 require('./web/owl.carousel');
