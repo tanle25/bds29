@@ -169,15 +169,6 @@ $(document).ready(function(){
         $("#register").modal('hide');
     });
 });
-$(window).scroll(function() {
-    var scrollDistance = $(window).scrollTop();
-    $('.page-section').each(function(i) {
-        if ($(this).position().top <= scrollDistance) {
-            $('.menu-project a.active').removeClass('active');
-            $('.menu-project a').eq(i).addClass('active');
-        }
-    });
-}).scroll();
 
 $(document).ready(function() {
     var bigimage = $("#big");
