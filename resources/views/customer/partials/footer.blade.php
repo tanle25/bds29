@@ -132,6 +132,6 @@
                     opacity: "0"
                 });
             }
-        })
+        }, {passive: true})
     </script>
 @endsection
