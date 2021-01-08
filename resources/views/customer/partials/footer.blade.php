@@ -122,7 +122,7 @@
                 behavior: 'smooth',
             })
         })
-        $(window).on('scroll', function(){
+        window.addEventListener('scroll', function(){
             if ($(window).scrollTop() >= 200) {
                 $('.up-to-top-btn').css({
                     opacity: "1"
