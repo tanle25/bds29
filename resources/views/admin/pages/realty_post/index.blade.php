@@ -2,11 +2,6 @@
 @section('title')
     Danh sách bài đăng khách hàng
 @endsection
-@section('css')
-    @parent
-    <link rel="stylesheet" href="{{asset('template/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-    <link rel="stylesheet" href="{{asset('template/AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
-@endsection
 
 @section('content')
 @include('admin.partials.content_header', ['title' => 'Quản lý bài đăng khách hàng'])
@@ -17,7 +12,7 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Danh sách bài đăng khách hàng</h3>
-              {{-- <a href="{{route('admin.realty_post.create')}}" class="btn btn-info p-1 float-right">Thêm mới</a> --}}
+
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -33,8 +28,40 @@
                         <th>Trạng thái</th>
                         <th>Thao tác</th>
                     </tr>
-                  </thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th><input class="w-100 form-control" type="text" placeholder="Search" /></th>
+                        <th>
+                            <select class="form-control" name="" id="">
+                                <option value="">Tất cả</option>
+                                @foreach (config('constant.realty_post_type') as $index => $item)
+                                    <option value="{{$index}}">{{$item['name']}}</option>
+                                @endforeach
+                            </select>
+                        </th>
+                        <th><input class="w-100 form-control" type="text" placeholder="Search" /></th>
+                        <th>
+                            <input
+                            id="date-picker"
+                            class="date-range-picker form-control"
+                            type="text"
+                            autocomplete="off"
+                            value=""
+                            >
+                        </th>
+                        <th>
+                            <select class="form-control" name="" id="">
+                                <option value="">Tất cả</option>
+                                @foreach (config('constant.realty_post_status') as $index => $item)
+                                    <option value="{{$index}}">{{$item}}</option>
+                                @endforeach
+                            </select>
+                        </th>
+                        <th></th>
 
+                    </tr>
+                  </thead>
                 </table>
             </div>
             <!-- /.card-body -->
@@ -48,36 +75,58 @@
     <!-- /.container-fluid -->
     <img src="" alt="">
 </section>
-@endsection
+@include('admin.components.datatable_resource')
 
+@endsection
     @section('script')
-    <script src="{{asset('template/AdminLTE/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('template/AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('template/AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('template/AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
 
     <script>
-        $(function () {
-            $("#realty-post-table").dataTable({
+        $(document).ready(function() {
+            // Setup - add a text input to each footer cell
+            $('#realty-post-table thead tr:eq(1) th').each( function (i) {
+                var title = $(this).text();
+                $( 'input, select', this ).on('keyup change', function () {
+                    clearTimeout(drawTable);
+                    var drawTable = setTimeout(() => {
+                        if ( table.column(i).search() !== this.value ) {
+                            table
+                                .column(i)
+                                .search( this.value )
+                                .draw();
+                        }
+                    }, 1000);
+
+                } );
+            } );
+
+            var table = $("#realty-post-table").DataTable({
                 processing: true,
                 serverSide: true,
                 scrollX: true,
                 autoWidth:false,
+                orderCellsTop: true,
                 ajax: "{{route('admin.realty_post.list')}}",
                 columns: [
-                    { "data": "id","name": 'id' , 'width': '10px'},
+                    { "data": "id","name": 'realty_posts.id' , 'width': '10px'},
                     { "data": "thumb",  'width':'40px' },
                     { "data": "title", 'name': 'title'  },
                     { "data": "type", 'name' : 'type', 'width': '150px'},
                     { "data": "realty.full_address", 'name': 'realty.full_address',  },
-                    { "data": "created_at", 'width': '120px' },
+                    { "data": "created_at", 'name': 'realty_posts.created_at' ,'width': '120px' },
                     { "data": "status", 'width': '90px' },
                     { "data": "action", 'width': '90px',  },
                 ],
+                select: {
+                    style: 'os',
+                }
             })
-        });
 
-         function destroyRealtyPost(url){
+
+        } );
+
+
+
+        function destroyRealtyPost(url){
             $.ajax({
                 url: url,
                 type: 'post',
