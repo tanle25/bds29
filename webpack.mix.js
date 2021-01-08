@@ -12,3 +12,5 @@ const mix = require('laravel-mix');
  */
 
 mix.sass('resources/scss/main.scss', 'public/css');
+
+mix.js(['resources/js/main.js', 'resources/js/web/hc-offcanvas-nav.js'], 'public/js')

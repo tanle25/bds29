@@ -4,8 +4,6 @@
 
 @section('script')
 @parent
-<link rel="stylesheet" href="{{asset('template\AdminLTE\plugins\sweetalert2\sweetalert2.min.css')}}">
-<script src="{{asset('template\AdminLTE\plugins\sweetalert2\sweetalert2.all.min.js')}}"></script>
 <script>
     function swalAlert(message, type = 'success'){
         const Toast = Swal.mixin({
