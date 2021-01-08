@@ -93,7 +93,7 @@ class ViewServiceProvider extends ServiceProvider
                     $featured_posts = Post::orderByDesc('id')->take(10)->get();
                     $featured_districts = District::withCount('realty_posts')->orderByDesc('realty_posts_count')->take(20)->get();
                     $featured_tags = Tag::all()->random(6);
-                    $view->with(['featured_tags' => $featured_tags, 'featured_posts' => $featured_posts, 'featured_district' => $featured_districts]);
+                    $view->with(['featured_tags' => $featured_tags, 'featured_posts' => $featured_posts, 'featured_districts' => $featured_districts]);
                 }
             );
         }
