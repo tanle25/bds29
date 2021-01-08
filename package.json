@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "animate.css": "^4.1.1",
+        "default-passive-events": "^2.0.0",
         "hc-offcanvas-nav": "^6.1.1",
         "jquery": "^3.5.1"
     }
