@@ -1,5 +1,4 @@
 
-<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>
 <script src="{{asset('js/main.js')}}"></script>
 @include('customer.partials.alert')
 @include('customer.partials.featured_script')
