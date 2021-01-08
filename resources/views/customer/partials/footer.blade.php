@@ -40,14 +40,14 @@
                     <a href="/"><img src="{{$logo}}" alt="brand"></a>
                     <strong class="d-block text-light font-9 text-center mt-2">{{$theme_options['Tên_công_ty'] ?? ''}}</strong class="d-block text-light">
                     <div class="mb-1">
-                        <i class="fal fa-map-marker-alt" style="width: 20px"></i> <span class="font-9">{{$theme_options['Trụ_sở']}}</span>
+                        <i class="fal fa-map-marker-alt" style="width: 20px"></i> <span class="font-9">{{$theme_options['Trụ_sở'] ?? ''}}</span>
                     </div>
                     <div>
-                        <i class="fal fa-phone-rotary" style="width: 20px" ></i> <span class="font-9">{{$theme_options['Số_điện_thoại']}}</span>
+                        <i class="fal fa-phone-rotary" style="width: 20px" ></i> <span class="font-9">{{$theme_options['Số_điện_thoại'] ?? ''}}</span>
                     </div>
                 </div>
                 <div class="copyright col-md-4 text-center text-light font-8">
-                    {!! $theme_options['Script'] !!}
+                    {!! $theme_options['Script'] ?? '' !!}
                 </div>
                 <div class="col-md-4 ">
                     <div class="fb-page" data-href="{{$theme_options['facebook'] ?? ''}}" data-tabs="false" data-width="" data-height="" data-lazy="true" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="{{$theme_options['facebook'] ?? ''}}" class="fb-xfbml-parse-ignore"><a href="{{$theme_options['facebook'] ?? ''}}">Facebook</a></blockquote></div>

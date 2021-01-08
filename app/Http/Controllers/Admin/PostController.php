@@ -86,7 +86,7 @@ class PostController extends Controller
     }
 
     function list() {
-        $posts = Post::with('author');
+        $posts = Post::with(['author', 'categories']);
 
         return DataTables::eloquent($posts)
             ->addIndexColumn()
@@ -94,11 +94,35 @@ class PostController extends Controller
                 $url = route('customer.post.show', ['cat_slug' => $post->categories->first()->slug ?? 'danh-muc', 'post_slug' => $post->slug]);
                 return "<a target='_blank' href='{$url}'>{$post->name} </a>";
             })
-            ->editColumn('created_by', function ($post) {
-                return $post->author->username ?? '';
+            ->addColumn('category', function ($post) {
+                $cats = '';
+                foreach ($post->categories as $cat) {
+                    $cats .= "<span class='badge badge-success'>{$cat->name}</span>";
+                }
+                return $cats;
+            })
+            ->filterColumn('posts.created_at', function ($query, $keyword) {
+                if ($keyword) {
+                    $days = explode(' - ', $keyword);
+                    if (!empty($days)) {
+                        if (count($days) == 1) {
+                            if (Carbon::canBeCreatedFromFormat($days[0], 'd/m/Y')) {
+                                $start_date = Carbon::createFromFormat('d/m/Y', $days[0]);
+                                $query->whereBetween('posts.created_at', [$start_date, '2200-1-1']);
+                            }
+                        }
+                        if (count($days) >= 2) {
+                            if (Carbon::canBeCreatedFromFormat($days[0], 'd/m/Y') && Carbon::canBeCreatedFromFormat($days[1], 'd/m/Y')) {
+                                $start_date = Carbon::createFromFormat('d/m/Y', $days[0])->format('Y-m-d');
+                                $end_date = Carbon::createFromFormat('d/m/Y', $days[1])->format('Y-m-d');
+                                $query->whereBetween('posts.created_at', [$start_date, $end_date]);
+                            }
+                        }
+                    }
+                }
             })
             ->editColumn('created_at', function ($post) {
-                return Carbon::parse($post->created_at)->format('H:i:s d/m/Y');
+                return Carbon::parse($post->created_at)->format('d/m/Y');
             })
             ->editColumn('avatar', function ($post) {
                 return '<img width="100%" src="' . \htmlspecialchars($post->thumb) . '" alt="">';
@@ -118,7 +142,7 @@ class PostController extends Controller
                 <a data-toggle-for="tooltip" title="Xóa" href="' . route('admin.post.destroy', $post->id) . '"class="btn text-danger customer-edit"><i class="fas fa-trash" data-toggle="modal" data-target="#customer-model"></i></a>
                 ';
             })
-            ->rawColumns(['action', 'avatar', 'status', 'name'])
+            ->rawColumns(['action', 'avatar', 'status', 'name', 'category'])
             ->make(true);
     }
 

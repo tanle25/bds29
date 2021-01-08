@@ -25,6 +25,30 @@ class RealtyPostController extends Controller
         $posts = RealtyPost::with('realty');
         return DataTables::eloquent($posts)
             ->addIndexColumn()
+            ->editColumn('title', function ($post) {
+                $link = route('customer.realty_post.show', $post->slug ?? 'bat-dong-san');
+                return "<a href='{$link}'>{$post->title}</a>";
+            })
+            ->filterColumn('realty_posts.created_at', function ($query, $keyword) {
+                if ($keyword) {
+                    $days = explode(' - ', $keyword);
+                    if (!empty($days)) {
+                        if (count($days) == 1) {
+                            if (Carbon::canBeCreatedFromFormat($days[0], 'd/m/Y')) {
+                                $start_date = Carbon::createFromFormat('d/m/Y', $days[0]);
+                                $query->whereBetween('realty_posts.created_at', [$start_date, '2200-1-1']);
+                            }
+                        }
+                        if (count($days) >= 2) {
+                            if (Carbon::canBeCreatedFromFormat($days[0], 'd/m/Y') && Carbon::canBeCreatedFromFormat($days[1], 'd/m/Y')) {
+                                $start_date = Carbon::createFromFormat('d/m/Y', $days[0])->format('Y-m-d');
+                                $end_date = Carbon::createFromFormat('d/m/Y', $days[1])->format('Y-m-d');
+                                $query->whereBetween('realty_posts.created_at', [$start_date, $end_date]);
+                            }
+                        }
+                    }
+                }
+            })
             ->addColumn('realty_type', function (RealtyPost $post) {
                 switch ($post->realty->type ?? 1) {
                     case '1':
@@ -74,7 +98,7 @@ class RealtyPostController extends Controller
                 <a data-toggle-for="tooltip" title="Xóa" href="' . route('admin.realty_post.destroy', $post->id) . '"class="btn text-danger realty-post-destroy"><i class="fas fa-trash" data-toggle="modal" data-target="#customer-model"></i></a>
                 ';
             })
-            ->rawColumns(['action', 'thumb', 'status', 'name'])
+            ->rawColumns(['action', 'thumb', 'status', 'title'])
             ->make(true);
     }
 
@@ -229,45 +253,6 @@ class RealtyPostController extends Controller
         $realty_post->save();
 
         $author = User::find($realty_post->created_by);
-
-        //Do khách hàng muốn trừ tiền cả khi chưa duyệt
-
-        // try {
-        //     DB::beginTransaction();
-        //     if ($author && $request->status !== 1) {
-        //         $realty_post_payment = $realty_post->payment;
-        //         $author_wallet = $author->wallet;
-
-        //         if ($author_wallet && $realty_post_payment->status == 1 && $author_wallet->main_account < $realty_post_payment->total) {
-        //             return redirect()->route('admin.realty_post.edit', $realty_post->id)->with('warning', 'Tài khoản khách hàng không đủ');
-        //         }
-
-        //         if ($author_wallet && $realty_post_payment->status == 1 && $author_wallet->main_account > $realty_post_payment->total) {
-        //             $author_wallet->main_account -= $realty_post_payment->total;
-        //             $realty_post_payment->status = 2;
-        //             $author_wallet->save();
-        //             $realty_post_payment->save();
-        //             $realty_post->status = $request->status;
-        //             $realty_post->save();
-        //             activity()
-        //                 ->causedBy(auth()->user())
-        //                 ->performedOn($author_wallet)
-        //                 ->withProperties([
-        //                     'amount_of_money' => -$realty_post_payment->total,
-        //                     'main_account' => $author_wallet->main_account,
-        //                 ])
-        //                 ->log('Duyệt tin rao bất động sản');
-        //             DB::commit();
-        //         } else {
-        //             $realty_post->status = $request->status;
-        //             $realty_post->save();
-        //             DB::commit();
-        //         }
-        //     }
-        // } catch (\Exception $e) {
-        //     return $e->getMessage();
-        //     DB::rollback();
-        // }
 
         if ($request->submit == 'save') {
             return redirect()->route('admin.realty_post.edit', $realty_post->id)->with('success', 'Cập nhật thành công tin rao');

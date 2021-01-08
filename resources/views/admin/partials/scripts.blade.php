@@ -270,6 +270,43 @@
         })
     })
 
+    $('.date-range-picker').each(function(){
+        $(this).daterangepicker({
+            timePicker24Hour: true,
+            locale: {
+                "format": 'DD/MM/YYYY',
+                "applyLabel": "Ok",
+                "cancelLabel": "Thoát",
+                "fromLabel": "Từ",
+                "toLabel": "Đến",
+                "customRangeLabel": "Custom",
+                "daysOfWeek": [
+                    "CN",
+                    "T2",
+                    "T3",
+                    "T4",
+                    "T5",
+                    "T6",
+                    "T7"
+                ],
+                "monthNames": [
+                    "Tháng 1",
+                    "Tháng 2",
+                    "Tháng 3",
+                    "Tháng 4",
+                    "Tháng 5",
+                    "Tháng 6",
+                    "Tháng 7",
+                    "Tháng 8",
+                    "Tháng 9",
+                    "Tháng 10",
+                    "Tháng 11",
+                    "Tháng 12"
+                ],
+            },
+        })
+    })
+
     function shortText(string, max){
         var arr = string.split(' ');
         output = string;

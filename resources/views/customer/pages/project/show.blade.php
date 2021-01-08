@@ -16,8 +16,9 @@
                     <div class="thumnail">
                         <div id="big" class="lightgallery thumnail-big owl-carousel owl-theme">
                             @foreach ($project->overview_image_array ?? [] as $img)
-                            <div data-src="{{$img}}" class="item embed-responsive embed-responsive-16by9">
-                                <img class="embed-responsive-item rounded" src="{{$img}}" alt="">
+                            <div data-src="{{$img}}" class="item embed-responsive embed-responsive-16by9 position-relative">
+                                <div class="blur-bg position-absolute w-100 h-100" style="top: 0;  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('{{$img}}');"></div>
+                                <img class="embed-responsive-item rounded" src="{{$img}}" style="object-fit: contain" alt="">
                             </div>
                             @endforeach
                         </div>

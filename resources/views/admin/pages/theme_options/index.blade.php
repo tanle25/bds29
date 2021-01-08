@@ -12,6 +12,8 @@
             <a class="nav-link" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile" role="tab" aria-controls="vert-tabs-profile" aria-selected="false">Logo</a>
             <a class="nav-link" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages" role="tab" aria-controls="vert-tabs-messages" aria-selected="false">Mạng xã hội</a>
             <a class="nav-link" id="vert-tabs-contact-tab" data-toggle="pill" href="#vert-tabs-contact" role="tab" aria-controls="vert-tabs-contact" aria-selected="false">Liên hệ</a>
+            <a class="nav-link" id="vert-tabs-images-tab" data-toggle="pill" href="#vert-tabs-images" role="tab" aria-controls="vert-tabs-images" aria-selected="false">Hình ảnh</a>
+
         </div>
     </div>
     <div class="col-7 col-sm-9">
@@ -30,6 +32,10 @@
 
                 <div class="tab-pane fade" id="vert-tabs-contact" role="tabpanel" aria-labelledby="vert-tabs-contact-tab">
                     @include('admin.pages.theme_options.form.contact')
+                </div>
+
+                <div class="tab-pane fade" id="vert-tabs-images" role="tabpanel" aria-labelledby="vert-tabs-images-tab">
+                    @include('admin.pages.theme_options.form.images')
                 </div>
             </div>
         </form>

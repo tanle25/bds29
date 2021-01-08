@@ -448,7 +448,7 @@
 @section('script')
 @parent
     <script src="{{asset('template/dropzone-5.7.0/dist/dropzone.js')}}"></script>
-    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWTx7bREpM5B6JKdbzOvMW-RRlhkukmVE&callback=initMap"> </script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key={{env("GOOGLEMAP_KEY")}}&callback=initMap"> </script>
     <script>
         async function getPlace(url) {
             let data = await fetch(url).then(res => res.json());
@@ -457,13 +457,11 @@
 
         function getFullAddress(){
             $address = $('[name="street"]').val() + ',' + $('#commune option:selected').text() + ',' + $('#district option:selected').text() + ',' + $('#province option:selected').text();
-
             return $address;
         }
 
         function initMap() {
             // The location of Uluru
-
             @isset($realty)
             var current = {
                 lat: {{$realty->google_map_lat ?? 21.027964}},
@@ -497,9 +495,9 @@
             })
 
             function changeMarker(address){
-                let link = `http://localhost:91/api/get-geo-by-mane?search_string=${address}`
+                let link = `/get-geo-by-name?search_string=${address}`;
                 getPlace(link).then(data => {
-                    geo = data.candidates[0].geometry.location;
+                    geo = data.results[0].geometry.location;
                     marker.setPosition( new google.maps.LatLng( geo.lat, geo.lng ) );
                     map.panTo( new google.maps.LatLng( geo.lat, geo.lng ));
                     $('[name="google_map_lat"]').val(geo.lat);
@@ -507,6 +505,7 @@
                 });
             }
         }
+
         Dropzone.autoDiscover = false;
         $('#class_name').on('blur', function () {
         getSlug('online_class', $(this).val(), $('#slug'));
@@ -553,7 +552,6 @@
 
             // get slug
         $('#title').on('blur', function () {
-            console.log('jsdf');
             getSlug('realty_post', $(this).val(), $('#slug'));
         });
 

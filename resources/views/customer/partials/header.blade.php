@@ -48,7 +48,7 @@
                     @if (Auth::check())
                     <div class="login-logout">
                         <a class="text-dark font-9" href="/tai-khoan">
-                            <img src="{{auth()->user()->profile_image_path ?? '/images/empty-avatar.jpg'}}" style="width: 50px; height:50px" alt="">
+                            <img src="{{auth()->user()->profile_image_path ?? '/images/empty-avatar.jpg'}}" style="width: 50px; height:50px" class="img-thumbnail rounded-circle" alt="">
                             <strong class="border-right px-2">{{auth()->user()->name}}</strong>
                         </a>
                         <a class="text-dark font-9" href="/logout"><span class="px-2">Đăng xuất</span></a>

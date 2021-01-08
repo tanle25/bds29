@@ -91,9 +91,9 @@ class ViewServiceProvider extends ServiceProvider
             View::composer(
                 'customer.pages.posts.sidebar', function ($view) {
                     $featured_posts = Post::orderByDesc('id')->take(10)->get();
-                    $featured_provinces = Province::withCount('realty_posts')->orderByDesc('realty_posts_count')->take(20)->get();
+                    $featured_districts = District::whereIn('parent_code', config('constant.provinces'))->withCount('realty_posts')->orderByDesc('realty_posts_count')->take(20)->get();
                     $featured_tags = Tag::all()->random(6);
-                    $view->with(['featured_tags' => $featured_tags, 'featured_posts' => $featured_posts, 'featured_provinces' => $featured_provinces]);
+                    $view->with(['featured_tags' => $featured_tags, 'featured_posts' => $featured_posts, 'featured_districts' => $featured_districts]);
                 }
             );
         }
@@ -115,17 +115,17 @@ class ViewServiceProvider extends ServiceProvider
             View::composer(
                 'customer.components.sidebars.realty_sidebar', function ($view) {
                     $featured_realties = RealtyPost::with('realty')->orderByDesc('rank')->take(6)->get();
-                    $featured_provinces = Province::withCount('realty_posts')->orderByDesc('realty_posts_count')->take(20)->get();
+                    $featured_districts = District::whereIn('parent_code', config('constant.provinces'))->withCount('realty_posts')->orderByDesc('realty_posts_count')->take(20)->get();
                     $featured_tags = Tag::where('type', 'realty')->get();
                     $featured_posts = Post::orderByDesc('id')->take(10)->get();
-                    $view->with(['featured_realties' => $featured_realties, 'featured_tags' => $featured_tags, 'featured_posts' => $featured_posts, 'featured_provinces' => $featured_provinces]);
+                    $view->with(['featured_realties' => $featured_realties, 'featured_tags' => $featured_tags, 'featured_posts' => $featured_posts, 'featured_districts' => $featured_districts]);
                 }
             );
         }
 
         if (Schema::hasTable('advertisments')) {
             View::composer(
-                ['customer.home'], function ($view) {
+                ['customer.pages.home.index'], function ($view) {
                     $advertisments = Advertisment::where('status', 1)->get();
                     $view->with([
                         'horizontal_advertisments' => $advertisments->where('type', 2),

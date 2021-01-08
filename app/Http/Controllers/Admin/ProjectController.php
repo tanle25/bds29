@@ -8,6 +8,7 @@ use App\Models\Commune;
 use App\Models\District;
 use App\Models\Project;
 use App\Models\Province;
+use Carbon\Carbon;
 use DataTables;
 
 class ProjectController extends Controller
@@ -34,6 +35,9 @@ class ProjectController extends Controller
         $commune = Commune::where('code', $request->commune_code)->first();
         $data['full_address'] = $request->street . ", " . $commune->path_with_type;
 
+        $data['start_time'] = Carbon::createFromFormat('d/m/Y', $request->start_time);
+        $data['launch_time'] = Carbon::createFromFormat('d/m/Y', $request->launch_time);
+
         $project = Project::create($data);
         if ($request->submit == 'save') {
             return redirect()->route('admin.project.edit', $project->id)->with('success', 'Cập nhật thành công dự án');
@@ -58,10 +62,12 @@ class ProjectController extends Controller
 
     public function update(ProjectRequest $request, $id)
     {
-
         $data = $request->all();
         $commune = Commune::where('code', $request->commune_code)->first();
         $data['full_address'] = $request->street . ", " . $commune->path_with_type;
+
+        $data['start_time'] = Carbon::createFromFormat('d/m/Y', $request->start_time);
+        $data['launch_time'] = Carbon::createFromFormat('d/m/Y', $request->launch_time);
 
         $project = Project::findOrFail($id);
 
@@ -78,11 +84,13 @@ class ProjectController extends Controller
             ->editColumn('project_type', function (Project $project) {
                 return config('constant.project_type.' . $project->project_type . '.name');
             })
-
+            ->editColumn('name', function ($project) {
+                $link = route('customer.project.show', $project->slug ?? 'du-an');
+                return "<a href='{$link}' target='_blank'>{$project->name}</a>";
+            })
             ->addColumn('thumb', function ($project) {
                 return '<img width="100%" src="' . \htmlspecialchars($project->thumb) . '" alt="">';
             })
-
             ->addColumn('action', function ($project) {
                 return '
                 <a data-toggle-for="tooltip" title="Sửa thông tin" href="' . route('admin.project.edit', $project->id) . '"class="btn text-info customer-edit"><i class="fas fa-edit" data-toggle="modal" data-target="#customer-model"></i></a>

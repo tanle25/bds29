@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\FilemanagerController;
 use App\Http\Controllers\Admin\GroundController;
+use App\Http\Controllers\Admin\HelperServiceController;
 use App\Http\Controllers\Admin\HomeController as HomeAdminController;
 use App\Http\Controllers\Admin\MenuCategoryController;
 use App\Http\Controllers\Admin\MenuController;
@@ -203,4 +204,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::post('commune/edit/{id}', [CommuneController::class, 'update'])->name('admin.commune.update');
     Route::post('commune/destroy/{id}', [CommuneController::class, 'destroy'])->name('admin.commune.destroy');
     Route::get('commune/list', [CommuneController::class, 'list'])->name('admin.commune.list');
+
+    // API service
+    Route::post('api-service/multiple-delete', [HelperServiceController::class, 'multiDelete'])->name('admin.helper_service.multi_delete');
+
 });

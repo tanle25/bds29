@@ -432,6 +432,8 @@
                     @endisset
                     @isset($realty_post->open_at)
                     value="{{Carbon\Carbon::parse($realty_post->open_at)->format('d/m/Y')}}"
+                    @else
+                    value="{{Carbon\Carbon::now()->format('d/m/Y')}}"
                     @endisset
                     >
                     @error('open_at')
@@ -452,6 +454,8 @@
                     @endisset
                     @isset($realty_post->open_at)
                     value="{{Carbon\Carbon::parse($realty_post->close_at)->format('d/m/Y')}}"
+                    @else
+                    value="{{Carbon\Carbon::now()->addMonthsNoOverflow(1)->format('d/m/Y')}}"
                     @endisset
                     >
                     @error('close_at')
@@ -608,13 +612,23 @@
 
     function initMap() {
         // The location of Uluru
-        var hanoi = { lat: 21.027964, lng: 105.8510132 };
+        @isset($realty)
+            var current = {
+                lat: {{$realty->google_map_lat ?? 21.027964}},
+                lng: {{$realty->google_map_lng ?? 105.8510132}},
+            };
+            @else
+            var current = {
+                lat:  21.027964,
+                lng: 105.8510132
+            };
+        @endisset
         // The map, centered at Uluru
         var map = new google.maps.Map(
-            document.getElementById('map'), { zoom: 17, center: hanoi, optimized: true });
+            document.getElementById('map'), { zoom: 17, center: current, optimized: true });
         // The marker, positioned at Uluru
         var marker = new google.maps.Marker({
-            position: hanoi,
+            position: current,
             map: map,
             draggable: true,
         });
@@ -631,7 +645,7 @@
         })
 
         function changeMarker(address){
-            let link = `/get-geo-by-mane?search_string=${address}`
+            let link = `/get-geo-by-name?search_string=${address}`
             getPlace(link).then(data => {
                 geo = data.results[0].geometry.location;
                 marker.setPosition( new google.maps.LatLng( geo.lat, geo.lng ) );

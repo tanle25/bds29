@@ -48,10 +48,9 @@ Trang chủ
     @endisset --}}
     @endsection
 
-
-    @section('script')
-    @parent
-    <script>
+@section('script')
+@parent
+<script>
     $('.horizon-advertisment').owlCarousel({
         loop:true,
         autoplay: true,

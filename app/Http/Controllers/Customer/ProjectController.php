@@ -41,7 +41,6 @@ class ProjectController extends Controller
             }
 
             $project->list_realty_type = $list_realty_type;
-
         }
         return view('customer.pages.project.index', compact('projects'));
     }

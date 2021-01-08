@@ -11,6 +11,39 @@ use Str;
 
 class ImageUploadController extends Controller
 {
+    private $watermark_size = 20;
+    private $watermark_opacity = 70;
+    private $watermark_position = 'center';
+
+    public function __construct()
+    {
+        $list = ThemeOption::all();
+        $theme_options = [];
+        foreach ($list as $item) {
+            $theme_options[$item->key] = $item->value;
+        };
+
+        if (isset($theme_options['watermark_size']) && is_numeric($theme_options['watermark_size']) && $theme_options['watermark_size'] > 0) {
+            $this->watermark_size = $theme_options['watermark_size'];
+        }
+
+        if (isset($theme_options['watermark_opacity']) && is_numeric($theme_options['watermark_opacity']) && $theme_options['watermark_opacity'] > 0) {
+            $this->watermark_opacity = $theme_options['watermark_opacity'];
+        }
+
+        $position_list = [
+            'top-left',
+            'top-right',
+            'center',
+            'bottom-left',
+            'bottom-right',
+        ];
+
+        if (isset($theme_options['watermark_position']) && in_array($theme_options['watermark_position'], $position_list)) {
+            $this->watermark_position = $theme_options['watermark_position'];
+        }
+    }
+
     public function store(Request $request)
     {
         if ($request->hasFile('file')) {
@@ -31,14 +64,14 @@ class ImageUploadController extends Controller
             });
             // create water mark
             $width = $image->width();
-            $water_mark_width = 0.2 * $width;
+            $water_mark_width = $this->watermark_size / 100 * $width;
             $watermark = $this->createWatermark($water_mark_width);
             $watermark_thumb = $this->createWatermark(80);
             if (isset($watermark)) {
-                $image->insert($watermark, 'center');
+                $image->insert($watermark, $this->watermark_position);
             }
             if (isset($watermark_thumb)) {
-                $thumb->insert($watermark_thumb, 'center');
+                $thumb->insert($watermark_thumb, $this->watermark_position);
             }
             //save image
             $image->save(storage_path('app/public/image_uploads/' . $image_name));
@@ -63,6 +96,9 @@ class ImageUploadController extends Controller
         $image = ThemeOption::get('watermark_logo');
         if ($image) {
             $link = explode(',', $image)[0] ?? null;
+            if (!$link) {
+                return null;
+            }
             $watermark = Str::replaceFirst('/storage', '', $link);
 
             return storage_path('app/public' . $watermark);
@@ -77,7 +113,7 @@ class ImageUploadController extends Controller
             $watermark = Image::make($link)
                 ->resize($width, null, function ($constraint) {
                     $constraint->aspectRatio();
-                })->opacity(90);
+                })->opacity($this->watermark_opacity);
             return $watermark;
         } catch (\Exception $e) {
             return null;

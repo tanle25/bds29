@@ -114,7 +114,7 @@
                                         </span>
                                     </a>
                                     @include('customer.components.share_button')
-                                    <a class="btn btn-map" data-toggle="modal" data-target="#show-map"><i class="far fa-map-marker text-info font-12"></i> Vị trí</a>
+                                    <a class="btn btn-map" href="#map-show" ><i class="far fa-map-marker text-info font-12"></i> Vị trí</a>
                                 </div>
                             </div>
                         </div>
@@ -122,8 +122,8 @@
 					<div class="about-content mt-4">
                         <div class="post-description">
                             <h2 class="font-15 pb-2 widget-title">Thông tin chi tiết</h2>
-                            <p class="font-9" style="white-space: pre-line; line-height: 30px">
-                                {{trim($realty_post->description) ?? ''}}
+                            <p class="font-9" style="line-height: 30px">
+                                {!! nl2br(e($realty_post->description ?? ''))!!}
                             </p>
                         </div>
                         <div class="bg-light w-100 py-2 px-3 text-center">
@@ -178,6 +178,11 @@
                     @endif
 
                     <div class="mt-4 pb-4">
+                        <h2 class="font-15 pb-2" id="map-show">Xem trên bản đồ</h2>
+                        <div id="map" style="width: 100%; height:290px"></div>
+                    </div>
+
+                    <div class="mt-4 pb-4">
                         <h2 class="font-15 pb-2">Bất động sản cùng khu vực</h2>
                         <div>
                             <div class="realted-post-slider2 @if(Agent::isDesktop()) owl-carousel @endif ">
@@ -189,6 +194,7 @@
                             </div>
                         </div>
                     </div>
+
 
                     <div class="mt-4">
                         <h2 class="font-15 pb-2">Bất động sản nổi bật</h2>
@@ -227,56 +233,43 @@
 			</div>
 		</div>
 	</div>
-	<div id="show-map" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<div class="modal-body">
-                    <div class="map-container mx-auto col-12" style="padding:20px">
-                        <div id="map" style="width: 100%; height:500px"></div>
-                    </div>
-				</div>
-			</div>
-		</div>
-    </div>
+
     <div id="fb-root"></div>
 
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Thông tin liên hệ</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Thông tin liên hệ</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-advisory">
+                        <div class="form-group row py-2 m-0">
+                            <span class="col-4">Họ và tên</span>
+                            <input name="name" id="customer-name" type="text" class="col-7 input ml-2 form-control" placeholder="Họ tên khách hàng (bắt buộc)" value="" value="">
+                        </div>
+                        <div class="form-group row py-2 m-0">
+                            <span class="col-4">Email</span>
+                            <input name="name" id="customer-email" type="text" class="col-7 input ml-2 form-control" placeholder="Email" value="">
+                        </div>
+                        <div class="form-group row py-2 m-0">
+                            <span class="col-4">Số điện thoại</span>
+                            <input name="name" id="customer-phone" type="text" class="col-7 input ml-2 form-control" placeholder="Số điện thoại (bắt buộc)" value="" required>
+                        </div>
+                        <div class="form-group row py-2 m-0">
+                            <span class="col-4">Lời nhắn</span>
+                            <textarea name="message" id="customer-message" class="col-7 form-control ml-2" cols="20" rows="5" placeholder="Lời nhắn"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-info send-contact-btn">Gửi yêu cầu</button>
+                </div>
             </div>
-            <div class="modal-body">
-                <form class="form-advisory">
-                    <div class="form-group row py-2 m-0">
-                        <span class="col-4">Họ và tên</span>
-                        <input name="name" id="customer-name" type="text" class="col-7 input ml-2 form-control" placeholder="Họ tên khách hàng (bắt buộc)" value="" value="">
-                    </div>
-                    <div class="form-group row py-2 m-0">
-                        <span class="col-4">Email</span>
-                        <input name="name" id="customer-email" type="text" class="col-7 input ml-2 form-control" placeholder="Email" value="">
-                    </div>
-                    <div class="form-group row py-2 m-0">
-                        <span class="col-4">Số điện thoại</span>
-                        <input name="name" id="customer-phone" type="text" class="col-7 input ml-2 form-control" placeholder="Số điện thoại (bắt buộc)" value="" required>
-                    </div>
-                    <div class="form-group row py-2 m-0">
-                        <span class="col-4">Lời nhắn</span>
-                        <textarea name="message" id="customer-message" class="col-7 form-control ml-2" cols="20" rows="5" placeholder="Lời nhắn"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-            <button type="button" class="btn btn-info send-contact-btn">Gửi yêu cầu</button>
-            </div>
-        </div>
-
         </div>
   </div>
 @endsection
@@ -286,11 +279,15 @@
 <div class="fixed-bottom d-flex bg-white d-block d-lg-none">
     <a style="line-height: 1.7em" class="px-3 font-14 d-block py-2" href="mailto:{{$author->email ?? ''}}"><i class="fas fa-envelope"></i></a>
     <a style="line-height: 1.7em" class="px-3 font-14 d-block py-2" href="mailto:{{$author->email ?? ''}}"><i class="fas fa-sms"></i></a>
-    <a style="line-height: 1.7em" class="font-11 btn btn-success rounded-0 w-100 d-block w-100 py-2" href="tel:{{$author->phone_number ?? ''}}"><i class="fas fa-phone-alt"></i> 0{{number_format($author->phone_number ?? 0, 0, ' ', ' ') ??''}}</a>
+    <a style="line-height: 1.7em" class="font-11 btn btn-success rounded-0 w-100 d-block w-100 py-2" href="tel:{{$author->phone_number ?? ''}}"><i class="fas fa-phone-alt"></i>
+        @if (is_numeric($author->phone_number ?? 0))
+        0{{number_format($author->phone_number ?? 0, 0, ' ', ' ') ??''}}</a>
+        @endif
+    </a>
 </div>
 
 
-<script defer src="https://maps.googleapis.com/maps/api/js?key={{env('GOOGLEMAP_KEY')}}&callback=initMap"> </script>
+<script defer src="https://maps.googleapis.com/maps/api/js?key={{config('api_keys.google_map')}}&callback=initMap"> </script>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=369134871016071&autoLogAppEvents=1" nonce="KzqM94bd"></script>
 <script src="https://sp.zalo.me/plugins/sdk.js"></script>
 
@@ -298,7 +295,6 @@
 <script>
 
     hideBlockByHeight($('.post-description'), '200px');
-
     $(document).on('click', '.show-hidden-block' , function(){
         toggleHiddenBlock($('.post-description'), "200px");
         if ($(this).data('open') == 2) {

@@ -30,14 +30,14 @@
         </div>
     @endisset
 
-    @isset($featured_provinces)
+    @isset($featured_districts)
     <div class="rounded-1 bg-white p-3 mb-3 border-bottom" >
-        <h4 class="uppercase font-w-600">Mua bán nhà đất tại Việt Nam</h4>
+        <h4 class="uppercase font-w-600">Mua bán nhà đất tại Tây Ninh</h4>
         <div class="row">
-            @foreach ($featured_provinces as $province)
+            @foreach ($featured_districts as $district)
             <div class="col-sm-6 py-1">
-                <a class="cl-light-blue font-9" href="/{{$province->slug ?? ''}}">{{$province->name}}</a>
-                <span class="font-9">({{$province->realty_posts_count}})</span>
+                <a class="cl-light-blue font-9" href="/{{$district->slug ?? ''}}">{{$district->name}}</a>
+                <span class="font-9">({{$district->realty_posts_count}})</span>
             </div>
             @endforeach
         </div>

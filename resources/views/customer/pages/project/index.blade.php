@@ -192,7 +192,7 @@ Danh sách dự án bất động sản
                     </div>
                     @endforeach
                 </div>
-				{{$projects->links()}}
+                {{$projects->links()}}
             </div>
             <div class="col-md-4 sidebar">
                 @include('customer.components.sidebars.realty_sidebar')
@@ -246,16 +246,21 @@ Danh sách dự án bất động sản
                 slug += '-' + province;
             }
 
-            var query = '?gia=';
+            var query = '?';
+
             if (min) {
-                query +=  min;
-            }else{
-                query += 0;
+                query += 'gia=';
+                if (min) {
+                    query +=  min;
+                }else{
+                    query += 0;
+                }
+
+                if (max) {
+                    query += ',' + max;
+                }
             }
 
-            if (max) {
-                query += ',' + max;
-            }
             if (slug === 'du-an') {
                 return slug + '-bat-dong-san' + query;
             }

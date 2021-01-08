@@ -19,13 +19,5 @@
                 'current_input' => $theme_options['logo'] ?? ''
             ])
         </div>
-
-        <div class="form-group ">
-        <label class="control-label">Tem ảnh</label>
-        @include('admin.components.button_file_manager', ['id' => 'watermark_logo',
-            'input_name' => 'watermark_logo',
-            'current_input' => $theme_options['watermark_logo'] ?? ''
-        ])
-        </div>
     </div>
 </div>
