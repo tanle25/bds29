@@ -66,14 +66,14 @@ class ImageUploadController extends Controller
             });
             // create water mark
             $width = $image->width();
-            $water_mark_width = 0.2 * $width;
+            $water_mark_width = $this->watermark_size / 100 * $width;
             $watermark = $this->createWatermark($water_mark_width);
             $watermark_thumb = $this->createWatermark(80);
             if (isset($watermark)) {
-                $image->insert($watermark, 'center');
+                $image->insert($watermark, $this->watermark_position);
             }
             if (isset($watermark_thumb)) {
-                $thumb->insert($watermark_thumb, 'center');
+                $thumb->insert($watermark_thumb, $this->watermark_position);
             }
             //save image
             $image->save(storage_path('app/public/image_uploads/' . $image_name));
@@ -115,7 +115,7 @@ class ImageUploadController extends Controller
             $watermark = Image::make($link)
                 ->resize($width, null, function ($constraint) {
                     $constraint->aspectRatio();
-                })->opacity(90);
+                })->opacity($this->watermark_opacity);
             return $watermark;
         } catch (\Exception $e) {
             return null;
