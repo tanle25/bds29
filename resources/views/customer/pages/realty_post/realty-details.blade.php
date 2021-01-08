@@ -233,18 +233,7 @@
 			</div>
 		</div>
 	</div>
-	{{-- <div id="show-map" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<div class="modal-body">
-                    <div class="map-container mx-auto col-12" style="padding:20px">
-                        <div id="map" style="width: 100%; height:500px"></div>
-                    </div>
-				</div>
-			</div>
-		</div>
-    </div> --}}
+
     <div id="fb-root"></div>
 
     <!-- Modal -->

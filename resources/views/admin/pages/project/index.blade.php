@@ -1,6 +1,6 @@
 @extends('admin.main_layout')
 @section('title')
-    Danh sách lớp học
+    Danh sách dự án
 @endsection
 @section('css')
     @parent
@@ -9,14 +9,14 @@
 @endsection
 
 @section('content')
-@include('admin.partials.content_header', ['title' => 'Quản lý lớp học'])
+@include('admin.partials.content_header', ['title' => 'Quản lý dự án'])
 <section class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Danh sách lớp học</h3>
+              <h3 class="card-title">Danh sách dự án</h3>
               <a href="{{route('admin.project.create')}}" class="btn btn-info p-1 float-right">Thêm mới</a>
             </div>
             <!-- /.card-header -->
