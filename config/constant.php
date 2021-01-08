@@ -24,7 +24,7 @@ return [
         '3' => 'Tin đã duyệt',
         '4' => 'Tin rác',
     ],
-    'provinces' => [38],
+    'provinces' => explode(',', env('PROVINCE_ID', "38")),
     'realty_post_type' => [
         '1' => [
             'name' => 'Bán',
