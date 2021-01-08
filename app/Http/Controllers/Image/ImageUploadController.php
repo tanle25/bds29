@@ -11,6 +11,41 @@ use Str;
 
 class ImageUploadController extends Controller
 {
+    private $watermark_size = 20;
+    private $watermark_opacity = 70;
+    private $watermark_position = 'center';
+
+    public function __construct()
+    {
+        $list = ThemeOption::all();
+        $theme_options = [];
+        foreach ($list as $item) {
+            $theme_options[$item->key] = $item->value;
+        };
+
+        if (isset($theme_options['watermark_size']) && is_numeric($theme_options['watermark_size']) && $theme_options['watermark_size'] > 0) {
+            $this->watermark_size = $theme_options['watermark_size'];
+        }
+
+        if (isset($theme_options['watermark_opacity']) && is_numeric($theme_options['watermark_opacity']) && $theme_options['watermark_opacity'] > 0) {
+            $this->watermark_opacity = $theme_options['watermark_opacity'];
+        }
+
+        $position_list = [
+            'top-left',
+            'top-right',
+            'center',
+            'bottom-left',
+            'bottom-right',
+        ];
+
+        if (isset($theme_options['watermark_position']) && in_array($theme_options['watermark_position'], $position_list)) {
+            $this->watermark_position = $theme_options['watermark_position'];
+        }
+
+        dd($this->watermark_size, $this->watermark_position, $this->watermark_opacity);
+    }
+
     public function store(Request $request)
     {
         if ($request->hasFile('file')) {

@@ -25,6 +25,10 @@ class RealtyPostController extends Controller
         $posts = RealtyPost::with('realty');
         return DataTables::eloquent($posts)
             ->addIndexColumn()
+            ->editColumn('title', function ($post) {
+                $link = route('customer.realty_post.show', $post->slug ?? 'bat-dong-san');
+                return "<a href='{$link}'>{$post->title}</a>";
+            })
             ->filterColumn('realty_posts.created_at', function ($query, $keyword) {
                 if ($keyword) {
                     $days = explode(' - ', $keyword);
@@ -35,16 +39,13 @@ class RealtyPostController extends Controller
                                 $query->whereBetween('realty_posts.created_at', [$start_date, '2200-1-1']);
                             }
                         }
-
                         if (count($days) >= 2) {
                             if (Carbon::canBeCreatedFromFormat($days[0], 'd/m/Y') && Carbon::canBeCreatedFromFormat($days[1], 'd/m/Y')) {
                                 $start_date = Carbon::createFromFormat('d/m/Y', $days[0])->format('Y-m-d');
                                 $end_date = Carbon::createFromFormat('d/m/Y', $days[1])->format('Y-m-d');
                                 $query->whereBetween('realty_posts.created_at', [$start_date, $end_date]);
                             }
-
                         }
-
                     }
                 }
             })
@@ -97,7 +98,7 @@ class RealtyPostController extends Controller
                 <a data-toggle-for="tooltip" title="Xóa" href="' . route('admin.realty_post.destroy', $post->id) . '"class="btn text-danger realty-post-destroy"><i class="fas fa-trash" data-toggle="modal" data-target="#customer-model"></i></a>
                 ';
             })
-            ->rawColumns(['action', 'thumb', 'status', 'name'])
+            ->rawColumns(['action', 'thumb', 'status', 'title'])
             ->make(true);
     }
 

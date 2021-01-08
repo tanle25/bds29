@@ -2,11 +2,6 @@
 @section('title')
     Bài viết
 @endsection
-@section('css')
-    @parent
-    <link rel="stylesheet" href="{{asset('template/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-    <link rel="stylesheet" href="{{asset('template/AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
-@endsection
 
 @section('content')
 @include('admin.partials.content_header', ['title' => 'Quản lý bài giảng'])
@@ -28,48 +23,78 @@
                         <th>Tên</th>
                         <th>Ảnh đại diện</th>
                         <th>Danh mục</th>
-                        <th>Người tạo</th>
                         <th>Ngày tạo</th>
                         <th>Trạng thái</th>
                         <th>Thao tác</th>
                     </tr>
+                    <tr>
+                        <th></th>
+                        <th><input class="w-100 form-control" type="text" placeholder="Search" /></th>
+                        <th></th>
+                        <th></th>
+                        <th>
+                            <input
+                            id="date-picker"
+                            class="date-range-picker form-control"
+                            type="text"
+                            autocomplete="off"
+                            value=""
+                            >
+                        </th>
+                        <th>
+                            <select class="form-control">
+                                <option value="">Tất cả</option>
+                                <option value="1">Đang hoạt động</option>
+                                <option value="2">Dừng hoạt động</option>
+                            </select>
+                        </th>
+                        <th></th>
+                    </tr>
                   </thead>
-
                 </table>
             </div>
-            <!-- /.card-body -->
           </div>
-          <!-- /.card -->
         </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
     </div>
-    <!-- /.container-fluid -->
 </section>
+
+@include('admin.components.datatable_resource')
 @endsection
-
     @section('script')
-    <script src="{{asset('template/AdminLTE/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('template/AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('template/AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('template/AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-
     <script>
-        $(function () {
-            $("#post-table").dataTable({
+        $(document).ready(function() {
+            // Setup - add a text input to each footer cell
+            $('#post-table thead tr:eq(1) th').each( function (i) {
+                var title = $(this).text();
+                $( 'input, select', this ).on('keyup change', function () {
+                    clearTimeout(drawTable);
+                    var drawTable = setTimeout(() => {
+                        if ( table.column(i).search() !== this.value ) {
+                            table
+                                .column(i)
+                                .search( this.value )
+                                .draw();
+                        }
+                    }, 1000);
+
+                });
+            });
+
+            var table = $("#post-table").DataTable({
                 processing: true,
                 serverSide: true,
                 scrollX: true,
                 autoWidth:false,
                 ajax: "{{route('admin.post.list')}}",
+                orderCellsTop: true,
+                order: [[0, "desc"]],
                 columns: [
-                    { "data": "id","name": 'id', 'width': '10px'},
+                    { "data": "id","name": 'posts.id', 'width': '10px'},
                     { "data": "name",  },
                     { "data": "avatar", 'width': '80px' },
-                    { "data": "created_at",  'width': '150px'},
-                    { "data": "created_by", 'name': 'author.username', 'width': '120' },
-                    { "data": "created_at", 'width': '120px' },
+                    { "data": "category", 'name': 'categories.name' ,  'width': '150px', 'orderable': false},
+                    { "data": "created_at", 'name': 'posts.created_at' ,'width': '120px' },
                     { "data": "status", 'width': '90px' },
                     { "data": "action", 'width': '80px' },
                 ],

@@ -78,7 +78,10 @@ class ProjectController extends Controller
             ->editColumn('project_type', function (Project $project) {
                 return config('constant.project_type.' . $project->project_type . '.name');
             })
-
+            ->editColumn('name', function ($project) {
+                $link = route('customer.project.show', $project->slug ?? 'du-an');
+                return "<a href='{$link}' target='_blank'>{$project->name}</a>";
+            })
             ->addColumn('thumb', function ($project) {
                 return '<img width="100%" src="' . \htmlspecialchars($project->thumb) . '" alt="">';
             })
