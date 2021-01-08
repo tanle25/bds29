@@ -25,6 +25,29 @@ class RealtyPostController extends Controller
         $posts = RealtyPost::with('realty');
         return DataTables::eloquent($posts)
             ->addIndexColumn()
+            ->filterColumn('realty_posts.created_at', function ($query, $keyword) {
+                if ($keyword) {
+                    $days = explode(' - ', $keyword);
+                    if (!empty($days)) {
+                        if (count($days) == 1) {
+                            if (Carbon::canBeCreatedFromFormat($days[0], 'd/m/Y')) {
+                                $start_date = Carbon::createFromFormat('d/m/Y', $days[0]);
+                                $query->whereBetween('realty_posts.created_at', [$start_date, '2200-1-1']);
+                            }
+                        }
+
+                        if (count($days) >= 2) {
+                            if (Carbon::canBeCreatedFromFormat($days[0], 'd/m/Y') && Carbon::canBeCreatedFromFormat($days[1], 'd/m/Y')) {
+                                $start_date = Carbon::createFromFormat('d/m/Y', $days[0])->format('Y-m-d');
+                                $end_date = Carbon::createFromFormat('d/m/Y', $days[1])->format('Y-m-d');
+                                $query->whereBetween('realty_posts.created_at', [$start_date, $end_date]);
+                            }
+
+                        }
+
+                    }
+                }
+            })
             ->addColumn('realty_type', function (RealtyPost $post) {
                 switch ($post->realty->type ?? 1) {
                     case '1':
