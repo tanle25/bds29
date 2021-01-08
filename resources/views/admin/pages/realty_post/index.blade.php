@@ -79,7 +79,6 @@
 
 @endsection
     @section('script')
-
     <script>
         $(document).ready(function() {
             // Setup - add a text input to each footer cell
@@ -96,8 +95,8 @@
                         }
                     }, 1000);
 
-                } );
-            } );
+                });
+            });
 
             var table = $("#realty-post-table").DataTable({
                 processing: true,
@@ -106,6 +105,7 @@
                 autoWidth:false,
                 orderCellsTop: true,
                 ajax: "{{route('admin.realty_post.list')}}",
+                order: [[0, "desc"]],
                 columns: [
                     { "data": "id","name": 'realty_posts.id' , 'width': '10px'},
                     { "data": "thumb",  'width':'40px' },
@@ -120,8 +120,6 @@
                     style: 'os',
                 }
             })
-
-
         } );
 
 
