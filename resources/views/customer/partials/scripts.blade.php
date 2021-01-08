@@ -11,9 +11,11 @@
 
 <script src="{{asset('plugins\menu\Multi-Level-Sidebar-Menu-HC-MobileNav\dist\hc-offcanvas-nav.js')}}"></script>
 <script>
-    var lazyLoadInstance = new LazyLoad({
-    // Your custom settings go here
-    });
+    $(document).ready(function(){
+        var lazyLoadInstance = new LazyLoad({
+        // Your custom settings go here
+        });
+    })
     const num2Word2 = function () {
         var t = ["không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"],
             r = function (r, n) {
