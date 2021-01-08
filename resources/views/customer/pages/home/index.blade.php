@@ -32,9 +32,10 @@ Trang chủ
         </div>
         <div class="owl-carousel partner-slider mb-5">
             @foreach ($partners as $partner)
-            <div class="item d-flex align-items-center  p-2" style="height: 120px;" >
-                <div class="w-100 border h-100 p-2 partner-item">
-                    <img style="height: 100%; object-fit:contain" src="{{$partner->logo}}" alt="">
+                <div class="item d-flex align-items-center  p-2" style="height: 120px;" >
+                    <div class="w-100 border h-100 p-2 partner-item">
+                        <img class="lazy" style="height: 100%; object-fit:contain" data-src="{{$partner->logo}}" alt="">
+                    </div>
                 </div>
             </div>
             @endforeach

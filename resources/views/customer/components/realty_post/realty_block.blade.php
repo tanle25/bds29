@@ -1,8 +1,8 @@
 <div class="block realty">
     <div class="realty-container shadow-6 flex-wrap rounded d-flex d-md-block">
         <div class="overflow-hidden col-5 px-0 col-md-12 order-2 bg-white">
-            <a href="{{$item->link}}"class="d-block ml-2 ml-md-0 img-wraper height-md-240 height-120">
-                <img src="{{$item->thumb}}" alt="" srcset="">
+            <a href="{{$item->link}}"class="d-block ml-2 ml-md-0 img-wraper height-md-180 height-120">
+                <img class="lazy" data-src="{{$item->thumb}}" alt="" srcset="">
             </a>
             @if ($item->rank == 4)
                 <div class="ribbon-wrapper ribbon">

@@ -17,7 +17,7 @@
             @foreach ($banner_mobile as $item)
                 @if ($item)
                     <div class="item img-responsive">
-                        <img src="{{$item}}" alt=""  srcset="">
+                        <img class="lazy" data-src="{{$item}}" alt=""  srcset="">
                     </div>
                 @endif
             @endforeach
@@ -27,7 +27,7 @@
             @foreach ($banners as $item)
                 @if ($item)
                     <div class="item w-100 banner-item">
-                        <img src="{{$item}}" alt="" style="height: 100%; object-fit:cover" srcset="">
+                        <img data-src="{{$item}}" class="lazy" alt="" style="height: 100%; object-fit:cover" srcset="">
                     </div>
                 @endif
             @endforeach
@@ -176,6 +176,7 @@
 @section('script')
 	@parent
 	<script>
+
         $('.btn-expand-search').on('click', function(){
             $('.hidden-field').toggle();
             if ($(this).hasClass('closed')) {

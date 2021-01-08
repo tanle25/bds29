@@ -12,8 +12,10 @@ $info: #007bff;
 
 @import "./mixins/_mixin.scss";
 
-@import "./plugins/select2/select2";
+@import "./plugins/select2/select2.css";
+@import "./plugins/select2/select2.scss";
 @import "~animate.css/source/animate.css";
+@import "./plugins/owl.carousel.css";
 
 @import "./components/_lte_sidebar";
 @import "./components/_button";

@@ -23,7 +23,7 @@
             <section class=" container menu-desktop d-none d-md-flex justify-content-center align-items-center">
                 <div class="navbar-header">
                     <div class="" id="brand">
-                        <a href="/"><img style="max-height: 75px" src="{{$logo}}" alt="brand"></a>
+                        <a href="/"><img class="lazy" style="max-height: 75px" data-src="{{$logo}}" alt="brand"></a>
                     </div>
                 </div>
                 <nav class="d-flex align-items-center desktop-menu">
@@ -48,7 +48,7 @@
                     @if (Auth::check())
                     <div class="login-logout">
                         <a class="text-dark font-9" href="/tai-khoan">
-                            <img src="{{auth()->user()->profile_image_path ?? '/images/empty-avatar.jpg'}}" style="width: 50px; height:50px" class="img-thumbnail rounded-circle" alt="">
+                            <img data-src="{{auth()->user()->profile_image_path ?? '/images/empty-avatar.jpg'}}" style="width: 50px; height:50px" class="lazy img-thumbnail rounded-circle" alt="">
                             <strong class="border-right px-2">{{auth()->user()->name}}</strong>
                         </a>
                         <a class="text-dark font-9" href="/logout"><span class="px-2">Đăng xuất</span></a>
@@ -77,7 +77,7 @@
                     <i class="far fa-search font-10"></i> <span class="font-9" style="font-weight: 500">Tìm kiếm bất động sản</span>
                 </a>
             </div>
-            <a  href="/" class="logo-mobile"><img src="{{$logo}}" alt="brand"></a>
+            <a  href="/" class="logo-mobile"><img class="lazy" data-src="{{$logo}}" alt="brand"></a>
             <a style="position: relative; width: auto; top:0; z-index:2"  href="#" class="pl-3 menu-open font-15 text-white d-md-none" ><i class="far fa-bars"></i></a>
         </div>
         <div class="nav-search-btn">
