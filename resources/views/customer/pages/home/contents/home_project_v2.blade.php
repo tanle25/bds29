@@ -15,7 +15,7 @@
                                 <div class=" mb-4 row p-0 border bg-white mx-0">
                                     <div class="col-md-3 col-5 p-0">
                                         <a href="{{route('customer.project.show', $project->slug)}}" class="img-wraper h-100" >
-                                            <img src="{{$project->avatar}}" alt="{{$project->avatar}}" srcset="">
+                                            <img class="lazy" data-src="{{$project->avatar}}" alt="{{$project->avatar}}" srcset="">
                                         </a>
                                     </div>
                                     <div class="col-md-9 col-7 px-3 py-2">
