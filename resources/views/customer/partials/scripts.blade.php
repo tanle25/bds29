@@ -1,15 +1,10 @@
-<script src="{{asset('template/AdminLTE/plugins/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('template/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('plugins/owl-carousel/owl.carousel.js')}}"></script>
-<script src="{{asset('plugins/wowjs/dist/wow.min.js')}}"></script>
-<script src="{{asset('js/jquery.fancybox.min.js')}}"></script>
-<script src="{{asset('template/AdminLTE/plugins/select2/js/select2.full.min.js')}}"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script>
-<script src="{{asset('js/custom.js')}}"></script>
+<script src="{{asset('js/main.js')}}"></script>
 @include('customer.partials.alert')
 @include('customer.partials.featured_script')
 
-<script src="{{asset('plugins\menu\Multi-Level-Sidebar-Menu-HC-MobileNav\dist\hc-offcanvas-nav.js')}}"></script>
+
 <script>
     $(document).ready(function(){
         var lazyLoadInstance = new LazyLoad({
@@ -64,16 +59,14 @@
        }
     }
 
-    var $nav = $('#menu-responsive').hcOffcanvasNav({
-        customToggle: $('.menu-open'),
+    var Nav = new hcOffcanvasNav('#menu-responsive',  {
+        customToggle: '.menu-open',
         disableAt: false,
         levelSpacing: 40,
         levelTitles: true,
         levelTitleAsBack: true,
         labelClose: false,
     });
-    var Nav = $nav.data('hcOffcanvasNav');
-
     $('.mobile-logout-btn').on('click', function(){
         Nav.close();
         $('#popup-login').modal('show');
@@ -190,9 +183,6 @@
     $(document).ready(function () {
         hidePreloader()
     });
-
-
-
 
     $('.select2').select2({ dropdownAutoWidth : true});
     $('.select2-hide-search').select2(
