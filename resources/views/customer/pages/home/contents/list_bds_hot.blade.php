@@ -99,7 +99,6 @@
                     `;
                     $('.list-realty').append(element);
                 });
-                wow.init();
                 $('.slider-bds-hot').owlCarousel({
                     loop:true,
                     autoplay:true,

@@ -58,7 +58,6 @@ class User extends Authenticatable
 
     public function featured_realties()
     {
-        return $this->belongsToMany('App\Models\RealtyPost', 'user_featured_posts', 'user_id', 'realty_post_id');
-
+        return $this->belongsToMany('App\Models\RealtyPost', 'user_featured_posts', 'user_id', 'realty_post_id')->with(['realty']);
     }
 }

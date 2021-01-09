@@ -1,132 +1,114 @@
-@extends('admin.main_layout')
-@section('title')
-Trang chủ
-@endsection
-@section('css')
-@parent
-<link rel="stylesheet" href="{{asset('template/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-<link rel="stylesheet"
-    href="{{asset('template/AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
-<link rel="stylesheet" href="{{asset('plugins/Select-1.3.1/css/select.bootstrap4.min.css')}}">
-@endsection
-
-@section('content')
-@include('admin.partials.content_header', ['title' => 'Hóa đơn nạp tiền'])
-<section class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header d-flex align-items-center">
-                        <h3 class="card-title">Danh sách</h3>
-                        {{-- <a href="{{route('admin.post_bill.create')}}" class="btn btn-info p-1 float-right">Thêm
-                            mới</a> --}}
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <table id="bill-table" class="table table-bordered table-hover">
-                            <button class="btn btn-danger mb-3 multi-delete">Xóa nhiều</button>
-
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Mã đơn</th>
-                                    <th>Số tiền</th>
-                                    <th>Ngày tạo</th>
-                                    <th>Trạng thái</th>
-                                    <th>Thao tác</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($bills as $bill)
-                                <tr>
-                                    <td data-id="{{$bill->id}}">{{$bill->id}}</td>
-                                    <td>{{$bill->bill_code}}</td>
-                                    <td>
-                                        {{$bill->amount_of_money}}
-                                    </td>
-                                    <td>{{Carbon\Carbon::parse($bill->created_at)->format('H:i d/m/Y')}}</td>
-                                    <td>
-                                        @switch($bill->status)
-                                        @case(1)
-                                        <span class="right badge badge-primary">Chưa duyệt</span>
-                                        @break
-                                        @case(2)
-                                        <span class="right badge badge-danger">Đã duyệt</span>
-                                        @break
-                                        @default
-                                        <span class="right badge badge-danger">Chưa duyệt</span>
-                                        @endswitch
-                                    </td>
-                                    <td>
-                                        <a data-toggle-for="tooltip" title="Duyệt hóa đơn"
-                                            href="{{route('admin.bill.edit', $bill->id)}}"
-                                            class="btn text-info bill-edit"><i class="fas fa-edit"></i></a>
-                                        <a data-toggle-for="tooltip" title="Xóa"
-                                            href="{{route('admin.bill.destroy', $bill->id)}}"
-                                            class="btn text-danger bill-destroy"><i class="fas fa-trash"></i></a>
-                                    </td>
-
-                                </tr>
-                                @endforeach
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-            </div>
-            <!-- /.col -->
-        </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-    <img src="" alt="">
-</section>
-@endsection
-
-@section('script')
-<script src="{{asset('template/AdminLTE/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('template/AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-<script src="{{asset('template/AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('template/AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-<script src="{{asset('plugins/Select-1.3.1/js/dataTables.select.min.js')}}"></script>
-
 <script>
-    $(function () {
-        var table = $("#bill-table").DataTable({
-            processing: true,
-            scrollX: true,
-            autoWidth: false,
-            select: {
-                style: 'multi',
-            }
-        });
-        $("#bill-table").on('click', function () {
-            var rows = table.rows({ selected: true }).count();
-            console.log(rows);
-        })
+    @if (auth() -> user())
+        function getAllFeaturedAjax() {
+            return $.ajax({
+                url: '/featured',
+                type: 'GET',
+            })
+        }
+
+    $(document).on('click', '.remove-featured-btn', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        // Hàm được khai báo trong featured script component
+        var elem = $(this);
+        removeFeaturedAjax($(this).data('featured-id'))
+            .done(function (data) {
+                elem.closest('.featured-item-wraper').remove();
+            })
+            ;
     });
 
-    $(document).on('click', '.bill-destroy', function (e) {
-        e.preventDefault();
-        var url = $(this).attr('href');
-        Swal.fire({
-            title: 'Xóa đơn này?',
-            text: "Bạn không thể hoàn tác!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Vẫn xóa!',
+    function renderList() {
+        getAllFeaturedAjax().done(function (data) {
+            $('.featured-body').html('');
+            data.forEach(function (item) {
+                var component = createFeaturedBox(item);
+                $('.featured-body').append(component);
+            })
+        });
+    }
+
+    $('.list-featured-btn').on('click', function () {
+        renderList();
+    })
+
+    function createFeaturedBox(item) {
+        return `
+            <div class="border-bottom featured-item-wraper py-2 px-3">
+                <a href="${item.link}" class="d-flex featured-item align-items-center">
+                    <div class="img-wraper flex-fixed-20" style="height:50px">
+                        <img src="${item.thumb}" class="rounded" alt="" srcset="">
+                    </div>
+                    <div class="px-2 position-relative">
+                        <div class="main-text text-truncate font-9 font-weight-500" style="max-width: 280px;">${item.title}</div>
+                        <div class="mt-2 secondary-text font-8">Đăng 1 ngay trước</div>
+                        <button type="button" data-featured-id="${item.id}" class="btn bg-white remove-featured-btn position-absolute"><i class="fal fa-times"></i></button>
+                    </div>
+                </a>
+            </div>
+            `
+    }
+
+    function addFeaturedAjax(postId) {
+        return $.ajax({
+            url: '/featured/add',
+            data: {
+                post_id: postId,
+            },
+            type: 'POST',
         })
-            .then((result) => {
-                if (result.value) {
-                    window.location = url;
+    }
+
+    function checkHeart(heart) {
+        heart.html(`<i class="fas fa-heart font-12 text-info"></i>`);
+    }
+
+    function uncheckHeart(heart) {
+        heart.html(`<i class="far fa-heart font-12 text-info"></i>`);
+    }
+
+    function removeFeaturedAjax(postId) {
+        return $.ajax({
+            url: '/featured/remove',
+            data: {
+                post_id: postId,
+            },
+            type: 'POST',
+        })
+    }
+
+    $(document).on('click', '.like-heart.unchecked', function () {
+        var postId = $(this).data('post-id');
+        var element = $(this);
+        addFeaturedAjax(postId)
+            .done(function (data) {
+                element.removeClass('unchecked');
+                element.addClass('checked');
+                checkHeart(element)
+            })
+            .fail(function (error) {
+                if (error.status == 401) {
+                    swalAlert('Bạn vui lòng đăng nhập để thực hiện lưu tin', 'error')
+                }
+            });
+    })
+    @endif
+
+    $(document).on('click', '.like-heart.checked', function () {
+        var postId = $(this).data('post-id');
+        var element = $(this);
+        removeFeaturedAjax(postId)
+            .done(function (data) {
+                element.removeClass('checked');
+                element.addClass('unchecked');
+                uncheckHeart(element);
+            })
+            .fail(function (error) {
+                if (error.status == 401) {
+                    swalAlert('Bạn vui lòng đăng nhập để thực hiện bỏ lưu tin', 'error')
                 }
             });
     })
 
 </script>
-@endsection

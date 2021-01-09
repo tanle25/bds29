@@ -43,3 +43,12 @@
         }
     }
 }
+
+.dropdown-menu-center {
+    right: auto !important;
+    left: 50% !important;
+    top: 50px !important;
+    -webkit-transform: translate(-50%, 0) !important;
+    -o-transform: translate(-50%, 0) !important;
+    transform: translate(-50%, 0) !important;
+}

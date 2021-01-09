@@ -158,7 +158,7 @@
                                 <h5 class="font-10 pt-2 text-dark">
                                     {{$author->name ?? ''}}
                                 </h5>
-                                <div class="font-9 text-secondary">Bài đăng liên quan</div>
+                                <a href="/bat-dong-san-theo-nguoi-dang?us={{$author->id ?? 1}}" class="font-9 text-secondary">Bài đăng liên quan</a>
                             </div>
                         </div>
                         <div class="author-btn-group">
@@ -220,7 +220,7 @@
                             <h5 class="font-12 pt-2 text-dark">
                                 {{$author->name ?? ''}}
                             </h5>
-                            <div class="font-10 text-secondary">Bài đăng liên quan</div>
+                            <a href="/bat-dong-san-{{config('constant.realty_post_type.' . $realty_post->type )['slug']}}-theo-nguoi-dang?us={{$author->id ?? 1}}" class="font-10 secondary-text">Bài đăng liên quan</a>
                         </div>
                         <div class="author-btn-group">
                             <a class="font-9 font-weight-bold  d-block shadow-5 mt-2 w100 py-2 hrm-btn-info" href="tel:+{{$author->phone ?? ''}}">Gọi ngay: {{$author->phone_number ??''}}</a>

@@ -21,6 +21,7 @@ class ModifyFilterQuery
         if (!$request->has('filter')) {
             $request->filter = [];
         }
+
         foreach ($request->all() as $key => $value) {
             switch ($key) {
                 case 'dien-tich':

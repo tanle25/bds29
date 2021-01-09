@@ -46,17 +46,51 @@
                 </div>
                 <div class="header-right ml-auto d-none d-xl-flex align-items-center">
                     @if (Auth::check())
-                    <div class="login-logout">
+                    @php
+                        $featured_posts = Auth::user()->featured_realties;
+                    @endphp
+                    <div class="login-logout d-flex align-items-center">
+                        <div class="dropdown featured-top">
+                            <button class="btn rounded-circle text-dark list-featured-btn bg-white font-14" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-center mt-3 shadow-10 border-0 " style="width:400px; z-index: 100" aria-labelledby="dropdownMenuButton1">
+                                <div class="text-center border-bottom py-2"><strong>Tin đăng đã lưu</strong></div>
+                                <div class="featured-body">
+                                    @if ($featured_posts->isNotEmpty())
+                                        @foreach ($featured_posts->take(6) as $item)
+                                        <div class="border-bottom featured-item-wraper py-2 px-3">
+                                            <a href="{{$item->link}}" class="d-flex featured-item align-items-center">
+                                                <div class="img-wraper flex-fixed-20" style="height:50px">
+                                                    <img src="{{$item->thumb}}" class="rounded" alt="" srcset="">
+                                                </div>
+                                                <div class="px-2 position-relative">
+                                                    <div class="main-text text-truncate font-9 font-weight-500" style="max-width: 280px;">{{$item->title}}</div>
+                                                    <div class="mt-2 secondary-text font-8">Đăng {{App\Helpers\TimeHelper::getDateDiffFromNow($item->created_at)['string']}} trước</div>
+                                                    <button type="button" data-featured-id="{{$item->id}}" class="btn bg-white remove-featured-btn position-absolute"><i class="fal fa-times"></i></button>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        @endforeach
+                                    @endif
+                                </div>
+                                <div class="text-center py-2">
+                                    <a href="/tin-da-luu">Xem tất cả</a>
+                                </div>
+
+                            </div>
+
+                        </div>
                         <a class="text-dark font-9" href="/tai-khoan">
-                            <img data-src="{{auth()->user()->profile_image_path ?? '/images/empty-avatar.jpg'}}" style="width: 50px; height:50px" class="lazy img-thumbnail rounded-circle" alt="">
-                            <strong class="border-right px-2">{{auth()->user()->name}}</strong>
+                            <strong class="px-2">{{auth()->user()->name}}</strong>
+                            <img data-src="{{auth()->user()->profile_image_path ?? '/images/empty-avatar.jpg'}}" style="width: 40px; height:40px" class="lazy rounded-circle" alt="">
                         </a>
-                        <a class="text-dark font-9" href="/logout"><span class="px-2">Đăng xuất</span></a>
+                        <a class="text-dark font-14 ml-2" href="/logout"><i class="h-100 px-2 far fa-sign-out-alt"></i></a>
                         <a href="/dang-tin" class="ml-2 font-9 hrm-btn-info p-2"><strong>Đăng tin</strong></a>
                     </div>
                     @else
                     <div class="login-logout">
-                        <a href="#" class="text-dark px-2 font-9" data-toggle="modal" data-target="#register">Đăng ký</a>
+                        <a href="#" class="text-dark px-2 font-9 " data-toggle="modal" data-target="#register">Đăng ký</a>
                         <a href="#" class="text-dark font-9" data-toggle="modal" data-target="#popup-login"><span class="border-left px-2">Đăng nhập</span></a>
 
                         <span href="/dang-tin" class="ml-2 btn font-9 btn-outline-info" data-toggle="modal" data-target="#popup-login"><strong>Đăng tin</strong></span>
@@ -103,5 +137,8 @@
                 $('.logo-mobile').show();
             }
         })
+        $(document).on('click', '.header-right .dropdown-menu', function (e) {
+            e.stopPropagation();
+        });
     </script>
 @endsection
