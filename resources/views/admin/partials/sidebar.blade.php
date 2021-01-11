@@ -206,7 +206,15 @@
                         <i class="fas fa-user nav-icon"></i>
                         <p>
                             Quản trị viên
-                            {{-- <i class="fas fa-angle-left right"></i> --}}
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="/admin/customer-manager" class="nav-link">
+                        <i class="fas fa-user nav-icon"></i>
+                        <p>
+                            Khách hàng
                         </p>
                     </a>
                 </li>
