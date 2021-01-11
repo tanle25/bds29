@@ -377,7 +377,6 @@ class RealtyPostController extends Controller
 
         $query_from_slug = $this->realty_slug_helper->getFilterStringFromSlug($search_slug);
         $request->request->add(['filter' => $query_from_slug]);
-
         $side_lists = $this->related_realty_service->getRelatedRealty($query_from_slug['loai-tin-dang'] ?? null, null, $query_from_slug['tinh'] ?? null, $query_from_slug['huyen'] ?? null);
         $query = RealtyPost::with(
             'author',
@@ -393,8 +392,7 @@ class RealtyPostController extends Controller
                 'table_realty.district_code as district_code',
                 'table_realty.province_code as province_code',
                 'realty_posts.*',
-            ])
-        ;
+            ]);
 
         $user = null;
         // If request has us param, get user and pass to view
@@ -403,6 +401,9 @@ class RealtyPostController extends Controller
         }
 
         $query = $this->filter_service->filter($query);
+        // Xử lý ô tìm kiếm hiện tại
+        $filter_search = $this->filter_service->readQuery();
+        $search_address = $this->filter_service->getSearchAddress();
         $realties = $query->paginate(12)->onEachSide(5)->appends(request()->query());
         if (!$realties) {
             return abort(404);
@@ -411,7 +412,7 @@ class RealtyPostController extends Controller
         $query_list = request()->filter;
         $title = $this->getTitleFromQuery($query_list);
 
-        return view('customer.pages.realty_post.index', compact('realties', 'side_lists', 'title', 'user'));
+        return view('customer.pages.realty_post.index', compact('realties', 'side_lists', 'title', 'user', 'filter_search', 'search_address'));
     }
 
     public function showListCustomer()

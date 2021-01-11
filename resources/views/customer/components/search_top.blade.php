@@ -1,34 +1,74 @@
+@php
+    if (!isset($filter_seach)) {
+        $filter_seach = [];
+    }
+    if (!isset($search_address)) {
+        $search_address = null;
+    }
+@endphp
 <div class="border-bottom search-top d-none d-lg-block">
     <form action="" id="form-search" class="font-9">
         <div class="search-type d-flex align-items-lg-center flex-lg-row flex-column justify-content-center w-100">
             <div class="mx-auto mx-md-0 d-none d-xl-flex">
                 <div class="search-type-item d-flex align-items-center">
-                    <input type="radio"  class="d-none" name="loai-tin-dang" checked value="1" id="realty-sell">
+                    <input type="radio"  class="d-none" name="loai-tin-dang"
+                    @isset($filter_search['loai-tin-dang'])
+                        @if ($filter_search['loai-tin-dang'] == 1)
+                        checked
+                        @endif
+                    @else
+                        checked
+                    @endisset
+                    value="1" id="realty-sell">
                     <label class="m-0 p-2 border border-right-0"  for="realty-sell">Bán</label>
                 </div>
                 <div class="search-type-item d-flex align-items-center">
-                    <input class="d-none" type="radio" name="loai-tin-dang" value="2" id="realty-rent">
+                    <input class="d-none" type="radio" name="loai-tin-dang" value="2" id="realty-rent"
+                    @isset($filter_search['loai-tin-dang'])
+                        @if ($filter_search['loai-tin-dang'] == 2)
+                        checked
+                        @endif
+                    @endisset
+                    >
                     <label class=" m-0 border p-2" for="realty-rent">Cho thuê</label>
                 </div>
             </div>
 
             <div class="address-input p-3 border-right">
-                <input style="width:400px; max-width:100%" type="text" class=" form-control rounded-0" name="dia-chi" placeholder="Nhập địa chỉ" >
+                <input style="width:400px; max-width:100%" type="text" class=" form-control rounded-0" name="dia-chi" placeholder="Nhập địa chỉ"
+                @isset($filter_search['realty.full_address'])
+                    value="{{$filter_search['realty.full_address']}}"
+                @endisset
+                >
             </div>
 
             <div class="search-input px-2">
                 <select class="form-control select2-hide-search select2-info" id="province" name="tinh" data-dropdown-css-class="select2-info" style="width: 100%;">
-                <option value="">Tỉnh / Thành phố</option>
+                <option value="0">Tỉnh / Thành phố</option>
                     @foreach ($provinces as $province)
-                        <option data-slug="{{$province->slug}}" value="{{$province->code}}">{{$province->name}}</option>
+                        <option data-slug="{{$province->slug}}" value="{{$province->code}}"
+                            @isset($search_address->current_province)
+                                @if ($search_address->current_province == $province->code)
+                                selected
+                                @endif
+                            @endisset
+                        >{{$province->name}}</option>
                     @endforeach
                 </select>
             </div>
 
             <div class=" search-input px-2">
                 <select class="form-control select2-hide-search select2-info" value="" id="district" name="huyen" data-dropdown-css-class="select2-info" style="width: 100%;">
-                    <option value="" selected="">Quận / Huyện</option>
-
+                    <option value="0" selected="">Quận / Huyện</option>
+                    @isset($search_address )
+                        @foreach ($search_address->districts ?? [] as $district)
+                            <option data-slug="{{$district->slug}}" value="{{$district->code}}"
+                            @if (isset($search_address->current_district) && $search_address->current_district == $district->code )
+                                selected
+                            @endif
+                            >{{$district->name_with_type}}</option>
+                        @endforeach
+                    @endisset
                 </select>
             </div>
 
@@ -38,9 +78,21 @@
                     @foreach ($list =  config('constant.realty_area_range') as $index => $item)
                     <li>
                         @if ($index < count($list) - 1 )
-                        <option value="{{$item}},{{$list[$index + 1]}}">{{$item}} m2 - {{$list[$index + 1]}} m2</option>
+                        <option value="{{$item}},{{$list[$index + 1]}}"
+                        @isset($filter_search['realty.area_between'])
+                            @if ($filter_search['realty.area_between'] == $item . "," .$list[$index + 1])
+                            selected
+                            @endif
+                        @endisset
+                        >{{$item}} m2 - {{$list[$index + 1]}} m2</option>
                         @else
-                        <option value="{{$item}},10000">Trên {{$item}} m2</option>
+                        <option value="{{$item}},10000"
+                        @isset($filter_search['realty.area_between'])
+                            @if ($filter_search['realty.area_between'] == $item . "," . "10000")
+                            selected
+                            @endif
+                        @endisset
+                        >Trên {{$item}} m2</option>
                         @endif
                         </span></label>
                     </li>
@@ -54,9 +106,24 @@
                     @foreach (config('constant.realty_post_type') as $type_id => $realty_post_type)
                         @foreach ($list = $realty_post_type['price_range'] as $index => $range)
                             @if ($index < count($list) - 1 )
-                                <option data-realty-post-type="{{$type_id}}"  name="gia" value="{{$list[$index] *1000000}},{{$list[$index + 1] * 1000000}}">{{\App\Helpers\CurrencyHelper::beautyPrice($list[$index] * 1000000)}} - {{\App\Helpers\CurrencyHelper::beautyPrice($list[$index + 1] * 1000000)}}</option>
+                                <option data-realty-post-type="{{$type_id}}"  name="gia" value="{{$list[$index] *1000000}},{{$list[$index + 1] * 1000000}}"
+
+                                @isset($filter_search['price_between'])
+                                    @if ($filter_search['price_between'] == $list[$index] *1000000 . ',' . $list[$index + 1] * 1000000)
+                                    selected
+                                    @endif
+                                @endisset
+
+                                >{{\App\Helpers\CurrencyHelper::beautyPrice($list[$index] * 1000000)}} - {{\App\Helpers\CurrencyHelper::beautyPrice($list[$index + 1] * 1000000)}}</option>
                             @else
-                                <option data-realty-post-type="{{$type_id}}" name="gia" value="{{$list[$index] *1000000}},10000000000000">Trên {{\App\Helpers\CurrencyHelper::beautyPrice($list[$index] * 1000000)}}</option>
+                                <option data-realty-post-type="{{$type_id}}" name="gia" value="{{$list[$index] *1000000}},10000000000000"
+                                @isset($filter_search['price_between'])
+                                    @if ($filter_search['price_between'] == $list[$index] *1000000 . ',' . "10000000000000")
+                                    selected
+                                    @endif
+                                @endisset
+
+                                >Trên {{\App\Helpers\CurrencyHelper::beautyPrice($list[$index] * 1000000)}}</option>
                             @endif
                         @endforeach
                     @endforeach
@@ -72,14 +139,20 @@
 
                     <div class="">
                         <div>Loại tin rao</div>
-                        <div class="border rounded">
+                        <div class="border rounded form-group">
                             {{-- <i class="d-block fa fa-address-book" aria-hidden="true"></i> --}}
-                            <select class="realty-type form-control border-0 select2-hide-search w-100" name="loai-bds">
+                            <select class="realty-type form-control border-0 select2-hide-search " style="width: 100%;" name="loai-bds">
                                 <option data-realty-post-type="1" value="">Tất cả</option>
                                 <option data-realty-post-type="2" value="">Tất cả</option>
                                 @foreach (config('constant.realty_post_type') as $type =>  $item)
                                     @foreach ($item['realty_type_list'] as  $realty_type)
-                                        <option data-slug="{{config('constant.realty_type.'.$realty_type)['slug']}}" data-realty-post-type="{{$type}}" value="{{$realty_type}}">{{config('constant.realty_type.'.$realty_type)['name']}}</option>
+                                        <option data-slug="{{config('constant.realty_type.'.$realty_type)['slug']}}" data-realty-post-type="{{$type}}" value="{{$realty_type}}"
+                                        @isset($filter_search['loai-bds'])
+                                            @if ($filter_search['loai-bds'] == $realty_type)
+                                            selected
+                                            @endif
+                                        @endisset
+                                        >{{config('constant.realty_type.'.$realty_type)['name']}}</option>
                                     @endforeach
                                 @endforeach
                             </select>
@@ -90,7 +163,16 @@
                         <label for="">Phường xã</label>
                         <div class="rounded border">
                             <select class="select2 select2-info" value="" id="commune" name="xa" data-dropdown-css-class="select2-info" style="width: 100%;">
-                                <option value="" selected="">Tất cả</option>
+                                <option value="">Tất cả</option>
+                                @isset($search_address )
+                                    @foreach ($search_address->communes ?? [] as $commune)
+                                        <option data-slug="{{$commune->slug}}" value="{{$commune->code}}"
+                                        @if (isset($search_address->current_commune) && $search_address->current_commune == $commune->code )
+                                            selected
+                                        @endif
+                                        >{{$commune->name_with_type}}</option>
+                                    @endforeach
+                                @endisset
                             </select>
                         </div>
                     </div>
@@ -110,7 +192,13 @@
                             <select class="form-control select2-hide-search select2-info" value="" name="huong" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="" selected="">Tất cả</option>
                                 @foreach (config('constant.direction') as $index => $item)
-                                    <option value="{{$index}}" >{{$item['name']}}</option>
+                                    <option value="{{$index}}"
+                                    @isset($filter_search['huong'])
+                                        @if ($filter_search['huong'] == $index)
+                                        selected
+                                        @endif
+                                    @endisset
+                                    >{{$item['name']}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -128,7 +216,6 @@
         $(document).on('click', '.search-top .dropdown-menu', function (e) {
             e.stopPropagation();
         });
-
         $("[name=loai-tin-dang]").on('change', function(){
             $postType = $(this).val();
             $(`.realty-type option`).prop('disabled', true);
@@ -137,8 +224,6 @@
             $(`.search-realty-price option`).prop('disabled', true);
             $(`.search-realty-price option[data-realty-post-type=${$postType}]`).prop('disabled', false);
         })
-
-
         function getDistricts(province_code) {
             url = '/get-district-of-province/' + province_code;
             return $.ajax({
@@ -147,15 +232,21 @@
             })
         }
 
+        function renderDistrict(data){
+            var district_inputs = `<option value="0" selected>Quận / huyện</option>`;
+            if (data) {
+                data.forEach(element => {
+                    district_inputs += `<option data-slug="${element.slug}" value="${element.code}" >${element.name_with_type}</option>`
+                });
+            }
+            $('#district').html(district_inputs);
+        }
+
         $('#province').on('change', function () {
             var province_code = $(this).val();
-            var district_inputs = `<option value="" selected>Quận / huyện</option>`;
             getDistricts(province_code)
                 .done(function (data) {
-                    data.forEach(element => {
-                        district_inputs += `<option data-slug="${element.slug}" value="${element.code}" >${element.name_with_type}</option>`
-                    });
-                    $('#district').html(district_inputs);
+                    renderDistrict(data);
                 });
         })
 
@@ -167,21 +258,25 @@
             })
         }
 
+        function getRenderCommune(data){
+            var commune_inputs = `<option value="0" selected>Phường / xã</option>`;
+            data.forEach(element => {
+                commune_inputs += `<option data-slug="${element.slug}" value="${element.code}" >${element.name_with_type}</option>`
+            });
+            $('#commune').html(commune_inputs);
+        }
+
         $(document).on('change', "[name='huyen']", function () {
             var district_code = $(this).val();
-            var commune_inputs = `<option value="" selected>Phường / xã</option>`;
             getCommunes(district_code)
                 .done(function (data) {
-                    data.forEach(element => {
-                        commune_inputs += `<option data-slug="${element.slug}" value="${element.code}" >${element.name_with_type}</option>`
-                    });
-                    $('#commune').html(commune_inputs);
+                    getRenderCommune(data);
                 });
         })
 
-
         function getQuery() {
             var data = $('#form-search').serializeArray();
+            console.log(data);
             var result = {};
             data.forEach(function (item) {
                 if (result[item.name]) {
@@ -191,7 +286,6 @@
                 }
             });
 
-            var query = '/tim-kiem?';
             var queryElem = [];
             if (result['loai-tin-dang']) {
                 queryElem.push( result['loai-tin-dang'] == 2 ? 'cho-thue' : 'ban' )
@@ -202,13 +296,13 @@
                 queryElem.push(realtyTypeSlug);
             }
 
-            if (result['xa']){
+            if (result['xa'] && result['xa'] != 0){
                 var realtyTypeSlug = $('#commune option:selected').data('slug');
                 queryElem.push(realtyTypeSlug);
-            }else if(result['huyen']){
+            }else if(result['huyen'] && result['huyen'] != 0){
                 var realtyTypeSlug = $('#district option:selected').data('slug');
                 queryElem.push(realtyTypeSlug)
-            }else if(result['tinh']){
+            }else if(result['tinh'] && result['tinh'] != 0){
                 var realtyTypeSlug = $('#province option:selected').data('slug');
                 queryElem.push(realtyTypeSlug)
             }
