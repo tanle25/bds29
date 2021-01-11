@@ -50,10 +50,24 @@
                 <span class="text-muted">
                     {{\App\Helpers\TimeHelper::getDateDiffFromNow($item->created_at ?? '')['string']}} truớc
                 </span>
+                @php
+                    $is_featured = false;
+                    if (Auth::user()) {
+                        if($item->featured_by->contains('id', Auth::user()->id)){
+                            $is_featured = true;
+                        }
+                    }
+                @endphp
+                @if ($is_featured)
+                    <div data-post-id="{{$item->id ?? 1}}" class="btnlike like-heart checked">
+                        <i class="fas fa-heart text-info font-12"></i>
+                    </div>
+                @else
+                    <div data-post-id="{{$item->id ?? 1}}" class="btnlike like-heart unchecked">
+                        <i class="far fa-heart text-info font-12"></i>
+                    </div>
+                @endif
 
-                <div data-post-id="1" class="btnlike like-heart unchecked">
-                    <i class="far fa-heart text-info font-12"></i>
-                </div>
             </div>
         </div>
     </div>

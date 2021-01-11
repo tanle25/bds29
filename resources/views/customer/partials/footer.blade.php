@@ -49,9 +49,9 @@
                 <div class="copyright col-md-4 text-center text-light font-8">
                     {!! $theme_options['Script'] ?? '' !!}
                 </div>
-                <div class="col-md-4 ">
+                {{-- <div class="col-md-4 ">
                     <div class="fb-page" data-href="{{$theme_options['facebook'] ?? ''}}" data-tabs="false" data-width="" data-height="" data-lazy="true" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="{{$theme_options['facebook'] ?? ''}}" class="fb-xfbml-parse-ignore"><a href="{{$theme_options['facebook'] ?? ''}}">Facebook</a></blockquote></div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -68,7 +68,7 @@
 @section('script')
     @parent
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=303008451114050&autoLogAppEvents=1" nonce="80UFbrIn"></script>
+    {{-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=303008451114050&autoLogAppEvents=1" nonce="80UFbrIn"></script> --}}
     <script>
         $('.up-to-top-btn').on('click', function(){
             window.scrollTo({
@@ -76,7 +76,7 @@
                 behavior: 'smooth',
             })
         })
-        $(window).on('scroll', function(){
+        window.addEventListener('scroll', function(){
             if ($(window).scrollTop() >= 200) {
                 $('.up-to-top-btn').css({
                     opacity: "1"
@@ -86,6 +86,6 @@
                     opacity: "0"
                 });
             }
-        })
+        }, {passive: true})
     </script>
 @endsection

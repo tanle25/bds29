@@ -89,8 +89,11 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('sua-tin-dang/{id}', [RealtyPostController::class, 'edit'])->name('customer.realty_post.edit');
     Route::post('sua-tin-dang/{id}', [RealtyPostController::class, 'update'])->name('customer.realty_post.update');
     // Featured Realty Post
+    Route::get('featured', [FeaturedPostController::class, 'index'])->name('customer.featured_post.index');
     Route::post('featured/add', [FeaturedPostController::class, 'addRealtyToUserFeatured'])->name('customer.featured_post.add');
     Route::post('featured/remove', [FeaturedPostController::class, 'removeRealtyFromUserFeatured'])->name('customer.featured_post.remove');
+    Route::get('tin-da-luu', [FeaturedPostController::class, 'showListFrontend'])->name('customer.featured_post.show_list');
+
     // get geo
     Route::get('get-geo-by-name', [LocationController::class, 'getGeoByName'])->name('customer.location.get_geo_by_name');
 

@@ -19,6 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('get-realty-post', [RealtyPostResourceController::class, 'getRealtyPosts'])->name('customer.realty_post.get_list');
+Route::get('get-realty-post', [RealtyPostResourceController::class, 'getRealtyPosts']);
 
 Route::post('visit/store', [VisitController::class, 'increaseVisit'])->name('customer.visit.increase');

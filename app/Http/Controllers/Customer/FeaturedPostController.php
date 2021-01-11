@@ -9,6 +9,30 @@ use Illuminate\Http\Request;
 
 class FeaturedPostController extends Controller
 {
+    public function index()
+    {
+        $user = auth()->user();
+        if (!$user) {
+            return abort(404);
+        }
+
+        return $user->featured_realties->map(function ($item) {
+            return $item->only(['id', 'thumb', 'link', 'title']);
+        });
+    }
+
+    public function showListFrontend()
+    {
+        $user = auth()->user();
+        if (!$user) {
+            return abort(404);
+        };
+        $realties = RealtyPost::join('user_featured_posts as ufp', 'ufp.realty_post_id', '=', 'realty_posts.id')
+            ->with(['realty'])
+            ->where('ufp.user_id', $user->id)->paginate(10);
+        return view('customer.pages.realty_post.list_featured_post', ['realties' => $realties]);
+    }
+
     public function addRealtyToUserFeatured(Request $request)
     {
         $request->validate([

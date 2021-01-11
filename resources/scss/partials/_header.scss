@@ -36,3 +36,27 @@
         }
     }
 }
+
+.featured-top {
+    .remove-featured-btn {
+        top: 50%;
+        right: 0px;
+        transform: translateY(-50%);
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        font-size: 17px;
+        display: none;
+    }
+    .featured-item-wraper {
+        &:hover {
+            background-color: $gray-200;
+            .featured-item {
+                .remove-featured-btn {
+                    display: block;
+                }
+            }
+        }
+    }
+}

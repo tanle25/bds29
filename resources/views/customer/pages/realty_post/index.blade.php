@@ -23,11 +23,16 @@
 			<div class="col-md-9">
 				<div class="entry-head-3 mt-2">
 					<div class="ht mb-3">
-                        @if (!empty($links))
-                        <h1 class="font-15">Bất động sản {{$links[count($links) - 1]['name'] ?? ''}}</h1>
+                        @if ($user)
+                            <h1 class="font-15">Tin đăng bởi "{{$user->name ?? 'user'}}"</h1>
                         @else
-                        <h1 class="font-15">Tất cả bất động sản</h1>
+                            @if (!empty($links))
+                            <h1 class="font-15">Bất động sản {{$links[count($links) - 1]['name'] ?? ''}}</h1>
+                            @else
+                            <h1 class="font-15">Tất cả bất động sản</h1>
+                            @endif
                         @endif
+
 						<div class="address font-10 text-secondary d-flex justify-content-between align-items-center">
                             <span class="hot">Hiện có  {{$realties->total()}} bất động sản</span>
 

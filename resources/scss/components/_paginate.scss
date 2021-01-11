@@ -6,7 +6,6 @@
             border-radius: 50%;
             transition: 0.3s;
             cursor: pointer;
-            padding: 7px 5px;
             overflow: hidden;
             width: 35px;
             height: 35px;
@@ -29,6 +28,8 @@
                 font-weight: 600;
                 color: $dark;
                 line-height: 40px;
+                width: 35px;
+                text-align: center;
             }
         }
     }

@@ -12,6 +12,7 @@ use App\Models\Province;
 use App\Models\Realty;
 use App\Models\RealtyPost;
 use App\Models\RealtyPostPayment;
+use App\Models\User;
 use App\Services\FilterService;
 use App\Services\RelatedRealtyService;
 use App\Services\SlugService;
@@ -375,11 +376,9 @@ class RealtyPostController extends Controller
         }
 
         $query_from_slug = $this->realty_slug_helper->getFilterStringFromSlug($search_slug);
-
         $request->request->add(['filter' => $query_from_slug]);
 
         $side_lists = $this->related_realty_service->getRelatedRealty($query_from_slug['loai-tin-dang'] ?? null, null, $query_from_slug['tinh'] ?? null, $query_from_slug['huyen'] ?? null);
-
         $query = RealtyPost::with(
             'author',
             'realty',
@@ -397,6 +396,12 @@ class RealtyPostController extends Controller
             ])
         ;
 
+        $user = null;
+        // If request has us param, get user and pass to view
+        if ($request->has('us')) {
+            $user = User::find($request->us);
+        }
+
         $query = $this->filter_service->filter($query);
         $realties = $query->paginate(12)->onEachSide(5)->appends(request()->query());
         if (!$realties) {
@@ -406,7 +411,7 @@ class RealtyPostController extends Controller
         $query_list = request()->filter;
         $title = $this->getTitleFromQuery($query_list);
 
-        return view('customer.pages.realty_post.index', compact('realties', 'side_lists', 'title'));
+        return view('customer.pages.realty_post.index', compact('realties', 'side_lists', 'title', 'user'));
     }
 
     public function showListCustomer()

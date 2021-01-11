@@ -37,8 +37,8 @@ Trang chủ
                         <img class="lazy" style="height: 100%; object-fit:contain" data-src="{{$partner->logo}}" alt="">
                     </div>
                 </div>
-            </div>
             @endforeach
+            </div>
         </div>
     </section>
 

@@ -31,6 +31,7 @@ class FilterService
                 AllowedFilter::exact('huyen', 'realty.district_code'),
                 AllowedFilter::exact('xa', 'realty.commune_code'),
                 AllowedFilter::exact('du-an', 'realty.project_id'),
+                AllowedFilter::exact('us', 'created_by'),
                 'realty.full_address',
             )
             ->allowedSorts('price', 'area', 'rank');
@@ -71,6 +72,9 @@ class FilterService
                 case 'xa':
                     $result['xa'] = $value;
                     break;
+                case 'us':
+                    $result['us'] = $value;
+                    break;
                 case 'dia-chi':
                     $result['realty.full_address'] = $value;
                     break;
@@ -80,7 +84,6 @@ class FilterService
         }
 
         $this->request->request->set('filter', array_merge($this->request->filter, $result));
-
     }
 
 }

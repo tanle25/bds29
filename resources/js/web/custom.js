@@ -170,7 +170,6 @@ $(document).ready(function(){
     });
 });
 
-
 $(document).ready(function() {
     var bigimage = $("#big");
     var thumbs = $("#thumbs");
