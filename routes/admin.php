@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BankController;
 use App\Http\Controllers\Admin\BillController;
 use App\Http\Controllers\Admin\CommuneController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\FilemanagerController;
 use App\Http\Controllers\Admin\GroundController;
@@ -179,7 +180,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::post('admin-manager/edit/{id}', [AdminManagerController::class, 'update'])->name('admin.admin_manager.update');
     Route::post('admin-manager/destroy/{id}', [AdminManagerController::class, 'destroy'])->name('admin.admin_manager.destroy');
     Route::get('admin-manager/list', [AdminManagerController::class, 'list'])->name('admin.admin_manager.list');
-    //customer
+
+    //customer manager
+    Route::get('customer-manager', [CustomerController::class, 'index'])->name('admin.customer_manager.index');
+    Route::get('customer-manager/create', [CustomerController::class, 'create'])->name('admin.customer_manager.create');
+    Route::post('customer-manager/create', [CustomerController::class, 'store'])->name('admin.customer_manager.store');
+    Route::get('customer-manager/edit/{id}', [CustomerController::class, 'edit'])->name('admin.customer_manager.edit');
+    Route::post('customer-manager/edit/{id}', [CustomerController::class, 'update'])->name('admin.customer_manager.update');
+    Route::post('customer-manager/destroy/{id}', [CustomerController::class, 'destroy'])->name('admin.customer_manager.destroy');
+    Route::get('customer-manager/list', [CustomerController::class, 'list'])->name('admin.customer_manager.list');
+
+//customer
     //Province manager
     Route::get('province', [ProvinceController::class, 'index'])->name('admin.province.index');
     Route::get('province/create', [ProvinceController::class, 'create'])->name('admin.province.create');
