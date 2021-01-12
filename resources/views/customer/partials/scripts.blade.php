@@ -1,7 +1,6 @@
 
 <script src="{{asset('js/main.js')}}"></script>
 @include('customer.partials.alert')
-@include('customer.partials.featured_script')
 
 
 <script>
@@ -210,5 +209,6 @@
     wow.init();
 
 </script>
+@include('customer.partials.featured_script')
 {{-- {!! $theme_options['Script'] ?? '' !!} --}}
 @yield('script')

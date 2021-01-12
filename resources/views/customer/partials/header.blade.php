@@ -79,9 +79,11 @@
                                     <a href="/tin-da-luu">Xem tất cả</a>
                                 </div>
                                 @else
-                                <div class="featured-body text-center my-5">
-                                    <img src="/images/icons/empty-state.svg" class="mb-5" style="width: 70%" alt="">
-                                    <p class="font-11 spacing-1">Bấm <i class="mx-1 font-13 far fa-heart"></i> để lưu tin <br>Và xem lại tin ở đây</p>
+                                <div class="featured-body">
+                                    <div class="text-center">
+                                        <img src="/images/icons/empty-state.svg" class="my-5 mx-auto" style="width: 70%" alt="">
+                                        <p class="font-11 spacing-1">Bấm <i class="mx-1 font-13 far fa-heart"></i> để lưu tin <br>Và xem lại tin ở đây</p>
+                                    </div>
                                 </div>
                                 <div class="text-center featured-show-all py-2" style="display:none">
                                     <a href="/tin-da-luu">Xem tất cả</a>

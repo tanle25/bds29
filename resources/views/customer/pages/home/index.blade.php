@@ -16,7 +16,6 @@ Trang chủ
 @endsection
 
  @section('content')
-
     @include('customer.pages.home.contents.banner_home')
     @include('customer.pages.home.contents.list_bds_hot')
     @include('customer.pages.home.contents.home_post_v2')
