@@ -25,7 +25,7 @@
                     <div class="thumnail">
                         <div id="big" class="lightgallery thumnail-big owl-carousel owl-theme">
                             @foreach ($project->overview_image_array ?? [] as $img)
-                            <div data-src="{{$img}}" class="item embed-responsive embed-responsive-16by9 position-relative">
+                            <div data-src="{{$img}}" class="rounded item embed-responsive embed-responsive-16by9 position-relative">
                                 <div class="blur-bg position-absolute w-100 h-100" style="top: 0;  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('{{$img}}');"></div>
                                 <img class="embed-responsive-item rounded" src="{{$img}}" style="object-fit: contain" alt="">
                             </div>
@@ -43,28 +43,28 @@
             </div>
             <div class="col-md-4 d-flex flex-column justify-content-center h-100">
                 <div>
-                    <h5>Tổng quan dự án</h5>
+                    <h5 class="font-weight-600">Tổng quan dự án</h5>
                     <hr class="my-3">
                     <div class="my-3">
-                        <span>Loại hình dự án: </span> <span>{{config('constant.project_type.'. $project->type)['name'] ?? '---'}}</span>
+                        <span class="text-secondary mr-2">Loại hình dự án: </span> <span>{{config('constant.project_type.'. $project->project_type)['name'] ?? '---'}}</span>
                     </div>
                     <div class="my-3">
-                        <span>Số tòa: </span> <span>{{$project->number_of_buildings ?? '---'}}</span>
+                        <span class="text-secondary mr-2">Số tòa: </span> <span>{{$project->number_of_buildings . 'tòa' ?? '---'}}</span>
                     </div>
                     <div class="my-3">
-                        <span>Số căn: </span> <span>{{$project->number_of_apartments . 'căn' ?? '---'}}</span>
+                        <span class="text-secondary mr-2">Số căn: </span> <span>{{$project->number_of_apartments . 'căn' ?? '---'}}</span>
                     </div>
                     <div class="my-3">
-                        <span>Số tầng: </span> <span>{{$project->number_of_buildings . 'tầng' ?? '---'}}</span>
+                        <span class="text-secondary mr-2">Số tầng: </span> <span>{{$project->number_of_buildings . 'tầng' ?? '---'}}</span>
                     </div>
                     <div class="my-3">
-                        <span>Tổng diện tích: </span> <span>{!!$project->site_area . ' m<sup>2</sup>' ?? '---'!!}</span>
+                        <span class="text-secondary mr-2">Tổng diện tích: </span> <span>{!!$project->site_area . ' m<sup>2</sup>' ?? '---'!!}</span>
                     </div>
                     <div class="my-3">
-                        <span>Diện tích xây dựng: </span> <span>{!!$project->construction_area . ' m<sup>2</sup>' ?? '---'!!}</span>
+                        <span class="text-secondary mr-2">Diện tích xây dựng: </span> <span>{!!$project->construction_area . ' m<sup>2</sup>' ?? '---'!!}</span>
                     </div>
                     <div class="my-3">
-                        <span>Trạng thái: </span> <span class="btn btn-info py-1">{{config('constant.project_status.' . $project->status)['name'] ?? '---'}}</span>
+                        <span class="text-secondary mr-2">Trạng thái: </span> <span class="btn btn-info py-1">{{config('constant.project_status.' . $project->status)['name'] ?? '---'}}</span>
                     </div>
                 </div>
                 <div class="mt-3">
@@ -197,6 +197,21 @@
 
                 </div>
 
+                <div>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h4 class="d-block pr-5 py-0">Tiến độ dự án</h4>
+                        <hr class="w-100 d-block" style="flex: 1">
+                    </div>
+                    <div>
+                        <a  data-toggle="collapse" href="#project-progress" role="button" aria-expanded="false" aria-controls="project-progress" class="text-info d-flex justify-content-between align-itens-center">
+                            <h5 class="font-11 py-2">Thông tin tiến độ</h5> <i class="far fa-chevron-down"></i>
+                        </a>
+                        <div id="project-progress">
+                            {!! $project->project_progress_desc !!}
+                        </div>
+                    </div>
+                </div>
+
                 @if ($project->rent_realty->isNotEmpty())
                     <div id="rental" class="rental page-section">
                         <div class="entry-head text-center pb-2 d-flex  justify-content-between align-items-center">
@@ -233,13 +248,20 @@
                 @endif
             </div>
             <div class="col-md-4">
-                <div class="p-2">
+                <div class="p-3 rounded border mt-4">
                     <div class="d-flex">
-                        <img src="{{$project->}}" alt="">
+                        <div>
+                            <img src="{{$project->partner->logo ?? ''}}" class="pr-2 rounded-circle" style="width:60px; height:60px" alt="">
+                        </div>
+                        <div class="font-9">
+                            <span style="line-height: 1em" class="text-info font-weight-500 font-10">{{$project->partner->name ?? ''}}</span> <br>
+                            <span class="mt-2 d-block">Chủ đầu tư</span>
+                        </div>
+                    </div>
+                    <div class="font-9 mt-2">
+                        {!! $project->partner->description ?? '' !!}
                     </div>
                 </div>
-
-                @include('customer.components.sidebars.realty_sidebar')
             </div>
 		</div>
 	</div>
