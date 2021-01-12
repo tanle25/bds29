@@ -81,6 +81,11 @@ class Project extends Model
         return $this->belongsTo('App\Models\Commune', 'commune_code', 'code');
     }
 
+    public function partner()
+    {
+        return $this->belongsTo('App\Models\Partner', 'partner_id', 'id');
+    }
+
     public function getOverviewImageArrayAttribute()
     {
         return $this->convertImageStringToArray($this->overview_image ?? '', ',');
