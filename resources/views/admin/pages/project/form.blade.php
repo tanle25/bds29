@@ -85,6 +85,60 @@
 
             </div>
 
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <label for="number_of_buildings">Số tòa(<span class="text-red">*</span>)</label>
+                    <input
+                    name="number_of_buildings"
+                    type="number"
+                    class="form-control @error('number_of_buildings') is-invalid @enderror"
+                    id="number_of_buildings"
+                    placeholder="Nhập số tòa"
+                    value="{{$project->number_of_buildings ?? old('number_of_buildings')}}"
+                    >
+                    @error('number_of_buildings')
+                    <div id="" class="error invalid-feedback d-block">
+                        {{$message}}
+                    </div>
+                    @enderror
+                </div>
+
+                <div class="col-md-4 form-group">
+                    <label for="number_of_apartments">Số căn (<span class="text-red">*</span>)</label>
+                    <input
+                    name="number_of_apartments"
+                    type="number"
+                    class="form-control @error('number_of_apartments') is-invalid @enderror"
+                    id="number_of_apartments"
+                    placeholder="Nhập Số căn"
+                    value="{{$project->number_of_apartments ?? old('number_of_apartments')}}"
+                    >
+                    @error('number_of_apartments')
+                    <div id="" class="error invalid-feedback d-block">
+                        {{$message}}
+                    </div>
+                    @enderror
+                </div>
+
+                <div class="col-md-4 form-group">
+                    <label for="number_of_floors">Số tầng (<span class="text-red">*</span>)</label>
+                    <input
+                    name="number_of_floors"
+                    type="number"
+                    class="form-control @error('number_of_floors') is-invalid @enderror"
+                    id="number_of_floors"
+                    placeholder="Nhập số tầng"
+                    value="{{$project->number_of_floors ?? old('number_of_floors')}}"
+                    >
+                    @error('number_of_floors')
+                    <div id="" class="error invalid-feedback d-block">
+                        {{$message}}
+                    </div>
+                    @enderror
+                </div>
+
+            </div>
+
             <div class="form-group">
                 <label for="investor">Chủ dự án(<span class="text-red">*</span>)</label>
                 <input
