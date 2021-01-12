@@ -26,6 +26,12 @@
                     var component = createFeaturedBox(item);
                     $('.featured-body').append(component);
                 })
+
+                if (data) {
+                    $('.featured-show-all').show()
+                }else{
+                    $('.featured-show-all').hide()
+                }
             });
         }
 

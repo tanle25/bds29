@@ -55,8 +55,9 @@
                                 <i class="far fa-heart"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-center mt-3 shadow-10 border-0 " style="width:400px; z-index: 100" aria-labelledby="dropdownMenuButton1">
-                                <div class="text-center border-bottom py-2"><strong>Tin đăng đã lưu</strong></div>
-                                <div class="featured-body">
+                                <div class="text-center border-bottom py-2 font-11"><strong>Tin đăng đã lưu</strong></div>
+                                @if ($featured_posts->isNotEmpty())
+                                <div class=" featured-body">
                                     @if ($featured_posts->isNotEmpty())
                                         @foreach ($featured_posts->take(6) as $item)
                                         <div class="border-bottom featured-item-wraper py-2 px-3">
@@ -74,9 +75,19 @@
                                         @endforeach
                                     @endif
                                 </div>
-                                <div class="text-center py-2">
+                                <div class="text-center py-2 featured-show-all" style="display:block">
                                     <a href="/tin-da-luu">Xem tất cả</a>
                                 </div>
+                                @else
+                                <div class="featured-body text-center my-5">
+                                    <img src="/images/icons/empty-state.svg" class="mb-5" style="width: 70%" alt="">
+                                    <p class="font-11 spacing-1">Bấm <i class="mx-1 font-13 far fa-heart"></i> để lưu tin <br>Và xem lại tin ở đây</p>
+                                </div>
+                                <div class="text-center featured-show-all py-2" style="display:none">
+                                    <a href="/tin-da-luu">Xem tất cả</a>
+                                </div>
+                                @endif
+
                             </div>
                         </div>
                         <a class="text-dark font-9" href="/tai-khoan">
