@@ -136,25 +136,36 @@
                     </div>
                     @enderror
                 </div>
-
             </div>
-
-            <div class="form-group">
-                <label for="investor">Chủ dự án(<span class="text-red">*</span>)</label>
-                <input
-                name="investor"
-                type="text"
-                class="form-control @error('investor') is-invalid @enderror"
-                id="investor"
-                placeholder="Chủ dự án"
-                value="{{$project->investor ?? old('investor')}}"
-                >
-                @error('investor')
-                <div id="" class="error invalid-feedback d-block">
-                        {{$message}}
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="investor">Chủ dự án(<span class="text-red">*</span>)</label>
+                    <input
+                    name="investor"
+                    type="text"
+                    class="form-control @error('investor') is-invalid @enderror"
+                    id="investor"
+                    placeholder="Chủ dự án"
+                    value="{{$project->investor ?? old('investor')}}"
+                    >
+                    @error('investor')
+                    <div id="" class="error invalid-feedback d-block">
+                            {{$message}}
+                    </div>
+                    @enderror
                 </div>
-                @enderror
+
+                <div class="form-group col-md-6">
+                    <label>Đốí tác xây dựng</label>
+                    <select class="form-control select2 select2-info" value="" name="partner_id" data-dropdown-css-class="select2-info"
+                        style="width: 100%;">
+                        @foreach ($partners as $index =>  $partner)
+                        <option value="{{$partner->id}}" @if (isset($project) && $project->partner_id == $partner->id) selected @endif >{{$partner->name ?? ''}}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
+
 
             @include('admin.pages.project.location_picker')
 
@@ -173,6 +184,32 @@
                 'current_input' => $project->location_description ?? old('location_description') ?? ''
                 ])
                 @error('location_description')
+                <div id="" class="error invalid-feedback d-block">
+                    {{$message}}
+                </div>
+                @enderror
+            </div>
+
+            <div class="form-group ">
+                <label class="control-label">Mô tả tiến độ</label>
+                @include('admin.components.ckeditor', ['id' => 'project_progress_desc',
+                'name' => 'project_progress_desc',
+                'current_input' => $project->project_progress_desc ?? old('project_progress_desc') ?? ''
+                ])
+                @error('project_progress_desc')
+                <div id="" class="error invalid-feedback d-block">
+                    {{$message}}
+                </div>
+                @enderror
+            </div>
+
+            <div class="form-group ">
+                <label class="control-label">Tiện ích</label>
+                @include('admin.components.ckeditor', ['id' => 'utilities_desc',
+                'name' => 'utilities_desc',
+                'current_input' => $project->utilities_desc ?? old('utilities_desc') ?? ''
+                ])
+                @error('utilities_desc')
                 <div id="" class="error invalid-feedback d-block">
                     {{$message}}
                 </div>
