@@ -233,6 +233,12 @@
                 @endif
             </div>
             <div class="col-md-4">
+                <div class="p-2">
+                    <div class="d-flex">
+                        <img src="{{$project->}}" alt="">
+                    </div>
+                </div>
+
                 @include('customer.components.sidebars.realty_sidebar')
             </div>
 		</div>
