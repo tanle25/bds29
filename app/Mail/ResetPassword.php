@@ -10,8 +10,8 @@ class ResetPassword extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $url;
-    protected $user;
+    public $url;
+    public $user;
 
     /**
      * Create a new message instance.

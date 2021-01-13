@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\ThemeOptionController;
 use App\Http\Controllers\Admin\WebConfigController;
 use App\Http\Controllers\Admin\WidgetController;
+use App\Http\Controllers\Auth\AdminLoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
