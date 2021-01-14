@@ -22,7 +22,7 @@
                     <div class="tab-pane @if($index == 0) active @else fade @endif  p-0" id="cat{{$post_category->id}}">
                         <div class="row">
                             @php
-                                $top_post = $post_category->posts->first();
+                                $top_post = $post_category->posts->sortByDesc('id')->first();
                                 if ($top_post) {
                                     $link = route('customer.post.show',['cat_slug' => $post_category->slug ?? 'danh-muc', 'post_slug' => $top_post->slug] );
                                 }
@@ -37,7 +37,7 @@
                                 @endif
                             </div>
                             <div class="col-md-6">
-                                @foreach ($post_category->posts->skip(1)->take(7) as $post)
+                                @foreach ($post_category->posts->sortByDesc('id')->skip(1)->take(7) as $post)
                                     @php
                                         $link = route('customer.post.show',['cat_slug' => $post_category->slug ?? 'danh-muc', 'post_slug' => $post->slug] )
                                     @endphp
