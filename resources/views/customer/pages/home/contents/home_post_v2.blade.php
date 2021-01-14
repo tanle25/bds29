@@ -31,7 +31,7 @@
                             <div class="col-md-6">
                                 @if ($top_post)
                                 <a href=""class="d-block img-wraper rounded pt-2 mb-3" style="overflow:hidden">
-                                    <img class="img-fluid" style="height: 264px" src="{{$top_post->avatar ?? ''}}" alt="" srcset="">
+                                    <img class="img-fluid" style="height: 264px" src="{{Str::replaceLast(',', '', $top_post->avatar) ?? ''}}" alt="" srcset="">
                                 </a>
                                 <a class="font-12 main-text "  href="{{$link ?? '#' }}"><strong class="mt-3"> {{$top_post->name}}</strong></a>
                                 <p class="pt-2 text-secondary"><i class="far fa-clock"></i> {{App\Helpers\TimeHelper::getDateDiffFromNow($top_post->created_at)['string'] ?? ''}} trước</p>
