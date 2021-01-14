@@ -42,10 +42,6 @@ Trang chủ
     </section>
 
     @include('customer.pages.home.contents.contact')
-
-    @isset($horizontal_advertisments)
-        @include('customer.components.advertisments.horizontal', ['items' => $horizontal_advertisments, 'items_mobile' => $mobile_horizontal_advertisments])
-    @endisset
 @endsection
 
 @section('script')
