@@ -50,7 +50,7 @@
                     {!! $theme_options['footer_map_iframe'] ?? '' !!}
                 </div>
                 <div class="col-md-4 ">
-                    {{$theme_options['footer_fb_iframe'] ?? ''}}
+                    {!! $theme_options['footer_fb_iframe'] ?? ''!!}
                 </div>
             </div>
         </div>

@@ -68,6 +68,7 @@
 </section>
 
 @section('script')
+@parent
     <script>
     $('.post-category-list').owlCarousel({
         autoplay:false,

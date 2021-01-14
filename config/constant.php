@@ -182,6 +182,12 @@ return [
             '2' => [
                 'name' => 'Quảng cáo ngang',
             ],
+            '3' => [
+                'name' => 'Quảng cáo dọc mobile',
+            ],
+            '4' => [
+                'name' => 'Quảng cáo ngang mobile',
+            ],
         ],
 
         'status' => [
