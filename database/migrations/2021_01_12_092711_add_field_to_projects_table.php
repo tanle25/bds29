@@ -20,7 +20,6 @@ class AddFieldToProjectsTable extends Migration
             $table->unsignedBigInteger('partner_id');
             $table->longText('utilities_desc')->nullable();
             $table->longText('project_progress_desc')->nullable();
-
         });
 
         Schema::create('project_documents', function (Blueprint $table) {
