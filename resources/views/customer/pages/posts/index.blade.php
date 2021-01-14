@@ -88,8 +88,8 @@ Tin tức bất động sản
 
                 @foreach ($post_categories->take(4) as $category)
                     @php
-                        $top_post = $category->posts->first();
-                        $posts = $category->posts;
+                        $top_post = $category->posts->sortByDesc('id')->first();
+                        $posts = $category->posts->sortByDesc('id');
                     @endphp
                     @if ($posts->isNotEmpty())
                         <div class="category-posts mt-5">

@@ -12,7 +12,7 @@ class PostController extends Controller
     public function show($cat_slug, $post_slug)
     {
 
-        $post = Post::where('slug', $post_slug)->with('tags', 'categories', 'categories.posts', 'categories.posts.categories')->first();
+        $post = Post::where('slug', $post_slug)->where('status', 1)->with('tags', 'categories', 'categories.posts', 'categories.posts.categories')->first();
         if (!$post) {
             return abort(404);
         }
@@ -31,7 +31,7 @@ class PostController extends Controller
     {
         $posts = Post::orderByDesc('id')->paginate(9);
         $post_categories = PostCategory::with('posts', 'posts.tags')->take(10)->get();
-        $featured_posts = Post::with('categories')->take(7)->get();
+        $featured_posts = Post::orderByDesc('id')->with('categories')->take(7)->get();
 
         return view('customer.pages.posts.index', compact('posts', 'post_categories', 'featured_posts'));
     }

@@ -64,7 +64,7 @@
                         {{-- <div class="special"><span>Đặc biệt</span></div> --}}
                         @endif
 						<div class="thumnail">
-							<div id="big" class="lightgallery thumnail-big owl-carousel owl-theme">
+							<div id="big" class="lightgallery thumnail-big owl-carousel">
 								@foreach ($images as $img)
                                 <div data-src="{{$img}}" class="item embed-responsive embed-responsive-16by9 position-relative">
                                     <div class="blur-bg position-absolute w-100 h-100" style="top: 0;  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('{{$img}}');"></div>

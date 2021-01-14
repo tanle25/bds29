@@ -11,6 +11,13 @@
 
 @section('title'){{$seo->title ?? $post->name}}@endsection
 
+@section('css')
+    <style>
+        .post-content img{
+            max-width: 100% !important;
+        }
+    </style>
+@endsection
 @section('content')
 <div class="single-post hrm-bg-secondary">
 	<div class="container pt-3">

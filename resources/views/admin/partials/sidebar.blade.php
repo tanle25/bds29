@@ -77,7 +77,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-tools nav-icon"></i>
+                        <i class="nav-icon fas fa-clipboard-list"></i>
                         <p>
                             Quản lý tin rao vặt
                             <i class="fas fa-angle-left right"></i>
@@ -203,7 +203,7 @@
 
                 <li class="nav-item has-treeview">
                     <a href="/admin/admin-manager" class="nav-link">
-                        <i class="fas fa-user nav-icon"></i>
+                        <i class="fas fa-user-shield nav-icon"></i>
                         <p>
                             Quản trị viên
                         </p>
@@ -239,7 +239,7 @@
 
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="fas nav-icon fa-ad"></i>
+                        <i class="fas fa-map-marked-alt nav-icon"></i>
                         <p>
                             Đơn vị hành chính
                             <i class="fas fa-angle-left right"></i>

@@ -18315,12 +18315,12 @@ $(document).ready(function () {
   bigimage.owlCarousel({
     items: 1,
     slideSpeed: 2000,
-    nav: false,
+    nav: true,
     autoplay: true,
     dots: false,
     loop: true,
     responsiveRefreshRate: 200,
-    navText: ['<i class="fa fa-arrow-left" aria-hidden="true"></i>', '<i class="fa fa-arrow-right" aria-hidden="true"></i>']
+    navText: ["<div style='left: 20px' class='owl-nav-btn prev-slide'><i class='fas fa-chevron-left'></i></div>", "<div class='owl-nav-btn next-slide' style='right: 20px'><i class='fas fa-chevron-right'></i></div>"]
   }).on("changed.owl.carousel", syncPosition);
   thumbs.on("initialized.owl.carousel", function () {
     thumbs.find(".owl-item").eq(0).addClass("current");

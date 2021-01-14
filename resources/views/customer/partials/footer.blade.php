@@ -47,10 +47,10 @@
                     </div>
                 </div>
                 <div class="copyright col-md-4 text-center text-light font-8">
-                    {!! $theme_options['Script'] ?? '' !!}
+                    {!! $theme_options['footer_map_iframe'] ?? '' !!}
                 </div>
                 <div class="col-md-4 ">
-                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&tabs&width=370&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=303008451114050" width="100%" height="130" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    {{$theme_options['footer_fb_iframe'] ?? ''}}
                 </div>
             </div>
         </div>
