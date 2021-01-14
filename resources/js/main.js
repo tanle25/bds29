@@ -1,6 +1,6 @@
 require('default-passive-events');
 window.$ = window.jQuery = require('jquery');
-window.popper = require('./web/popper');
+// window.popper = require('./web/popper');
 require('bootstrap');
 require('./web/owl.carousel');
 window.WOW =  require('./web/wow.min');

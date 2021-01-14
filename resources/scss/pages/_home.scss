@@ -84,11 +84,18 @@
     border-radius: 50%;
     background-color: white;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.404);
+    z-index: 1000;
     &.next-slide {
         right: -8px;
+        &.banner-nav {
+            right: 20px;
+        }
     }
     &.prev-slide {
         left: -8px;
+        &.banner-nav {
+            left: 20px;
+        }
     }
 }
 

@@ -185,10 +185,8 @@ $(document).ready(function() {
         dots: false,
         loop: true,
         responsiveRefreshRate: 200,
-        navText: [
-        '<i class="fa fa-arrow-left" aria-hidden="true"></i>',
-        '<i class="fa fa-arrow-right" aria-hidden="true"></i>'
-        ]
+        navText:["<div class='owl-nav-btn prev-slide'><i class='fas fa-chevron-left'></i></div>","<div class='owl-nav-btn next-slide'><i class='fas fa-chevron-right'></i></div>"],
+
     })
     .on("changed.owl.carousel", syncPosition);
 

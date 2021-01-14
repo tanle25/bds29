@@ -10,7 +10,7 @@
 
 <div class="col-md-4 sidebar">
     {{-- Chuyên mục được yêu thích --}}
-    <div class="rounded-1 bg-white p-3 mb-3" >
+    {{-- <div class="rounded-1 bg-white p-3 mb-3" >
         <h4 class="uppercase font-w-600">Chuyên mục được yêu thích</h4>
         @isset($post_categories)
         @foreach ($post_categories->take(10) as $category)
@@ -19,7 +19,7 @@
         </a>
         @endforeach
         @endisset
-    </div>
+    </div> --}}
 
     {{-- Chuyên mục được yêu thích --}}
     @isset($featured_posts)
@@ -52,8 +52,8 @@
     </div>
     @endisset
 
-    {{-- Chuyên mục được yêu thích --}}
-    <div class="rounded-1 bg-white p-3 mb-3" >
+    Chuyên mục được yêu thích
+    {{-- <div class="rounded-1 bg-white p-3 mb-3" >
         <h4 class="uppercase font-w-600">Chủ đề được yêu thích</h4>
         @isset($featured_tags)
         @foreach ($featured_tags as $tag)
@@ -62,7 +62,7 @@
         </a>
         @endforeach
         @endisset
-    </div>
+    </div> --}}
 
 
     {{-- Chuyên mục được yêu thích --}}

@@ -16,7 +16,6 @@ Trang chủ
 @endsection
 
  @section('content')
-
     @include('customer.pages.home.contents.banner_home')
     @include('customer.pages.home.contents.hot_realty')
     @if($home_projects->isNotEmpty())
@@ -44,10 +43,10 @@ Trang chủ
 
     @include('customer.pages.home.contents.contact')
 
-    {{-- @isset($horizontal_advertisments)
-        @include('customer.components.advertisments.horizontal', ['items' => $horizontal_advertisments])
-    @endisset --}}
-    @endsection
+    @isset($horizontal_advertisments)
+        @include('customer.components.advertisments.horizontal', ['items' => $horizontal_advertisments, 'items_mobile' => $mobile_horizontal_advertisments])
+    @endisset
+@endsection
 
 @section('script')
 @parent

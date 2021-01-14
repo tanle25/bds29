@@ -12,7 +12,7 @@
 @section('title'){{$seo->title ?? implode(' ', $title)}}@endsection
 
 @section('content')
-@include('customer.components.search_top')
+@include('customer.components.search_top', ['filter_search' => $filter_search, 'search_address' => $search_address])
 <div class="page-content hrm-bg-secondary">
 	<div class="container">
         <div class="pt-3">{{\App\Helpers\Breadcrumbs\RealtyBreadcrumbHelper::render() }} </div>

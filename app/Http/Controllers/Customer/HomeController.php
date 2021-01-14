@@ -46,8 +46,8 @@ class HomeController extends Controller
         if ($random_realties->count() >= 6) {
             $random_realties = $random_realties->random(6)->sortByDesc('rank');
         }
+
         $partners = Partner::where('rank', 1)->take(10)->get();
-        $home_why_choose = $widgets->where('name', 'home_why_choose')->first()->data_array;
-        return view('customer.pages.home.index', compact('partners', 'random_realties', 'home_projects', 'provinces', 'featured_district', 'home_featured_cats', 'home_featured_post', 'home_why_choose'));
+        return view('customer.pages.home.index', compact('partners', 'random_realties', 'home_projects', 'provinces', 'featured_district', 'home_featured_cats', 'home_featured_post'));
     }
 }

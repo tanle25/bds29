@@ -11,7 +11,7 @@ class CurrencyHelper
         } elseif ($price > 0) {
             return round($price / 1000000, 0) . ' triệu';
         } else {
-            return '';
+            return '0';
         }
     }
 }

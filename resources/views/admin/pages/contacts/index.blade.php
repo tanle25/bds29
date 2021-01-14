@@ -27,6 +27,7 @@
                         <th>Họ và tên</th>
                         <th>Email</th>
                         <th>Số điện thoại</th>
+                        <th>Nội dung</th>
                         <th>Thao tác</th>
                     </tr>
                   </thead>
@@ -59,6 +60,7 @@
                     { "data": "fullname"},
                     { "data": "email"},
                     { "data": "phone_number"},
+                    { "data": "messages"},
                     { "data": "action", 'width': '80px' },
                 ],
             })

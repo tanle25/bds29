@@ -2,6 +2,9 @@
 
 namespace App\Services;
 
+use App\Models\Commune;
+use App\Models\District;
+use App\Models\Province;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -84,6 +87,68 @@ class FilterService
         }
 
         $this->request->request->set('filter', array_merge($this->request->filter, $result));
+        return $this->request->filter;
     }
 
+    public function getSearchAddress()
+    {
+        $search_field = $this->readQuery();
+        if (isset($search_field['tinh'])) {
+            if (!empty(config('constant.provinces'))) {
+                $provinces = Province::whereIn('code', config('constant.provinces'))->get();
+            } else {
+                $provinces = Province::orderBy('slug')->get();
+            }
+            $current_province = $search_field['tinh'];
+            $province = Province::with('districts')->where('code', $search_field['tinh'])->first();
+
+            // tạo object
+            $result = new \stdClass();
+            $result->provinces = $provinces;
+            $result->current_province = $current_province;
+            $result->districts = $province->districts;
+            return $result;
+        }
+
+        if (isset($search_field['huyen'])) {
+            $district = District::with(['communes', 'province', 'province.districts'])->where('code', $search_field['huyen'])->first();
+            if (!$district) {
+                return null;
+            }
+            $current_district = $search_field['huyen'];
+            $current_province = $district->province->code;
+            $districts = $district->province->districts;
+            // tạo object
+            $result = new \stdClass();
+
+            $result->current_province = $current_province;
+            $result->districts = $districts;
+            $result->current_district = $current_district;
+            $result->communes = $district->communes;
+
+            return $result;
+        }
+
+        if (isset($search_field['xa'])) {
+            $commune = Commune::with([
+                'district',
+                'district.communes',
+                'district.province',
+                'district.province.districts',
+            ])->where('code', $search_field['xa'])->first();
+            if (!$commune) {
+                return null;
+            }
+            $result = new \stdClass();
+
+            $result->current_commune = $search_field['xa'];
+            $result->current_district = $commune->district->code;
+            $result->current_province = $commune->district->province->code;
+            $result->communes = $commune->district->communes;
+            $result->districts = $commune->district->province->districts;
+            return $result;
+        }
+
+        return null;
+    }
 }

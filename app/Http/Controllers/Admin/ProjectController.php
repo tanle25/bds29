@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
 use App\Models\Commune;
 use App\Models\District;
+use App\Models\Partner;
 use App\Models\Project;
 use App\Models\Province;
 use Carbon\Carbon;
@@ -25,8 +26,8 @@ class ProjectController extends Controller
         } else {
             $provinces = Province::orderBy('slug')->get();
         }
-
-        return view('admin.pages.project.create', compact('provinces'));
+        $partners = Partner::all();
+        return view('admin.pages.project.create', compact('provinces', 'partners'));
     }
 
     public function store(ProjectRequest $request)
@@ -56,8 +57,9 @@ class ProjectController extends Controller
         };
         $districts = District::where('parent_code', $project->district->parent_code ?? 0)->get();
         $communes = Commune::where('parent_code', $project->commune->parent_code ?? 0)->get();
+        $partners = Partner::all();
 
-        return view('admin.pages.project.edit', compact('project', 'provinces', 'districts', 'communes'));
+        return view('admin.pages.project.edit', compact('project', 'provinces', 'districts', 'communes', 'partners'));
     }
 
     public function update(ProjectRequest $request, $id)

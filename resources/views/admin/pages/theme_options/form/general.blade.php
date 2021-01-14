@@ -113,10 +113,17 @@
         </div>
 
         <div class="form-group ">
-			<label class="control-label">Content đáy trang</label>
-			@include('admin.components.ckeditor', ['id' => 'Script',
-				'name' => 'Script',
-				'current_input' => $theme_options['Script'] ?? ''
+			<label class="control-label">Iframe Google map</label>
+			@include('admin.components.ckeditor', ['id' => 'footer_map_iframe',
+				'name' => 'footer_map_iframe',
+				'current_input' => $theme_options['footer_map_iframe'] ?? ''
+			])
+        </div>
+        <div class="form-group ">
+			<label class="control-label">Iframe facebook</label>
+			@include('admin.components.ckeditor', ['id' => 'footer_fb_iframe',
+				'name' => 'footer_fb_iframe',
+				'current_input' => $theme_options['footer_fb_iframe'] ?? ''
 			])
 		</div>
   	</div>

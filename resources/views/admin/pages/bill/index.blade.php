@@ -2,11 +2,6 @@
 @section('title')
 Trang chủ
 @endsection
-<<<<<<< HEAD
-
-@include('admin.components.datatable_resource')
-=======
->>>>>>> core_admin
 
 @section('content')
 @include('admin.partials.content_header', ['title' => 'Hóa đơn nạp tiền'])

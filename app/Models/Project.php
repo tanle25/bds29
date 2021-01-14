@@ -13,7 +13,7 @@ class Project extends Model
     protected $append = ['thumb'];
 
     protected $fillable = [
-        "id", "name", 'slug', "investor", "avatar", "full_address", "street", "google_map_lat", "google_map_lng", "province_code", "district_code", "commune_code", "location_description", "site_area", "construction_area", "project_type", "start_time", "launch_time", "status", "description", "promotion_term", "overview_image", "overall_diagram", "gallery", "created_at", "updated_at",
+        "id", "name", 'slug', "investor", "avatar", "full_address", "street", "google_map_lat", "google_map_lng", "province_code", "district_code", "commune_code", "location_description", "site_area", "construction_area", "project_type", "start_time", "launch_time", "status", "description", "promotion_term", "overview_image", "overall_diagram", "gallery", "created_at", "updated_at", "number_of_floors", "number_of_buildings", "number_of_apartments", 'project_progress_desc', 'utilities_desc', 'partner_id',
     ];
 
     public function realty_posts()
@@ -79,6 +79,11 @@ class Project extends Model
     public function commune()
     {
         return $this->belongsTo('App\Models\Commune', 'commune_code', 'code');
+    }
+
+    public function partner()
+    {
+        return $this->belongsTo('App\Models\Partner', 'partner_id', 'id');
     }
 
     public function getOverviewImageArrayAttribute()

@@ -64,7 +64,7 @@
                         {{-- <div class="special"><span>Đặc biệt</span></div> --}}
                         @endif
 						<div class="thumnail">
-							<div id="big" class="lightgallery thumnail-big owl-carousel owl-theme">
+							<div id="big" class="lightgallery thumnail-big owl-carousel">
 								@foreach ($images as $img)
                                 <div data-src="{{$img}}" class="item embed-responsive embed-responsive-16by9 position-relative">
                                     <div class="blur-bg position-absolute w-100 h-100" style="top: 0;  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('{{$img}}');"></div>
@@ -166,6 +166,12 @@
                         </div>
                     </div>
 
+
+                    <div class="mt-4 pb-4">
+                        <h2 class="font-15 pb-2" id="map-show">Xem trên bản đồ</h2>
+                        <div id="map" style="width: 100%; height:290px"></div>
+                    </div>
+
                     @if ($realty_post->tags->isNotEmpty())
                         <div class="mt-4 border-bottom pb-5">
                             <h2 class="font-15 pb-2">Tìm kiếm theo từ khóa</h2>
@@ -176,11 +182,6 @@
                             </div>
                         </div>
                     @endif
-
-                    <div class="mt-4 pb-4">
-                        <h2 class="font-15 pb-2" id="map-show">Xem trên bản đồ</h2>
-                        <div id="map" style="width: 100%; height:290px"></div>
-                    </div>
 
                     <div class="mt-4 pb-4">
                         <h2 class="font-15 pb-2">Bất động sản cùng khu vực</h2>
@@ -285,7 +286,6 @@
         @endif
     </a>
 </div>
-
 
 <script defer src="https://maps.googleapis.com/maps/api/js?key={{config('api_keys.google_map')}}&callback=initMap"> </script>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=369134871016071&autoLogAppEvents=1" nonce="KzqM94bd"></script>

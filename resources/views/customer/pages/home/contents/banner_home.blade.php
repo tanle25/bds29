@@ -34,10 +34,9 @@
         </div>
     @endif
 
-	<div class="container mx-auto pt-1">
-
+	<div class="container mx-auto clearfix pt-md-5 ">
 		<div class="divtext text-center  d-none d-md-block">
-			<h2><strong> BẤT ĐỘNG SẢN DỄ DÀNG</strong></h2>
+			<h2><strong> BẤT ĐỘNG SẢN TÂY NINH</strong></h2>
 			<p>Tìm kiếm bất động sản chỉ với một cú click chuột</p>
 		</div>
 		<div class="section-filter-home d-none d-md-block">
@@ -52,7 +51,6 @@
                         <label class="py-2 px-4 m-0 font-9 rounded-top" for="realty-rent"><strong>NHÀ ĐẤT CHO THUÊ</strong></label>
                     </div>
                 </div>
-
                 <div class="search-field p-2 ">
                     <div class="pt-2">
                         <div class="search-field-header bg-white d-md-flex align-items-center mx-2">
@@ -167,7 +165,6 @@
                         <button id="apply-search" type="button" class=" d-block d-md-none btn btn-info px-5 mx-auto rounded">Tìm kiếm</button>
                     </div>
                 </div>
-
             </form>
 		</div>
 	</div>
@@ -305,7 +302,6 @@
 
         $('.ms-search').on('click', function(e){
             e.stopPropagation();
-
         })
 
         $('.search-type label').on('click', function(){
@@ -321,7 +317,8 @@
         autoplay: true,
         autoplayHoverPause:true,
         dots:false,
-        nav:false,
+        nav:true,
+        navText:["<div class='owl-nav-btn banner-nav prev-slide'><i class='fas fa-chevron-left'></i></div>","<div class='owl-nav-btn next-slide banner-nav'><i class='fas fa-chevron-right'></i></div>"],
         autoplayTimeout:10000,
         autoplaySpeed:1000,
         smartSpeed:1000,

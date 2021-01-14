@@ -144,6 +144,14 @@
         });
     };
     // ckeditor config
+
+    @php
+        $font_list = '';
+        for ($i = 8; $i <= 72; $i++) {
+            $font_list .= "{$i}/{$i}px;";
+        }
+    @endphp
+
     var ckeditor_options = {
         filebrowserImageBrowseUrl: '/admin/laravel-filemanager?type=Images',
         filebrowserImageUploadUrl: '/admin/laravel-filemanager/upload?type=Images&_token=',
@@ -151,7 +159,9 @@
         filebrowserUploadUrl: '/admin/laravel-filemanager/upload?type=Files&_token=',
         extraPlugins: 'lineheight',
 
-        allowedContent: true
+        allowedContent: true,
+        fontSize_sizes:  "{{$font_list}}",
+
     };
 
     $(function () {

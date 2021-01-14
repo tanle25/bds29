@@ -11,6 +11,13 @@
 
 @section('title'){{$seo->title ?? $post->name}}@endsection
 
+@section('css')
+    <style>
+        .post-content img{
+            max-width: 100% !important;
+        }
+    </style>
+@endsection
 @section('content')
 <div class="single-post hrm-bg-secondary">
 	<div class="container pt-3">
@@ -35,16 +42,13 @@
                         <div class="mb-3" style="font-weight: 500">
                             {{$post->short_description ?? ''}}
                         </div>
-
                         <div class="post-share">
-
                         </div>
                     </div>
                     <div class="post-content">
                         {!! $post->content !!}
                     </div>
                 </div>
-
                 <div class="blog-post post-related  bg-white mt-3">
                     <h2 class="font-15 p-3 related-title">Các tin liên quan</h2>
                     <div class="list-blog-post list-related">

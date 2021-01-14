@@ -28,6 +28,9 @@ $fonts: 300, 400, 500, 600, 700;
         .font#{$infix}-12 {
             font-size: 1.2rem !important;
         }
+        .font#{$infix}-13 {
+            font-size: 1.3rem !important;
+        }
 
         @each $font in $fonts {
             .font-weight#{$infix}-#{$font} {

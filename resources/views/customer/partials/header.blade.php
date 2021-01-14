@@ -51,12 +51,13 @@
                     @endphp
                     <div class="login-logout d-flex align-items-center">
                         <div class="dropdown featured-top">
-                            <button class="btn rounded-circle text-dark list-featured-btn bg-white font-14" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                            <button class="btn rounded-circle text-dark px-2 py-1 list-featured-btn bg-white font-14" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
                                 <i class="far fa-heart"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-center mt-3 shadow-10 border-0 " style="width:400px; z-index: 100" aria-labelledby="dropdownMenuButton1">
-                                <div class="text-center border-bottom py-2"><strong>Tin đăng đã lưu</strong></div>
-                                <div class="featured-body">
+                                <div class="text-center border-bottom py-2 font-11"><strong>Tin đăng đã lưu</strong></div>
+                                @if ($featured_posts->isNotEmpty())
+                                <div class=" featured-body">
                                     @if ($featured_posts->isNotEmpty())
                                         @foreach ($featured_posts->take(6) as $item)
                                         <div class="border-bottom featured-item-wraper py-2 px-3">
@@ -74,12 +75,22 @@
                                         @endforeach
                                     @endif
                                 </div>
-                                <div class="text-center py-2">
+                                <div class="text-center py-2 featured-show-all" style="display:block">
                                     <a href="/tin-da-luu">Xem tất cả</a>
                                 </div>
+                                @else
+                                <div class="featured-body">
+                                    <div class="text-center">
+                                        <img src="/images/icons/empty-state.svg" class="my-5 mx-auto" style="width: 70%" alt="">
+                                        <p class="font-11 spacing-1">Bấm <i class="mx-1 font-13 far fa-heart"></i> để lưu tin <br>Và xem lại tin ở đây</p>
+                                    </div>
+                                </div>
+                                <div class="text-center featured-show-all py-2" style="display:none">
+                                    <a href="/tin-da-luu">Xem tất cả</a>
+                                </div>
+                                @endif
 
                             </div>
-
                         </div>
                         <a class="text-dark font-9" href="/tai-khoan">
                             <strong class="px-2">{{auth()->user()->name}}</strong>
@@ -111,7 +122,60 @@
                     <i class="far fa-search font-10"></i> <span class="font-9" style="font-weight: 500">Tìm kiếm bất động sản</span>
                 </a>
             </div>
-            <a  href="/" class="logo-mobile"><img class="lazy" data-src="{{$logo}}" alt="brand"></a>
+
+            @if (Auth::check())
+                @php
+                    $featured_posts = Auth::user()->featured_realties;
+                @endphp
+                <div class="dropdown featured-top">
+                    <button class="btn px-2 py-1 list-featured-btn font-15 text-white" style="background: transparent" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <div class="dropdown-menu mt-3 shadow-10 border-0 " style="width:95vw; z-index: 100" aria-labelledby="dropdownMenuButton1">
+                        <div class="text-center border-bottom py-2 font-11"><strong>Tin đăng đã lưu</strong></div>
+                        @if ($featured_posts->isNotEmpty())
+                        <div class=" featured-body">
+                            @if ($featured_posts->isNotEmpty())
+                                @foreach ($featured_posts->take(6) as $item)
+                                <div class="border-bottom featured-item-wraper py-2 px-3">
+                                    <a href="{{$item->link}}" class="d-flex featured-item align-items-center">
+                                        <div class="img-wraper flex-fixed-20" style="height:50px">
+                                            <img src="{{$item->thumb}}" class="rounded" alt="" srcset="">
+                                        </div>
+                                        <div class="px-2 position-relative">
+                                            <div class="main-text text-truncate font-9 font-weight-500" style="max-width: 280px;">{{$item->title}}</div>
+                                            <div class="mt-2 secondary-text font-8">Đăng {{App\Helpers\TimeHelper::getDateDiffFromNow($item->created_at)['string']}} trước</div>
+                                            <button type="button" data-featured-id="{{$item->id}}" class="btn bg-white remove-featured-btn position-absolute"><i class="fal fa-times"></i></button>
+                                        </div>
+                                    </a>
+                                </div>
+                                @endforeach
+                            @endif
+                        </div>
+                        <div class="text-center py-2 featured-show-all" style="display:block">
+                            <a href="/tin-da-luu">Xem tất cả</a>
+                        </div>
+                        @else
+                        <div class="featured-body">
+                            <div class="text-center">
+                                <img src="/images/icons/empty-state.svg" class="my-5 mx-auto" style="width: 70%" alt="">
+                                <p class="font-11 spacing-1">Bấm <i class="mx-1 font-13 far fa-heart"></i> để lưu tin <br>Và xem lại tin ở đây</p>
+                            </div>
+                        </div>
+                        <div class="text-center featured-show-all py-2" style="display:none">
+                            <a href="/tin-da-luu">Xem tất cả</a>
+                        </div>
+                        @endif
+
+                    </div>
+                </div>
+            @else
+                <button class="btn px-2 py-1 list-featured-btn-unauth font-15 text-white" style="background: transparent" type="button" >
+                    <i class="far fa-heart"></i>
+                </button>
+            @endif
+
+            <a  href="/" class="logo-mobile my-2" style="width: 30%"><img class="img-fluid lazy"  data-src="{{$logo}}" alt="brand"></a>
             <a style="position: relative; width: auto; top:0; z-index:2"  href="#" class="pl-3 menu-open font-15 text-white d-md-none" ><i class="far fa-bars"></i></a>
         </div>
         <div class="nav-search-btn">
@@ -144,5 +208,8 @@
         $(document).on('click', '.header-right .dropdown-menu', function (e) {
             e.stopPropagation();
         });
+        $('.list-featured-btn-unauth').click(function(){
+            swalAlert('Bạn vui lòng đăng nhập để thực hiện lưu và xem lại tin', 'error')
+        })
     </script>
 @endsection
