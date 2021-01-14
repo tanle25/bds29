@@ -3,7 +3,7 @@
         <div class="row p-0">
             <div class="col-md-9">
                 <div class="d-flex">
-                    <h3 class="font-18 home-title color-dark">Dự án nổi bật</h3>
+                    <h3 class="font-18 font-weight-600 home-title color-dark">Dự án nổi bật</h3>
                     <div class="ml-auto d-flex align-items-center">
                         <a href="/du-an-bat-dong-san" class="text-dark">Xem tất cả <i class="fas fa-long-arrow-alt-right"></i></a>
                     </div>

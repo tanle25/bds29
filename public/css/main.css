@@ -16649,6 +16649,10 @@ body.hc-nav-open {
   font-size: 1.2rem !important;
 }
 
+.font-13 {
+  font-size: 1.3rem !important;
+}
+
 .font-weight-400 {
   font-weight: 400 !important;
 }
@@ -16680,6 +16684,10 @@ body.hc-nav-open {
 
   .font-sm-12 {
     font-size: 1.2rem !important;
+  }
+
+  .font-sm-13 {
+    font-size: 1.3rem !important;
   }
 
   .font-weight-sm-400 {
@@ -16716,6 +16724,10 @@ body.hc-nav-open {
     font-size: 1.2rem !important;
   }
 
+  .font-md-13 {
+    font-size: 1.3rem !important;
+  }
+
   .font-weight-md-400 {
     font-weight: 400 !important;
   }
@@ -16750,6 +16762,10 @@ body.hc-nav-open {
     font-size: 1.2rem !important;
   }
 
+  .font-lg-13 {
+    font-size: 1.3rem !important;
+  }
+
   .font-weight-lg-400 {
     font-weight: 400 !important;
   }
@@ -16782,6 +16798,10 @@ body.hc-nav-open {
 
   .font-xl-12 {
     font-size: 1.2rem !important;
+  }
+
+  .font-xl-13 {
+    font-size: 1.3rem !important;
   }
 
   .font-weight-xl-400 {
@@ -19845,13 +19865,13 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 
 @media (min-width: 992px) {
   .banner-home {
-    height: 550px;
+    height: 360x;
   }
 }
 
 @media (min-width: 992px) {
   .banner-home .banner-item {
-    height: 550px;
+    height: 360x;
   }
 }
 
@@ -19942,14 +19962,23 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
   border-radius: 50%;
   background-color: white;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.404);
+  z-index: 1000;
 }
 
 .owl-nav-btn.next-slide {
   right: -8px;
 }
 
+.owl-nav-btn.next-slide.banner-nav {
+  right: 20px;
+}
+
 .owl-nav-btn.prev-slide {
   left: -8px;
+}
+
+.owl-nav-btn.prev-slide.banner-nav {
+  left: 20px;
 }
 
 .item-district .clicked {

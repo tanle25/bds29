@@ -161,11 +161,12 @@ Tin tức bất động sản
             loop:true,
             margin: 20,
             dots:false,
-            nav:false,
+            nav:true,
             autoplay: true,
             autoplayTimeout:3000,
             autoplaySpeed:1200,
             smartSpeed:1200,
+            navText:["<div class='owl-nav-btn  prev-slide'><i class='fas fa-chevron-left'></i></div>","<div class='owl-nav-btn next-slide '><i class='fas fa-chevron-right'></i></div>"],
             responsive:{
                 0:{
                     items:2,

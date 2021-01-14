@@ -1,7 +1,7 @@
 <section class="bds-noibat py-3 py-lg-5 section hrm-bg-secondary">
 	<div class="container">
 		<div class="entry-head text-center pb-2 d-flex  justify-content-between align-items-center">
-            <h2 class="home-title">Bất động sản nổi bật</h2>
+            <h2 class="font-18 font-weight-600 home-title">Bất động sản nổi bật</h2>
             <a href="/bat-dong-san" class="text-dark">Xem tất cả <i class="fas fa-long-arrow-alt-right"></i></a>
 		</div>
 		<div class="tab-bds">

@@ -25,7 +25,7 @@ Trang chủ
     @endif
     <section class="container">
         <div class="d-flex">
-            <h3 class="font-18 home-title color-dark">Doanh nghiệp nổi bật</h3>
+            <h3 class="font-18 font-weight-600 home-title color-dark">Doanh nghiệp nổi bật</h3>
         </div>
         <div class="owl-carousel partner-slider mb-5">
             @foreach ($partners as $partner)

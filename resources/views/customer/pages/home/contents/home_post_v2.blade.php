@@ -2,16 +2,20 @@
 	<div class="container">
         <div class="row p-0">
             <div class="col-md-9 home-posts">
-                <ul class="nav border-bottom mb-3">
-                    @foreach ($home_featured_cats as $index =>  $post_category)
-                    <li class="nav-item mr-4">
-                        <a class="nav-link font-16 text-secondary home-title px-0 @if($index == 0) active @endif" data-toggle="tab" href="#cat{{$post_category->id}}"><strong>{{$post_category->name}}</strong></a>
-                    </li>
-                    @endforeach
-                    <li class="ml-auto d-flex align-items-center">
+                <div class="nav border-bottom mb-3 d-flex">
+                    <div class="w-100">
+                        <ul class="post-category-list owl-carousel px-0">
+                            @foreach ($home_featured_cats as $index =>  $post_category)
+                            <li class="nav-item item mr-4 inline-block">
+                                <a @if(Agent::isMobile()) style="font-size: 1.1rem !important"  @endif class="nav-link font-13 text-secondary home-title px-0 @if($index == 0) active @endif" data-toggle="tab" href="#cat{{$post_category->id}}"><strong>{{$post_category->name}}</strong></a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="ml-auto  align-items-center d-none d-md-flex">
                         <a href="/tin-tuc" class="text-dark">Xem tất cả <i class="fas fa-long-arrow-alt-right"></i></a>
-                    </li>
-                </ul>
+                    </div>
+                </div>
 
                 <!-- Tab panes -->
                 <div class="tab-content">
@@ -27,9 +31,9 @@
                             <div class="col-md-6">
                                 @if ($top_post)
                                 <a href=""class="d-block img-wraper rounded pt-2 mb-3" style="overflow:hidden">
-                                    <img class="img-fluid" style="height: 264px" src="{{$top_post->thumb ?? ''}}" alt="" srcset="">
+                                    <img class="img-fluid" style="height: 264px" src="{{$top_post->avatar ?? ''}}" alt="" srcset="">
                                 </a>
-                                <a class="font-14 main-text"  href="{{$link ?? '#' }}"><strong class="mt-3"> {{$top_post->name}}</strong></a>
+                                <a class="font-12 main-text "  href="{{$link ?? '#' }}"><strong class="mt-3"> {{$top_post->name}}</strong></a>
                                 <p class="pt-2 text-secondary"><i class="far fa-clock"></i> {{App\Helpers\TimeHelper::getDateDiffFromNow($top_post->created_at)['string'] ?? ''}} trước</p>
                                 @endif
                             </div>
@@ -52,6 +56,7 @@
                         </div>
                     </div>
                     @endforeach
+                    <a class="font-weight-500 font-9 d-md-none" href="/tin-tuc/{{$post_category->slug}}">Xem thêm ...</a>
                 </div>
             </div>
             <div class="col-md-3 pt-3">
@@ -62,3 +67,29 @@
         </div>
 	</div>
 </section>
+
+@section('script')
+    <script>
+    $('.post-category-list').owlCarousel({
+        autoplay:false,
+        autoWidth:true,
+        autoplayTimeout:5000,
+        autoplayHoverPause:true,
+        dots:false,
+        nav:false,
+        smartSpeed:1000,
+        animateOut: 'fadeOut',
+    });
+
+    $('.nav-link').on('click', function(){
+        $('.nav-link').removeClass('active');
+        $(this).addClass("active");
+        var id = $(this).attr('href');
+        $('.tab-pane').addClass('fade');
+        $('.tab-pane').removeClass('active');
+        $('.tab-pane' + id).removeClass('fade');
+        $('.tab-pane' + id).addClass('active');
+
+    })
+    </script>
+@endsection
