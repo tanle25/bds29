@@ -2,9 +2,9 @@
 	<div class="container">
         <div class="row p-0">
             <div class="col-md-9 home-posts">
-                <div class="nav border-bottom mb-3 d-flex">
+                <div class="border-bottom mb-3 d-flex align-items-center">
                     <div class="w-100">
-                        <ul class="post-category-list owl-carousel px-0">
+                        <ul class="post-category-list owl-carousel px-0 my-0">
                             @foreach ($home_featured_cats as $index =>  $post_category)
                             <li class="nav-item item mr-4 inline-block">
                                 <a @if(Agent::isMobile()) style="font-size: 1.1rem !important"  @endif class="nav-link font-13 text-secondary home-title px-0 @if($index == 0) active @endif" data-toggle="tab" href="#cat{{$post_category->id}}"><strong>{{$post_category->name}}</strong></a>
@@ -12,11 +12,10 @@
                             @endforeach
                         </ul>
                     </div>
-                    <div class="ml-auto  align-items-center d-none d-md-flex">
+                    <div class="ml-auto  align-items-center d-none d-md-flex" style="flex: 0 0 150px">
                         <a href="/tin-tuc" class="text-dark">Xem tất cả <i class="fas fa-long-arrow-alt-right"></i></a>
                     </div>
                 </div>
-
                 <!-- Tab panes -->
                 <div class="tab-content">
                     @foreach ($home_featured_cats as $index =>  $post_category)
