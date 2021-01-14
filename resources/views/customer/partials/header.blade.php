@@ -117,6 +117,7 @@
                     <i class="far fa-search font-10"></i> <span class="font-9" style="font-weight: 500">Tìm kiếm bất động sản</span>
                 </a>
             </div>
+
             @if (Auth::check())
                 @php
                     $featured_posts = Auth::user()->featured_realties;
@@ -163,8 +164,13 @@
 
                     </div>
                 </div>
+            @else
+                <button class="btn px-2 py-1 list-featured-btn-unauth font-15 text-white" style="background: transparent" type="button" >
+                    <i class="far fa-heart"></i>
+                </button>
             @endif
-            <a  href="/" class="logo-mobile" style="width: 20%"><img class="img-fluid lazy"  data-src="{{$logo}}" alt="brand"></a>
+
+            <a  href="/" class="logo-mobile my-2" style="width: 30%"><img class="img-fluid lazy"  data-src="{{$logo}}" alt="brand"></a>
             <a style="position: relative; width: auto; top:0; z-index:2"  href="#" class="pl-3 menu-open font-15 text-white d-md-none" ><i class="far fa-bars"></i></a>
         </div>
         <div class="nav-search-btn">
@@ -197,5 +203,8 @@
         $(document).on('click', '.header-right .dropdown-menu', function (e) {
             e.stopPropagation();
         });
+        $('.list-featured-btn-unauth').click(function(){
+            swalAlert('Bạn vui lòng đăng nhập để thực hiện lưu và xem lại tin', 'error')
+        })
     </script>
 @endsection

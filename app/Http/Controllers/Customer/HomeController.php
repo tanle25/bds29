@@ -46,6 +46,7 @@ class HomeController extends Controller
         if ($random_realties->count() >= 8) {
             $random_realties = $random_realties->random(8)->sortByDesc('rank');
         }
+
         $partners = Partner::where('rank', 1)->take(10)->get();
         return view('customer.pages.home.index', compact('partners', 'random_realties', 'home_projects', 'provinces', 'featured_district', 'home_featured_cats', 'home_featured_post'));
     }

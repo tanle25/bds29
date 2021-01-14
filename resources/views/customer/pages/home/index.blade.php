@@ -38,7 +38,7 @@ Trang chủ
         </div>
     </section>
     @isset($horizontal_advertisments)
-        @include('customer.components.advertisments.horizontal', ['items' => $horizontal_advertisments])
+        @include('customer.components.advertisments.horizontal', ['items' => $horizontal_advertisments, 'items_mobile' => $mobile_horizontal_advertisments])
     @endisset
 @endsection
 

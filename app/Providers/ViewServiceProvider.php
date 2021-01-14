@@ -128,8 +128,10 @@ class ViewServiceProvider extends ServiceProvider
                 ['customer.pages.home.index'], function ($view) {
                     $advertisments = Advertisment::where('status', 1)->get();
                     $view->with([
-                        'horizontal_advertisments' => $advertisments->where('type', 2),
                         'vertical_advertisments' => $advertisments->where('type', 1),
+                        'horizontal_advertisments' => $advertisments->where('type', 2),
+                        'mobile_vertical_advertisments' => $advertisments->where('type', 3),
+                        'mobile_horizontal_advertisments' => $advertisments->where('type', 4),
                     ]);
                 }
             );

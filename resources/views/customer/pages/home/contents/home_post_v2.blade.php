@@ -60,7 +60,7 @@
             </div>
             <div class="col-md-3 pt-3">
                 @isset($vertical_advertisments)
-                    @include('customer.components.advertisments.vertical', ['items' => $vertical_advertisments])
+                    @include('customer.components.advertisments.vertical', ['items' => $vertical_advertisments, 'items_mobile' => $mobile_vertical_advertisments])
                 @endisset
             </div>
         </div>
