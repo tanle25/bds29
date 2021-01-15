@@ -36,7 +36,7 @@ class HomeController extends Controller
         $home_featured_cats = PostCategory::whereIn('id', $current_post_categories)
             ->with('posts')
             ->get();
-        $home_featured_post = Post::where('is_featured', 1)->take(6)->get();
+        $home_featured_post = Post::where('is_featured', 1)->with('categories')->orderByDesc('id')->take(7)->get();
         $home_projects = $widgets->where('name', 'du_an_noi_bat')->first()->data_array->projects ?? [];
 
         $home_projects = Project::whereIn('id', $home_projects)->with('realty_posts', 'realty_posts.realty')->take(6)->get();
@@ -44,9 +44,8 @@ class HomeController extends Controller
         $home_projects = $this->project_service->getProjectDetails($home_projects);
         $random_realties = RealtyPost::with('realty', 'realty.district')->orderByDesc('id')->take(50)->get();
         if ($random_realties->count() >= 6) {
-            $random_realties = $random_realties->random(6)->sortByDesc('rank');
+            $random_realties = $random_realties->random(8)->sortByDesc('rank');
         }
-
         $partners = Partner::where('rank', 1)->take(10)->get();
         return view('customer.pages.home.index', compact('partners', 'random_realties', 'home_projects', 'provinces', 'featured_district', 'home_featured_cats', 'home_featured_post'));
     }

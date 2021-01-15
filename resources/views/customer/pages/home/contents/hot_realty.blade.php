@@ -6,7 +6,7 @@
 
         <div class="row pt-4">
             @foreach ($random_realties as $index => $item)
-            <div class="item col-md-4 my-2 wow fadeIn"
+            <div class="item col-md-3 my-2 wow fadeIn"
             data-wow-offset="1"
             data-wow-delay="{{0.1 * $index}}s"
             >

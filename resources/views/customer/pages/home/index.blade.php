@@ -17,6 +17,7 @@ Trang chủ
 
  @section('content')
     @include('customer.pages.home.contents.banner_home')
+    @include('customer.pages.home.contents.home_posts_v3')
     @include('customer.pages.home.contents.hot_realty')
     @if($home_projects->isNotEmpty())
     @include('customer.pages.home.contents.home_project_v2')

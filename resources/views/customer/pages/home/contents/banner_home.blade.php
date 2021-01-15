@@ -11,7 +11,7 @@
         }
     </style>
 @endsection
-<section class="banner-home position-relative d-flex align-items-center">
+<section class="banner-home">
     @if (Agent::isMobile())
     <div class="banner-home-slider owl-carousel" style="z-index: 1">
             @foreach ($banner_mobile as $item)
@@ -23,22 +23,18 @@
             @endforeach
         </div>
     @else
-        <div class="banner-home-slider owl-carousel position-absolute h-100" style="z-index: -1">
+        <div class="banner-home-slider owl-carousel" style="z-index: -1">
             @foreach ($banners as $item)
                 @if ($item)
-                    <div class="item w-100 banner-item">
-                        <img data-src="{{$item}}" class="lazy" alt="" style="height: 100%; object-fit:cover" srcset="">
+                    <div class="item embed-responsive embed-responsive-19by4 w-100 banner-item">
+                        <img data-src="{{$item}}" class="lazy embed-responsive-item" alt="" style="height: 100%; object-fit:cover" srcset="">
                     </div>
                 @endif
             @endforeach
         </div>
     @endif
 
-	<div class="container mx-auto clearfix pt-md-5 ">
-		<div class="divtext text-center  d-none d-md-block">
-			<h2><strong> BẤT ĐỘNG SẢN TÂY NINH</strong></h2>
-			<p>Tìm kiếm bất động sản chỉ với một cú click chuột</p>
-		</div>
+	<div class="container mx-auto px-0" style="margin-top: -72px">
 		<div class="section-filter-home d-none d-md-block">
             <form action="" id="form-search">
                 <div class="search-type d-flex">
@@ -69,20 +65,20 @@
                             <div class="address-input">
                                 <input type="text" class="form-control rounded-0" name="dia-chi" placeholder="Nhập địa chỉ" >
                             </div>
-                            <button style="width:" id="apply-search" type="button" style="flex: 0 0 calc(20%)" class="d-none d-md-block  btn btn-info rounded-0">Tìm kiếm</button>
+                            <button style="width:" id="apply-search" type="button" style="flex: 0 0 calc(20%)" class="d-none d-md-block  btn btn-warning rounded-0">Tìm kiếm</button>
                         </div>
                     </div>
 
                     <div class="search-criteria d-flex mt-2">
-                        <div class="form-group mb-2 search-input pl-2 pr-1">
-                            <select class="form-control select2 select2-info" id="province" name="tinh" data-dropdown-css-class="select2-info" style="width: 100%;">
+                        <div class="form-group mb-2 py-2 search-input pl-2 pr-1">
+                            <select class="border form-control select2 select2-info" id="province" name="tinh" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="">Tỉnh / Thành phố</option>
                                 @foreach ($provinces as $province)
                                     <option data-slug="{{$province->slug}}" value="{{$province->code}}">{{$province->name}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group mb-2 search-input px-1">
+                        <div class="form-group mb-2 py-2 search-input px-2 ">
                             <select class="form-control select2 select2-info realty-price"  name="gia" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 @php
                                     function beautyPrice($price){
@@ -109,7 +105,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group mb-2 search-input px-1">
+                        <div class="form-group mb-2 py-2 search-input px-2 ">
                             <select class="form-control select2 select2-info" value="" name="dien-tich" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="">Diện tích</option>
                                 @foreach ($list =  config('constant.realty_area_range') as $index => $item)
@@ -125,7 +121,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group mb-2 search-input px-1">
+                        <div class="form-group mb-2 py-2 search-input px-2 ">
                             <select class="form-control select2 select2-info" value="" name="huong" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="" selected="">Hướng</option>
                                 @foreach (config('constant.direction') as $index => $item)
@@ -134,29 +130,29 @@
                             </select>
                         </div>
 
-                        <div class="hidden-field form-group mb-2 search-input px-1">
+                        <div class="hidden-field form-group mb-2 py-2 search-input px-2 ">
 
                         </div>
-                        <div class="hidden-field form-group mb-2 search-input pl-2 pr-1">
+                        <div class="hidden-field form-group mb-2 py-2 search-input pl-2 pr-1">
                             <select class="form-control select2 select2-info" value="" id="district" name="huyen" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="" selected="">Quận / Huyện</option>
 
                             </select>
                         </div>
-                        <div class="hidden-field form-group mb-2 search-input px-1">
+                        <div class="hidden-field form-group mb-2 py-2 search-input px-2 ">
                             <select class="form-control select2 select2-info" value="" id="commune" name="xa" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="" selected="">Phường / xã</option>
                             </select>
                         </div>
-                        <div class="hidden-field form-group mb-2 search-input px-1">
+                        <div class="hidden-field form-group mb-2 py-2 search-input px-2 ">
                             <select class="form-control select2 select2-info" id="" value="" name="du-an" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="" selected="">Dự án</option>
                             </select>
                         </div>
-                        <div class="hidden-field px-1 form-group mb-2 search-input">
+                        <div class="hidden-field px-2  form-group mb-2 py-2 search-input">
 
                         </div>
-                        <div class="px-2  mb-2 search-input d-flex align-items-center" >
+                        <div class="px-2  mb-2 py-2 search-input d-flex align-items-center" >
                             <div class="bg-white closed btn-expand-search w-100 btn rounded-0 text-left">
                                 <i class="fas fa-expand-arrows-alt"></i>
                                 Thêm

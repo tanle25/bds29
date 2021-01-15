@@ -1,6 +1,15 @@
 //$info: #0398da;
-$info: #007bff;
+$info: #273879;
+$warning: #dab868;
+$primary: #17296f;
+$danger: #e7843f;
 
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1300px
+);
 @import "./plugins/bootstrap/bootstrap";
 @import "./plugins/menu/hc-offcanvas-nav";
 
@@ -28,6 +37,7 @@ $info: #007bff;
 @import "./components/_advertisment";
 @import "./components/_errors";
 @import "./components/_dropzone";
+@import "./components/_realty_block";
 
 @import "./partials/_header";
 @import "./partials/_footer";
