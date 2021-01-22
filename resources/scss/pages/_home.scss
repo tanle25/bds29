@@ -1,12 +1,23 @@
 .banner-home {
     @include media-breakpoint-up(lg) {
-        height: 360x;
+        .banner-home-slider {
+            height: 360px;
+            position: relative;
+        }
     }
     .banner-item {
         @include media-breakpoint-up(lg) {
-            height: 360x;
+            height: 360px;
         }
     }
+}
+
+.search-home {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
 }
 
 .section-filter-home,
