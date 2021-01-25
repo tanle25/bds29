@@ -27,6 +27,9 @@
     border-radius: 50rem;
 }
 
+.rounded-10 {
+    border-radius: 10px;
+}
 @each $breakpoint in map-keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {
         $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
@@ -34,6 +37,11 @@
         .height#{$infix}-180 {
             height: 180px !important;
         }
+
+        .height#{$infix}-200 {
+            height: 200px !important;
+        }
+
         .height#{$infix}-120 {
             height: 120px !important;
         }

@@ -19,12 +19,11 @@ Trang chủ
     @include('customer.pages.home.contents.banner_home')
     @include('customer.pages.home.contents.home_posts_v3')
     @include('customer.pages.home.contents.hot_realty')
-    @if($home_projects->isNotEmpty())
-    @include('customer.pages.home.contents.home_project_v2')
-    @endif
-    @include('customer.pages.home.contents.banner_2')
-    @include('customer.pages.home.contents.why_choose_us')
+    {{-- @include('customer.pages.home.contents.why_choose_us') --}}
     @include('customer.pages.home.contents.realty_by_address')
+    @if($home_projects->isNotEmpty())
+    @include('customer.pages.home.contents.home_project_v3')
+    @endif
 
     <section class="container">
         <div class="d-flex my-5">

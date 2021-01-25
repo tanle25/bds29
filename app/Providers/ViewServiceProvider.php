@@ -77,11 +77,11 @@ class ViewServiceProvider extends ServiceProvider
 
             View::composer(
                 'customer.partials.footer', function ($view) {
-                    $menu_category = MenuCategory::with(['menus', 'menus.childs'])->where('name', 'footer_menu')->first();
+                    $menu_category = MenuCategory::with(['menus', 'menus.childs'])->where('name', 'footer_v3')->first();
                     if ($menu_category) {
-                        $view->with('footer_menu', $menu_category->menus->where('parent_id', null)->sortBy('sort') ?? []);
+                        $view->with('footer_v3', $menu_category->menus->where('parent_id', null)->sortBy('sort') ?? []);
                     } else {
-                        $view->with('footer_menu', []);
+                        $view->with('footer_v3', []);
                     }
                 }
             );

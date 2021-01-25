@@ -1,6 +1,5 @@
 @extends('customer.layouts.main')
 
-
 @section('preset_seo')
     @php
         $custom_title = $post->name ?? '';

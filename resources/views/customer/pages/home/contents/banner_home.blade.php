@@ -153,8 +153,8 @@
 
                         </div>
                         <div class="px-2  mb-2 py-2 search-input d-flex align-items-center" >
-                            <div class="bg-white closed btn-expand-search w-100 btn rounded-0 text-left">
-                                <i class="fas fa-expand-arrows-alt"></i>
+                            <div class="bg-white closed btn-expand-search w-100 btn rounded-0 text-left border font-9">
+                                <i class="far fa-chevron-down"></i>
                                 Thêm
                             </div>
                         </div>
@@ -177,15 +177,13 @@
                 $(this).removeClass('closed');
                 $(this).addClass('opened');
                 $(this).html(`
-                    <i class="fas fa-compress-arrows-alt"></i>Ẩn
+                <i class="far fa-chevron-up"></i> Ẩn
                 `);
-            }
-
-            if ($(this).hasClass('opened')) {
+            }else if ($(this).hasClass('opened')) {
                 $(this).removeClass('opened');
                 $(this).addClass('closed');
                 $(this).html(`
-                    <i class="fas fa-expand-arrows-alt"></i>Thêm
+                <i class="far fa-chevron-down"></i> Thêm
                 `);
             }
 

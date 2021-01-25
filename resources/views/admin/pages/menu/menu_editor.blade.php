@@ -69,10 +69,12 @@
                                     <input type="text" name="text" class="form-control item-menu" id="text"
                                         placeholder="text">
                                 </div>
+                                <img src="" alt="">
                                 <div class="form-group">
                                     <label for="html">HTML</label>
-                                    <input type="text" name="html" class="form-control item-menu" id="html"
-                                        placeholder="HTML">
+                                    <textarea placeholder="html" name="html" class="form-control item-menu" id="html" cols="30" rows="10"></textarea>
+                                    {{-- <input type="text" name="html" class="form-control item-menu" id="html"
+                                        placeholder="HTML"> --}}
                                 </div>
                             </form>
                         </div>
@@ -95,7 +97,7 @@
     <script type="text/javascript" src="{{asset('template/menu-manage/bootstrap-iconpicker/js/iconset/fontawesome5-3-1.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/menu-manage/bootstrap-iconpicker/js/bootstrap-iconpicker.min.js')}}"></script>
     <script>
-    
+
     var listMenu = {!!$menu_list!!};
     if(listMenu.length !== 0){
         renderMenu(listMenu);
@@ -116,7 +118,7 @@
             error: function(err){
                 swalToast('Lỗi trong quá trình thêm mới!', 'error');
             }
-        })  
+        })
     }
 
     function updateItem(formData){
@@ -134,7 +136,7 @@
             error: function(err){
                 swalToast('Lỗi trong quá trình thêm mới!', 'error');
             }
-        })  
+        })
     }
 
     function removeItem(id){
@@ -153,18 +155,18 @@
             error: function(err){
                 swalToast('Lỗi trong quá trình thêm mới!', 'error');
             }
-        })  
+        })
     }
- 
+
     function buildItem(item) {
-        var html = `<li 
-        class='dd-item' 
-        data-html='${item.html}' 
-        data-href='${item.href}' 
-        data-target='${item.target}' 
-        data-text='${item.text}' 
-        data-id='${item.id}' 
-        data-title='${item.title}' 
+        var html = `<li
+        class='dd-item'
+        data-html='${item.html}'
+        data-href='${item.href}'
+        data-target='${item.target}'
+        data-text='${item.text}'
+        data-id='${item.id}'
+        data-title='${item.title}'
         data-icon='${item.icon}'
         >`;
         html += `<div class='dd-handle'>
@@ -240,7 +242,7 @@
         $('#frmEdit input[name="text"]').val(data.text);
         $('#frmEdit input[name="icon"]').val(data.icon);
         $('#frmEdit input[name="target"]').val(data.target);
-        $('#frmEdit input[name="html"]').val(data.html);
+        $('#frmEdit [name="html"]').val(data.html);
         $('#frmEdit input[name="id"]').val(data.id);
         $('#frmEdit input[name="href"]').val(data.href);
         $('#frmEdit input[name="id"]').trigger('change');
@@ -262,7 +264,7 @@
         $('#frmEdit input[name="text"]').val('');
         $('#frmEdit input[name="icon"]').val('');
         $('#frmEdit input[name="target"]').val('');
-        $('#frmEdit input[name="html"]').val('');
+        $('#frmEdit [name="html"]').val('');
         $('#frmEdit input[name="id"]').val('');
         $('#frmEdit input[name="href"]').val('');
     }

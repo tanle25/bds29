@@ -41,16 +41,9 @@ class Post extends Model
         }
     }
 
-    protected function getSize450x300Attribute()
+    protected function getAvatarAttribute($value)
     {
-        $avatar = explode(',', $this->avatar);
-        foreach ($avatar as $value) {
-            if ($value !== '') {
-                $result = Str::replaceLast('/', '/size450x300/', $value);
-                return $result;
-            }
-        }
-        return '';
+        return Str::replaceLast(',', '', $value);
     }
 
     public function categories()

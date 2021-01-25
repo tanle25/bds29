@@ -1,18 +1,8 @@
 .footer {
-    .footer-top {
-        background-color: #024073;
-        a {
-            color: #fff;
-            &:hover {
-                color: $danger;
-            }
-        }
-        hr {
-            border-bottom: 1px solid #1d40a8;
-        }
+    .footer-menu-item {
     }
     .footer-bottom {
-        background-color: #024073;
+        background-color: $light;
         position: relative;
         .copyright {
             p {

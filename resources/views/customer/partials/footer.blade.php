@@ -9,49 +9,51 @@
 	}
 @endphp
 
-<div id="footer" class="footer">
+<div id="footer" class="footer border-top pt-5">
 	<div class="footer-top">
-		<div class="container">
-            <div class="row pt-4">
-                @foreach ($footer_menu as $item)
-                <div class="col-md-3 col-6">
-                    <h5 class="text-white font-12">{{$item->title ?? ''}}</h5>
-                    <ul class="p-0 font-9">
-                        @foreach ($item->childs as $child)
-                        <li class="font-9">
-                            @if ($child->icon)
-                            <i class="text-danger {{$child->icon}}"></i>
-                            @endif
-                            <a class="" href="{{$child->href ?? ''}}">{{$child->title ?? ''}}</a> </li>
-                        @endforeach
-                    </ul>
+		<div class="container d-flex flex-wrap justify-content-between">
+            <div class="company-info">
+                <a href="/"><img class="lazy" data-src="{{$logo}}" alt="brand"></a>
+                <h3 class="text-uppercase font-weight-600 mt-2 font-9">{{$theme_options['Tên_công_ty'] ?? ''}}</h3>
+                <div  style="max-width: 400px" class="mb-1">
+                    <i class="fal fa-map-marker-alt text-warning" style="width: 20px"></i>
+                    <span class="font-9">{{$theme_options['Trụ_sở'] ?? ''}}</span>
                 </div>
-                @endforeach
-                <div class="col-12 divider">
-                    <hr class="m-0">
+                <div>
+                    <div>
+                        <i class="fal fa-envelope text-warning" style="width: 20px" ></i> <span class="font-9">{{$theme_options['Email_công_ty'] ?? ''}}</span>
+                    </div>
+                    <div>
+                        <i class="fal fa-phone-rotary text-warning" style="width: 20px" ></i> <span class="font-9">{{$theme_options['Số_điện_thoại'] ?? ''}}</span>
+                    </div>
                 </div>
+
             </div>
+            @foreach ($footer_v3 as $item)
+            <div class="footer-menu-item">
+                <h5 class="font-12">{{$item->title ?? ''}}</h5>
+                <span class="divider d-block bg-warning rounded mb-4" style="height:2px; width: 60px"></span>
+                <ul class="p-0 font-9">
+                    @foreach ($item->childs as $child)
+                    <li class="font-9 mt-2">
+                        @if ($child->icon)
+                        <i class="text-danger {{$child->icon}}"></i>
+                        @endif
+                        <a class="main-text" href="{{$child->href ?? ''}}">
+                            {!! $child->html ?? $child->title ?? ''!!}
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+            @endforeach
+
 		</div>
     </div>
     <div class="footer-bottom pt-3">
         <div class="container">
             <div class="row pb-4">
-                <div class="col-md-4 text-light text-center">
-                    <a href="/"><img class="lazy" data-src="{{$logo}}" alt="brand"></a>
-                    <strong class="d-block text-light font-9 text-center mt-2">{{$theme_options['Tên_công_ty'] ?? ''}}</strong class="d-block text-light">
-                    <div class="mb-1">
-                        <i class="fal fa-map-marker-alt" style="width: 20px"></i> <span class="font-9">{{$theme_options['Trụ_sở'] ?? ''}}</span>
-                    </div>
-                    <div>
-                        <i class="fal fa-phone-rotary" style="width: 20px" ></i> <span class="font-9">{{$theme_options['Số_điện_thoại'] ?? ''}}</span>
-                    </div>
-                </div>
-                <div class="copyright col-md-4 text-center text-light font-8">
-                    {!! $theme_options['footer_map_iframe'] ?? '' !!}
-                </div>
-                <div class="col-md-4 ">
-                    {!! $theme_options['footer_fb_iframe'] ?? ''!!}
-                </div>
+
             </div>
         </div>
     </div>
