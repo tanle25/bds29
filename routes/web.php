@@ -96,7 +96,10 @@ Route::group(['middleware' => 'auth:web'], function () {
 
     // get geo
     Route::get('get-geo-by-name', [LocationController::class, 'getGeoByName'])->name('customer.location.get_geo_by_name');
+});
 
+Route::get('/v2/{any}', function () {
+    return view('app.main');
 });
 
 // Payment callback

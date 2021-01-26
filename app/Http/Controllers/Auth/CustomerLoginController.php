@@ -56,7 +56,14 @@ class CustomerLoginController extends Controller
         }
 
         if (Auth::guard('web')->attempt([$this->username => $request->username, 'password' => $request->password], $remember)) {
+            if ($request->expectsJson()) {
+                return response()->json(['success' => 'Đăng nhập thành công'], 200);
+            }
             return redirect()->route('home')->with(['success' => 'Chào mừng ' . Auth::guard('web')->user()->name]);
+        }
+
+        if ($request->expectsJson()) {
+            return response()->json(['success' => 'Sai thông tin đăng nhập'], 401);
         }
 
         return back()->withInput()->withErrors(['login_fail' => ['Thông tin đăng nhập sai!']]);
@@ -117,6 +124,12 @@ class CustomerLoginController extends Controller
             }
         );
 
+        if ($request->expectsJson()) {
+            return $status === Password::RESET_LINK_SENT
+            ? response()->json(['status' => "Chúng tôi đã gửi link reset password đến Email của bạn"], 200)
+            : response()->json(['email_reset' => "Không tìm thấy Email!"], 403);
+        }
+
         return $status === Password::RESET_LINK_SENT
         ? back()->with(['status' => __($status)])
         : back()->withErrors(['email_reset' => __($status)]);
@@ -124,7 +137,8 @@ class CustomerLoginController extends Controller
 
     public function showResetPasswordForm($token)
     {
-        return redirect()->route('home')->with(['reset_token' => $token]);
+        return redirect('/v2/reset-password?token=' . $token);
+        //return redirect()->route('home')->with(['reset_token' => $token]);
     }
 
     public function updatePassword(Request $request)
@@ -140,10 +154,10 @@ class CustomerLoginController extends Controller
 
         $status = Password::broker('users')->reset(
             [
+                'token' => $request->token,
                 'email' => $request->reset_email,
                 'password' => $request->reset_password,
                 'password_confirmation' => $request->reset_password_confirmation,
-                'token' => $request->token,
             ],
             function ($user, $password) use ($request) {
                 $user->forceFill([
@@ -153,6 +167,13 @@ class CustomerLoginController extends Controller
                 $user->setRememberToken(Str::random(60));
             }
         );
+
+        if ($request->expectsJson()) {
+
+            return $status == Password::PASSWORD_RESET
+            ? response()->json(['reset_status' => __($status)], 200)
+            : response()->json(['password_reset' => __($status)], 422);
+        }
 
         return $status == Password::PASSWORD_RESET
         ? redirect()->route('home')->with('reset_status', __($status))
@@ -182,6 +203,11 @@ class CustomerLoginController extends Controller
         $wallet->payment_id = $user->id . rand(1000, 9999);
         $wallet->save();
         Auth::login($user);
+
+        if ($request->expectsJson()) {
+            return response()->json(['success' => 'Đăng ký thành công'], 200);
+        }
+
         return redirect()->back()->with(['success' => 'Tạo mới thành công user']);
     }
 
