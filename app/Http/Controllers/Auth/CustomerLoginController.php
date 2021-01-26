@@ -169,7 +169,6 @@ class CustomerLoginController extends Controller
         );
 
         if ($request->expectsJson()) {
-
             return $status == Password::PASSWORD_RESET
             ? response()->json(['reset_status' => __($status)], 200)
             : response()->json(['password_reset' => __($status)], 422);
