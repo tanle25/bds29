@@ -20019,6 +20019,11 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
   }
 }
 
+.section-filter-home .select2-container--default .select2-selection--single .select2-selection__rendered,
+.nav-search .select2-container--default .select2-selection--single .select2-selection__rendered {
+  padding-left: 30px;
+}
+
 .select2-container--default .select2-results__option[aria-disabled=true] {
   display: none;
 }

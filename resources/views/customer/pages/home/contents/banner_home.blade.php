@@ -80,23 +80,26 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="address-input">
-                                <input type="text" class="form-control rounded-0" name="dia-chi" placeholder="Nhập địa chỉ" >
+                            <div class="address-input search-input">
+                                <i class="far fa-search "></i>
+                                <input type="text" class="form-control pl-5 rounded-0" name="dia-chi" placeholder="Nhập địa chỉ" >
                             </div>
                             <button style="width:" id="apply-search" type="button" style="flex: 0 0 calc(20%)" class="d-none d-md-block  btn btn-info rounded-0">Tìm kiếm</button>
                         </div>
                     </div>
 
                     <div class="search-criteria d-flex mt-2">
-                        <div class="form-group mb-2 search-input pl-2 pr-1">
-                            <select class="form-control select2 select2-info" id="province" name="tinh" data-dropdown-css-class="select2-info" style="width: 100%;">
+                        <div class="form-group mb-2 py-2 search-input pl-2 pr-1">
+                            <i class="fal fa-map-marked-alt ml-2"></i>
+                            <select class="border form-control select2 select2-info" id="province" name="tinh" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="">Tỉnh / Thành phố</option>
                                 @foreach ($provinces as $province)
                                     <option data-slug="{{$province->slug}}" value="{{$province->code}}">{{$province->name}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group mb-2 search-input px-1">
+                        <div class="form-group mb-2 py-2 search-input px-2 ">
+                            <i class="fal fa-usd-circle ml-2"></i>
                             <select class="form-control select2 select2-info realty-price"  name="gia" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 @php
                                     function beautyPrice($price){
@@ -123,7 +126,9 @@
                             </select>
                         </div>
 
-                        <div class="form-group mb-2 search-input px-1">
+                        <div class="form-group mb-2 py-2 search-input px-2 ">
+                            <i class="far fa-vector-square ml-2"></i>
+
                             <select class="form-control select2 select2-info" value="" name="dien-tich" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="">Diện tích</option>
                                 @foreach ($list =  config('constant.realty_area_range') as $index => $item)
@@ -139,7 +144,8 @@
                             </select>
                         </div>
 
-                        <div class="form-group mb-2 search-input px-1">
+                        <div class="form-group mb-2 py-2 search-input px-2 ">
+                            <i class="fal fa-compass ml-2"></i>
                             <select class="form-control select2 select2-info" value="" name="huong" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="" selected="">Hướng</option>
                                 @foreach (config('constant.direction') as $index => $item)
@@ -148,31 +154,34 @@
                             </select>
                         </div>
 
-                        <div class="hidden-field form-group mb-2 search-input px-1">
+                        <div class="hidden-field form-group mb-2 py-2 search-input px-2 ">
 
                         </div>
-                        <div class="hidden-field form-group mb-2 search-input pl-2 pr-1">
+                        <div class="hidden-field form-group mb-2 py-2 search-input pl-2 pr-1">
+                            <i class="fal fa-route ml-2"></i>
                             <select class="form-control select2 select2-info" value="" id="district" name="huyen" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="" selected="">Quận / Huyện</option>
 
                             </select>
                         </div>
-                        <div class="hidden-field form-group mb-2 search-input px-1">
+                        <div class="hidden-field form-group mb-2 py-2 search-input px-2 ">
+                            <i class="fal fa-route ml-2"></i>
                             <select class="form-control select2 select2-info" value="" id="commune" name="xa" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="" selected="">Phường / xã</option>
                             </select>
                         </div>
-                        <div class="hidden-field form-group mb-2 search-input px-1">
+                        <div class="hidden-field form-group mb-2 py-2 search-input px-2 ">
+                            <i class="fal fa-building ml-2"></i>
                             <select class="form-control select2 select2-info" id="" value="" name="du-an" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="" selected="">Dự án</option>
                             </select>
                         </div>
-                        <div class="hidden-field px-1 form-group mb-2 search-input">
+                        <div class="hidden-field px-2  form-group mb-2 py-2 search-input">
 
                         </div>
-                        <div class="px-2  mb-2 search-input d-flex align-items-center" >
-                            <div class="bg-white closed btn-expand-search w-100 btn rounded-0 text-left">
-                                <i class="fas fa-expand-arrows-alt"></i>
+                        <div class="px-2  mb-2 py-2 search-input d-flex align-items-center" >
+                            <div class="bg-white closed btn-expand-search w-100 btn rounded-0 text-left border font-9">
+                                <i class="far fa-chevron-down"></i>
                                 Thêm
                             </div>
                         </div>
@@ -195,15 +204,13 @@
                 $(this).removeClass('closed');
                 $(this).addClass('opened');
                 $(this).html(`
-                    <i class="fas fa-compress-arrows-alt"></i>Ẩn
+                <i class="far fa-chevron-up"></i> Ẩn
                 `);
-            }
-
-            if ($(this).hasClass('opened')) {
+            }else if ($(this).hasClass('opened')) {
                 $(this).removeClass('opened');
                 $(this).addClass('closed');
                 $(this).html(`
-                    <i class="fas fa-expand-arrows-alt"></i>Thêm
+                <i class="far fa-chevron-down"></i> Thêm
                 `);
             }
 
