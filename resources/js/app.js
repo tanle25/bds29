@@ -10,6 +10,8 @@ import axios from 'axios';
 
 Vue.use(VueAxios, axios);
 
+axios.defaults.headers.post['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
 import App from './spa/App.vue';
 import LoginComponent from './spa/Login.vue';
 import RegisterComponent from './spa/Register.vue';
