@@ -22,20 +22,16 @@
                 </div>
             @endif
 
-            {{-- @if ($item->rank == 4)
-                <div class="ribbon-wrapper ribbon">
-                    <div class="ribbon bg-danger font-6 text-white">
+            @if ($item->rank == 4)
+                <div class="hrm-ribbon-danger font-9 px-3 py-1">
                     Nổi bật
-                    </div>
                 </div>
             @endif
             @if ($item->rank == 3)
-                <div class="ribbon-wrapper ribbon">
-                    <div class="ribbon bg-info font-6 text-white">
+                <div class="hrm-ribbon-primary font-9 px-3 py-1">
                     Vip
-                    </div>
                 </div>
-            @endif --}}
+            @endif
         </div>
         <div class="order-1 col-12 bg-white px-3 pt-2 pb-2 pb-md-0">
             <a href="{{$item->link}}" class="d-block font-9 main-text w-100 hrm-truncate

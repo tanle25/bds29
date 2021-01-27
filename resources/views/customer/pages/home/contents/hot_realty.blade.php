@@ -1,10 +1,13 @@
 <section class="random-realty py-3 py-lg-5 section hrm-bg-secondary">
 	<div class="container">
-        <div class="d-md-flex justify-content-center">
+        <div class="">
             <h2 class="color-dark home-title">Bất động sản dành cho bạn</h2>
         </div>
-
-        <div class="row pt-4">
+        <div>
+            <span href="/api/get-realty-post?filter[loai-tin-dang]=1" class="btn realty-post-selector btn-muted mr-2 rounded-pill">Mua bán</span>
+            <span href="/api/get-realty-post?filter[loai-tin-dang]=2" class="btn realty-post-selector btn-muted  rounded-pill">Cho thuê</span>
+        </div>
+        <div class="row pt-4 hot-realties">
             @foreach ($random_realties as $index => $item)
             <div class="item col-md-3 my-2 wow fadeIn"
             data-wow-offset="1"
@@ -19,3 +22,28 @@
         </div>
     </div>
 </section>
+
+@section('script')
+    @parent
+    <script>
+        function getRealties(url){
+            return $.ajax({
+                type: "get",
+                url: url,
+                data: {
+                    type: 'html',
+                },
+            });
+        }
+
+        $('.realty-post-selector').on('click', function(){
+            var url = $(this).attr('href');
+            $('.realty-post-selector').addClass('btn-muted').removeClass('btn-info');
+            $(this).removeClass('btn-muted');
+            $(this).addClass('btn-info');
+            getRealties(url).done(function(data){
+                $(".hot-realties").html(data);
+            })
+        })
+    </script>
+@endsection

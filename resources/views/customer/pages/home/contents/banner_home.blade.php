@@ -9,6 +9,19 @@
         .hidden-field{
             display:none;
         }
+
+        .search-input{
+            position: relative;
+        }
+        .search-input > i{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 15px;
+            font-size: 1.2em;
+            z-index: 1000;
+            color: rgb(87, 87, 87)
+        }
     </style>
 @endsection
 <section class="banner-home">
@@ -50,8 +63,9 @@
                 <div class="search-field p-2 ">
                     <div class="pt-2">
                         <div class="search-field-header bg-white d-md-flex align-items-center mx-2">
-                            <div class="d-md-flex  align-items-center" style="flex: 0 0 calc(20%)">
+                            <div class="search-input d-md-flex  align-items-center" style="flex: 0 0 calc(20%)">
                                 {{-- <i class="d-block fa fa-address-book" aria-hidden="true"></i> --}}
+                                <i class="fal fa-car-building"></i>
                                 <select class="realty-type form-control border-0 select2 border-0" name="loai-bds">
                                     <option data-realty-post-type="1" value="">Loại nhà đất</option>
                                     <option data-realty-post-type="2" value="">Loại nhà đất</option>
@@ -62,15 +76,17 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="address-input">
-                                <input type="text" class="form-control rounded-0" name="dia-chi" placeholder="Nhập địa chỉ" >
+                            <div class="address-input search-input input-group">
+                                <i class="far fa-search "></i>
+                                <input type="text" class="form-control pl-5 rounded-0" name="dia-chi" placeholder="Tìm kiếm bất động sản" >
                             </div>
-                            <button style="width:" id="apply-search" type="button" style="flex: 0 0 calc(20%)" class="d-none d-md-block  btn btn-warning rounded-0">Tìm kiếm</button>
+                            <button style="width:" id="apply-search" type="button" style="flex: 0 0 calc(20%)" class="d-none d-md-block font-weight-500 text-light btn btn-warning rounded-0">Tìm kiếm</button>
                         </div>
                     </div>
 
                     <div class="search-criteria d-flex mt-2">
                         <div class="form-group mb-2 py-2 search-input pl-2 pr-1">
+                            <i class="fal fa-map-marked-alt ml-2"></i>
                             <select class="border form-control select2 select2-info" id="province" name="tinh" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="">Tỉnh / Thành phố</option>
                                 @foreach ($provinces as $province)
@@ -79,6 +95,7 @@
                             </select>
                         </div>
                         <div class="form-group mb-2 py-2 search-input px-2 ">
+                            <i class="fal fa-usd-circle ml-2"></i>
                             <select class="form-control select2 select2-info realty-price"  name="gia" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 @php
                                     function beautyPrice($price){
@@ -106,6 +123,8 @@
                         </div>
 
                         <div class="form-group mb-2 py-2 search-input px-2 ">
+                            <i class="far fa-vector-square ml-2"></i>
+
                             <select class="form-control select2 select2-info" value="" name="dien-tich" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="">Diện tích</option>
                                 @foreach ($list =  config('constant.realty_area_range') as $index => $item)
@@ -122,6 +141,7 @@
                         </div>
 
                         <div class="form-group mb-2 py-2 search-input px-2 ">
+                            <i class="fal fa-compass ml-2"></i>
                             <select class="form-control select2 select2-info" value="" name="huong" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="" selected="">Hướng</option>
                                 @foreach (config('constant.direction') as $index => $item)
@@ -134,17 +154,20 @@
 
                         </div>
                         <div class="hidden-field form-group mb-2 py-2 search-input pl-2 pr-1">
+                            <i class="fal fa-route ml-2"></i>
                             <select class="form-control select2 select2-info" value="" id="district" name="huyen" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="" selected="">Quận / Huyện</option>
 
                             </select>
                         </div>
                         <div class="hidden-field form-group mb-2 py-2 search-input px-2 ">
+                            <i class="fal fa-route ml-2"></i>
                             <select class="form-control select2 select2-info" value="" id="commune" name="xa" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="" selected="">Phường / xã</option>
                             </select>
                         </div>
                         <div class="hidden-field form-group mb-2 py-2 search-input px-2 ">
+                            <i class="fal fa-building ml-2"></i>
                             <select class="form-control select2 select2-info" id="" value="" name="du-an" data-dropdown-css-class="select2-info" style="width: 100%;">
                                 <option value="" selected="">Dự án</option>
                             </select>

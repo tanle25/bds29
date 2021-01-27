@@ -41,7 +41,7 @@ Trang chủ
         </div>
     </section>
 
-    @include('customer.pages.home.contents.contact')
+    {{-- @include('customer.pages.home.contents.contact') --}}
 @endsection
 
 @section('script')

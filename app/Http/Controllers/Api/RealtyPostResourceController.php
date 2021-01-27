@@ -112,6 +112,10 @@ class RealtyPostResourceController extends Controller
             $result->push($item);
         }
 
+        if ($request->has("type") && $request->type == 'html') {
+            return view('customer.components.ajax_component.home_realties', compact('realties'));
+        }
+
         return response()->json($result, 200);
     }
 }

@@ -125,8 +125,8 @@
                         @else
                         <div class="login-logout d-flex align-items-center text-uppercase">
                                 <div class="btn">
-                                    <a href="#" class="text-white px-2 font-8" data-toggle="modal" data-target="#register">Đăng ký</a>
-                                    <a href="#" class="text-white font-8" data-toggle="modal" data-target="#popup-login"><span class="border-left px-2">Đăng nhập</span></a>
+                                    <a href="/v2/register" target="_blank" class="text-white px-2 font-8" >Đăng ký</a>
+                                    <a href="/v2/login" target="_blank" class="text-white font-8" ><span class="border-left px-2">Đăng nhập</span></a>
                                 </div>
                             </div>
                         </div>
