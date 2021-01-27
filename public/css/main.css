@@ -19861,6 +19861,87 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
      object-fit: cover !important;
 }
 
+.hrm-ribbon-primary {
+  background-color: #007bff;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 0 5px 0;
+}
+
+.hrm-ribbon-secondary {
+  background-color: #6c757d;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 0 5px 0;
+}
+
+.hrm-ribbon-success {
+  background-color: #28a745;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 0 5px 0;
+}
+
+.hrm-ribbon-info {
+  background-color: #007bff;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 0 5px 0;
+}
+
+.hrm-ribbon-warning {
+  background-color: #ffc107;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 0 5px 0;
+}
+
+.hrm-ribbon-danger {
+  background-color: #dc3545;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 0 5px 0;
+}
+
+.hrm-ribbon-light {
+  background-color: #f8f9fa;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 0 5px 0;
+}
+
+.hrm-ribbon-dark {
+  background-color: #343a40;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 0 5px 0;
+}
+
+.hrm-ribbon-muted {
+  background-color: #e9ecef;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 0 5px 0;
+}
+
 .app-bar {
   background-color: #333;
   color: white;

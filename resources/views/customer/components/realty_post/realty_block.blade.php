@@ -5,17 +5,13 @@
                 <img class="lazy" data-src="{{$item->thumb}}" alt="" srcset="">
             </a>
             @if ($item->rank == 4)
-                <div class="ribbon-wrapper ribbon">
-                    <div class="ribbon bg-danger font-6 text-white">
+                <div class="hrm-ribbon-danger px-3 py-1">
                     Nổi bật
-                    </div>
                 </div>
             @endif
             @if ($item->rank == 3)
-                <div class="ribbon-wrapper ribbon">
-                    <div class="ribbon bg-info font-6 text-white">
+                <div class="hrm-ribbon-primary px-3 py-1">
                     Vip
-                    </div>
                 </div>
             @endif
         </div>
