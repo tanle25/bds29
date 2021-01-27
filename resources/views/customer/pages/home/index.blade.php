@@ -2,8 +2,8 @@
 
 @section('preset_seo')
     @php
-        $custom_title = 'Trang chủ bất động sản Tây Ninh';
-        $custom_description = 'Trang chủ bất động sản Tây Ninh';
+        $custom_title = 'Trang chủ bất động sản Thanh Hóa';
+        $custom_description = 'Trang chủ bất động sản Thanh Hóa';
     @endphp
 @endsection
 
@@ -19,12 +19,11 @@ Trang chủ
     @include('customer.pages.home.contents.banner_home')
     @include('customer.pages.home.contents.hot_realty')
     @if($home_projects->isNotEmpty())
-    @include('customer.pages.home.contents.home_project_v2')
+        @include('customer.pages.home.contents.home_project_v2')
     @endif
     @include('customer.pages.home.contents.banner_2')
     @include('customer.pages.home.contents.why_choose_us')
     @include('customer.pages.home.contents.realty_by_address')
-
     <section class="container">
         <div class="d-flex my-5">
             <h2 class="font-18 home-title color-dark text-center mx-auto">Doanh nghiệp nổi bật</h2>
@@ -40,7 +39,6 @@ Trang chủ
             </div>
         </div>
     </section>
-
     @include('customer.pages.home.contents.contact')
 @endsection
 

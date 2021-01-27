@@ -101,11 +101,11 @@
                     </div>
                     @else
                     <div class="login-logout d-flex align-items-center text-uppercase">
-                        <div href="/dang-tin" class="ml-2 btn font-8 btn-info" data-toggle="modal" data-target="#popup-login"><span>Đăng tin</span></div>
+                        <a href="/v2/login" target="_blank" class="ml-2 btn font-8 btn-info" ><span>Đăng tin</span></a>
                         <div class="p-2">
                             <div class="btn border rounded">
-                                <a href="#" class="text-info px-2 font-8" data-toggle="modal" data-target="#register">Đăng ký</a>
-                                <a href="#" class="text-info font-8" data-toggle="modal" data-target="#popup-login"><span class="border-left px-2">Đăng nhập</span></a>
+                                <a href="/v2/register" class="text-info px-2 font-8" >Đăng ký</a>
+                                <a href="/v2/login" class="text-info font-8" ><span class="border-left px-2">Đăng nhập</span></a>
                             </div>
                         </div>
 
