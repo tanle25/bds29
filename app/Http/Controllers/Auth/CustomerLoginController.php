@@ -153,7 +153,7 @@ class CustomerLoginController extends Controller
                 $user->setRememberToken(Str::random(60));
             }
         );
-
+        dd(__($status));
         return $status == Password::PASSWORD_RESET
         ? redirect()->route('home')->with('reset_status', __($status))
         : back()->withErrors(['password_reset' => __($status)])->withInput();
