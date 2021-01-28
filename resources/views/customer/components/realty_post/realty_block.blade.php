@@ -1,21 +1,21 @@
 <div class="block realty">
     <div class="realty-container shadow-6 flex-wrap rounded d-flex d-md-block">
         <div class="overflow-hidden col-5 px-0 col-md-12 order-2 bg-white">
-            <a href="{{$item->link}}"class="d-block ml-2 ml-md-0 img-wraper height-md-180 height-120">
+            <a href="{{$item->link}}"class="position-relative d-block ml-2 ml-md-0 img-wraper height-md-180 height-120">
                 <img class="lazy" data-src="{{$item->thumb}}" alt="" srcset="">
+                @if ($item->rank == 4)
+                    <div class="hrm-ribbon-danger px-3 py-1">
+                        Nổi bật
+                    </div>
+                @endif
+                @if ($item->rank == 3)
+                    <div class="hrm-ribbon-primary px-3 py-1">
+                        Vip
+                    </div>
+                @endif
             </a>
-            @if ($item->rank == 4)
-                <div class="hrm-ribbon-danger px-3 py-1">
-                    Nổi bật
-                </div>
-            @endif
-            @if ($item->rank == 3)
-                <div class="hrm-ribbon-primary px-3 py-1">
-                    Vip
-                </div>
-            @endif
         </div>
-        <div class="order-1 col-12 bg-white px-3 pt-4 pb-2 pb-md-0">
+        <div class="order-1 col-12 bg-white px-3 pt-md-4 pt-1 pb-2 pb-md-0">
             <a href="{{$item->link}}" class="d-block font-9 main-text w-100 hrm-truncate
                 @if ($item->rank == 4)
                 text-danger
