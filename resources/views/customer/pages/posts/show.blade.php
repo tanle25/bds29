@@ -91,10 +91,6 @@
     <script>
         maxText($('.blog_excerpt'), 90);
 
-        $('.post-title').each(function(){
-            maxText($(this), 60);
-        })
-
         $('.post-description').each(function(){
             maxText($(this), 180);
         })
