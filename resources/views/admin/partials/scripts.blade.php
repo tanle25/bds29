@@ -163,6 +163,7 @@
         allowedContent: true,
         fontSize_sizes:  "{{$font_list}}",
 
+
     };
 
     $(function () {

@@ -60,7 +60,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/admin/file-manage" class="nav-link">
+                            <a href="/admin/filemanager" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Quản lý ảnh</p>
                             </a>
