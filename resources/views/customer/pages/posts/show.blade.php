@@ -15,7 +15,9 @@
     <style>
         .post-content img{
             max-width: 100% !important;
+            height: auto !important;
         }
+
     </style>
 @endsection
 @section('content')
