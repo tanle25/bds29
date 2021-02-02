@@ -23,7 +23,7 @@
             <section class=" container menu-desktop d-none d-md-flex justify-content-center align-items-center pb-3">
                 <div class="navbar-header">
                     <div class="" id="brand">
-                        <a href="/"><img class="lazy" style="max-height: 75px" data-src="{{$logo}}" alt="brand"></a>
+                        <a href="/"><img class="lazy" style="max-height: 60px" data-src="{{$logo}}" alt="brand"></a>
                     </div>
                 </div>
                 <div class="d-block pr-3">

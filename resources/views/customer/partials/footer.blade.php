@@ -13,7 +13,7 @@
 	<div class="footer-top">
 		<div class="container d-flex flex-wrap justify-content-between">
             <div class="company-info">
-                <a href="/"><img class="lazy" data-src="{{$logo}}" alt="brand"></a>
+                <a href="/"><img class="lazy" style="max-height: 60px" data-src="{{$logo}}" alt="brand"></a>
                 <h3 class="text-uppercase font-weight-600 mt-2 font-9">{{$theme_options['Tên_công_ty'] ?? ''}}</h3>
                 <div  style="max-width: 400px" class="mb-1">
                     <i class="fal fa-map-marker-alt text-warning" style="width: 20px"></i>
