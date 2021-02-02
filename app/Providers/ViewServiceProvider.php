@@ -92,7 +92,11 @@ class ViewServiceProvider extends ServiceProvider
                 'customer.pages.posts.sidebar', function ($view) {
                     $featured_posts = Post::orderByDesc('id')->take(10)->get();
                     $featured_districts = District::whereIn('parent_code', config('constant.provinces'))->withCount('realty_posts')->orderByDesc('realty_posts_count')->take(20)->get();
-                    $featured_tags = Tag::all()->random(6);
+                    $featured_tags = Tag::all();
+                    if ($featured_tags->count() >= 6) {
+                        $featured_tags = $featured_tags->random(6);
+                    }
+
                     $view->with(['featured_tags' => $featured_tags, 'featured_posts' => $featured_posts, 'featured_districts' => $featured_districts]);
                 }
             );
