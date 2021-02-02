@@ -171,6 +171,7 @@ Tin tức bất động sản
                 }
             }
         });
+
         $('.post-title').each(function(){
             maxText($(this), 100);
         })
