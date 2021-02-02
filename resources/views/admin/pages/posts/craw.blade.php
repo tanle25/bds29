@@ -33,7 +33,7 @@
                             type="text"
                             class="form-control @error('link') is-invalid @enderror"
                             id="post_link"
-                            placeholder="Nhập link bài viết từ domain https://batdongsan.com.vn"
+                            placeholder="Nhập link bài viết từ domain https://dantri.com.vn"
                             value="{{$post->link ?? old('link')}}"
                             >
                             @error('link')
