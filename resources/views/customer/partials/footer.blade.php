@@ -16,13 +16,18 @@
                 @foreach ($footer_menu as $item)
                 <div class="col-md-3 col-6">
                     <h5 class="text-white font-12">{{$item->title ?? ''}}</h5>
-                    <ul class="p-0 font-9">
+                    <span class="d-block rounded bg-warning" style="height: 2px; width: 60px"></span>
+                    <ul class="p-0 font-9 mt-3">
                         @foreach ($item->childs as $child)
-                        <li class="font-9">
-                            @if ($child->icon)
-                            <i class="text-danger {{$child->icon}}"></i>
+                        <li class="font-9 mt-2">
+                            @if ($child->html)
+                                {!! $child->html !!}
+                            @else
+                                @if ($child->icon)
+                                <i class="text-danger {{$child->icon}}"></i>
+                                @endif
+                                <a class="" href="{{$child->href ?? ''}}">{{$child->title ?? ''}}</a> </li>
                             @endif
-                            <a class="" href="{{$child->href ?? ''}}">{{$child->title ?? ''}}</a> </li>
                         @endforeach
                     </ul>
                 </div>
