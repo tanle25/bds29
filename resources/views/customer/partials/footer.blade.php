@@ -37,7 +37,7 @@
         <div class="container">
             <div class="row pb-4">
                 <div class="col-md-4 text-light text-center">
-                    <a href="/"><img class="lazy" data-src="{{$logo}}" alt="brand"></a>
+                    <a href="/"><img class="lazy logo-bottom" style="max-width: 100%" data-src="{{$logo}}" alt="brand"></a>
                     <strong class="d-block text-light font-9 text-center mt-2">{{$theme_options['Tên_công_ty'] ?? ''}}</strong class="d-block text-light">
                     <div class="mb-1">
                         <i class="fal fa-map-marker-alt" style="width: 20px"></i> <span class="font-9">{{$theme_options['Trụ_sở'] ?? ''}}</span>
