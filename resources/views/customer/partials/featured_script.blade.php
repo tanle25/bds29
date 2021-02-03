@@ -65,11 +65,11 @@
         }
 
         function checkHeart(heart) {
-            heart.html(`<i class="fas fa-heart text-danger"></i>`);
+            heart.html(`<i class="fas fa-heart font-12 text-info"></i>`);
         }
 
         function uncheckHeart(heart) {
-            heart.html(`<i class="far fa-heart text-white"></i>`);
+            heart.html(`<i class="far fa-heart font-12 text-info"></i>`);
         }
 
         function removeFeaturedAjax(postId) {

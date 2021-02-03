@@ -17,14 +17,13 @@ Trang chủ
 
  @section('content')
     @include('customer.pages.home.contents.banner_home')
-    @include('customer.pages.home.contents.home_posts_v3')
     @include('customer.pages.home.contents.hot_realty')
-    {{-- @include('customer.pages.home.contents.why_choose_us') --}}
-    @include('customer.pages.home.contents.realty_by_address')
     @if($home_projects->isNotEmpty())
-    @include('customer.pages.home.contents.home_project_v3')
+        @include('customer.pages.home.contents.home_project_v2')
     @endif
-
+    @include('customer.pages.home.contents.banner_2')
+    @include('customer.pages.home.contents.why_choose_us')
+    @include('customer.pages.home.contents.realty_by_address')
     <section class="container">
         <div class="d-flex my-5">
             <h2 class="font-18 home-title color-dark text-center mx-auto">Doanh nghiệp nổi bật</h2>

@@ -17,30 +17,43 @@
     </style>
 @endsection
 {{-- <div class="menu-responsive-overlay"></div> --}}
-<div class="navigation sticky-top bg-info">
-    <div class="header-container border-bottom">
-        <header class="">
-            <section class=" container menu-desktop d-none d-md-flex justify-content-center align-items-center pb-3">
+<div class="navigation sticky-top bg-white">
+    <div class="header-container p-md-3 border-bottom">
+        <header class="" id="top" role="banner">
+            <section class=" container menu-desktop d-none d-md-flex justify-content-center align-items-center">
                 <div class="navbar-header">
                     <div class="" id="brand">
-                        <a href="/"><img class="lazy" style="max-height: 60px" data-src="{{$logo}}" alt="brand"></a>
+                        <a href="/"><img class="lazy" style="max-height: 75px" data-src="{{$logo}}" alt="brand"></a>
                     </div>
                 </div>
+                <nav class="d-flex align-items-center desktop-menu">
+                    @foreach ($main_menu as $item)
+                    <div class="menu-item p-3 @if(isset($item->childs) && $item->childs != []) has-child @endif"><a class="font-weight-400 text-uppercase main-text font-8" href="{{$item->href ?? '#'}}"> {{$item->title}}</a>
+                        @isset($item->childs)
+                            @if ($item->childs->isNotEmpty())
+                                <ul class="child-navigation submenu-1 border px-3 bg-white rounded shadow-10">
+                                    @foreach ($item->childs as $child)
+                                    <li class="py-2"><a class="main-text" href="{{$child->href}}">{{$child->title}}</a></li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        @endisset
+                    </div>
+                    @endforeach
+                </nav>
                 <div class="d-block pr-3">
                     <a style="position: relative; width: auto; top:0; z-index:2"  href="#" class="pl-3 d-xl-none menu-open font-15 text-secondary" ><i class="far fa-bars"></i></a>
                 </div>
                 <div class="header-right ml-auto d-none d-xl-flex align-items-center">
-
                     @if (Auth::check())
-                        @php
-                            $featured_posts = Auth::user()->featured_realties;
-                            @endphp
-                        <a href="/dang-tin" class="ml-2 font-9 btn-info text-secondary p-2"><strong>Đăng tin</strong></a>
+                    @php
+                        $featured_posts = Auth::user()->featured_realties;
+                    @endphp
+                    <div class="login-logout d-flex align-items-center">
                         <div class="dropdown featured-top">
-                            <span style="line-height: 1.6em"  class="btn bg-info text-secondary rounded-circle px-2 py-1 list-featured-btn font-12" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                                <strong class="font-9">Yêu thích</strong>
+                            <button class="btn rounded-circle text-dark px-2 py-1 list-featured-btn bg-white font-14" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
                                 <i class="far fa-heart"></i>
-                            </span>
+                            </button>
                             <div class="dropdown-menu dropdown-menu-center mt-3 shadow-10 border-0 " style="width:400px; z-index: 100" aria-labelledby="dropdownMenuButton1">
                                 <div class="text-center border-bottom py-2 font-11"><strong>Tin đăng đã lưu</strong></div>
                                 @if ($featured_posts->isNotEmpty())
@@ -79,61 +92,27 @@
 
                             </div>
                         </div>
+                        <a class="text-dark font-9" href="/tai-khoan">
+                            <strong class="px-2">{{auth()->user()->name}}</strong>
+                            <img data-src="{{auth()->user()->profile_image_path ?? '/images/empty-avatar.jpg'}}" style="width: 40px; height:40px" class="lazy rounded-circle" alt="">
+                        </a>
+                        <a class="text-dark font-14 ml-2" href="/logout"><i class="h-100 px-2 far fa-sign-out-alt"></i></a>
+                        <a href="/dang-tin" class="ml-2 font-9 hrm-btn-info p-2"><strong>Đăng tin</strong></a>
+                    </div>
                     @else
-                    <div class="dropdown featured-top">
-                        <span style="line-height: 1.6em"  class="list-featured-btn-unauth btn bg-info text-secondary rounded-circle px-2 py-1 font-12" >
-                            <strong class="font-9">Yêu thích</strong>
-                            <i class="far fa-heart"></i>
-                        </span>
-                        <div class="dropdown-menu dropdown-menu-center mt-3 shadow-10 border-0 " style="width:400px; z-index: 100" aria-labelledby="dropdownMenuButton1">
-                            <div class="text-center border-bottom py-2 font-11"><strong>Tin đăng đã lưu</strong></div>
+                    <div class="login-logout d-flex align-items-center text-uppercase">
+                        <a href="/v2/login" target="_blank" class="ml-2 btn font-8 btn-info" ><span>Đăng tin</span></a>
+                        <div class="p-2">
+                            <div class="btn border rounded">
+                                <a href="/v2/register" class="text-info px-2 font-8" >Đăng ký</a>
+                                <a href="/v2/login" class="text-info font-8" ><span class="border-left px-2">Đăng nhập</span></a>
                             </div>
                         </div>
-                        <a data-toggle="modal" data-target="#popup-login" href="/dang-tin" class="ml-2 font-9 btn-info text-secondary p-2"><strong>Đăng tin</strong></a>
+
+                    </div>
                     @endif
-                    {{--ss--}}
                 </div>
             </section>
-            <div class="bg-primary">
-                <nav class="d-flex align-items-center justify-content-between desktop-menu container">
-                    @foreach ($main_menu as $item)
-                    <div class="menu-item py-2 pr-4 mr-2 @if(isset($item->childs) && $item->childs != []) has-child @endif"><a class="font-weight-600 text-white font-9" href="{{$item->href ?? '#'}}"> {{$item->title}}</a>
-                        @isset($item->childs)
-                            @if ($item->childs->isNotEmpty())
-                                <ul class="child-navigation submenu-1 border px-3 bg-white rounded shadow-10">
-                                    @foreach ($item->childs as $child)
-                                    <li class="py-2"><a class="main-text" href="{{$child->href}}">{{$child->title}}</a></li>
-                                    @endforeach
-                                </ul>
-                            @endif
-                        @endisset
-                    </div>
-                    @endforeach
-                    <div class="ml-auto header-right d-none d-xl-flex align-items-center py-1">
-                        @if (Auth::check())
-                        @php
-                            $featured_posts = Auth::user()->featured_realties;
-                        @endphp
-                        <div class="login-logout d-flex align-items-center">
-
-                            <a class="text-dark font-9" href="/tai-khoan">
-                                <img data-src="{{auth()->user()->profile_image_path ?? '/images/empty-avatar.jpg'}}" style="width: 40px; height:40px" class="lazy rounded-circle" alt="">
-                                <strong class="text-white px-2">{{auth()->user()->name}}</strong>
-                            </a>
-                            <a class="text-white font-9 font-weight-500 ml-2" href="/logout">Đăng xuất</a>
-                        </div>
-                        @else
-                        <div class="login-logout d-flex align-items-center text-uppercase">
-                                <div class="btn">
-                                    <a href="/v2/register" target="_blank" class="text-white px-2 font-8" >Đăng ký</a>
-                                    <a href="/v2/login" target="_blank" class="text-white font-8" ><span class="border-left px-2">Đăng nhập</span></a>
-                                </div>
-                            </div>
-                        </div>
-                        @endif
-                    </div>
-                </nav>
-            </div>
         </header>
     </div>
     <section class="header-mobile px-3 pt-2 pb-2 d-md-none" style="background: #024073">
