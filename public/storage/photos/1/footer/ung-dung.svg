@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="110" height="32" viewBox="0 0 110 32">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g transform="translate(-1065 -5536) translate(0 977) translate(0 4093) translate(0 355) translate(1065 49) translate(0 62)">
+                                <rect width="109" height="31" x=".5" y=".5" fill="#000" stroke="#979797" rx="4"/>
+                                <path fill="#FFF" fill-rule="nonzero" d="M19.364 10.95c1.432 0 2.948.781 4.026 2.126-3.536 1.94-2.963 6.992.61 8.345-.491 1.09-.727 1.575-1.36 2.54-.884 1.347-2.129 3.024-3.674 3.036-1.37.015-1.724-.893-3.585-.883-1.861.01-2.248.899-3.622.886-1.544-.013-2.724-1.527-3.607-2.874-2.47-3.762-2.73-8.18-1.207-10.529 1.084-1.668 2.794-2.644 4.4-2.644 1.634 0 2.662.897 4.016.897 1.313 0 2.113-.9 4.003-.9zM19.299 5c.189 1.519-.332 3.007-1.02 4.059-.734 1.13-2.002 2.003-3.23 1.958-.224-1.455.35-2.952 1.049-3.96.765-1.112 2.078-1.965 3.201-2.057z"/>
+                                <text fill="#FFF" font-family="SFProText-Semibold, SF Pro Text" font-size="13" font-weight="500">
+                                    <tspan x="30" y="24.624">App Store</tspan>
+                                </text>
+                                <text fill="#FFF" font-family="SFProText-Medium, SF Pro Text" font-size="7" font-weight="400">
+                                    <tspan x="30" y="10.624">Tải nội dung trên</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

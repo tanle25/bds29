@@ -56,13 +56,14 @@
 =======
 	<div class="container search-home clearfix pt-md-5 ">
 		<div class="divtext text-center  d-none d-md-block">
-			<h2><strong> BẤT ĐỘNG SẢN TÂY NINH</strong></h2>
+			<h2><strong> BẤT ĐỘNG SẢN Thanh Hóa</strong></h2>
 			<p>Tìm kiếm bất động sản chỉ với một cú click chuột</p>
 		</div>
 >>>>>>> core_customer
 		<div class="section-filter-home d-none d-md-block">
             <form action="" id="form-search">
                 <div class="search-type d-flex">
+
                     <div class="search-type-item mr-1">
                         <input type="radio"  class="d-none" name="loai-tin-dang" value="1" id="realty-sell">
                         <label class="py-2 px-4 font-9 m-0 rounded-top" for="realty-sell"><strong>NHÀ ĐẤT BÁN</strong></label>
@@ -75,8 +76,12 @@
                 <div class="search-field p-2 ">
                     <div class="pt-2">
                         <div class="search-field-header bg-white d-md-flex align-items-center mx-2">
+<<<<<<< HEAD
                             <div class="search-input d-md-flex  align-items-center" style="flex: 0 0 calc(20%)">
                                 {{-- <i class="d-block fa fa-address-book" aria-hidden="true"></i> --}}
+=======
+                            <div class="d-md-flex search-input align-items-center" style="flex: 0 0 calc(20%)">
+>>>>>>> bds_thanhhoa
                                 <i class="fal fa-car-building"></i>
                                 <select class="realty-type form-control border-0 select2 border-0" name="loai-bds">
                                     <option data-realty-post-type="1" value="">Loại nhà đất</option>
@@ -88,9 +93,15 @@
                                     @endforeach
                                 </select>
                             </div>
+<<<<<<< HEAD
                             <div class="address-input search-input input-group">
                                 <i class="far fa-search "></i>
                                 <input type="text" class="form-control pl-5 rounded-0" name="dia-chi" placeholder="Tìm kiếm bất động sản" >
+=======
+                            <div class="address-input search-input">
+                                <i class="far fa-search "></i>
+                                <input type="text" class="form-control pl-5 rounded-0" name="dia-chi" placeholder="Nhập địa chỉ" >
+>>>>>>> bds_thanhhoa
                             </div>
                             <button style="width:" id="apply-search" type="button" style="flex: 0 0 calc(20%)" class="d-none d-md-block font-weight-500 text-light btn btn-warning rounded-0">Tìm kiếm</button>
                         </div>

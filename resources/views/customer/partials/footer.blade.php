@@ -11,6 +11,7 @@
 
 <div id="footer" class="footer border-top pt-5">
 	<div class="footer-top">
+<<<<<<< HEAD
 		<div class="container d-flex flex-wrap justify-content-between">
             <div class="company-info">
                 <a href="/"><img class="lazy" style="max-height: 60px" data-src="{{$logo}}" alt="brand"></a>
@@ -18,6 +19,27 @@
                 <div  style="max-width: 400px" class="mb-1">
                     <i class="fal fa-map-marker-alt text-warning" style="width: 20px"></i>
                     <span class="font-9">{{$theme_options['Trụ_sở'] ?? ''}}</span>
+=======
+		<div class="container pt-3">
+            <div class="row pt-4">
+                @foreach ($footer_menu as $item)
+                <div class="col-md-3 col-6">
+                    <h5 class="text-white font-12">{{$item->title ?? ''}}</h5>
+                    <span class="d-block rounded bg-warning" style="height: 2px; width: 60px"></span>
+                    <ul class="p-0 font-9 mt-3">
+                        @foreach ($item->childs as $child)
+                        <li class="font-9 mt-2">
+                            @if ($child->html)
+                                {!! $child->html !!}
+                            @else
+                                @if ($child->icon)
+                                <i class="text-danger {{$child->icon}}"></i>
+                                @endif
+                                <a class="" href="{{$child->href ?? ''}}">{{$child->title ?? ''}}</a> </li>
+                            @endif
+                        @endforeach
+                    </ul>
+>>>>>>> bds_thanhhoa
                 </div>
                 <div>
                     <div>
