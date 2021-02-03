@@ -19889,7 +19889,6 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
      object-fit: cover !important;
 }
 
-<<<<<<< HEAD
 .block-realty {
   border-radius: 10px;
   overflow: hidden;
@@ -19920,10 +19919,6 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 
 .hrm-ribbon-primary {
   background-color: #17296f;
-=======
-.hrm-ribbon-primary {
-  background-color: #007bff;
->>>>>>> bds_thanhhoa
   color: white;
   position: absolute;
   top: 0;
@@ -19950,11 +19945,7 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 }
 
 .hrm-ribbon-info {
-<<<<<<< HEAD
   background-color: #273879;
-=======
-  background-color: #007bff;
->>>>>>> bds_thanhhoa
   color: white;
   position: absolute;
   top: 0;
@@ -19963,11 +19954,7 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 }
 
 .hrm-ribbon-warning {
-<<<<<<< HEAD
   background-color: #dab868;
-=======
-  background-color: #ffc107;
->>>>>>> bds_thanhhoa
   color: white;
   position: absolute;
   top: 0;
@@ -19976,11 +19963,7 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 }
 
 .hrm-ribbon-danger {
-<<<<<<< HEAD
   background-color: #e7843f;
-=======
-  background-color: #dc3545;
->>>>>>> bds_thanhhoa
   color: white;
   position: absolute;
   top: 0;
@@ -20081,8 +20064,6 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
   margin: 0 !important;
 }
 
-<<<<<<< HEAD
-=======
 @media (min-width: 992px) {
   .banner-home .banner-home-slider {
     height: 360px;
@@ -20104,13 +20085,6 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
   z-index: 1;
 }
 
-.section-filter-home,
-.nav-search {
-  max-width: 1120px;
-  padding-bottom: 50px;
-}
-
->>>>>>> core_customer
 .section-filter-home .search-type .search-type-item label,
 .nav-search .search-type .search-type-item label {
   background-color: white;

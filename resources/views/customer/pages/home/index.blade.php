@@ -40,12 +40,7 @@ Trang chủ
             </div>
         </div>
     </section>
-<<<<<<< HEAD
-
-    {{-- @include('customer.pages.home.contents.contact') --}}
-=======
     @include('customer.pages.home.contents.contact')
->>>>>>> bds_thanhhoa
 @endsection
 
 @section('script')
