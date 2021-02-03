@@ -26,7 +26,7 @@
 @endsection
 <section class="banner-home">
     @if (Agent::isMobile())
-    <div class="banner-home-slider owl-carousel" style="z-index: 1">
+    <div class="banner-home-slider owl-carousel">
             @foreach ($banner_mobile as $item)
                 @if ($item)
                     <div class="item img-responsive">
@@ -36,7 +36,11 @@
             @endforeach
         </div>
     @else
+<<<<<<< HEAD
         <div class="banner-home-slider owl-carousel" style="z-index: -1">
+=======
+        <div class="banner-home-slider owl-carousel" style="z-index: 1">
+>>>>>>> core_customer
             @foreach ($banners as $item)
                 @if ($item)
                     <div class="item embed-responsive embed-responsive-19by4 w-100 banner-item">
@@ -47,7 +51,15 @@
         </div>
     @endif
 
+<<<<<<< HEAD
 	<div class="container mx-auto px-0" style="margin-top: -72px">
+=======
+	<div class="container search-home clearfix pt-md-5 ">
+		<div class="divtext text-center  d-none d-md-block">
+			<h2><strong> BẤT ĐỘNG SẢN TÂY NINH</strong></h2>
+			<p>Tìm kiếm bất động sản chỉ với một cú click chuột</p>
+		</div>
+>>>>>>> core_customer
 		<div class="section-filter-home d-none d-md-block">
             <form action="" id="form-search">
                 <div class="search-type d-flex">

@@ -14,7 +14,7 @@ Tin tức bất động sản
 		</div>
 		<div class="row m-0">
 			<div class="col-md-8 bg-white">
-                @if (Agent::isDesktop())
+                {{-- @if (Agent::isDesktop())
                     <div class="list-blog-post p-3">
                         <div class="owl-carousel head-posts">
                             @foreach ($posts->take(3) as $top_post)
@@ -33,10 +33,9 @@ Tin tức bất động sản
                             @endforeach
                         </div>
                     </div>
-                @endif
-
+                @endif --}}
                 <div>
-                    @foreach (Agent::isDesktop() ? $posts->skip(3) : $posts as $post)
+                    @foreach ($posts as $post)
                         <div class="category-blog p-3 rounded-1 bg-white">
                             <div class="top-post row">
                                 <div class="col-md-5 col-3 p-0 px-md-3">
