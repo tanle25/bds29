@@ -2,8 +2,8 @@
 
 @section('preset_seo')
     @php
-        $custom_title = 'Trang chủ bất động sản Thanh Hóa';
-        $custom_description = 'Trang chủ bất động sản Thanh Hóa';
+        $custom_title = 'Trang chủ bất động sản '. config('constant.province_name');
+        $custom_description = 'Trang chủ bất động sản '. config('constant.province_name');
     @endphp
 @endsection
 
