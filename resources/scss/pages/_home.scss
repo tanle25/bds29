@@ -125,8 +125,32 @@
 }
 
 .second-banner {
+    font-size: 1.5rem;
+    @include media-breakpoint-up(md) {
+        font-size: 2rem;
+    }
+
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("/images/backgrounds/banner2-background.jpeg");
+    background-size: cover;
+    background-position: center;
+    .second-banner-text {
+        span:first-child {
+            font-size: 0.9em;
+        }
+        span:last-child em {
+            font-size: 0.8em;
+        }
+    }
+
     h2 {
-        word-spacing: 2px;
+        font-size: 1em;
+        word-spacing: 1px;
+        letter-spacing: 1px;
+    }
+    a {
+        font-size: 0.8em;
+        color: $gray-700;
     }
 }
 

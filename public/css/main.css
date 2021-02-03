@@ -20000,8 +20000,10 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
   display: block;
 }
 
-.footer .footer-top {
-  background-color: #024073;
+.footer {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/images/backgrounds/banner2-background.jpeg");
+  background-size: cover;
+  background-position: center;
 }
 
 .footer .footer-top a {
@@ -20013,16 +20015,20 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 }
 
 .footer .footer-top hr {
-  border-bottom: 1px solid #1d40a8;
+  border-bottom: 1px solid #d0d8f1;
 }
 
 .footer .footer-bottom {
-  background-color: #024073;
   position: relative;
 }
 
-.footer .footer-bottom .copyright p {
-  margin: 0 !important;
+.footer .footer-bottom iframe {
+  width: 100% !important;
+  height: 130px !important;
+}
+
+.footer .copyright {
+  background-color: black;
 }
 
 @media (min-width: 992px) {
@@ -20164,8 +20170,36 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
   }
 }
 
+.second-banner {
+  font-size: 1.5rem;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/images/backgrounds/banner2-background.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+@media (min-width: 768px) {
+  .second-banner {
+    font-size: 2rem;
+  }
+}
+
+.second-banner .second-banner-text span:first-child {
+  font-size: 0.9em;
+}
+
+.second-banner .second-banner-text span:last-child em {
+  font-size: 0.8em;
+}
+
 .second-banner h2 {
-  word-spacing: 2px;
+  font-size: 1em;
+  word-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.second-banner a {
+  font-size: 0.8em;
+  color: #495057;
 }
 
 .why-choose-us h3 {

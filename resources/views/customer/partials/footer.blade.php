@@ -40,7 +40,7 @@
     </div>
     <div class="footer-bottom pt-3">
         <div class="container">
-            <div class="row pb-4">
+            <div class="row pb-3">
                 <div class="col-md-4 text-light text-center">
                     <a href="/"><img class="lazy logo-bottom" style="max-width: 80%" data-src="{{$logo}}" alt="brand"></a>
                     <strong class="d-block text-light font-9 text-center mt-2">{{$theme_options['Tên_công_ty'] ?? ''}}</strong class="d-block text-light">
@@ -51,7 +51,7 @@
                         <i class="fal fa-phone-rotary" style="width: 20px" ></i> <span class="font-9">{{$theme_options['Số_điện_thoại'] ?? ''}}</span>
                     </div>
                 </div>
-                <div class="copyright col-md-4 text-center text-light font-8">
+                <div class=" col-md-4 text-center text-light font-8">
                     {!! $theme_options['footer_map_iframe'] ?? '' !!}
                 </div>
                 <div class="col-md-4 ">
@@ -59,6 +59,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="text-center text-white font-9 copyright py-3">
+        {{$theme_options['Copyright'] ?? ''}}
     </div>
 </div>
 <button class="position-fixed btn up-to-top-btn rounded-circle btn-info" style="opacity:0 ; transition: .5s ; z-index: 100000; right:30px; bottom: 60px">

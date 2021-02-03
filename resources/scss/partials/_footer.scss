@@ -1,6 +1,9 @@
 .footer {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url("/images/backgrounds/banner2-background.jpeg");
+    background-size: cover;
+    background-position: center;
     .footer-top {
-        background-color: #024073;
         a {
             color: #fff;
             &:hover {
@@ -8,16 +11,17 @@
             }
         }
         hr {
-            border-bottom: 1px solid #1d40a8;
+            border-bottom: 1px solid #d0d8f1;
         }
     }
     .footer-bottom {
-        background-color: #024073;
         position: relative;
-        .copyright {
-            p {
-                margin: 0 !important;
-            }
+        iframe {
+            width: 100% !important;
+            height: 130px !important;
         }
+    }
+    .copyright {
+        background-color: black;
     }
 }
