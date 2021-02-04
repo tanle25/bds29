@@ -33,12 +33,12 @@
                             type="text"
                             class="form-control @error('link') is-invalid @enderror"
                             id="post_link"
-                            placeholder="Nhập link bài viết từ domain https://dantri.com.vn"
+                            placeholder="Nhập link bài viết từ domain https://alonhadat.com"
                             value="{{$post->link ?? old('link')}}"
                             >
                             @error('link')
                             <div id="" class="error invalid-feedback d-block">
-                                    {{$message}}
+                                {{$message}}
                             </div>
                             @enderror
                         </div>
@@ -67,10 +67,15 @@
                                     value="{{$province->code}}">{{$province->name_with_type}}</option>
                                     @endforeach
                                 </select>
+                                @error('province')
+                                    <div id="" class="error invalid-feedback d-block">
+                                        {{$message}}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="col-md-4 form-group">
                                 <select class="form-control address_input" name="district" id="district">
-                                    <option value="0">Huyện/Thị xã</option>
+                                    <option value="">Huyện/Thị xã</option>
                                     @isset($districts)
                                         @foreach ($districts as $district)
                                         <option
@@ -79,10 +84,15 @@
                                         @endforeach
                                     @endisset
                                 </select>
+                                @error('district')
+                                    <div id="" class="error invalid-feedback d-block">
+                                        {{$message}}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="col-md-4 form-group">
                                 <select class="form-control address_input" name="commune" id="commune">
-                                    <option value="0">Xã/ Phường</option>
+                                    <option value="">Xã/ Phường</option>
                                     @isset($communes)
                                     @foreach ($communes as $commune)
                                     <option
@@ -91,6 +101,11 @@
                                     @endforeach
                                     @endisset
                                 </select>
+                                @error('commune')
+                                    <div id="" class="error invalid-feedback d-block">
+                                        {{$message}}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
 
@@ -116,7 +131,7 @@
                                 name="contact_name"
                                 placeholder="Tên người dùng"
                                 @isset($realty_post)
-                                value="{{$realty_post->contact_name ?? ''}}"
+                                value="{{$realty_post->contact_name ?? old("contact_name")}}"
                                 @endisset
                                 >
                                 @error('contact_name')
@@ -134,7 +149,7 @@
                                 name="contact_phone_number"
                                 placeholder="Số điện thoại"
                                 @isset($realty_post)
-                                value="{{$realty_post->contact_phone_number ?? ''}}"
+                                value="{{$realty_post->contact_phone_number ?? old('contact_phone_number')}}"
                                 @endisset
                                 >
                                 @error('contact_phone_number')
@@ -152,7 +167,7 @@
                             name="contact_email"
                             placeholder="Email"
                             @isset($realty_post)
-                            value="{{$realty_post->contact_email ?? ''}}"
+                            value="{{$realty_post->contact_email ?? old("contact_email")}}"
                             @endisset
                             >
                             @error('contact_email')
@@ -170,7 +185,7 @@
                             name="contact_address"
                             placeholder="Nhập địa chỉ"
                             @isset($realty_post)
-                            value="{{$realty_post->contact_address ?? ''}}"
+                            value="{{$realty_post->contact_address ?? old("contact_address")}}"
                             @endisset
                             >
                             @error('contact_address')
@@ -184,28 +199,6 @@
                 </div>
             </div>
             <div class="col-md-3">
-
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Thao tác</h3>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                    class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="btn-set">
-                            <button type="submit" name="submit" value="save" class="btn btn-info">
-                                <i class="fa fa-save"></i> Lưu
-                            </button>
-                            &nbsp;
-                            <button type="submit" name="submit" value="apply" class="btn btn-success">
-                                <i class="fa fa-check-circle"></i> Lưu &amp; Thoát
-                            </button>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="card">
                     <div class="card-header">
@@ -257,7 +250,7 @@
                             <input
                             id="date-picker"
                             @isset($realty_post)
-                            value="{{Carbon\Carbon::parse( $realty_post->open_at)->format('d/m/Y') ?? ''}}"
+                            value="{{Carbon\Carbon::parse( $realty_post->open_at)->format('d/m/Y') ?? old("open_at")}}"
                             @endisset
                             class="date-picker form-control"
                             type="text"
@@ -274,7 +267,7 @@
                             <input
                             id="date-picker"
                             @isset($realty_post)
-                            value="{{Carbon\Carbon::parse( $realty_post->close_at)->format('d/m/Y') ?? ''}}"
+                            value="{{Carbon\Carbon::parse( $realty_post->close_at)->format('d/m/Y') ?? old("close_at")}}"
                             @endisset
                             class="date-picker form-control"
                             type="text"
@@ -338,7 +331,5 @@
                 $('#commune').html(commune_inputs);
             });
         })
-
-
     </script>
 @endsection

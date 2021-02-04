@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\Province;
+use App\Models\Realty;
+use App\Models\RealtyPost;
 use App\Scraper\PostScraper;
 use App\Scraper\RealtyScraper;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class CrawController extends Controller
 {
@@ -76,26 +79,60 @@ class CrawController extends Controller
 
     public function getRealty(Request $request)
     {
+        $string_now = Carbon::now()->format('d/m/Y');
+
+        $request->validate([
+            'link' => "required",
+            'province' => 'required|numeric',
+            'district' => 'required|numeric',
+            'commune' => 'required|numeric',
+
+            'contact_name' => 'required|string|max:256',
+            'contact_phone_number' => 'required|string|max:30',
+            'contact_email' => 'required|email|string|max:30',
+            'contact_address' => 'max:300',
+
+            'close_at' => 'date_format:d/m/Y|after:open_at',
+            'open_at' => 'date_format:d/m/Y|after:' . $string_now,
+        ]);
+
+        $new_realty = [
+            'province_code' => $request->province,
+            'district_code' => $request->district,
+            'commune_code' => $request->commune,
+        ];
+
+        $open_at = Carbon::createFromFormat('d/m/Y', $request->open_at);
+        $close_at = Carbon::createFromFormat('d/m/Y', $request->close_at);
+        $new_realty_post = [
+            'open_at' => $open_at->format('Y-m-d H:i:s'),
+            'close_at' => $close_at->format('Y-m-d H:i:s'),
+            "status" => $request->status ?? "1",
+            'contact_name' => $request->contact_name,
+            'contact_phone_number' => $request->contact_phone_number,
+            'contact_email' => $request->contact_email,
+            'contact_address' => $request->contact_address,
+            'rank' => $request->realty_post_rank,
+        ];
+
         if ($request->has('link')) {
-            $post = $this->realty_scraper->scrapeRealty($request->link);
-            dd($post);
+            $result = $this->realty_scraper->scrapeRealty($request->link);
+
+            $realty = array_merge($result['realty'], $new_realty);
+            $realty_post = array_merge($result['realty_post'], $new_realty_post);
             try {
                 DB::beginTransaction();
-                if ($request->has('avatar')) {
-                    $post['avatar'] = $request->avatar;
-                }
-                $post = Post::create($post);
+                $new_realty = Realty::create($realty);
+                $realty_post['realty_id'] = $new_realty->id;
+                $new_realty_post = RealtyPost::create($realty_post);
                 DB::commit();
-                if ($request->has('categories')) {
-                    $this->updateCategory($post->id, $request->categories);
-                }
             } catch (\Exception $e) {
                 DB::rollback();
                 return $e->getMessage();
-                return back()->with('error', 'Tải bài viết không thành công vui lòng kiểm tra lại đường dẫn!');
+                return back()->with('error', 'Tải bất động sản không thành công vui lòng kiểm tra lại đường dẫn!');
             }
 
-            return redirect()->back()->with('success', 'Tạo mới thành công bài viết');
+            return redirect()->back()->with('success', 'Tạo mới thành công bất động sản');
         }
 
     }
