@@ -20,7 +20,6 @@ class RealtyScraper
     {
         $client = new Client();
         $crawler = $client->request('GET', $url);
-        dd($crawler);
     }
 
     public function scrapeRealty($url)
