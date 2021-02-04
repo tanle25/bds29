@@ -4,15 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\PostCategory;
+use App\Models\Province;
 use App\Scraper\PostScraper;
+use App\Scraper\RealtyScraper;
 use DB;
 use Illuminate\Http\Request;
 
 class CrawController extends Controller
 {
-    public function __construct(PostScraper $post_scraper)
+    public function __construct(PostScraper $post_scraper, RealtyScraper $realty_scraper)
     {
         $this->post_scraper = $post_scraper;
+        $this->realty_scraper = $realty_scraper;
+
     }
 
     public function showCrawForm()
@@ -57,4 +61,43 @@ class CrawController extends Controller
             ]);
         }
     }
+
+    // realty craw
+    public function getRealtyForm()
+    {
+        if (!empty(config('constant.provinces'))) {
+            $provinces = Province::whereIn('code', config('constant.provinces'))->get();
+        } else {
+            $provinces = Province::orderBy('slug')->get();
+        }
+
+        return view('admin.pages.realty_post.craw', compact('provinces'));
+    }
+
+    public function getRealty(Request $request)
+    {
+        if ($request->has('link')) {
+            $post = $this->realty_scraper->scrapeRealty($request->link);
+            dd($post);
+            try {
+                DB::beginTransaction();
+                if ($request->has('avatar')) {
+                    $post['avatar'] = $request->avatar;
+                }
+                $post = Post::create($post);
+                DB::commit();
+                if ($request->has('categories')) {
+                    $this->updateCategory($post->id, $request->categories);
+                }
+            } catch (\Exception $e) {
+                DB::rollback();
+                return $e->getMessage();
+                return back()->with('error', 'Tải bài viết không thành công vui lòng kiểm tra lại đường dẫn!');
+            }
+
+            return redirect()->back()->with('success', 'Tạo mới thành công bài viết');
+        }
+
+    }
+
 }
