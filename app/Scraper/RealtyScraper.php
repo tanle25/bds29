@@ -111,7 +111,7 @@ class RealtyScraper
 
         $new_realty_post = [];
         $new_realty_post["title"] = $title;
-        $new_realty_post["realty_post_type"] = $this->getRealtyPostType($realty_post_type);
+        $new_realty_post["type"] = $this->getRealtyPostType($realty_post_type);
         $new_realty_post["price"] = $price;
         $new_realty_post["price_type"] = $price_type;
         $new_realty_post["description"] = $description;
