@@ -16,10 +16,24 @@ class RealtyScraper
         $this->image_service = $image_service;
         $this->slug_service->setModel(RealtyPost::class);
     }
-    public function crawDetail($url)
+    public function crawList($url)
     {
         $client = new Client();
         $crawler = $client->request('GET', $url);
+
+        $links = $crawler
+            ->filter(".content-items .ct_title a")->each(function ($node) {
+            return "https://alonhadat.com.vn" . $node->attr('href');
+        });
+        $list_item = [];
+
+        foreach ($links as $link) {
+            $item = $this->scrapeRealty($link);
+            if ($item) {
+                $list_item[] = $item;
+            }
+        }
+        return $list_item;
     }
 
     public function scrapeRealty($url)
@@ -66,6 +80,11 @@ class RealtyScraper
         $title = $crawler
             ->filter(".title h1")
             ->first()->text();
+
+        if ($this->slug_service->isExsist($title)) {
+            return false;
+        }
+
         $realty_post_type = $crawler
             ->filter(".infor tr:nth-child(2) td:nth-child(2)")
             ->first()->text();

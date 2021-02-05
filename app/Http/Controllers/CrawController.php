@@ -116,20 +116,22 @@ class CrawController extends Controller
         ];
 
         if ($request->has('link')) {
-            $result = $this->realty_scraper->scrapeRealty($request->link);
+            $result = $this->realty_scraper->crawList($request->link);
+            foreach ($result as $item) {
+                $realty_temp = array_merge($item['realty'], $new_realty);
+                $realty_post_temp = array_merge($item['realty_post'], $new_realty_post);
+                try {
+                    DB::beginTransaction();
+                    $new_realty_stored = Realty::create($realty_temp);
+                    $realty_post_temp['realty_id'] = $new_realty_stored->id;
+                    RealtyPost::create($realty_post_temp);
+                    DB::commit();
+                } catch (\Exception $e) {
 
-            $realty = array_merge($result['realty'], $new_realty);
-            $realty_post = array_merge($result['realty_post'], $new_realty_post);
-            try {
-                DB::beginTransaction();
-                $new_realty = Realty::create($realty);
-                $realty_post['realty_id'] = $new_realty->id;
-                $new_realty_post = RealtyPost::create($realty_post);
-                DB::commit();
-            } catch (\Exception $e) {
-                DB::rollback();
-                return $e->getMessage();
-                return back()->with('error', 'Tải bất động sản không thành công vui lòng kiểm tra lại đường dẫn!');
+                    DB::rollback();
+                    return $e->getMessage();
+                    continue;
+                }
             }
 
             return redirect()->back()->with('success', 'Tạo mới thành công bất động sản');
