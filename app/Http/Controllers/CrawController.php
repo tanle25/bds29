@@ -79,7 +79,7 @@ class CrawController extends Controller
 
     public function getRealty(Request $request)
     {
-        $string_now = Carbon::now()->format('d/m/Y');
+        $string_now = Carbon::yesterday()->format('d/m/Y');
 
         $request->validate([
             'link' => "required",
