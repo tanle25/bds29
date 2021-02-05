@@ -9,6 +9,7 @@ use App\Models\Partner;
 use App\Models\Post;
 use App\Models\Province;
 use App\Models\RealtyPost;
+use App\Models\SeoManager;
 use App\Models\ThemeOption;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -142,6 +143,20 @@ class ViewServiceProvider extends ServiceProvider
                 }
             );
         }
-
+        if (Schema::hasTable('seo_manager')) {
+            if (request()->path() !== '/') {
+                $url = '/' . request()->path();
+            } else {
+                $url = '/';
+            }
+            View::composer(
+                '*', function ($view) use ($url) {
+                    $seo = SeoManager::where('link', $url)->first();
+                    if ($seo) {
+                        $view->with('seo', $seo);
+                    }
+                }
+            );
+        }
     }
 }
