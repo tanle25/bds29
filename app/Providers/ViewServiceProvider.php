@@ -142,5 +142,21 @@ class ViewServiceProvider extends ServiceProvider
                 }
             );
         }
+
+        if (Schema::hasTable('seo_manager')) {
+            if (request()->path() !== '/') {
+                $url = '/' . request()->path();
+            } else {
+                $url = '/';
+            }
+            View::composer(
+                '*', function ($view) use ($url) {
+                    $seo = SeoManager::where('link', $url)->first();
+                    if ($seo) {
+                        $view->with('seo', $seo);
+                    }
+                }
+            );
+        }
     }
 }
