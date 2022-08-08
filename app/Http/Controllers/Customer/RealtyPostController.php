@@ -2,25 +2,26 @@
 
 namespace App\Http\Controllers\Customer;
 
-use App\Helpers\RealtySlugHelper;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\RealtyPostRequest;
+use DB;
+use Datatables;
+use App\Models\User;
+use App\Models\Realty;
 use App\Models\Commune;
 use App\Models\District;
 use App\Models\PostRank;
 use App\Models\Province;
-use App\Models\Realty;
 use App\Models\RealtyPost;
-use App\Models\RealtyPostPayment;
-use App\Models\User;
-use App\Services\FilterService;
-use App\Services\RelatedRealtyService;
-use App\Services\SlugService;
-use Datatables;
-use DB;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Services\SlugService;
 use Illuminate\Support\Carbon;
-use Str;
+use App\Services\FilterService;
+use App\Helpers\RealtySlugHelper;
+use App\Models\RealtyPostPayment;
+use App\Http\Controllers\Controller;
+use App\Services\RelatedRealtyService;
+use App\Http\Requests\RealtyPostRequest;
+
 
 class RealtyPostController extends Controller
 {
@@ -363,15 +364,19 @@ class RealtyPostController extends Controller
 
         return view('customer.pages.realty_post.realty-details', compact(['newest_post', 'realty_post', 'realty', 'images', 'side_lists']));
     }
-
+    // ($search_slug, Request $request)
     public function searchByParam($search_slug, Request $request)
     {
+
         if (!$request->sort) {
             $request->request->add(['sort' => '-rank']);
         }
-
         $query_from_slug = $this->realty_slug_helper->getFilterStringFromSlug($search_slug);
+
+
+
         $request->request->add(['filter' => $query_from_slug]);
+        // $request = new Request($request->only(['dia-chi','gia','dien-tich','huong','sort','filter']));
         $side_lists = $this->related_realty_service->getRelatedRealty($query_from_slug['loai-tin-dang'] ?? null, null, $query_from_slug['tinh'] ?? null, $query_from_slug['huyen'] ?? null);
         $query = RealtyPost::with(
             'author',
@@ -406,6 +411,8 @@ class RealtyPostController extends Controller
 
         $query_list = request()->filter;
         $title = $this->getTitleFromQuery($query_list);
+
+        // dd($title);
 
         return view('customer.pages.realty_post.index', compact('realties', 'side_lists', 'title', 'user', 'filter_search', 'search_address'));
     }

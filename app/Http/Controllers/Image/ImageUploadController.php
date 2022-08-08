@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Image;
 
-use App\Http\Controllers\Controller;
-use App\Models\ThemeOption;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+
 use Image;
-use Str;
+use Tinify\Tinify;
+use App\Models\ThemeOption;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use File;
 
 class ImageUploadController extends Controller
 {
@@ -46,6 +49,11 @@ class ImageUploadController extends Controller
 
     public function store(Request $request)
     {
+        $keys =[
+                'N4ltLGqjkzMmWPg8VdvDByQdJBr9mYxT',
+                'Sp8hFR04pNy6j33lg3zYgXHZ1XZ2lMkf',
+                'FHmN1yg3lmkYQTjP8Q6rZWPJWn4ZRYfc'
+            ];
         if ($request->hasFile('file')) {
             $watermark = $this->getWatermarkLink();
             $save_path = storage_path('app/public/image_uploads');
@@ -76,6 +84,33 @@ class ImageUploadController extends Controller
             //save image
             $image->save(storage_path('app/public/image_uploads/' . $image_name));
             $thumb->save(storage_path('app/public/image_uploads/thumbs/' . $image_name));
+
+
+            // Tinify::setKey($keys[0]);
+            for($i =0 ; $i < count($keys); $i ++){
+                Tinify::setKey($keys[$i]);
+                \Tinify\validate();
+                $compressionsThisMonth = \Tinify\compressionCount();
+                if($compressionsThisMonth < 499){
+                    break;
+                }
+            }
+            $uploaded_image = storage_path('app/public/image_uploads/' . $image_name);
+            $uploaded_thubm = storage_path('app/public/image_uploads/thumbs/' . $image_name);
+            $source = \Tinify\fromFile($uploaded_image);
+            $source_thumb = \Tinify\fromFile($uploaded_thubm);
+
+            $file_ext = pathinfo($uploaded_image, PATHINFO_EXTENSION);
+            $thumb_ext = pathinfo($uploaded_image, PATHINFO_EXTENSION);
+
+            $file_path = Str::replace($file_ext,'webp',$uploaded_image);
+            $thumb_path = Str::replace($thumb_ext,'webp',$uploaded_thubm);
+            $source->toFile($file_path);
+            $source_thumb->toFile($thumb_path);
+
+            File::delete($uploaded_image);
+            File::delete($uploaded_thubm);
+            $image_name = Str::replace('jpg','webp', $image_name);
 
             return [
                 'path' => Storage::url('image_uploads/' . $image_name),

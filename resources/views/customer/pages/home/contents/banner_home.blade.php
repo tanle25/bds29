@@ -52,7 +52,8 @@
 			<h2><strong class="text-uppercase text-white"> BẤT ĐỘNG SẢN {{config('constant.province_name') ?? 'Thanh Hóa'}}</strong></h2>
 		</div>
 		<div class="section-filter-home d-none d-md-block">
-            <form action="" id="form-search">
+            <form action="{{url('tim-kiem-bat-dong-san')}}" id="form-search" method="POST">
+                @csrf
                 <div class="search-type d-flex">
 
                     <div class="search-type-item mr-1">
@@ -83,7 +84,11 @@
                                 <i class="far fa-search "></i>
                                 <input type="text" class="form-control pl-5 rounded-0" name="dia-chi" placeholder="Nhập địa chỉ" >
                             </div>
+                            <input type="hidden" name="search_slug" id="search_slug">
+                            <input type="hidden" name="search_query" id="search_query">
+                            {{-- <button style="width:" id="apply-search" type="button" style="flex: 0 0 calc(20%)" class="d-none d-md-block  btn btn-info rounded-0">Tìm kiếm</button> --}}
                             <button style="width:" id="apply-search" type="button" style="flex: 0 0 calc(20%)" class="d-none d-md-block  btn btn-info rounded-0">Tìm kiếm</button>
+
                         </div>
                     </div>
 
@@ -298,7 +303,7 @@
                 var realtyTypeSlug = $('#province option:selected').data('slug');
                 queryElem.push(realtyTypeSlug)
             }
-            var slug = '/' + queryElem.join('-') + '?';
+            var slug = '/' + queryElem.join('-');
             var query = '';
             var validParam = ['dien-tich', 'du-an', 'huong', 'gia', 'dia-chi']
             Object.entries(result).forEach(function (item, index) {
@@ -314,7 +319,10 @@
                     }
                 }
             });
-            window.location = slug + query ;
+            // window.location = slug + query ;
+            let url = "{{url('/')}}"+ slug;
+            $('#form-search').attr('action',url)
+            $('#form-search').submit();
         }
         $(document).on('click', '#apply-search', function () {
             getQuery();

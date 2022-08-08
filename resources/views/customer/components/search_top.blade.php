@@ -7,7 +7,8 @@
     }
 @endphp
 <div class="border-bottom search-top d-none d-lg-block">
-    <form action="" id="form-search" class="font-9">
+    <form action="{{url('/tim-kiem-bat-dong-san')}}" id="form-search" class="font-9" method="POST">
+        @csrf
         <div class="search-type d-flex align-items-lg-center flex-lg-row flex-column justify-content-center w-100">
             <div class="mx-auto mx-md-0 d-none d-xl-flex">
                 <div class="search-type-item d-flex align-items-center">
@@ -205,7 +206,9 @@
                     </div>
                 </div>
             </div>
-            <button id="apply-search" type="button" class="btn btn-info font-9 rounded-0">Tìm kiếm</button>
+            {{-- <button id="apply-search" type="button" class="btn btn-info font-9 rounded-0">Tìm kiếm</button> --}}
+            <button type="submit" class="btn btn-info font-9 rounded-0">Tìm kiếm</button>
+
         </div>
     </form>
 </div>

@@ -120,7 +120,10 @@ Route::post('/lien-he', [ContactController::class, 'store'])->name('admin.class_
 Route::get('du-an{search_slug}', [ProjectCustomerController::class, 'index'])->name('customer.project.index');
 Route::get('du-an/{slug}', [ProjectCustomerController::class, 'show'])->name('customer.project.show');
 Route::get('tag/{slug}', [RealtyTagController::class, 'getRealtyByTag'])->name('customer.realty_tag.get_all');
-Route::get('/{search_slug}', [RealtyPostController::class, 'searchByParam'])->name('customer.realty_post.search_by_param');
+// Route::get('/{search_slug}', [RealtyPostController::class, 'searchByParam'])->name('customer.realty_post.search_by_param');
+Route::match(['get','post'],'/{search_slug}', [RealtyPostController::class, 'searchByParam'])->name('customer.realty_post.search_by_param');
+
+// Route::match(['get','post'])
 
 Route::get('/v2/{any}', function () {
     return view('app.main');

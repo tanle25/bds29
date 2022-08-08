@@ -23,12 +23,16 @@
     @endisset
     type="hidden" name="{{$input_name}}" >
 </div>
+<div class="file-tag">
+
+</div>
 
 @section('script')
 
 @parent
 <script>
     $(document).ready(function () {
+
         let {{Str::camel($input_name)}} = new Dropzone("div#{{$input_name}}", {
             dictDefaultMessage: "Click hoặc kéo ảnh vào đây",
             url: "/image/store",
@@ -37,6 +41,7 @@
             },
             addRemoveLinks: true,
             init: function () {
+                let current = $(this);
                 @isset($mock_file)
                     var mock_file = @json($mock_file);
                     mock_file.forEach(element => {
@@ -81,7 +86,7 @@
                     }
                     maxSize = 2;
                     if(file.size > maxSize * 1024 * 1024){
-                        console.log(file.size);
+                        // console.log(file.size);
                         alert('Kích thước ảnh quá lớn, tối đa '+ maxSize +'Mb!');
                         this.removeFile(file);
                     }
@@ -93,12 +98,21 @@
                         `<a class="dz-remove-link" href="javascript:undefined;" data-remove-link="${imageStoragePath}"></a>`
                     );
                     file['link'] = response.path;
+                    let file_name = imageStoragePath.replace(/^.*[\\\/]/, '');
+                    let base_name = file_name.replace('.webp','');
                     let file_list = getStorageLinks();
                     $('input[name="{{$input_name}}"]').val(file_list);
+                    $("div#{{$input_name}}").next().append(
+                        `<div class="row" id="${base_name}">
+                            <input type="text" placeholder="alt" class="form-control col-6">
+                            <input type="text" placeholder="title" class="form-control col-6">
+                        </div>`
+                    );
+                        // console.log(imageStoragePath.replace(/^.*[\\\/]/, ''));
+
                 });
 
                 this.on("thumbnail", function(file, dataUrl) {
-                    console.log('hello');
                     $('.dz-image').last().find('img').attr({width: '100%', height: '100%', objectFit: "contain"});
                 });
 
@@ -111,11 +125,16 @@
                             storage_path: filePath,
                         }
                     });
+                    let file_name = filePath.replace(/^.*[\\\/]/, '');
+                    let base_name = file_name.replace('.webp','');
                     let file_list = getStorageLinks();
                     $('input[name="{{$input_name}}"]').val(file_list);
+                    // console.log(base_name);
+                    $('#'+base_name).remove();
                 });
             }
         });
     });
 </script>
 @endsection
+

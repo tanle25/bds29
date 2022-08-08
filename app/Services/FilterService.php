@@ -21,7 +21,9 @@ class FilterService
     {
         $this->readQuery();
 
-        $query = QueryBuilder::for($query);
+        // dd($this->request->all());
+
+        $query = QueryBuilder::for($query, new Request($this->request->all()));
 
         $realties = $query
             ->allowedFilters(
@@ -87,6 +89,7 @@ class FilterService
         }
 
         $this->request->request->set('filter', array_merge($this->request->filter, $result));
+        // dd($this->request->filter);
         return $this->request->filter;
     }
 
