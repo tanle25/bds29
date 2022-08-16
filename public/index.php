@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
-header('Accept-Encoding','gzip');
+// header('Accept-Encoding','gzip');
 
 /*
 |--------------------------------------------------------------------------

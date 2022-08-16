@@ -184,7 +184,7 @@ class RealtyPostController extends Controller
             $design_images = explode(',',$request->house_design_image);
             foreach ($house_images as $key => $image) {
                 # code...
-                $new_realty_post->images->create([
+                $new_realty_post->images()->create([
                     'type'=> 1,
                     'link'=> $image,
                     'title'=> isset($request->house_image_title[$key]) ? $request->house_image_title[$key] : $request->title,
@@ -193,7 +193,7 @@ class RealtyPostController extends Controller
             }
             foreach ($design_images as $key => $image) {
                 # code...
-                $new_realty_post->images->create([
+                $new_realty_post->images()->create([
                     'type'=> 1,
                     'link'=> $image,
                     'title'=> isset($request->house_design_image_title[$key]) ? $request->house_design_image_title[$key] : $request->title,
