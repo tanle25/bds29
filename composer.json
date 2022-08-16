@@ -26,7 +26,7 @@
         "spatie/laravel-activitylog": "^3.16",
         "spatie/laravel-query-builder": "^3.3",
         "spatie/laravel-tags": "^3.0",
-        "symfony/filesystem": "^6.0",
+        "symfony/filesystem": "5.4.11",
         "tinify/tinify": "^1.5",
         "unisharp/laravel-filemanager": "dev-master",
         "yajra/laravel-datatables-oracle": "~9.0"
