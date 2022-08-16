@@ -44,15 +44,17 @@ class RouteServiceProvider extends ServiceProvider
 
                 ->group(base_path('routes/api.php'));
 
-            Route::middleware(['web','cache.headers','cache.headers:private;max_age=31536000','encode'])
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
+            
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/admin.php'));
+
+            Route::middleware(['web','cache.headers','cache.headers:private;max_age=31536000'])
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
         });
     }
-
+// ['web','cache.headers','cache.headers:private;max_age=31536000','encode']
     /**
      * Configure the rate limiters for the application.
      *

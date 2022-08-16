@@ -32,7 +32,7 @@ use App\Http\Controllers\Customer\ProjectController as ProjectCustomerController
  */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
+Route::get('test', [HomeController::class, 'test']);
 
 
 Route::get('realty', function () {
@@ -107,9 +107,9 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('get-geo-by-name', [LocationController::class, 'getGeoByName'])->name('customer.location.get_geo_by_name');
 });
 
-// Route::get('/v2/{any}', function () {
-//     return view('app.main');
-// });
+Route::get('/v2/{any}', function () {
+    return view('app.main');
+});
 
 // Payment callback
 Route::get('payment/callback', [CustomerRechargeController::class, 'thirdPartyCallback'])->name('customer.payment.callback_from_online_payment');
@@ -131,10 +131,9 @@ Route::get('du-an/{slug}', [ProjectCustomerController::class, 'show'])->name('cu
 Route::get('tag/{slug}', [RealtyTagController::class, 'getRealtyByTag'])->name('customer.realty_tag.get_all');
 Route::match(['get','post'],'/{search_slug}', [RealtyPostController::class, 'searchByParam'])->name('customer.realty_post.search_by_param');
 
-Route::match(['get','post'],'/{search_slug}/{realty_slug?}', [RealtyPostController::class, 'searchByParam2'])->name('customer.realty_post.search_by_param');
-// Route::match(['get','post'],'/{search_slug}/{realty_slug}', [RealtyPostController::class, 'seachProject']);
+Route::match(['get','post'],'/{search_slug}/{realty_slug?}', [RealtyPostController::class, 'searchByParam2'])->name('customer.realty_post.search_by_param2');
 
 
-// Route::get('/v2/{any}', function () {
-//     return view('app.main');
-// });
+Route::get('/v2/{any}', function () {
+    return view('app.main');
+});

@@ -57,9 +57,7 @@ class CompressImageController extends Controller
 
         $this->moveImage();
 
-        $images = Image::where('link', 'LIKE', '%.jpg')->limit(50)->get();
-        if ($images->count() > 0) {
-
+            $images = Image::where('link', 'LIKE', '%.jpg')->limit(50)->get();
             // dd($images);
             $before = 0;
             $after = 0;
@@ -91,9 +89,6 @@ class CompressImageController extends Controller
                 }
                 
             }
-
-            // dd($before, $after);
-            // if($before > 0 && $thumb_before > 0){
             $imageSavedByte = $before - $after;
             $imageSaved = $imageSavedByte / $before;
             $thumbSavedByte = $thumb_before - $thumb_after;
@@ -113,13 +108,7 @@ class CompressImageController extends Controller
                 'total_image' => $totalImage,
                 'total_compress' => $totalCompressted
             ];
-            // dd('test');
-            $collection = collect($result);
-
-            Session::flash('compressImage',$collection);
-        }
-        
-            return view('customer.pages.compressimage');
+            return view('customer.pages.compressimage',['result'=>$result]);
 
     }
 

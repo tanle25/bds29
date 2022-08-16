@@ -16,6 +16,7 @@ use Illuminate\Support\Str;
 use App\Models\PostCategory;
 use App\Services\ProjectService;
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,134 +27,8 @@ class HomeController extends Controller
         $this->project_service = $project_service;
     }
 
-    public function test()
-    {
-        # code...
-        $keys =[
-            'N4ltLGqjkzMmWPg8VdvDByQdJBr9mYxT',
-            'Frq70zfjY2T5fCf1cFCrn0bZyHpNhsDz',
-            'FHmN1yg3lmkYQTjP8Q6rZWPJWn4ZRYfc'
-        ];
-        Tinify::setKey('Frq70zfjY2T5fCf1cFCrn0bZyHpNhsDz');
-        // for($i =0 ; $i < count($keys); $i ++){
-        //     Tinify::setKey('Frq70zfjY2T5fCf1cFCrn0bZyHpNhsDz');
-        //     \Tinify\validate();
-        //     $compressionsThisMonth = \Tinify\compressionCount();
-        //     if($compressionsThisMonth < 499){
-        //         break;
-        //     }
-        // }
-        // $realties = RealtyPost::whereStatus(3)->get();
 
-        // foreach ($realties as $realty) {
-        //     # code...
-        //     $thumb = $realty->thumb;
-        //     $ex = pathinfo($thumb,PATHINFO_EXTENSION);
-        //     if($ex != 'webp'){
-        //         $source = \Tinify\fromFile(public_path($thumb));
-        //         $path = Str::replace($ex,'webp',$thumb);
-        //         $source->toFile(public_path($path));
-        //         File::delete($thumb);
-
-        //     }
-        // }
-        // dd($realties->first()->thumb);
-
-
-        // foreach ($realties as $realty) {
-        //     # code...
-        //     $images = explode(',',$realty->realty->house_image);
-        //     $convertedImages=[];
-        //     foreach($images as $image){
-                
-        //         $ex = pathinfo($image,PATHINFO_EXTENSION);
-        //         // if($ex != 'webp'){
-
-        //                 //code...
-        //                 $source = \Tinify\fromFile(public_path($image));
-                
-        //                 $path = Str::replace($ex,'webp',$image);
-        //                 $resized = $source->resize([
-        //                     "method" => "scale",
-        //                     "width" => 825 
-        //                 ]);
-        //                 $resized->toFile(public_path($path));
-        //                 // Storage::rename($image, $path);
-        //                 $convertedImages[]= $path;
-        //             File::delete(public_path($image));
    
-                   
-        //         // }
-                
-        //     }
-        //     $convertImage = implode(',',$convertedImages);
-        //     // dd($convertImage);
-        //     $realty->realty->update([
-        //         'house_image'=>$convertImage
-        //     ]);
-            
-        // }
-
-        // $image = '/storage/photos/1/du-an/20210202105549-824e_wm.webp';
-
-        // $ex = pathinfo($image,PATHINFO_EXTENSION);
-        // $filename = Str::of($image)->basename('.'.$ex);
-        // $newname = Str::replace($filename,$filename.'_mb',$image);
-        // $path = Str::replace($ex,'webp',$newname);
-
-        // // dd($path);
-        // $source = \Tinify\fromFile(public_path($image));
-        // $resized = $source->resize([
-        //     "method" => "scale",
-        //     "height" => 250 
-        // ]);
-        // $resized->toFile(public_path($path));
-
-        // dd($realties);
-
-
-        $users = User::whereNotNull('profile_image_path')->get();
-        // dd($user);
-        foreach ($users as $user) {
-            # code...]
-            $image = $user->profile_image_path;
-            $ex = pathinfo($image,PATHINFO_EXTENSION);
-            $path = Str::replace($ex,'webp',$image);
-
-            // dd($path);
-            $source = \Tinify\fromFile(public_path($image));
-            $resized = $source->resize([
-                "method" => "fit",
-                "width" => 150,
-                "height" => 150
-            ]);
-            $resized->toFile(public_path($path));
-            $user->profile_image_path = $path;
-            $user->save();
-            // File::delete(public_path($image));
-        }
-    }
-
-    public function moveImage()
-    {
-        # code...
-        dd('test');
-        $realties = RealtyPost::whereStatus(3)->get();
-        foreach ($realties as $realty) {
-            # code...
-            $images = explode(',',$realty->realty->house_image);
-            foreach ($images as $image) {
-                # code...
-                dd($image);
-                $realty->images()->create([
-                    'link'=>$image,
-                    'title'=>$realty->title,
-                    'alt'=>$realty->title
-                ]);
-            }
-        }
-       
-    }
 
     public function index(Request $request)
     {
@@ -195,5 +70,18 @@ class HomeController extends Controller
 
         $partners = Partner::where('rank', 1)->take(10)->get();
         return view('customer.pages.home.index', compact('partners', 'random_realties_type1', 'random_realties_type2', 'home_projects', 'home_search_projects', 'provinces', 'featured_district', 'home_featured_cats', 'home_featured_post', 'show_districts'));
+    }
+
+    public function test()
+    {
+        # code...
+        Contact::create([
+            'full name'=>'Tan le',
+            'phone_number'=>'0972685031',
+            'email'=>'tanltps@gmail.com',
+            'address'=>'hoang hoa, thanh hoa',
+            'status'=>2,
+            'messages'=>'test',
+        ]);
     }
 }

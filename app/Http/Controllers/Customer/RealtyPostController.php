@@ -19,6 +19,7 @@ use Illuminate\Support\Carbon;
 use App\Services\FilterService;
 use App\Helpers\RealtySlugHelper;
 use App\Models\RealtyPostPayment;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Services\RelatedRealtyService;
 use App\Http\Requests\RealtyPostRequest;
@@ -107,11 +108,9 @@ class RealtyPostController extends Controller
     public function store(RealtyPostRequest $request)
     {
         // store realty
-        $commune = Commune::where('code', $request->commune)->first();
-        // $projects = implode(",",$request->project);
-        $realty_id = [];
         // dd($request->all());
-        foreach ($request->project as $key => $value) {
+        // if( !$request->session()->has('realty')){
+            $commune = Commune::where('code', $request->commune)->first();
             $new_realty = Realty::create([
                 'type' => $request->realty_type,
                 'province_code' => $request->province,
@@ -130,34 +129,11 @@ class RealtyPostController extends Controller
                 'full_address' => 'Số nhà' . $request->apartment_number . ", " . $request->street . ", " . $commune->path_with_type,
                 'google_map_lat' => $request->google_map_lat,
                 'google_map_lng' => $request->google_map_lng,
-                'project_id' => $value,
-                'furniture' => $request->furniture,
+                'project_id' => $request->project_id,
+    
             ]);
-            array_push($realty_id, $new_realty->id);
-        }
-        // dd($realty_id);
-        // $new_realty = Realty::create([
-        //     'type' => $request->realty_type,
-        //     'province_code' => $request->province,
-        //     'district_code' => $request->district,
-        //     'commune_code' => $request->commune,
-        //     'street' => $request->street,
-        //     'direction' => $request->direction,
-        //     'number_of_bed_rooms' => $request->number_of_bed_rooms,
-        //     'number_of_bath_rooms' => $request->number_of_bath_rooms,
-        //     'number_of_floors' => $request->number_of_floors,
-        //     'area' => $request->area,
-        //     'description' => $request->description,
-        //     'house_image' => $request->house_image,
-        //     'house_design_image' => $request->house_design_image,
-        //     'apartment_number' => $request->apartment_number,
-        //     'full_address' => 'Số nhà' . $request->apartment_number . ", " . $request->street . ", " . $commune->path_with_type,
-        //     'google_map_lat' => $request->google_map_lat,
-        //     'google_map_lng' => $request->google_map_lng,
-        //     'project_id' => $projects,
-        //     'furniture' => $request->furniture,
-        // ]);
-        foreach ($realty_id as $new_realty_id) {
+            // $request->session()->flash('realty', $new_realty);
+            // store realty post
             $open_at = Carbon::createFromFormat('d/m/Y', $request->open_at);
             $close_at = Carbon::createFromFormat('d/m/Y', $request->close_at);
             $slug = $this->slug_service->getSlug($request->title);
@@ -168,7 +144,7 @@ class RealtyPostController extends Controller
                 'price' => $request->price,
                 'price_type' => $request->price_type,
                 'description' => $request->description,
-                'realty_id' => $new_realty_id,
+                'realty_id' => $new_realty->id,
                 'contact_name' => $request->contact_name,
                 'contact_phone_number' => $request->contact_phone_number,
                 'contact_email' => $request->contact_email,
@@ -178,74 +154,55 @@ class RealtyPostController extends Controller
                 'close_at' => $close_at->format('Y-m-d H:i:s'),
                 'created_by' => auth()->user()->id ?? null,
             ]);
-            $post_rank = PostRank::where('rank_code', $request->realty_post_rank)->first();
-            $duration = $close_at->diffInDays($open_at);
+    
             $house_images = explode(',',$request->house_image);
             $design_images = explode(',',$request->house_design_image);
             foreach ($house_images as $key => $image) {
                 # code...
                 $new_realty_post->images()->create([
-                    'type'=> 1,
-                    'link'=> $image,
-                    'title'=> isset($request->house_image_title[$key]) ? $request->house_image_title[$key] : $request->title,
-                    'alt'=> isset($request->house_image_alt[$key]) ? $request->house_image_alt[$key] : $request->title
+                    'type'=>1,
+                    'link'=>$image,
+                    'alt'=>isset($request->house_image_alt[$key])  ? $request->house_image_alt[$key] : $request->title,
+                    'title'=>isset($request->house_image_title[$key])  ? $request->house_image_title[$key] : $request->title
                 ]);
             }
             foreach ($design_images as $key => $image) {
                 # code...
                 $new_realty_post->images()->create([
-                    'type'=> 1,
-                    'link'=> $image,
-                    'title'=> isset($request->house_design_image_title[$key]) ? $request->house_design_image_title[$key] : $request->title,
-                    'alt'=> isset($request->house_design_image_alt[$key]) ? $request->house_design_image_alt[$key] : $request->title
+                    'type'=>2,
+                    'link'=>$image,
+                    'alt'=>isset($request->house_design_image_alt[$key])  ? $request->house_design_image_alt[$key] : $request->title,
+                    'title'=>isset($request->house_design_image_title[$key])  ? $request->house_design_image_title[$key] : $request->title
                 ]);
             }
-        }
-        // store realty post
-        // $open_at = Carbon::createFromFormat('d/m/Y', $request->open_at);
-        // $close_at = Carbon::createFromFormat('d/m/Y', $request->close_at);
-        // $slug = $this->slug_service->getSlug($request->title);
-        // $new_realty_post = RealtyPost::create([
-        //     'title' => $request->title,
-        //     'slug' => $slug,
-        //     'type' => $request->realty_post_type,
-        //     'price' => $request->price,
-        //     'price_type' => $request->price_type,
-        //     'description' => $request->description,
-        //     'realty_id' => $new_realty->id,
-        //     'contact_name' => $request->contact_name,
-        //     'contact_phone_number' => $request->contact_phone_number,
-        //     'contact_email' => $request->contact_email,
-        //     'contact_address' => $request->contact_address,
-        //     'rank' => $request->realty_post_rank,
-        //     'open_at' => $open_at->format('Y-m-d H:i:s'),
-        //     'close_at' => $close_at->format('Y-m-d H:i:s'),
-        //     'created_by' => auth()->user()->id ?? null,
-        // ]);
-        // $post_rank = PostRank::where('rank_code', $request->realty_post_rank)->first();
-        // $duration = $close_at->diffInDays($open_at);
-
-        $wallet = auth()->user()->wallet;
-        $new_payment = new RealtyPostPayment;
-        $new_payment->realty_post_id = $new_realty_post->id;
-        $new_payment->post_rank = $new_realty_post->rank;
-        $new_payment->post_duration = $duration;
-        $new_payment->post_open_at = $open_at->format('Y-m-d H:i:s');
-        $new_payment->post_close_at = $close_at->format('Y-m-d H:i:s');
-        $new_payment->total = $duration * $post_rank->price;
-        $new_payment->status = 1;
-
-        if ($wallet->main_account < $new_payment->total) {
-            $new_realty->delete();
-            $new_realty_post->delete();
-            $request->flash();
-            return redirect()->back()->with('error', 'Tài khoản của bạn không đủ');
-        }
-
-        $new_payment->save();
-        $this->handleCustomerPayment(auth()->user(), $new_payment);
-        //store image
-        return redirect()->back()->with('success', 'Gửi thành công tin đăng, Chúng tôi sẽ duyệt bài đăng của bạn sớm');
+            $post_rank = PostRank::where('rank_code', $request->realty_post_rank)->first();
+            $duration = $close_at->diffInDays($open_at);
+    
+            $wallet = auth()->user()->wallet;
+            $new_payment = new RealtyPostPayment;
+            $new_payment->realty_post_id = $new_realty_post->id;
+            $new_payment->post_rank = $new_realty_post->rank;
+            $new_payment->post_duration = $duration;
+            $new_payment->post_open_at = $open_at->format('Y-m-d H:i:s');
+            $new_payment->post_close_at = $close_at->format('Y-m-d H:i:s');
+            $new_payment->total = $duration * $post_rank->price;
+            $new_payment->status = 1;
+    
+            if ($wallet->main_account < $new_payment->total) {
+                $new_realty->delete();
+                $new_realty_post->delete();
+                $request->flash();
+                return redirect()->back()->with('error', 'Tài khoản của bạn không đủ');
+            }
+    
+            $new_payment->save();
+            $this->handleCustomerPayment(auth()->user(), $new_payment);
+            //store image
+            return redirect()->back()->with('success', 'Gửi thành công tin đăng, Chúng tôi sẽ duyệt bài đăng của bạn sớm');
+        // }else{
+        //     return back();
+        // }
+        
     }
 
     private function handleCustomerPayment($author, $realty_post_payment)
@@ -411,7 +368,8 @@ class RealtyPostController extends Controller
     public function show($slug)
     {
 
-        
+        // Log::alert('show');
+
         $realty_post = RealtyPost::with(
             'tags',
             'author',
