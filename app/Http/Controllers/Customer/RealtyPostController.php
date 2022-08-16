@@ -425,7 +425,7 @@ class RealtyPostController extends Controller
             ->take(6)->where('status',3)
             ->get();
 
-
+            dd($realty_post);
 
         return view('customer.pages.realty_post.realty-details',['newest_post'=>$newest_post, 'realty_post'=>$realty_post]);
 
