@@ -132,11 +132,13 @@ class ViewServiceProvider extends ServiceProvider
                     if ($featured_posts->count() >= 6) {
                         $featured_posts = $featured_posts->random(6)->sortByDesc('rank');
                     }
-                    $partners = Partner::where('rank', 1)->take(10)->get();
-
+                    // $partners = Partner::where('rank', 1)->take(10)->get();
+                    // \Debugbar::startMeasure('render','Time for rendering');
                     $widgets = Widget::all();
                     $featured_district_code = $widgets->where('name', 'bds_noi_bat')->first()->data_array->districts ?? [];
                     $featured_district = District::withCount('realty_posts')->whereIn('code', $featured_district_code)->get();
+                    // $featured_district = null;
+                    // \Debugbar::stopMeasure('render');
                     $view->with(['featured_district' => $featured_district, 'featured_posts' => $featured_posts]);
                 }
             );

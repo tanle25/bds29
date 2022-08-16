@@ -3,9 +3,10 @@
 namespace App\Services;
 
 use App\Models\ThemeOption;
+use Exception;
 use Illuminate\Support\Facades\Storage;
 use Image;
-use Str;
+use Illuminate\Support\Str;
 
 class ImageService
 {
@@ -122,6 +123,20 @@ class ImageService
     private function getThumb($string)
     {
         return Str::replaceLast('/', '/thumbs/', $string);
+    }
+
+    public function compress($imagePath){
+        try{
+            $ext = pathinfo($imagePath,PATHINFO_EXTENSION);
+            $outputPath = Str::replace($ext,'webp',$imagePath);
+            $shellCommand = "cwebp -preset photo -alpha_q 80 -m 6 -segments 4 -psnr 42 -f 40 -sharpness 3 -nostrong -partition_limit 50 -pass 6 -mt -alpha_filter best -alpha_cleanup -q 80 -v $imagePath -o $outputPath";
+            shell_exec($shellCommand);
+            return $outputPath;
+        }catch(Exception $e){
+            return 500;
+        }
+        
+
     }
 
 }

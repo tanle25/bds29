@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Image;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+use Image;
 use App\Models\ThemeOption;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\ImageCompression;
+use App\Services\ImageService;
 use Illuminate\Support\Facades\Storage;
-use Image;
-use Str;
 
 class ImageUploadController extends Controller
 {
@@ -49,7 +51,7 @@ class ImageUploadController extends Controller
         if ($request->hasFile('file')) {
             $watermark = $this->getWatermarkLink();
             $save_path = storage_path('app/public/image_uploads');
-            $image_name = Str::random(15) . '.jpg';
+            $image_name = $request->file('file')->getClientOriginalName();
             // Check if folder if not exsist
             if (!file_exists($save_path)) {
                 mkdir($save_path, 0755, true);
@@ -74,9 +76,19 @@ class ImageUploadController extends Controller
                 $thumb->insert($watermark_thumb, $this->watermark_position);
             }
             //save image
+
+            $ext = pathinfo($image_name,PATHINFO_EXTENSION);
             $image->save(storage_path('app/public/image_uploads/' . $image_name));
             $thumb->save(storage_path('app/public/image_uploads/thumbs/' . $image_name));
 
+            $imageService = new ImageCompression();
+            $imageFileSize =  $imageService::compress(storage_path('app/public/image_uploads/' . $image_name),true);
+            $thumbFileSize =  $imageService::compress(storage_path('app/public/image_uploads/thumbs/' . $image_name),true,400);
+            // return [
+            //     'imagesize'=>$imageFileSize,
+            //     'thumbsize'=>$thumbFileSize
+            // ];
+            $image_name = Str::replace($ext,'webp',$image_name);
             return [
                 'path' => Storage::url('image_uploads/' . $image_name),
                 'storage_path' => 'image_uploads/' . $image_name,
@@ -87,6 +99,7 @@ class ImageUploadController extends Controller
 
     public function destroy(Request $request)
     {
+        
         Storage::delete('public/' . $request->storage_path);
         Storage::delete('public/' . $this->getThumb($request->storage_path));
     }

@@ -110,6 +110,7 @@ class RealtyPostController extends Controller
         $commune = Commune::where('code', $request->commune)->first();
         // $projects = implode(",",$request->project);
         $realty_id = [];
+        // dd($request->all());
         foreach ($request->project as $key => $value) {
             $new_realty = Realty::create([
                 'type' => $request->realty_type,
@@ -179,6 +180,26 @@ class RealtyPostController extends Controller
             ]);
             $post_rank = PostRank::where('rank_code', $request->realty_post_rank)->first();
             $duration = $close_at->diffInDays($open_at);
+            $house_images = explode(',',$request->house_image);
+            $design_images = explode(',',$request->house_design_image);
+            foreach ($house_images as $key => $image) {
+                # code...
+                $new_realty_post->images->create([
+                    'type'=> 1,
+                    'link'=> $image,
+                    'title'=> isset($request->house_image_title[$key]) ? $request->house_image_title[$key] : $request->title,
+                    'alt'=> isset($request->house_image_alt[$key]) ? $request->house_image_alt[$key] : $request->title
+                ]);
+            }
+            foreach ($design_images as $key => $image) {
+                # code...
+                $new_realty_post->images->create([
+                    'type'=> 1,
+                    'link'=> $image,
+                    'title'=> isset($request->house_design_image_title[$key]) ? $request->house_design_image_title[$key] : $request->title,
+                    'alt'=> isset($request->house_design_image_alt[$key]) ? $request->house_design_image_alt[$key] : $request->title
+                ]);
+            }
         }
         // store realty post
         // $open_at = Carbon::createFromFormat('d/m/Y', $request->open_at);
@@ -258,7 +279,10 @@ class RealtyPostController extends Controller
 
         $realty_post = RealtyPost::with('realty', 'realty.district', 'realty.province', 'realty.commune')->findOrFail($id);
         $realty = $realty_post->realty;
-        $house_image = explode(',', $realty_post->realty->house_image);
+        // $house_image = explode(',', $realty_post->realty->house_image);
+        $house_image = $realty_post->images->toArray();
+
+        // dd($house_image, $images);
         $house_design_image = explode(',', $realty_post->realty->house_design_image);
 
         if (!empty(config('constant.provinces'))) {
@@ -270,15 +294,16 @@ class RealtyPostController extends Controller
         $communes = Commune::where('parent_code', $realty->commune->parent_code ?? 0)->get();
 
         $house_image = array_map(function ($item) {
-            if ($item == '') {
-                return;
-            }
+            // dd($item);
             return [
-                'path' => $item,
-                'storage_path' => Str::replaceFirst('/storage/', '', $item),
-                'thumb' => Str::replaceLast('/', '/thumbs/', $item),
+                'path' => $item['link'],
+                'storage_path' => Str::replaceFirst('/storage/', '', $item['link']),
+                'thumb' => Str::replaceLast('/', '/thumbs/', $item['link']),
+                'alt'=>$item['alt'],
+                'title'=>$item['title']
             ];
         }, $house_image);
+
 
         $house_design_image = array_map(function ($item) {
             if ($item == '') {
@@ -399,18 +424,11 @@ class RealtyPostController extends Controller
             ->orderByDesc('id')
             ->take(6)->where('status',3)
             ->get();
-        $realty = $realty_post->realty;
 
-        $images = $realty_post->images;
-        
 
-        $province_code = $realty->province->code;
-        $side_lists  = [];
-        //  $side_lists = $this->related_realty_service->getRelatedRealty($realty_post->type, $realty->type, $province_code, null);
 
-        return view('customer.pages.realty_post.realty-details',['newest_post'=>$newest_post, 'realty_post'=>$realty_post, 'realty'=>$realty, 'images'=>$images, 'side_lists'=>$side_lists]);
+        return view('customer.pages.realty_post.realty-details',['newest_post'=>$newest_post, 'realty_post'=>$realty_post]);
 
-        // return view('customer.pages.realty_post.realty-details', compact(['newest_post', 'realty_post', 'realty', 'images', 'side_lists']));
     }
 
     public function searchByParam($search_slug, Request $request)

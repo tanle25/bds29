@@ -30,10 +30,7 @@ use App\Http\Controllers\Customer\ProjectController as ProjectCustomerController
 | contains the "web" middleware group. Now create something great!
 |
  */
-Route::get('move-image',[CompressImageController::class,'moveImage']);
-Route::get('compress',[CompressImageController::class,'compress']);
-Route::get('compress-thumb',[CompressImageController::class,'compressThumb']);
-Route::get('compress-size',[CompressImageController::class,'cropBlurImage']);
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
@@ -73,8 +70,14 @@ Route::get('get-project-of-district/{district_code}', [ProvinceController::class
 Route::post('image/store', [ImageUploadController::class, 'store'])->name('image.store');
 Route::post('image/destroy', [ImageUploadController::class, 'destroy'])->name('image.destroy');
 
+
+Route::get('xu-ly-hinh-anh',[CompressImageController::class,'compressImage']);
+Route::get('xu-ly-avata',[CompressImageController::class,'compressAvata']);
+
 Route::get('admin/login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login.show');
 Route::post('admin/login', [AdminLoginController::class, 'authenticate'])->name('admin.login.post');
+
+
 
 Route::group(['middleware' => 'auth:web'], function () {
     // Account controller
@@ -104,9 +107,9 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('get-geo-by-name', [LocationController::class, 'getGeoByName'])->name('customer.location.get_geo_by_name');
 });
 
-Route::get('/v2/{any}', function () {
-    return view('app.main');
-});
+// Route::get('/v2/{any}', function () {
+//     return view('app.main');
+// });
 
 // Payment callback
 Route::get('payment/callback', [CustomerRechargeController::class, 'thirdPartyCallback'])->name('customer.payment.callback_from_online_payment');
@@ -132,6 +135,6 @@ Route::match(['get','post'],'/{search_slug}/{realty_slug?}', [RealtyPostControll
 // Route::match(['get','post'],'/{search_slug}/{realty_slug}', [RealtyPostController::class, 'seachProject']);
 
 
-Route::get('/v2/{any}', function () {
-    return view('app.main');
-});
+// Route::get('/v2/{any}', function () {
+//     return view('app.main');
+// });

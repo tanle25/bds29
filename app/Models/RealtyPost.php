@@ -46,13 +46,17 @@ class RealtyPost extends Model
 
     protected function getThumbAttribute()
     {
-        $image =  $this->images->first()->link;
-        // foreach (explode(',', $this->realty->house_image ?? '') as $item) {
-        //     if ($item != null) {
-        //         return Str::replaceLast('/', '/thumbs/', $item);
-        //     }
-        // }
-        return Str::replaceLast('/', '/thumbs/', $image);
+        if($this->images->count() > 0){
+            $image =  $this->images->first()->link;
+            // foreach (explode(',', $this->realty->house_image ?? '') as $item) {
+            //     if ($item != null) {
+            //         return Str::replaceLast('/', '/thumbs/', $item);
+            //     }
+            // }
+            return Str::replaceLast('/', '/thumbs/', $image);
+        }
+        return '';
+       
     }
 
     protected function getTypeNameAttribute()

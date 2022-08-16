@@ -269,4 +269,9 @@ return [
         'phuong' => 'Phường',
         'thi-tran' => 'Thị trấn',
     ],
+    'image_type'=>[
+        0 => 'normal',
+        1 => 'image house',
+        2 => 'design'
+    ]
 ];

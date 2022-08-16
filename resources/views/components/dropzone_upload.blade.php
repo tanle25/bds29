@@ -23,6 +23,19 @@
     @endisset
     type="hidden" name="{{$input_name}}" >
 </div>
+<div class="d-flex justify-content-end">
+    <a data-toggle="collapse" href="#{{$input_name}}-alt" role="button">Add alt</a>
+</div>
+<div class="collapse" id="{{$input_name}}-alt">
+    <div class="row">
+        <div class="col-6">
+            <span>alt</span>
+        </div>
+        <div class="col-6">
+            <span>title</span>
+        </div>
+    </div>
+</div>
 
 @section('script')
 
@@ -33,7 +46,7 @@
             dictDefaultMessage: "Click hoặc kéo ảnh vào đây",
             url: "/image/store",
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                'X-CSRF-TOKEN': "{{csrf_token()}}"
             },
             addRemoveLinks: true,
             init: function () {
@@ -52,6 +65,16 @@
                                 `<a class="dz-remove-link" href="javascript:undefined;" data-remove-link="${element.storage_path}"></a>`
                             );
                             this.files.push(element);
+                            $('#{{$input_name}}-alt').append(
+                                `<div id="${baseName(element.path)}" class="row py-2">
+                                    <div class="col-6">
+                                        <input type="text" name="{{$input_name}}_alt[]" class="form-control" placeholder="alt" value="${element.alt}">
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" name="{{$input_name}}_title[]" class="form-control" placeholder="title" value="${element.title}">
+                                    </div>
+                                </div>`
+                            );
                         }
                     });
                 @endisset
@@ -93,12 +116,23 @@
                         `<a class="dz-remove-link" href="javascript:undefined;" data-remove-link="${imageStoragePath}"></a>`
                     );
                     file['link'] = response.path;
+                    // console.log(baseName(response.path));
                     let file_list = getStorageLinks();
                     $('input[name="{{$input_name}}"]').val(file_list);
+                    $('#{{$input_name}}-alt').append(
+                        `<div id="${baseName(response.path)}" class="row py-2">
+                            <div class="col-6">
+                                <input type="text" class="form-control" name="{{$input_name}}_alt[]" placeholder="alt">
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" name="{{$input_name}}_title[]" placeholder="title">
+                            </div>
+                        </div>`
+                    );
                 });
+                
 
                 this.on("thumbnail", function(file, dataUrl) {
-                    console.log('hello');
                     $('.dz-image').last().find('img').attr({width: '100%', height: '100%', objectFit: "contain"});
                 });
 
@@ -113,9 +147,17 @@
                     });
                     let file_list = getStorageLinks();
                     $('input[name="{{$input_name}}"]').val(file_list);
+                    $('#'+baseName(filePath)).remove();
                 });
             }
         });
     });
+    function baseName(str)
+        {
+        var base = new String(str).substring(str.lastIndexOf('/') + 1); 
+            if(base.lastIndexOf(".") != -1)       
+                base = base.substring(0, base.lastIndexOf("."));
+        return base;
+        }
 </script>
 @endsection

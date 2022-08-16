@@ -238,7 +238,8 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'GeoIP' => Torann\GeoIP\GeoIPFacade::class,
-        'Debugbar'=>\Barryvdh\Debugbar\Facade::class
+        'Debugbar'=>\Barryvdh\Debugbar\Facade::class,
+        'Webp' => Buglinjo\LaravelWebp\Facades\Webp::class,
     ],
 
 ];

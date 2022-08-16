@@ -1,6 +1,9 @@
 
-<script src="{{asset('js/main.js')}}"></script>
+{{-- <script src="{{asset('js/main.js')}}"></script> --}}
 
+{{-- <script src="{{asset('js/manifest.js')}}"></script>
+<script src="{{asset('js/vendor.js')}}"></script> --}}
+<script src="{{asset('js/main.js')}}"></script>
 {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> --}}
 <script src="{{asset('js/lazy-icon.js')}}"></script>
 
