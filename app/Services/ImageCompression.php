@@ -33,4 +33,16 @@ class ImageCompression{
         }
         
     }
+
+    public function createFolder()
+    {
+        # code...
+        $path = storage_path('app/public/image_uploads/small/');
+
+        if (!File::isDirectory($path)) {
+            File::makeDirectory($path, 0777, true, true);
+
+            // retry storing the file in newly created path.
+        }
+    }
 }

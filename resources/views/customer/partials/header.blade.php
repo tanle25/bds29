@@ -23,7 +23,7 @@
             <section class="menu-desktop d-none d-md-flex align-items-center">
                 <div class="navbar-header">
                     <div class="" id="brand">
-                        <a href="/" id="logo"><img class="lazy" style="max-height: 75px" data-src="{{$logo}}" alt="brand"></a>
+                        <a href="/" id="logo"><img width="280" height="170" class="lazy" style="max-height: 75px" data-src="{{$logo}}" alt="brand"></a>
                     </div>
                 </div>
                 <nav class="d-flex align-items-center desktop-menu">
@@ -170,7 +170,7 @@
                 </button>
             @endif
 
-            <a  href="/" class="logo-mobile my-2" style="width: 30%"><img class="img-fluid lazy"  data-src="{{$logo}}"></a>
+            <a  href="/" class="logo-mobile my-2" style="width: 30%"><img width="150" height="75" class="img-fluid lazy"  data-src="{{$logo}}"></a>
             <a style="position: relative; width: auto; top:0; z-index:2"  href="#" class="pl-3 menu-open font-15 text-danger d-md-none" ><i class="far fa-bars"></i></a>
         </div>
         <div class="nav-search-btn">

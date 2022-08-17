@@ -129,4 +129,27 @@ class CompressImageController extends Controller
         }
     }
 
+    public function resizeImage()
+    {
+        # code...
+        $image = 'app/public/photos/1/du-an/20210202105549-824e_wm_mb.webp';
+        ImageCompression::compress(storage_path($image),false,400);
+    }
+
+    public function createFolder()
+    {
+        # code...
+        $files = Storage::disk('public')->files('image_uploads');
+
+        foreach ($files as $file) {
+            # code...
+            if(pathinfo($file, PATHINFO_EXTENSION) == 'webp'){
+                dd($file);
+            }
+        }
+        $compress = new ImageCompression();
+        $compress->createFolder();
+        
+    }
+
 }
