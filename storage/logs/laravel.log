@@ -10508,3 +10508,363 @@
 #4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #5 {main}
 "} 
+[2022-08-17 14:09:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:09:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:10:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:10:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:11:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:11:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:12:37] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:12:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:12:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:13:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:13:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:14:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:14:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:15:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:15:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:16:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:16:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:17:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:17:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:18:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:18:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:19:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:19:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:20:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:20:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:21:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:21:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:22:37] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:22:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:22:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:23:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:23:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:24:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:24:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:25:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:25:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:26:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:26:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:27:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-08-17 14:27:52] local.ERROR: Class "Laravelium\Sitemap\SitemapServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Laravelium\\Sitemap\\SitemapServiceProvider\" not found at /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:816)
+[stacktrace]
+#0 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\\Foundation\\Application->registerDeferredProvider('Laravelium\\\\Site...', 'sitemap')
+#1 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(772): Illuminate\\Foundation\\Application->loadDeferredProvider('sitemap')
+#2 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(313): Illuminate\\Foundation\\Application->loadDeferredProviders()
+#3 /Users/tanle/Desktop/laravel_project/bds29/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
