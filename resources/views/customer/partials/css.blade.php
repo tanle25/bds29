@@ -12,5 +12,4 @@
 <link rel="preconnect" href="https://maps.googleapis.com">
 <link rel="preconnect" href="http://za.zdn.vn">
 <link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="stylesheet" href="{{asset('css/index.css')}}">
 @yield('css')
