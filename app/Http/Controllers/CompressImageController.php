@@ -11,7 +11,9 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Services\ImageCompression;
 use Barryvdh\Debugbar\Facades\Debugbar;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,6 +24,17 @@ class CompressImageController extends Controller
     {
         # code...
         // dd('test');
+        if(!Schema::hasTable('images')){
+            Schema::create('images', function(Blueprint $table){
+                $table->id();
+                $table->tinyInteger('type')->after('id');
+                $table->foreignIdFor(RealtyPost::class)->constrained()->cascadeOnDelete();
+                $table->string('link');
+                $table->string('title')->nullable();
+                $table->string('alt')->nullable();
+                $table->timestamps();
+            });
+        }
         $realties = RealtyPost::whereStatus(3)->doesntHave('images')->get();
         foreach ($realties as $realty) {
             # code...
@@ -37,7 +50,6 @@ class CompressImageController extends Controller
             }
             if ($realty->realty->house_design_image != null) {
                 $designImages = explode(',', $realty->realty->house_design_image);
-
                 foreach ($designImages as $image) {
                     # code...
                     $realty->images()->create([
@@ -55,7 +67,7 @@ class CompressImageController extends Controller
     {
         # code...
 
-        $this->moveImage();
+        // $this->moveImage();
 
             $images = Image::where('link', 'LIKE', '%.jpg')->limit(50)->get();
             // dd($images);

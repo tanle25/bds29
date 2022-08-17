@@ -9,7 +9,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        Log::alert('dashboard');
         return view('admin.pages.home');
     }
 }
