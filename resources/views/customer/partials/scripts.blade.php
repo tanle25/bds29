@@ -1,23 +1,17 @@
 
-{{-- <script src="{{asset('js/main.js')}}"></script> --}}
 
-{{-- <script src="{{asset('js/manifest.js')}}"></script>
-<script src="{{asset('js/vendor.js')}}"></script> --}}
 <script src="{{asset('js/main.js')}}"></script>
-{{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> --}}
-<script src="{{asset('js/lazy-icon.js')}}"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
-{{-- <script src="{{asset('js/rangesearch.js')}}"></script> --}}
-@include('customer.partials.alert')
 
 <script>
-    window.addEventListener('load', () => {
-            LazyIcon().observe({
-                'src': '/plugins/fontawesome-pro/css/all.css?v=1023',
-                'selector': '.fas',
-                'rootMargin': '150px 0px'
-            });
-        });
+    // window.addEventListener('load', () => {
+    //         LazyIcon().observe({
+    //             'src': '/plugins/fontawesome-pro/css/all.css?v=1023',
+    //             'selector': '.fas',
+    //             'rootMargin': '150px 0px'
+    //         });
+    //     });
 
     $(document).ready(function(){
         var lazyLoadInstance = new LazyLoad({
