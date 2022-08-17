@@ -123,11 +123,6 @@ class CompressImageController extends Controller
             $fileName = pathinfo($url, PATHINFO_FILENAME);
             $ext = pathinfo($url, PATHINFO_EXTENSION);
             $newImageLink = Str::replace($ext, 'webp', $url);
-            // $fileExists = \File::exists(storage_path('app/public/user_avatar/' . $fileName . '.' . $ext));
-            // if($fileExists){
-            //     $result = ImageCompression::compress(storage_path('app/public/user_avatar/' . $fileName . '.' . $ext), true);
-            //     $thumb = ImageCompression::compress(storage_path('app/public/user_avatar/thumbs/' . $fileName . '.' . $ext), true,60);
-            // }
             $image->update([
                 'profile_image_path' =>$newImageLink
             ]);
