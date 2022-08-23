@@ -76,6 +76,13 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="/admin/toi-uu-hinh-anh" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Tối ưu hình ảnh</p>
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">

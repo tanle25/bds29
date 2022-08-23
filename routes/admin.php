@@ -1,35 +1,36 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminManagerController;
-use App\Http\Controllers\Admin\AdvertismentController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CrawController;
+use App\Http\Controllers\Admin\SeoController;
+use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\BankController;
 use App\Http\Controllers\Admin\BillController;
+use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\SlugController;
+use App\Http\Controllers\Admin\GroundController;
+use App\Http\Controllers\Admin\WidgetController;
 use App\Http\Controllers\Admin\CommuneController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\CompressImageController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DistrictController;
+use App\Http\Controllers\Admin\PostRankController;
+use App\Http\Controllers\Admin\ProvinceController;
+use App\Http\Controllers\Admin\WebConfigController;
+use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\FilemanagerController;
-use App\Http\Controllers\Admin\GroundController;
+use App\Http\Controllers\Admin\ThemeOptionController;
+use App\Http\Controllers\Admin\AdminManagerController;
+use App\Http\Controllers\Admin\AdvertismentController;
+use App\Http\Controllers\Admin\MenuCategoryController;
+use App\Http\Controllers\Admin\PostCategoryController;
 use App\Http\Controllers\Admin\HelperServiceController;
 use App\Http\Controllers\Admin\HomeController as HomeAdminController;
-use App\Http\Controllers\Admin\MenuCategoryController;
-use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\PartnerController;
-use App\Http\Controllers\Admin\PostCategoryController;
-use App\Http\Controllers\Admin\PostController;
-use App\Http\Controllers\Admin\PostRankController;
-use App\Http\Controllers\Admin\ProjectController;
-use App\Http\Controllers\Admin\ProvinceController;
 use App\Http\Controllers\Admin\RealtyPostController as AdminRealtyPostController;
-use App\Http\Controllers\Admin\SeoController;
-use App\Http\Controllers\Admin\SlugController;
-use App\Http\Controllers\Admin\TagController;
-use App\Http\Controllers\Admin\ThemeOptionController;
-use App\Http\Controllers\Admin\WebConfigController;
-use App\Http\Controllers\Admin\WidgetController;
-use App\Http\Controllers\Auth\AdminLoginController;
-use App\Http\Controllers\CrawController;
-use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
 
@@ -40,6 +41,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('reset-password/{token}', [AdminLoginController::class, 'showResetPasswordForm'])->name('admin.password.reset');
 
     Route::get('dashboard', [HomeAdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('xu-ly-hinh-anh',[CompressImageController::class,'compressImage']);
+    Route::get('toi-uu-hinh-anh',[CompressImageController::class,'showPage']);
+    Route::get('di-chuyen-hinh-anh',[CompressImageController::class,'moveImage']);
+    Route::get('toi-uu-avatar',[CompressImageController::class,'compressAvata']);
 
     // slug
     Route::post('slug/get', [SlugController::class, 'create'])->name('admin.slug.create');

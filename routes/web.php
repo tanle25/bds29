@@ -71,10 +71,10 @@ Route::post('image/store', [ImageUploadController::class, 'store'])->name('image
 Route::post('image/destroy', [ImageUploadController::class, 'destroy'])->name('image.destroy');
 
 
-Route::get('di-chuyen-hinh-anh',[CompressImageController::class,'moveImage']);
 
-Route::get('xu-ly-hinh-anh',[CompressImageController::class,'compressImage']);
-Route::get('xu-ly-avata',[CompressImageController::class,'compressAvata']);
+
+
+
 // Route::get('tao-thu-muc',[CompressImageController::class,'resizeImage']);
 
 Route::get('admin/login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login.show');

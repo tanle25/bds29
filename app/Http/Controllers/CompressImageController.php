@@ -61,6 +61,7 @@ class CompressImageController extends Controller
                 }
             }
         }
+        return redirect()->back();
     }
 
     public function compressImage()
@@ -70,7 +71,6 @@ class CompressImageController extends Controller
         // $this->moveImage();
 
             $images = Image::where('link', 'LIKE', '%.jpg')->limit(50)->get();
-            // dd($images);
             $before = 0;
             $after = 0;
             $thumb_before = 0;
@@ -101,27 +101,18 @@ class CompressImageController extends Controller
                 }
                 
             }
-            $imageSavedByte = $before - $after;
-            $imageSaved = $imageSavedByte / $before;
-            $thumbSavedByte = $thumb_before - $thumb_after;
-            $thumbSaved = $thumbSavedByte / $thumb_before;
-            $totalImage = Image::all()->count();
-            $totalCompressted = Image::where('link', 'LIKE', '%.webp')->get()->count();
+            return redirect()->back();
+            
+            // return view('customer.pages.compressimage',['result'=>$result,'total_compress'=>$totalCompressted,'total_image'=>$totalImage]);
 
-            $result = [
-                'image_before' => $before,
-                'image_after' => $after,
-                'image_saved_byte' => $imageSavedByte,
-                'image_saved_percent' => $imageSaved,
-                'thumb_before' => $thumb_before,
-                'thumb_after' => $thumb_after,
-                'thumb_saved_byte' => $thumbSavedByte,
-                'thumb_saved_percent' => $thumbSaved,
-                'total_image' => $totalImage,
-                'total_compress' => $totalCompressted
-            ];
-            return view('customer.pages.compressimage',['result'=>$result]);
+    }
 
+    public function showPage()
+    {
+        # code...
+        $totalImage = Image::all()->count();
+        $totalCompressted = Image::where('link', 'LIKE', '%.webp')->get()->count();
+        return view('customer.pages.compressimage',['total_compress'=>$totalCompressted,'total_image'=>$totalImage]);
     }
 
     public function compressAvata()
