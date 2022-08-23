@@ -26,4 +26,25 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-W9S683L');</script>
     <!-- End Google Tag Manager -->
+    <script type="application/ld+json">
+        {
+            "@context":"https://schema.org/",
+            "@type":"RealEstateAgent",
+            "name":"Công Ty Cổ Phần Bất Động Sản 29"
+            ,"image":"{{$seo->og_image ?? $custom_og_image ?? ''}}",
+            "url":"{{URL::current()}}",
+            "telephone":"0983477227",
+            "priceRange":"10",
+            "address":{
+            "@type":"PostalAddress",
+            "streetAddress":"Tâng 19 Tháp A Tòa Keangnam Khu, Mễ Trì, Nam Từ Liêm, Hà Nội",
+            "addressLocality":"Hà Nội","postalCode":"100000","addressCountry":"VN"},
+            "geo":{"@type":"GeoCoordinates","latitude":21.035983106763023, ,"longitude":105.77856713746615},
+            "openingHoursSpecification":{
+            "@type":"OpeningHoursSpecification",
+            "dayOfWeek":[
+            "Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"19:00"}}
+    </script>
+    <!-- LDT JSON -->
+
 </head>

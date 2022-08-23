@@ -59,17 +59,17 @@
 				</div>
                
 				<div id="view-as-grid">
-					<div class="row bds-hot-district mt-3">
+					<ul class="row bds-hot-district mt-3">
                         @foreach ($realties as $index => $realty_post)
                         
                         {{-- @if($index>=1 && $realties[$index-1]->created_at == $realties[$index]->created_at) --}}
                         {{-- @else --}}
-                            <div class="col-md-4 mb-3">
+                            <li class="col-md-4 mb-3">
                                 @include('customer.components.realty_post.realty_block', ['item' => $realty_post])
-                            </div>
+                            </li>
                         {{-- @endif --}}
 						@endforeach
-					</div>
+                        </ul>
 				</div>
 				{{$realties->onEachSide(5)->links()}}
 				{{-- @include('customer.pages.pagination') --}}

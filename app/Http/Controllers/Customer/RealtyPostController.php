@@ -459,8 +459,6 @@ class RealtyPostController extends Controller
         if($request->has('du-an') && $request->input('du-an') != null){
             $project_name = Project::find($request->input('du-an'))->name;
         }
-        // dd($project_name);
-        // dd($title);
 
         $listProjectOfDistrictFilter = Project::all();
 

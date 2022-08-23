@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Console\\Commands\\CreateSiteMap' => $baseDir . '/app/Console/Commands/CreateSiteMap.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Helpers\\Breadcrumbs\\PostBreadcrumbHelper' => $baseDir . '/app/Helpers/Breadcrumbs/PostBreadcrumbHelper.php',

@@ -15,16 +15,17 @@
             <div class="row pt-4">
                 @foreach ($footer_menu as $item)
                 <div class="col-md-3 col-6">
-                    <h5 class="text-white font-12">{{$item->title ?? ''}}</h5>
-                    <ul class="p-0 font-9">
+                    <span class="text-white font-12">{{$item->title ?? ''}}</span>
+                    {{-- <ul class="p-0 font-9"> --}}
                         @foreach ($item->childs as $child)
-                        <li class="font-9" style="line-height: 25px !important;">
+                        <h4 class="font-9" style="line-height: 25px !important;">
                             @if ($child->icon)
                             <i class="text-white {{$child->icon}}"></i>
                             @endif
-                            <a class="" href="{{$child->href ?? ''}}" style="word-wrap: break-word">{{$child->title ?? ''}}</a> </li>
+                            <a class="" href="{{$child->href ?? ''}}" style="word-wrap: break-word">{{$child->title ?? ''}}</a> 
+                        </h4>
                         @endforeach
-                    </ul>
+                    {{-- </ul> --}}
                 </div>
                 @endforeach
                 <div class="col-12 divider">
@@ -43,13 +44,14 @@
             <div class="row pb-4">
                 <div class="col-md-4 text-light text-center">
                     <a href="/"><img width="264" height="165" class="lazy" style="max-width: 80%" data-src="{{$logo}}" alt="brand"></a>
-                    <strong class="d-block text-light font-9 text-center mt-2">{{$theme_options['Tên_công_ty'] ?? ''}}</strong class="d-block text-light">
-                    <div class="mb-1">
+                    <span class="d-block text-light font-9 text-center mt-2">{{$theme_options['Tên_công_ty'] ?? ''}}</span class="d-block text-light">
+                    <span class="mb-1">
                         <i class="fal fa-map-marker-alt" style="width: 20px"></i> <span class="font-9">{{$theme_options['Trụ_sở'] ?? ''}}</span>
-                    </div>
-                    <div>
+                    </span>
+                    {{-- <a href="tel:+"></a> --}}
+                    <a class="text-white" href="tel:{{$theme_options['Số_điện_thoại'] ?? ''}}" rel="nofollow">
                         <i class="fal fa-phone-rotary" style="width: 20px" ></i> <span class="font-9">{{$theme_options['Số_điện_thoại'] ?? ''}}</span>
-                    </div>
+                    </a>
                 </div>
                 {{-- <div class="copyright col-md-4 text-center text-light font-8">
                     {!! $theme_options['footer_map_iframe'] ?? '' !!}

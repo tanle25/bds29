@@ -16,6 +16,10 @@ Danh sách dự án bất động sản
         width:100%;
         text-align: left
     }
+    .img-width{
+        max-width: 100%;
+        height: 100%;
+    }
 
 
 </style>
@@ -136,9 +140,9 @@ Danh sách dự án bất động sản
 		<div class="row">
 			<div class="col-12">
 				<div class="entry-head-3">
-					<h1 class="ht">
+					<h3 class="ht">
 						<span class="title font-20">Danh sách dự án</span>
-					</h1>
+					</h3>
                 </div>
             </div>
 
@@ -147,13 +151,16 @@ Danh sách dự án bất động sản
                     @foreach ($projects as $project)
                     <div class=" mb-4 row p-0 rounded bg-white mx-0">
                         <div class="col-md-3 p-0">
-                            <a href="{{route('customer.project.show', $project->slug ?? '')}}" class="img-wraper h-100" >
-                                <img src="{{$project->avatar}}" alt="{{$project->avatar}}" srcset="">
-                            </a>
+                            {{-- <a href="{{route('customer.project.show', $project->slug ?? '')}}" class="img-wraper h-100" > --}}
+                                <img class="img-wraper img-width" src="{{$project->avatar}}" alt="{{$project->name}}" title="{{$project->name}}" alt="{{$project->avatar}}" srcset="">
+                            {{-- </a> --}}
                         </div>
                         <div class="col-md-9 px-3 py-2">
                             <div class="d-flex mb-2">
-                                <a href="{{route('customer.project.show', $project->slug ?? '')}}" class="text-danger font-12">{{Str::limit($project->name, 40, '...')}}</a>
+                                {{-- <h2 class="text-danger font-12"> <a href=""></a> {{Str::limit($project->name, 40, '...')}}</h2> --}}
+                                <h2>
+                                    <a href="{{route('customer.project.show', $project->slug ?? '')}}" class="text-danger font-12">{{Str::limit($project->name, 40, '...')}}</a>
+                                </h2>
                                 <span class="ml-auto text-secondary">
                                     <i class="fas fa-dollar-sign"></i>
                                     <span class="text-dark font-12">
@@ -166,22 +173,22 @@ Danh sách dự án bất động sản
 
                                 </span>
                             </div>
-                            <div class="mb-1 pb-2 border-bottom font-10">
+                            <p class="mb-1 pb-2 border-bottom font-10">
                                 {{$project->full_address}}
-                            </div>
+                            </p>
                             <div class="row text-secondary font-9">
-                                <div class="mb-2 col-md-8">
-                                    <i class="fas fa-user-tie pr-2"></i> <strong>{{$project->investor}}</strong>
-                                </div>
-                                <div class="mb-2 col-md-4">
-                                    <i class="fas fa-expand pr-2"></i> {{$project->site_area . ' m2' ?? 'Đang cập nhật'}}
-                                </div>
-                                <div class="mb-2 col-md-8">
-                                    <i class="far fa-clock pr-2"></i> Bàn giao: {{\Carbon\Carbon::parse($project->launch_time)->format('d/m/Y') ?? 'Đang cập nhật'}}
-                                </div>
-                                <div class="mb-2 col-md-4">
-                                    <i class="fas fa-wrench pr-2"></i> {{config('constant.project_status.'. $project->status)['name'] ?? 'Đang cập nhật'}}
-                                </div>
+                                <span class="mb-2 col-md-8">
+                                        <i class="fas fa-user-tie pr-2"></i> <strong>{{$project->investor}}</strong>
+                                </span>
+                                <span class="mb-2 col-md-4">
+                                      <i class="fas fa-expand pr-2"></i> {{$project->site_area . ' m2' ?? 'Đang cập nhật'}}  
+                                </span>
+                                <span class="mb-2 col-md-8">
+                                        <i class="far fa-clock pr-2"></i> Bàn giao: {{\Carbon\Carbon::parse($project->launch_time)->format('d/m/Y') ?? 'Đang cập nhật'}}
+                                </span>
+                                <span class="mb-2 col-md-4">
+                                        <i class="fas fa-wrench pr-2"></i> {{config('constant.project_status.'. $project->status)['name'] ?? 'Đang cập nhật'}}
+                                </span>
                             </div>
                             <div>
                                 @foreach ($project->list_realty_type as $item)

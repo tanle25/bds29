@@ -119,22 +119,22 @@ $custom_og_image = $realty_post->thumb ?? '';
                     <h1 class="text-dark font-14 entry-title mb-3">{{$realty_post->title}}</h1>
                     <div class="py-4 d-md-flex justify-content-between align-items-center border-bottom border-top">
                         <div class="d-flex">
-                            <div class="pr-3">
-                                <p class="mb-1">Mức giá</p>
-                                <strong class="font-1">
+                            <div class="pr-3 d-flex flex-column">
+                                <span class="mb-1">Mức giá</span>
+                                <span class="font-1 font-weight-bold">
                                     @if ($realty_post->price_type !== 0)
                                     {{ beautyPrice($realty_post->price)}}
                                     @endif
                                     {{config('constant.price_type.'. $realty_post->price_type)['front_view']}}
-                                </strong>
+                                </span>
                             </div>
-                            <div class="px-3">
-                                <p class="mb-1">Diện tích</p>
-                                <strong class="font-1">{{$realty_post->realty->area}}m<sup>2</sup></strong>
+                            <div class="pr-3 d-flex flex-column">
+                                <span class="mb-1">Diện tích</span>
+                                <strong class="font-1 font-weight-bold">{{$realty_post->realty->area}}m<sup>2</sup></strong>
                             </div>
-                            <div class="px-3">
-                                <p class="mb-1">Phòng ngủ</p>
-                                <strong class="font-1">{{$realty->number_of_bed_rooms ?? 0}} PN</sup></strong>
+                            <div class="pr-3 d-flex flex-column">
+                                <span class="mb-1">Phòng ngủ</span>
+                                <strong class="font-1 font-weight-bold">{{$realty->number_of_bed_rooms ?? 0}} PN</sup></strong>
                             </div>
                             <div class="pl-3 furniture">
                                 <p class="mb-1">Nội thất</p>
@@ -166,7 +166,7 @@ $custom_og_image = $realty_post->thumb ?? '';
                 </div>
                 <div class="about-content mt-4">
                     <div class="post-description">
-                        <h2 class="font-15 pb-2 widget-title">Thông tin chi tiết</h2>
+                        <span class="font-15 pb-2 widget-title">Thông tin chi tiết</span>
                         <p class="font-9" style="line-height: 30px">
                             {!! $realty_post->description !!}
                         </p>
@@ -180,7 +180,7 @@ $custom_og_image = $realty_post->thumb ?? '';
 
                 <div class="about-content mt-4">
                     <div class="">
-                        <h2 class="font-15 pb-2 widget-title">Đặc điểm bất động sản</h2>
+                        <span class="font-15 pb-2 widget-title">Đặc điểm bất động sản</span>
 
                         <div class="mb-4 font-9 border p-2" style="line-height: 2em">
                             <div class=""><strong>Địa chỉ: </strong>{{$realty_post->realty->full_address}}</div>
@@ -228,7 +228,7 @@ $custom_og_image = $realty_post->thumb ?? '';
                 @endif
 
                 <div class="mt-4 pb-4">
-                    <h2 class="font-15 pb-2">Bất động sản cùng khu vực</h2>
+                    <span class="font-15 pb-2">Bất động sản cùng khu vực</span>
                     <div>
                         <div class="realted-post-slider2 @if(Agent::isDesktop()) owl-carousel @endif ">
                             @foreach ($realty_post->realty->district->realty_posts->where('status',3)->take(6) as $item)
@@ -242,7 +242,7 @@ $custom_og_image = $realty_post->thumb ?? '';
 
 
                 <div class="mt-4">
-                    <h2 class="font-15 pb-2">Bất động sản nổi bật</h2>
+                    <span class="font-15 pb-2">Bất động sản nổi bật</span>
                     <div>
                         <div class="realted-post-slider2  @if(Agent::isDesktop()) owl-carousel @endif ">
                             @foreach ($newest_post as $item)
@@ -259,14 +259,15 @@ $custom_og_image = $realty_post->thumb ?? '';
                 <div class="author-info p-3 rounded bg-white border mb-4 d-none d-md-block">
                     <div class="author-head text-center py-3">
 
-                        <h5 class="font-12 pt-2 text-dark">Liên hệ</h5>
+                        <span class="font-12 pt-2 text-dark">Liên hệ</span>
                     </div>
                     <div class="author-btn-group">
                         <a class="font-9 font-weight-bold  d-block shadow-5 mt-2 w100 py-2 hrm-btn-info call-to-us-detail"
                             href="tel:+{{$realty_post->contact_phone_number ?? ''}}">SĐT:
                             {{$realty_post->contact_phone_number ??''}}</a>
-                        <a class="font-9 font-weight-bold  d-block shadow-5 mt-2 w100 py-2 hrm-btn-info"
-                            href="mailto:{{$author->email ?? ''}}">Gửi Email</a>
+                            <span><a class="font-9 font-weight-bold  d-block shadow-5 mt-2 w100 py-2 hrm-btn-info"
+                                href="mailto:{{$author->email ?? ''}}">Gửi Email</a></span>
+                        
                         <span data-toggle="modal" data-target="#myModal"
                             class="font-9 font-weight-bold d-block shadow-5 mt-2 w-100 py-2 hrm-btn-info">Gửi yêu
                             cầu</span>

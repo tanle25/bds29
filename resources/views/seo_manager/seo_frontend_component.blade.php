@@ -4,6 +4,26 @@
     $site_name = env('APP_NAME');
 @endphp
 
+
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="audience" content="general" />
+<meta name="resource-type" content="document" />
+<meta name="abstract" content="{{$seo->description ?? $custom_description ?? ''}}" />
+<meta name="classification" content="{{$seo->tw_site_name ?? $site_name}}" />
+<meta name="placename" content="Việt Nam" />
+<meta name="author" content="bds29.net" />
+<meta name="copyright" content="©2019 bds29.net" />
+<meta name="owner" content="bds29.net" />
+<meta name="generator" content="Công ty Cổ phần Bất Động Sản 29" />
+<meta name="distribution" content="Global" />
+<meta name='revisit-after' content='1 days' />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+<meta name="robots" content="index,follow" />
+
+
+
 <meta name="title" itemprop='description' content="{{$seo->title ?? $custom_title ?? ''}}" />
 <meta name="description" content="{{$seo->description ?? $custom_description ?? ''}}" />
 <meta name="url" content="{{$seo->url ?? $full_url}}" />
@@ -21,8 +41,8 @@
 <meta property="twitter:site" content="{{$seo->tw_site_name ?? $site_name}}" />
 <meta property="twitter:url" content="{{$seo->tw_url ?? $full_url}}" />
 
-@isset($seo->ld_json)
+{{-- @isset($seo->ld_json)
 <script type="application/ld+json">
     {!! $seo->ld_json !!}
 </script><!--meta_ants-->
-@endisset
+@endisset --}}

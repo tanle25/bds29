@@ -668,6 +668,7 @@ class ComposerStaticInit3751a186cd3ac68515ea41f2b6b2e1b3
     );
 
     public static $classMap = array (
+        'App\\Console\\Commands\\CreateSiteMap' => __DIR__ . '/../..' . '/app/Console/Commands/CreateSiteMap.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Helpers\\Breadcrumbs\\PostBreadcrumbHelper' => __DIR__ . '/../..' . '/app/Helpers/Breadcrumbs/PostBreadcrumbHelper.php',

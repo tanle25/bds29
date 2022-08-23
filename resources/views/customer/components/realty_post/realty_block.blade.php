@@ -21,6 +21,7 @@
             @endif
         </div>
         <div class="order-1 col-12 bg-white px-2 pt-2 pb-2 pb-md-0">
+            <h2>
             <a href="{{$item->link}}" class="d-block font-9 main-text w-100 hrm-truncate
                 @if ($item->rank == 4)
                 text-danger
@@ -29,13 +30,14 @@
                 text-info
                 @endif
                 " style="font-weight: 500; height: 2.6em; line-height: 1.3em"
-                >{{$item->title}}
+                > {{$item->title}}
             </a>
+        </h2>
         </div>
         <div class="realty-body col-7 col-md-12  bg-white order-3 px-2 pb-2">
-            <div class="font-9 pt-2">
+            <span class="font-9 pt-2">
                 {{$item->realty->district->name_with_type ?? ''}}, {{$item->realty->province->name ?? ''}}
-            </div>
+            </span>
 
             <div class="d-flex justify-content-between text-dark py-1 font-9 ">
                 <span class="font-weight-500">

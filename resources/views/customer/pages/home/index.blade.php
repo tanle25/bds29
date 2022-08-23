@@ -51,6 +51,9 @@
                 width: 100%;
             }
         }
+        h1.font-weight-bold{
+            font-size: 32px;
+        }
 
     </style>
 @endsection
@@ -77,7 +80,7 @@
                 @foreach ($banner_mobile as $item)
                     @if ($item)
                         <div class="item img-responsive">
-                            <img class="lazy" data-src="{{ $item }}" src="{{$item}}" alt="bất động sản 29" srcset="" width="100%" height="250" >
+                            <img class="lazy" data-src="{{ $item }}" src="{{$item}}" title="bất động sản 29" alt="bất động sản 29" srcset="" width="100%" height="250" >
                         </div>
                     @endif
                 @endforeach
@@ -87,7 +90,7 @@
                 @foreach ($banners as $item)
                     @if ($item)
                         <div class="item w-100 banner-item">
-                            <img data-src="{{ $item }}" class="lazy" alt="bất động sản 29" style="height: 100%; object-fit:cover"
+                            <img data-src="{{ $item }}" class="lazy" alt="bất động sản 29" title="bất động sản 29" style="height: 100%; object-fit:cover"
                                 srcset="">
                             <div id="overlay"></div>
                         </div>
@@ -99,8 +102,8 @@
 
         <div class="container search-home clearfix pt-md-5 ">
             <div class="divtext text-center d-none d-md-block">
-                <h2><strong class="text-uppercase text-white"> BẤT ĐỘNG SẢN {{ config('constant.province_name') }} </strong>
-                </h2>
+                <h1 class="text-uppercase text-white font-weight-bold"> BẤT ĐỘNG SẢN {{ config('constant.province_name') }} </h1>
+                
             </div>
             <div class="section-filter-home d-none d-md-block">
                 <form action="" id="form-search" method="POST">
@@ -275,23 +278,25 @@
         </div>
     </section>
 
+    @include('customer.pages.home.contents.list_bds_hot')
+
 
     <section class="random-realty py-3 py-lg-5 section hrm-bg-secondary">
         <div class="container">
             <div class="d-md-flex">
-                <h3 class="font-18 font-weight-600 color-dark home-title">Bất động sản cho thuê</h3>
+                <h2 class="font-18 font-weight-600 color-dark home-title">Bất động sản cho thuê</h2>
                 <div class="ml-auto d-flex align-items-center ">
                     <a href="/cho-thue" class="px-md-2 secondary-text">Tin nhà đất cho thuê mới nhất</a>
                 </div>
             </div>
 
-            <div class="row pt-3 type2">
+            <ul class="row pt-3 type2">
                 @foreach ($random_realties_type2 as $index => $item)
-                    <div class="item col-md-3 my-2 wow fadeIn" data-wow-offset="1" data-wow-delay="{{ 0.1 * $index }}s">
+                    <li class="item col-md-3 my-2 wow fadeIn" data-wow-offset="1" data-wow-delay="{{ 0.1 * $index }}s">
                         @include('customer.components.realty_post.realty_block', ['item' => $item])
-                    </div>
+                    </li>
                 @endforeach
-            </div>
+                </ul>
         </div>
     </section>
 

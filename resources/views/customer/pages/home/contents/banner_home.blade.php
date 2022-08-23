@@ -31,7 +31,7 @@
             @foreach ($banner_mobile as $item)
                 @if ($item)
                     <div class="item img-responsive">
-                        <img class="lazy" data-src="{{$item}}" alt=""  srcset="">
+                        <img class="lazy" data-src="{{$item}}" alt="bds29.net" title="bds29.net"  srcset="">
                     </div>
                 @endif
             @endforeach
@@ -41,16 +41,16 @@
             @foreach ($banners as $item)
                 @if ($item)
                     <div class="item w-100 banner-item">
-                        <img data-src="{{$item}}" class="lazy" alt="" style="height: 100%; object-fit:cover" srcset="">
+                        <img data-src="{{$item}}" class="lazy" title="bds29.net"  alt="bds29.net" style="height: 100%; object-fit:cover" srcset="">
                     </div>
                 @endif
             @endforeach
         </div>
     @endif
 
-	<div class="container search-home clearfix pt-md-5 "
+	<div class="container search-home clearfix pt-md-5 ">
 		<div class="divtext text-center d-none d-md-block">
-			<h2><strong class="text-uppercase text-white"> BẤT ĐỘNG SẢN {{config('constant.province_name')}}</strong></h2>
+			<h1 class="text-uppercase text-white font-weight-bold"> BẤT ĐỘNG SẢN {{config('constant.province_name')}}</h1>
 		</div>
 		<div class="section-filter-home d-none d-md-block">
             <form action="" id="form-search" method="POST">

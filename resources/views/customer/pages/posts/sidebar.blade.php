@@ -5,6 +5,9 @@
         color: #222d44;
         font-weight: 600;
     }
+    .font-24{
+        font-size: 24px !important;
+    }
 </style>
 @endsection
 
@@ -28,13 +31,13 @@
 
     @isset($featured_districts)
     <div class="rounded-1 bg-white p-3 mb-3 border-bottom" >
-        <h4 class="uppercase font-w-600">Mua bán nhà đất tại {{config('constant.province_name') ?? 'Thanh Hóa'}}</h4>
+        <h3 class="uppercase font-w-600 font-24">Mua bán nhà đất tại {{config('constant.province_name') ?? 'Thanh Hóa'}}</h3>
         <div class="row">
             @foreach ($featured_districts as $district)
-            <div class="col-6 py-1">
+            <h4 class="col-6 py-1 mb-0">
                 <a class="cl-light-blue font-9" href="/{{$district->slug ?? ''}}">{{$district->name}}</a>
                 <span class="font-9">({{$district->realty_posts_count}})</span>
-            </div>
+            </h4>
             @endforeach
         </div>
     </div>

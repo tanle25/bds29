@@ -22,8 +22,9 @@
         <header class="" id="top" role="banner">
             <section class="menu-desktop d-none d-md-flex align-items-center">
                 <div class="navbar-header">
-                    <div class="" id="brand">
-                        <a href="/" id="logo"><img width="280" height="170" class="lazy" style="max-height: 75px" data-src="{{$logo}}" alt="brand"></a>
+                    
+                    <div  class="" id="brand">
+                        <a href="/" id="logo"><img width="auto" height="auto" class="lazy" style="max-height: 75px" data-src="{{$logo}}" alt="brand"></a>
                     </div>
                 </div>
                 <nav class="d-flex align-items-center desktop-menu">
@@ -97,7 +98,7 @@
                             <img data-src="{{auth()->user()->profile_image_path ?? '/images/empty-avatar.jpg'}}" style="width: 40px; height:40px" class="lazy rounded-circle" alt="">
                         </a>
                         <a class="text-dark font-14 ml-2" href="/logout"><i class="h-100 px-2 far fa-sign-out-alt"></i></a>
-                        <a href="/dang-tin" class="ml-2 font-9 hrm-btn-info p-2"><strong>Đăng tin</strong></a>
+                        <a href="/dang-tin" class="ml-2 font-9 hrm-btn-info p-2" rel="nofollow"><strong>Đăng tin</strong></a>
                     </div>
                     @else
                     <div class="login-logout">

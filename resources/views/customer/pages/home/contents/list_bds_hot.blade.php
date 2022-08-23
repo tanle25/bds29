@@ -9,14 +9,13 @@
 
         <div>
             <div class="row" id="desktop-screen">
-                @php
-                    // dd($show_districts);
-                @endphp
                 @foreach ($show_districts as $key=>$show_district)
+                {{-- @dd($show_district) --}}
                 <div class="col-6 col-md-3">
-                    <div class="item-district" style="margin-bottom:30px;">
+                    <h3 class="item-district" style="margin-bottom:30px;">
                         <span class="clickeds" id="span" href="{{$show_district->slug}}" style="position: relative; ">
-                            <img class="img-rounded" src="{{asset($show_district->avatar)}}" alt=""
+                            <img class="img-rounded" src="{{asset($show_district->avatar)}}" alt="Bất động sản {{$show_district->name_with_type}}"
+                            title="Bất động sản {{$show_district->name_with_type}}"
                                 style="width: 100%; filter:brightness(50%); line-height: 0; cursor: pointer; object-fit:cover; height: 180px;">
                             <p id="span" class=" clickeds  font-500 font-9 btn " href="{{$show_district->slug}}" style="  position: absolute;
                                     top: 0;
@@ -30,7 +29,7 @@
                                     color: rgb(255, 255, 255);"> {{$show_district->name_with_type}}
                             </p>
                         </span>
-                    </div>
+                    </h3>
                 </div>
                 @endforeach
 

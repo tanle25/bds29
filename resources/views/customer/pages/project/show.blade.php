@@ -43,29 +43,32 @@
             </div>
             <div class="col-md-4 d-flex flex-column justify-content-center h-100">
                 <div>
-                    <h5 class="font-weight-600">Tổng quan dự án</h5>
+                    <span class="font-weight-600">Tổng quan dự án</span>
                     <hr class="my-3">
-                    <div class="my-3">
-                        <span class="text-secondary mr-2">Loại hình dự án: </span> <span>{{config('constant.project_type.'. $project->project_type)['name'] ?? '---'}}</span>
-                    </div>
-                    <div class="my-3">
-                        <span class="text-secondary mr-2">Số tòa: </span> <span>{{$project->number_of_buildings . 'tòa' ?? '---'}}</span>
-                    </div>
-                    <div class="my-3">
-                        <span class="text-secondary mr-2">Số căn: </span> <span>{{$project->number_of_apartments . 'căn' ?? '---'}}</span>
-                    </div>
-                    <div class="my-3">
-                        <span class="text-secondary mr-2">Số tầng: </span> <span>{{$project->number_of_buildings . 'tầng' ?? '---'}}</span>
-                    </div>
-                    <div class="my-3">
-                        <span class="text-secondary mr-2">Tổng diện tích: </span> <span>{!!$project->site_area . ' m<sup>2</sup>' ?? '---'!!}</span>
-                    </div>
-                    <div class="my-3">
-                        <span class="text-secondary mr-2">Diện tích xây dựng: </span> <span>{!!$project->construction_area . ' m<sup>2</sup>' ?? '---'!!}</span>
-                    </div>
-                    <div class="my-3">
-                        <span class="text-secondary mr-2">Trạng thái: </span> <span class="btn btn-info py-1">{{config('constant.project_status.' . $project->status)['name'] ?? '---'}}</span>
-                    </div>
+                    <ul class="pl-0">
+                        <li class="my-3">
+                            <span class="text-secondary mr-2">Loại hình dự án: </span> <span>{{config('constant.project_type.'. $project->project_type)['name'] ?? '---'}}</span>
+                        </li>
+                        <li class="my-3">
+                            <span class="text-secondary mr-2">Số tòa: </span> <span>{{$project->number_of_buildings . 'tòa' ?? '---'}}</span>
+                        </li>
+                        <li class="my-3">
+                            <span class="text-secondary mr-2">Số căn: </span> <span>{{$project->number_of_apartments . 'căn' ?? '---'}}</span>
+                        </li>
+                        <li class="my-3">
+                            <span class="text-secondary mr-2">Số tầng: </span> <span>{{$project->number_of_buildings . 'tầng' ?? '---'}}</span>
+                        </li>
+                        <li class="my-3">
+                            <span class="text-secondary mr-2">Tổng diện tích: </span> <span>{!!$project->site_area . ' m<sup>2</sup>' ?? '---'!!}</span>
+                        </li>
+                        <li class="my-3">
+                            <span class="text-secondary mr-2">Diện tích xây dựng: </span> <span>{!!$project->construction_area . ' m<sup>2</sup>' ?? '---'!!}</span>
+                        </li>
+                        <li class="my-3">
+                            <span class="text-secondary mr-2">Trạng thái: </span> <span class="btn btn-info py-1">{{config('constant.project_status.' . $project->status)['name'] ?? '---'}}</span>
+                        </li>
+                    </ul>
+                    
                 </div>
                 <div class="mt-3">
                     <h5 class="mt-4">Tải tài liệu chi tiết dự án</h5>
@@ -75,188 +78,197 @@
             </div>
         </div>
 		<div class="row mt-2 bg-white">
-            <div id="menu-project" class="col-12 menucontent menu-project py-2 border-bottom d-flex">
-                <a class="font-10 secondary-text pr-3 py-2" href="#info">Thông tin</a>
-                <a class="font-10 secondary-text px-3 py-2 " href="#gallery">Hình ảnh</a>
-                <a class="font-10 secondary-text px-3 py-2 " href="#rental">Bất động sản thuê ({{$project->rent_realty->count()}})</a>
-                <a class="font-10 secondary-text px-3 py-2 " href="#vendor">Bất động sản bán ({{$project->sell_realty->count()}})</a>
-                <span class="group-btn share-group ml-auto">
+            <ul id="menu-project" class="col-12 menucontent menu-project py-2 border-bottom d-flex">
+                <li class="font-10 secondary-text pr-3 py-2" href="#info">Thông tin</li>
+                <li class="font-10 secondary-text px-3 py-2 " href="#gallery">Hình ảnh</li>
+                <li class="font-10 secondary-text px-3 py-2 " href="#rental">Bất động sản thuê ({{$project->rent_realty->count()}})</li>
+                <li class="font-10 secondary-text px-3 py-2 " href="#vendor">Bất động sản bán ({{$project->sell_realty->count()}})</li>
+                <li class="group-btn share-group ml-auto">
                     @include('customer.components.share_button')
-                </span>
+                </li>
 
-            </div>
-			<div class="col-md-8 pb-3 mb-5">
-				<div class="content-detail mt-4">
-                    <h1 class="text-dark font-15 entry-title">{{$project->name ?? 'Đang cập nhật'}}</h1>
-                    <div class=" pb-4 mb-4 font-9">
-                        <div class="pb-2"><i class="pr-2 fal fa-map-marker-alt"></i> {{$project->full_address}}</div>
-                        <span class="mr-3">
-                            Trạng thái: <strong class="main-blue">{{config('constant.project_status.'. $project->status)['name'] ?? 'Đang cập nhật'}}</strong>
-                        </span>
-                        <span class="">
-                            Khoảng giá:
-                            <strong>
-                                @if ($project->min_price && $project->max_price)
-                                {{beautyPrice($project->min_price)}} - {{beautyPrice($project->max_price)}}
-                                @else
-                                    Đang cập nhật
-                                @endif
-                            </strong>
-                        </span>
-                        <div class="d-flex mt-3">
-                            <div class="pr-3">
-                                <p class="mb-1" >Mức giá</p>
-                                <strong class="font-9">
+            </ul>
+            {{-- <article> --}}
+                <div class="col-md-8 pb-3 mb-5">
+                    <article class="w-100">
+                    <div class="content-detail mt-4">
+                        <h1 class="text-dark font-15 entry-title">{{$project->name ?? 'Đang cập nhật'}}</h1>
+                        <div class=" pb-4 mb-4 font-9">
+                            <div class="pb-2"><i class="pr-2 fal fa-map-marker-alt"></i> {{$project->full_address}}</div>
+                            <span class="mr-3">
+                                Trạng thái: <strong class="main-blue">{{config('constant.project_status.'. $project->status)['name'] ?? 'Đang cập nhật'}}</strong>
+                            </span>
+                            <span class="">
+                                Khoảng giá:
+                                <strong>
                                     @if ($project->min_price && $project->max_price)
                                     {{beautyPrice($project->min_price)}} - {{beautyPrice($project->max_price)}}
                                     @else
                                         Đang cập nhật
                                     @endif
                                 </strong>
+                            </span>
+                            <div class="d-flex mt-3">
+                                <div class="pr-3">
+                                    <p class="mb-1" >Mức giá</p>
+                                    <strong class="font-9">
+                                        @if ($project->min_price && $project->max_price)
+                                        {{beautyPrice($project->min_price)}} - {{beautyPrice($project->max_price)}}
+                                        @else
+                                            Đang cập nhật
+                                        @endif
+                                    </strong>
+                                </div>
+                                <div class="pl-3">
+                                    <p class="mb-1" >Bàn giao</p>
+                                    <strong class="font-9">
+                                        {{\Carbon\Carbon::parse($project->launch_time)->format('d/m/Y') ?? 'Đang cập nhật'}}
+                                    </strong>
+                                </div>
                             </div>
-                            <div class="pl-3">
-                                <p class="mb-1" >Bàn giao</p>
-                                <strong class="font-9">
-                                    {{\Carbon\Carbon::parse($project->launch_time)->format('d/m/Y') ?? 'Đang cập nhật'}}
-                                </strong>
+                        </div>
+                    </div>
+    
+                    <div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h2 class="d-block pr-5 py-0">Thông tin dự án</h2>
+                            <hr class="w-100 d-block" style="flex: 1">
+                        </div>
+                        <div>
+                            <h2 class="font-11 py-2">
+                                <a  data-toggle="collapse" href="#project-overview" role="button" aria-expanded="false" aria-controls="project-overview" class="text-dark d-flex justify-content-between align-itens-center">
+                                    Giới thiệu <i class="far fa-chevron-down"></i>
+                                </a>
+                            </h2>
+                            <div id="project-overview">
+                                {!! $project->description !!}
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="d-flex align-items-center justify-content-between">
-                        <h4 class="d-block pr-5 py-0">Thông tin dự án</h4>
-                        <hr class="w-100 d-block" style="flex: 1">
-                    </div>
-                    <div>
-                        <a  data-toggle="collapse" href="#project-overview" role="button" aria-expanded="false" aria-controls="project-overview" class="text-info d-flex justify-content-between align-itens-center">
-                            <h5 class="font-11 py-2">Giới thiệu</h5> <i class="far fa-chevron-down"></i>
-                        </a>
-                        <div id="project-overview">
-                            {!! $project->description !!}
+    
+                        <div>
+                            <h2 class="font-11 py-2">
+                                <a  data-toggle="collapse" href="#project-position" role="button" aria-expanded="false" aria-controls="project-position" class="text-dark d-flex justify-content-between align-itens-center">
+                                    Vị trí dự án <i class="far fa-chevron-down"></i>
+                                </a>
+                            </h2>
+                            <div id="project-position">
+                                {!! $project->location_description !!}
+                            </div>
                         </div>
+    
                     </div>
-
+    
                     <div>
-                        <a  data-toggle="collapse" href="#project-position" role="button" aria-expanded="false" aria-controls="project-position" class="text-info d-flex justify-content-between align-itens-center">
-                            <h5 class="font-11 py-2">Vị trí dự án</h5> <i class="far fa-chevron-down"></i>
-                        </a>
-                        <div id="project-position">
-                            {!! $project->location_description !!}
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h2 class="d-block pr-5 py-0">Sơ đồ dự án</h2>
+                            <hr class="w-100 d-block" style="flex: 1">
                         </div>
-                    </div>
-
-                </div>
-
-                <div>
-                    <div class="d-flex align-items-center justify-content-between">
-                        <h4 class="d-block pr-5 py-0">Sơ đồ dự án</h4>
-                        <hr class="w-100 d-block" style="flex: 1">
-                    </div>
-                    <div>
-                        <a  data-toggle="collapse" href="#project-images" role="button" aria-expanded="false" aria-controls="project-images" class="text-info d-flex justify-content-between align-itens-center">
-                            <h5 class="font-11 py-2">Giới thiệu</h5> <i class="far fa-chevron-down"></i>
-                        </a>
-                        <div id="project-images">
-                            <ul class="nav nav-tabs menucontent">
-                                <li class="py-2 pr-3"><a data-toggle="tab" href="#ground_total" class="active">Sơ đồ tổng thế</a></li>
-                                @foreach ($project->grounds as $item)
-                                <li class="py-2 px-3"><a data-toggle="tab" href="#ground{{$item->id}}">{{$item->name}}</a></li>
-                                @endforeach
-                            </ul>
-                            <div class="tab-content mt-3">
-                                <div id="ground_total" class="active tab-pane over-all-diagram">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div href="{{$project->over_all_diagram_array[0] ?? ''}}" class="img-wraper item">
-                                                <img src="{{$project->over_all_diagram_array[0] ?? ''}}" alt="" />
+                        <div>
+                            <a  data-toggle="collapse" href="#project-images" role="button" aria-expanded="false" aria-controls="project-images" class="text-info d-flex justify-content-between align-itens-center">
+                                <h5 class="font-11 py-2">Giới thiệu</h5> <i class="far fa-chevron-down"></i>
+                            </a>
+                            <div id="project-images">
+                                <ul class="nav nav-tabs menucontent">
+                                    <li class="py-2 pr-3"><a data-toggle="tab" href="#ground_total" class="active">Sơ đồ tổng thế</a></li>
+                                    @foreach ($project->grounds as $item)
+                                    <li class="py-2 px-3"><a data-toggle="tab" href="#ground{{$item->id}}">{{$item->name}}</a></li>
+                                    @endforeach
+                                </ul>
+                                <div class="tab-content mt-3">
+                                    <div id="ground_total" class="active tab-pane over-all-diagram">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div href="{{$project->over_all_diagram_array[0] ?? ''}}" class="img-wraper item">
+                                                    <img src="{{$project->over_all_diagram_array[0] ?? ''}}" alt="" />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                @foreach ($project->grounds as $item)
-                                <div id="ground{{$item->id}}" class="tab-pane fade">
-                                    <div class="row">
-                                        @foreach ($item->image_array as $item)
-                                            <div class="col-md-3">
-                                                <div class="item">
-                                                    <div href="{{$item}}" class="img-wraper item" >
-                                                        <img src="{{$item}}" alt="" />
+                                    @foreach ($project->grounds as $item)
+                                    <div id="ground{{$item->id}}" class="tab-pane fade">
+                                        <div class="row">
+                                            @foreach ($item->image_array as $item)
+                                                <div class="col-md-3">
+                                                    <div class="item">
+                                                        <div href="{{$item}}" class="img-wraper item" >
+                                                            <img src="{{$item}}" alt="" />
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        @endforeach
+                                            @endforeach
+                                        </div>
                                     </div>
+                                    @endforeach
                                 </div>
-                                @endforeach
                             </div>
                         </div>
+    
+    
                     </div>
-
-
-                </div>
-
-                <div>
-                    <div class="d-flex align-items-center justify-content-between">
-                        <h4 class="d-block pr-5 py-0">Tiến độ dự án</h4>
-                        <hr class="w-100 d-block" style="flex: 1">
-                    </div>
+    
                     <div>
-                        <a  data-toggle="collapse" href="#project-progress" role="button" aria-expanded="false" aria-controls="project-progress" class="text-info d-flex justify-content-between align-itens-center">
-                            <h5 class="font-11 py-2">Thông tin tiến độ</h5> <i class="far fa-chevron-down"></i>
-                        </a>
-                        <div id="project-progress">
-                            {!! $project->project_progress_desc !!}
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h2 class="d-block pr-5 py-0">Tiến độ dự án</h2>
+                            <hr class="w-100 d-block" style="flex: 1">
+                        </div>
+                        <div>
+                            <a  data-toggle="collapse" href="#project-progress" role="button" aria-expanded="false" aria-controls="project-progress" class="text-info d-flex justify-content-between align-itens-center">
+                                <h5 class="font-11 py-2">Thông tin tiến độ</h5> <i class="far fa-chevron-down"></i>
+                            </a>
+                            <div id="project-progress">
+                                {!! $project->project_progress_desc !!}
+                            </div>
                         </div>
                     </div>
+                </article>
+    
+                    @if ($project->rent_realty->isNotEmpty())
+                        <div id="rental" class="rental page-section">
+                            <div class="entry-head text-center pb-2 d-flex  justify-content-between align-items-center">
+                                <span class="font-14 home-title">Bất động sản nổi cho thuê</span>
+                                <a href="/{{config('constant.realty_post_type.2.slug')}}-{{$project->slug}}" class="text-dark">Xem tất cả <i class="fas fa-long-arrow-alt-right"></i></a>
+                            </div>
+                            <div class="list-project">
+                                <div class="list-rental owl-carousel">
+                                    @foreach ($project->rent_realty as $item)
+                                        <div class="item p-2">
+                                            @include('customer.components.realty_post.realty_block', ['item' => $item])
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    @if ($project->sell_realty->isNotEmpty())
+                        <div id="vendor" class="vendor page-section pt-3">
+                            <div class="entry-head text-center pb-2 d-flex  justify-content-between align-items-center">
+                                <h2 class="font-14 home-title">Bất động sản bán</h2>
+                                <a href="/{{config('constant.realty_post_type.1.slug')}}-{{$project->slug}}" class="text-dark">Xem tất cả <i class="fas fa-long-arrow-alt-right"></i></a>
+                            </div>
+                            <div class="list-project">
+                                <div class="list-vendor owl-carousel">
+                                    @foreach ($project->sell_realty as $item)
+                                        <div class="item p-2">
+                                            @include('customer.components.realty_post.realty_block', ['item' => $item])
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
-
-                @if ($project->rent_realty->isNotEmpty())
-                    <div id="rental" class="rental page-section">
-                        <div class="entry-head text-center pb-2 d-flex  justify-content-between align-items-center">
-                            <h2 class="font-14 home-title">Bất động sản nổi cho thuê</h2>
-                            <a href="/{{config('constant.realty_post_type.2.slug')}}-{{$project->slug}}" class="text-dark">Xem tất cả <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                        <div class="list-project">
-                            <div class="list-rental owl-carousel">
-                                @foreach ($project->rent_realty as $item)
-                                    <div class="item p-2">
-                                        @include('customer.components.realty_post.realty_block', ['item' => $item])
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                @endif
-                @if ($project->sell_realty->isNotEmpty())
-                    <div id="vendor" class="vendor page-section pt-3">
-                        <div class="entry-head text-center pb-2 d-flex  justify-content-between align-items-center">
-                            <h2 class="font-14 home-title">Bất động sản bán</h2>
-                            <a href="/{{config('constant.realty_post_type.1.slug')}}-{{$project->slug}}" class="text-dark">Xem tất cả <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                        <div class="list-project">
-                            <div class="list-vendor owl-carousel">
-                                @foreach ($project->sell_realty as $item)
-                                    <div class="item p-2">
-                                        @include('customer.components.realty_post.realty_block', ['item' => $item])
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                @endif
-            </div>
+            {{-- </article> --}}
+			
             <div class="col-md-4">
                 <div class="p-3 rounded border mt-4">
                     <div class="d-flex">
                         <div>
                             <img src="{{$project->partner->logo ?? ''}}" class="pr-2 rounded-circle" style="width:60px; height:60px" alt="">
                         </div>
-                        <div class="font-9">
+                        <h3 class="font-9">
                             <span style="line-height: 1em" class="text-info font-weight-500 font-10">{{$project->partner->name ?? ''}}</span> <br>
                             <span class="mt-2 d-block">Chủ đầu tư</span>
-                        </div>
+                        </h3>
                     </div>
                     <div class="font-9 mt-2">
                         {!! $project->partner->description ?? '' !!}

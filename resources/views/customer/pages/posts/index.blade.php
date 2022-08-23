@@ -70,9 +70,9 @@ Tin tức bất động sản
                             </div>
                         </div>
                     </div>
-                    <div class="featured-post-slider owl-carousel mt-4">
+                    <ul class="featured-post-slider owl-carousel mt-4 pl-0">
                         @foreach ($featured_posts as $item)
-                            <div class="item rounded-1">
+                            <li class="item rounded-1">
                                 <a class="main-text" href="{{route('customer.post.show',['cat_slug' => $item->categories->first()->slug ?? 'danh-muc', 'post_slug' => $item->slug] )}}">
                                     <div>
                                         <img style="height: 140px" src="{{$item->thumb}}" alt="">
@@ -81,9 +81,9 @@ Tin tức bất động sản
                                     {{Str::limit($item->name, 40, '')}}
                                     </div>
                                 </a>
-                            </div>
+                            </li>
                         @endforeach
-                    </div>
+                    </ul>
                 </div>
 
                 @foreach ($post_categories->take(4) as $category)
@@ -94,7 +94,7 @@ Tin tức bất động sản
                     @if ($posts->isNotEmpty())
                         <div class="category-posts mt-5">
                             <div class="category-header d-flex align-items-center justify-content-between mb-1">
-                                <h3 class="p-0 bold home-title"><strong  class="uppercase">{{$category->name}}</strong></h3>
+                                <h2 class="p-0 bold home-title"><strong  class="uppercase">{{$category->name}}</strong></h2>
                                 <a class="secondary-text" href="{{route('customer.post.show_by_category', $category->slug)}}"><span>Xem thêm</span>&nbsp; <i class="fa fa-chevron-right secondary-text font-9" aria-hidden="true"></i></a>
                             </div>
                             <div class="category-body">
@@ -124,15 +124,15 @@ Tin tức bất động sản
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-4">
+                                    <ul class="row mt-4 pl-0">
                                         @foreach ($posts->take(6) as $item)
-                                        <div class="col-sm-6  pb-3">
+                                        <li class="col-sm-6  pb-3">
                                             <a class="main-text d-flex post-title category-post-title cl-main-text" href="{{route('customer.post.show',['cat_slug' => $item->categories->first()->slug ?? 'danh-muc', 'post_slug' => $item->slug] )}}">
                                                 {{$item->name}}
                                             </a>
-                                        </div>
+                                        </li>
                                         @endforeach
-                                    </div>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
