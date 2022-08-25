@@ -6,6 +6,7 @@ use App\Models\Realty;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Log;
 
 class RealtyPost extends Model
 {
@@ -53,6 +54,7 @@ class RealtyPost extends Model
             //         return Str::replaceLast('/', '/thumbs/', $item);
             //     }
             // }
+            Log::alert(Str::replaceLast('/', '/thumbs/', $image));
             return Str::replaceLast('/', '/thumbs/', $image);
         }
         return '';
