@@ -54,7 +54,7 @@ class RealtyPost extends Model
             //         return Str::replaceLast('/', '/thumbs/', $item);
             //     }
             // }
-            Log::alert(Str::replaceLast('/', '/thumbs/', $image));
+            // Log::alert(Str::replaceLast('/', '/thumbs/', $image));
             return Str::replaceLast('/', '/thumbs/', $image);
         }
         return '';
