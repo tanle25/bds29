@@ -195,11 +195,11 @@
                 window.location = option + '-' + url;
                 // console.log('abc');
             })
-            $('.item-district > span:fisrt').on('click');
+            $('.item-district > span').first().on('click');
 
             function changeDistrict() {
                 var index = Math.floor(Math.random() * 10);
-                $('.item-district > span:fisrt').eq(index).on('click');
+                $('.item-district > span').first().eq(index).on('click');
             }
             var timeInterval = setInterval( changeDistrict , 10000);
 
