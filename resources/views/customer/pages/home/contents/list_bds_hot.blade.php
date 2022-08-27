@@ -193,7 +193,6 @@
                     var option='cho-thue';
                 }
                 window.location = option + '-' + url;
-                // console.log('abc');
             })
             $('.item-district > span').first().on('click');
 

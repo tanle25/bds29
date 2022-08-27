@@ -21,6 +21,12 @@
         // Your custom settings go here
         });
     })
+    $('form').bind("keypress", function(e) {
+        if (e.keyCode == 13) {               
+            e.preventDefault();
+            return false;
+        }
+    });
     const num2Word2 = function () {
         var t = ["không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"],
             r = function (r, n) {
