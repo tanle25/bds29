@@ -20,7 +20,7 @@
                         @if ($loop->last)
                             @foreach ($item->childs as $child)
                                 
-                                <a rel="nofollow" class="" href="{{$child->href ?? ''}}" style="word-wrap: break-word">@if ($child->icon)
+                                <a class="d-flex align-items-center" rel="nofollow" class="" href="{{$child->href ?? ''}}" style="word-wrap: break-word">@if ($child->icon)
                                     <i class="text-white {{$child->icon}}"></i>
                                     @endif {{$child->title ?? ''}}</a> 
                             @endforeach
