@@ -14,7 +14,7 @@
 		<div class="container">
             <div class="row pt-4">
                 @foreach ($footer_menu as $item)
-                <div class="col-md-3 col-6 {{$loop->last ? 'd-flex flex-cols' : ''}}">
+                <div class="col-md-3 col-6 {{$loop->last ? 'd-flex flex-column' : ''}}">
                     <span class="text-white font-12 ">{{$item->title ?? ''}}</span>
                     {{-- <ul class="p-0 font-9"> --}}
                         @if ($loop->last)
