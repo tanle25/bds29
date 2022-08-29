@@ -232,7 +232,7 @@
                                 <div class="list-rental owl-carousel">
                                     @foreach ($project->rent_realty as $item)
                                         <div class="item p-2">
-                                            @include('customer.components.realty_post.realty_block', ['item' => $item])
+                                            @include('customer.components.realty_post.related_block', ['item' => $item])
                                         </div>
                                     @endforeach
                                 </div>
