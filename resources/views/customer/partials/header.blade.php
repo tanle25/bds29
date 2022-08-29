@@ -34,7 +34,7 @@
                             @if ($item->childs->isNotEmpty())
                                 <ul class="child-navigation submenu-1 border px-3 bg-white rounded shadow-10">
                                     @foreach ($item->childs as $child)
-                                    <li class="py-2"><a class="main-text" href="{{$child->href}}" style="font-size: 14px;">{{$child->title}}</a></li>
+                                    <li class="py-2"><a class="main-text" @if($child->href == '/lien-he' || $child->href == '/tin-tuc') rel="nofollow" @endif href="{{$child->href}}" style="font-size: 14px;">{{$child->title}}</a></li>
                                     @endforeach
                                 </ul>
                             @endif
