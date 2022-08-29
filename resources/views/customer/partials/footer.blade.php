@@ -17,22 +17,24 @@
                 <div class="col-md-3 col-6">
                     <span class="text-white font-12">{{$item->title ?? ''}}</span>
                     {{-- <ul class="p-0 font-9"> --}}
-                        @foreach ($item->childs as $child)
-                        @if ($item->last)
-                        @if ($child->icon)
-                        <i class="text-white {{$child->icon}}"></i>
-                        @endif
-                        <a rel="nofollow" class="" href="{{$child->href ?? ''}}" style="word-wrap: break-word">{{$child->title ?? ''}}</a> 
+                        @if ($loop->last)
+                            @foreach ($item->childs as $child)
+                                @if ($child->icon)
+                                <i class="text-white {{$child->icon}}"></i>
+                                @endif
+                                <a rel="nofollow" class="" href="{{$child->href ?? ''}}" style="word-wrap: break-word">{{$child->title ?? ''}}</a> 
+                            @endforeach
                         @else
-                        <h4 class="font-9" style="line-height: 25px !important;">
-                            @if ($child->icon)
-                            <i class="text-white {{$child->icon}}"></i>
-                            @endif
-                            <a class="" href="{{$child->href ?? ''}}" style="word-wrap: break-word">{{$child->title ?? ''}}</a> 
-                        </h4>
+                            @foreach ($item->childs as $child)
+                            <h4 class="font-9" style="line-height: 25px !important;">
+                                @if ($child->icon)
+                                <i class="text-white {{$child->icon}}"></i>
+                                @endif
+                                <a class="" href="{{$child->href ?? ''}}" style="word-wrap: break-word">{{$child->title ?? ''}}</a> 
+                            </h4>
+                            @endforeach
                         @endif
                         
-                        @endforeach
                     {{-- </ul> --}}
                 </div>
                 @endforeach
