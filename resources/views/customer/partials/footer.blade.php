@@ -19,10 +19,10 @@
                     {{-- <ul class="p-0 font-9"> --}}
                         @if ($loop->last)
                             @foreach ($item->childs as $child)
-                                @if ($child->icon)
-                                <i class="text-white {{$child->icon}}"></i>
-                                @endif
-                                <a rel="nofollow" class="" href="{{$child->href ?? ''}}" style="word-wrap: break-word">{{$child->title ?? ''}}</a> 
+                                
+                                <a rel="nofollow" class="" href="{{$child->href ?? ''}}" style="word-wrap: break-word">@if ($child->icon)
+                                    <i class="text-white {{$child->icon}}"></i>
+                                    @endif {{$child->title ?? ''}}</a> 
                             @endforeach
                         @else
                             @foreach ($item->childs as $child)
