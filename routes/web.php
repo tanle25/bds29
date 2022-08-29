@@ -40,7 +40,7 @@ Route::get('realty', function () {
 });
 
 Route::get('tim-kiem', [RealtyPostController::class, 'getRealtyPosts'])->name('customer.realty_post.get_list')->middleware('filter_query');
-Route::get('bat-dong-san/{slug}', [RealtyPostController::class, 'show'])->name('customer.realty_post.show');
+Route::get('{type}/{ward}/{slug}', [RealtyPostController::class, 'show'])->name('customer.realty_post.show');
 
 Route::get('realty-details', function () {
     return view('customer/pages/realty-details');
