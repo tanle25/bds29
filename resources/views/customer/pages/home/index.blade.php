@@ -12,6 +12,11 @@
         .hidden-field {
             display: none;
         }
+        span.clickeds {
+            position: relative;
+            padding-top: 80%;
+            display: block;
+        }
 
         .search-input {
             position: relative;
@@ -290,7 +295,7 @@
                 </div>
             </div>
 
-            <ul class="row pt-3 type2">
+            <ul class="row pt-3 type2 p-0">
                 @foreach ($random_realties_type2 as $index => $item)
                     <li class="item col-md-3 my-2 wow fadeIn" data-wow-offset="1" data-wow-delay="{{ 0.1 * $index }}s">
                         @include('customer.components.realty_post.realty_block', ['item' => $item])

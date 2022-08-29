@@ -16,7 +16,7 @@
                         <span class="clickeds" id="span" href="{{$show_district->slug}}" style="position: relative; ">
                             <img class="img-rounded" src="{{asset($show_district->avatar)}}" alt="Bất động sản {{$show_district->name_with_type}}"
                             title="Bất động sản {{$show_district->name_with_type}}"
-                                style="width: 100%; filter:brightness(50%); line-height: 0; cursor: pointer; object-fit:cover; height: 180px;">
+                                style="width: 100%; filter:brightness(50%); line-height: 0; cursor: pointer; object-fit:cover; height: 100%;">
                             <p id="span" class=" clickeds  font-500 font-9 btn " href="{{$show_district->slug}}" style="  position: absolute;
                                     top: 0;
                                     left: 0;
@@ -47,7 +47,7 @@
                             <div class="item-district">
                                 <span class="clickeds" href="{{$show_district_mobile->slug}}">
                                     <img class="img-rounded" src="{{asset($show_district_mobile->avatar)}}" alt=""
-                                        style="width: 100%; filter:brightness(50%); line-height: 0; cursor: pointer; object-fit:cover; height: 180px;">
+                                        style="width: 100%; filter:brightness(50%); line-height: 0; cursor: pointer; object-fit:cover; height: 100%;">
                                     <p id="span" class=" clickeds  font-500 font-9 btn "
                                         href="{{$show_district_mobile->slug}}" style="  position: absolute;
                                             top: 0;
