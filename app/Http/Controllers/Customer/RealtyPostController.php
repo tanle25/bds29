@@ -365,7 +365,7 @@ class RealtyPostController extends Controller
         return view('customer.pages.realty_post.index', compact('realties'));
     }
 
-    public function show($slug)
+    public function show($type,$ward,$slug)
     {
 
         // Log::alert('show');
