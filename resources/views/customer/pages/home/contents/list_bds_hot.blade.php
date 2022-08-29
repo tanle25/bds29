@@ -53,7 +53,7 @@
                                             top: 0;
                                             left: 0;
                                             width: 100%;
-                                            height:180px;
+                                            height:100%;
                                             font-weight: bold;
                                             display: flex;
                                             align-items: center;
