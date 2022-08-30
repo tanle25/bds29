@@ -7,7 +7,7 @@
     @if ($index !== 0)
      /
     @endif
-    <a class="text-secondary detail-breadcumb" href="javascript:void(0);" data-href="{{$item['link']}}" >{{$item['name']}}</a>
+    <a class="text-secondary detail-breadcumb" href="{{$item['link']}}" >{{$item['name']}}</a>
     @endforeach
 </div>
 
