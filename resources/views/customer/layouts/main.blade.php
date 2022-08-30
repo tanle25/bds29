@@ -15,4 +15,5 @@
         @include('customer.partials.footer')
         @include('customer.partials.scripts')
     </body>
+
 </html>

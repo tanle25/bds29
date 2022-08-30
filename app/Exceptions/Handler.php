@@ -36,9 +36,9 @@ class Handler extends ExceptionHandler
     public function register()
     {
         //
-        $this->renderable(function(MethodNotAllowedHttpException $e, $request){
-            return redirect()->route('home');
-        });
+        // $this->renderable(function(MethodNotAllowedHttpException $e, $request){
+        //     return redirect()->route('home');
+        // });
     }
 
     protected function unauthenticated($request, AuthenticationException $exception)

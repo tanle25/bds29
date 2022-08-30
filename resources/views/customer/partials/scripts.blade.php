@@ -6,6 +6,8 @@
 @include('customer.partials.alert')
 
 <script>
+
+
     window.addEventListener('load', () => {
             LazyIcon().observe({
                 'src': '/plugins/fontawesome-pro/css/all.css?v=1023',

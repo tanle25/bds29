@@ -341,9 +341,7 @@ $custom_og_image = $realty_post->thumb ?? '';
     </a>
 </div>
 
-<form id="breacdcumd-submit" action="" method="POST">
-    @csrf
-</form>
+
 
 <script defer src="https://maps.googleapis.com/maps/api/js?key={{config('api_keys.google_map')}}&callback=initMap">
 </script>
@@ -358,11 +356,6 @@ $custom_og_image = $realty_post->thumb ?? '';
 
 <script>
 
-$('.detail-breadcumb').click(function(){
-    let url = $(this).data('href');
-    $('#breacdcumd-submit').attr('action', url);
-    $('#breacdcumd-submit').submit();
-})
 
 
     hideBlockByHeight($('.post-description'), '200px');
