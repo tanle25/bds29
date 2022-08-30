@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 
 class Handler extends ExceptionHandler
 {
@@ -34,6 +36,9 @@ class Handler extends ExceptionHandler
     public function register()
     {
         //
+        $this->renderable(function(MethodNotAllowedHttpException $e, $request){
+            return redirect()->route('home');
+        });
     }
 
     protected function unauthenticated($request, AuthenticationException $exception)

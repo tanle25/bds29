@@ -341,6 +341,10 @@ $custom_og_image = $realty_post->thumb ?? '';
     </a>
 </div>
 
+<form id="breacdcumd-submit" action="" method="POST">
+    @csrf
+</form>
+
 <script defer src="https://maps.googleapis.com/maps/api/js?key={{config('api_keys.google_map')}}&callback=initMap">
 </script>
 <script async defer crossorigin="anonymous"
@@ -348,9 +352,19 @@ $custom_og_image = $realty_post->thumb ?? '';
     nonce="KzqM94bd"></script>
 {{-- <script src="https://sp.zalo.me/plugins/sdk.js"></script> --}}
 
+
+
 <script src="{{asset('plugins/lightgallery/dist/js/lightgallery.min.js')}}"></script>
 
 <script>
+
+$('.detail-breadcumb').click(function(){
+    let url = $(this).data('href');
+    $('#breacdcumd-submit').attr('action', url);
+    $('#breacdcumd-submit').submit();
+})
+
+
     hideBlockByHeight($('.post-description'), '200px');
 $(document).on('click', '.show-hidden-block' , function(){
 toggleHiddenBlock($('.post-description'), "200px");
