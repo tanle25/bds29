@@ -110,7 +110,7 @@ class RealtyPost extends Model
     public function getLinkAttribute()
     {
         $slug = $this->slug;
-        $district = $this->realty->commune->slug;
+        $district = Str::slug($this->realty->commune->name_with_type,'-');
         $type = $this->type == 1? 'ban' : 'cho-thue';
         return url($type.'/'.$district.'/'.$slug);
         // return route('customer.realty_post.show', $this->slug);
