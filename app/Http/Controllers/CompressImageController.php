@@ -71,10 +71,7 @@ class CompressImageController extends Controller
         // $this->moveImage();
 
             $images = Image::where('link', 'LIKE', '%.jpg')->limit(50)->get();
-            $before = 0;
-            $after = 0;
-            $thumb_before = 0;
-            $thumb_after = 0;
+
             foreach ($images as $image) {
                 # code...
                 $url = $image->link;
@@ -86,19 +83,17 @@ class CompressImageController extends Controller
                 if($fileExists){
                     $result = ImageCompression::compress(storage_path('app/public/image_uploads/' . $fileName . '.' . $ext), true);
                     $thumbResult = ImageCompression::compress(storage_path('app/public/image_uploads/thumbs/' . $fileName . '.' . $ext), true);
-                    if (is_array($thumbResult)) {
-                        $thumb_before += $thumbResult[0];
-                        $thumb_after += $thumbResult[1];
-                    }
+
     
                     if (is_array($result)) {
-                        $before += $result[0];
-                        $after += $result[1];
                         $image->update([
                             'link' => $newImageLink
                         ]);
                     }
+                }else{
+                    dd('File Not Found');
                 }
+
                 
             }
             return redirect()->back();
