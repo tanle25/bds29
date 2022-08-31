@@ -83,15 +83,11 @@ class CompressImageController extends Controller
                 if($fileExists){
                     $result = ImageCompression::compress(storage_path('app/public/image_uploads/' . $fileName . '.' . $ext), true);
                     $thumbResult = ImageCompression::compress(storage_path('app/public/image_uploads/thumbs/' . $fileName . '.' . $ext), true);
-
-    
                     if (is_array($result)) {
                         $image->update([
                             'link' => $newImageLink
                         ]);
                     }
-                }else{
-                    dd('File Not Found');
                 }
 
                 
