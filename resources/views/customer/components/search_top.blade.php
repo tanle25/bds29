@@ -357,9 +357,12 @@
                     }
                 }
             });
-            // window.location = slug + query ;
-            // console.log(result);
-            let url = "{{url('/')}}"+ slug+'/'+realty_slug;
+            let url = window.location.origin + slug
+
+            if(realty_slug != ""){
+                url += '/'+realty_slug
+            }
+
             $('#form-search').attr('action',url)
             $('#form-search').submit();
         }

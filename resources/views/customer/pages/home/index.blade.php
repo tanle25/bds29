@@ -420,7 +420,7 @@
                 }
             });
 
-            let url = "{{url('/')}}"+ slug;
+            let url = window.location.origin + slug;
             $('#form-search').attr('action',url)
             $('#form-search').submit();
         }

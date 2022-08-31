@@ -377,6 +377,12 @@ class RealtyPostController extends Controller
             'featured_by',
         )
             ->where('slug', $slug)->where('status',3)->firstOrFail();
+            $post_ward = Str::slug($realty_post->realty->commune->name_with_type,'-');
+            $post_type = $realty_post->type == 1? 'ban' : 'cho-thue';
+        if($post_type != $type || $post_ward != $ward){
+            $url = url($post_type.'/'.$post_ward.'/'.$slug);
+            return redirect($url);
+        }
 
         $newest_post = RealtyPost::with('realty', 'author', 'realty.district')
             ->orderByDesc('id')
@@ -397,6 +403,10 @@ class RealtyPostController extends Controller
         |--------------------------------------------------------------------------
         | update form search bds
         */
+
+        if(count($request->query) > 0){
+            return redirect()->route('home');
+        }
 
         
 
@@ -541,16 +551,12 @@ class RealtyPostController extends Controller
         if($request->has('du-an') && $request->input('du-an') != null){
             $project_name = Project::find($request->input('du-an'))->name;
         }
-        // dd($project_name);
-        // dd($title);
 
         $listProjectOfDistrictFilter = Project::all();
 
         if (isset($query_from_slug['huyen']) && $query_from_slug['huyen'] != null) {
             $listProjectOfDistrictFilter = Project::where('district_code', $query_from_slug['huyen'])->get();
         }
-
-        // dd($listProjectOfDistrictFilter);
         
         return view('customer.pages.realty_post.index', compact('realties', 'side_lists', 'title', 'user', 'filter_search', 'search_address', 'listProjectOfDistrictFilter','project_name'));
     }

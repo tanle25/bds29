@@ -134,7 +134,7 @@ Route::get('du-an/{slug}', [ProjectCustomerController::class, 'show'])->name('cu
 Route::get('tag/{slug}', [RealtyTagController::class, 'getRealtyByTag'])->name('customer.realty_tag.get_all');
 Route::match(['get','post'],'/{search_slug}', [RealtyPostController::class, 'searchByParam'])->name('customer.realty_post.search_by_param');
 
-Route::match(['get','post'],'/{search_slug}/{realty_slug?}', [RealtyPostController::class, 'searchByParam2'])->name('customer.realty_post.search_by_param2');
+Route::match(['get','post'],'/{search_slug}/{realty_slug}', [RealtyPostController::class, 'searchByParam2'])->name('customer.realty_post.search_by_param2');
 
 
 Route::get('/v2/{any}', function () {
