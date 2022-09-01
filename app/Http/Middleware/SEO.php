@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class SEO
@@ -16,13 +17,18 @@ class SEO
      */
     public function handle(Request $request, Closure $next)
     {
-        $response = $next($request);
-        if (in_array('gzip', $request->getEncodings()) && function_exists('gzencode')) {
-            $response->setContent(gzencode($response->getContent(), 9));
-            $response->headers->add([
-                'Content-Encoding' => 'gzip',
-                'X-Vapor-Base64-Encode' => 'True',
-            ]);
+        // $response = $next($request);
+        // if (in_array('gzip', $request->getEncodings()) && function_exists('gzencode')) {
+        //     $response->setContent(gzencode($response->getContent(), 9));
+        //     $response->headers->add([
+        //         'Content-Encoding' => 'gzip',
+        //         'X-Vapor-Base64-Encode' => 'True',
+        //     ]);
+        // }
+        // dd($request->getRequestUri());
+        if(Str::endsWith($request->getRequestUri(),'?')){
+            $url = Str::replaceLast('?','',$request->requestUri);
+            return redirect($request->url());
         }
         return $next($request);
     }

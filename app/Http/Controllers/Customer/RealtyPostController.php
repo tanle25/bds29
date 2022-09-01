@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use DB;
-use Str;
+
 use Datatables;
 use App\Models\User;
 use App\Models\Realty;
@@ -13,6 +13,7 @@ use App\Models\District;
 use App\Models\PostRank;
 use App\Models\Province;
 use App\Models\RealtyPost;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Services\SlugService;
 use Illuminate\Support\Carbon;
@@ -489,6 +490,15 @@ class RealtyPostController extends Controller
         |--------------------------------------------------------------------------
         | update form search bds
         */
+
+        // dd($request);
+
+        if($search_slug == 'bat-dong-san'){
+            $rtp = RealtyPost::whereSlug($realty_slug)->firstOrFail();
+            $t = $rtp->type == 1 ? 'ban' : 'cho-thue';
+            $ad = Str::slug($rtp->realty->commune->name_with_type,'-');
+            return redirect(url($t.'/'.$ad.'/'.$realty_slug));
+        }
 
       
 

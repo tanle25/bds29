@@ -59,7 +59,7 @@
 				</div>
                
 				<div id="view-as-grid">
-					<ul class="row bds-hot-district mt-3">
+					<ul class="row bds-hot-district p-0 mt-3">
                         @foreach ($realties as $index => $realty_post)
                         
                         {{-- @if($index>=1 && $realties[$index-1]->created_at == $realties[$index]->created_at) --}}
