@@ -140,8 +140,8 @@ Danh sách dự án bất động sản
 		<div class="row">
 			<div class="col-12">
 				<div class="entry-head-3">
-					<h1 class="ht">
-						<span class="title font-20">Danh sách dự án</span>
+					<h1 class="ht title font-20">
+						Danh sách dự án
 					</h1>
                 </div>
             </div>
