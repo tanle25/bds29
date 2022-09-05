@@ -49,7 +49,6 @@
                                                 class="btn btn-outline-secondary"></button>
                                         </div>
                                     </div>
-                                    {{-- <input type="hidden" name="icon" class="item-menu"> --}}
                                 </div>
                                 <div class="form-group">
                                     <label for="href">URL</label>
@@ -74,6 +73,15 @@
                                     <input type="text" name="html" class="form-control item-menu" id="html"
                                         placeholder="HTML">
                                 </div>
+                                <div class="form-group row">
+                                    <label class="col-2">ref</label> 
+                                    <div class="col-10">
+                                      <div class="custom-control custom-checkbox custom-control-inline">
+                                        <input name="ref" id="checkbox_0" type="checkbox" class="custom-control-input"> 
+                                        <label for="checkbox_0" class="custom-control-label">nofollow</label>
+                                      </div>
+                                    </div>
+                                  </div> 
                             </form>
                         </div>
                         <div class="card-footer">
@@ -129,6 +137,7 @@
             },
             success: function(data){
                 swalToast('Sửa thành công!');
+                // console.log(data);
                 renderMenu(JSON.parse(data.menus));
             },
             error: function(err){
@@ -157,6 +166,7 @@
     }
  
     function buildItem(item) {
+        // console.log(item);
         var html = `<li 
         class='dd-item' 
         data-html='${item.html}' 
@@ -164,6 +174,7 @@
         data-target='${item.target}' 
         data-text='${item.text}' 
         data-id='${item.id}' 
+        data-ref='${item.nofollow}' 
         data-title='${item.title}' 
         data-icon='${item.icon}'
         >`;
@@ -196,7 +207,6 @@
 
     $('#btnAdd').on('click', function(){
         var formData = $('#frmEdit').serialize();
-        console.log(formData);
         addItem(formData);
         $("#frmEdit").trigger('reset');
         resetForm();
@@ -226,7 +236,6 @@
                 jsonData:data,
             },
         }).done(function (result) {
-            console.log(result);
             swalToast('Thành công');
         }).fail(function(){
             swalToast('Lỗi', 'error');
@@ -244,6 +253,12 @@
         $('#frmEdit input[name="id"]').val(data.id);
         $('#frmEdit input[name="href"]').val(data.href);
         $('#frmEdit input[name="id"]').trigger('change');
+        if(data.ref == 1){
+            $('#frmEdit input[name="ref"]').prop('checked', true);
+        }else{
+            $('#frmEdit input[name="ref"]').prop('checked', false);
+        }
+        // console.log(data);
     });
 
     $(document).on("click",".item-destroy",function() {

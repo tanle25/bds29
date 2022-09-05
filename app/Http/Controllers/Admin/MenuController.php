@@ -34,6 +34,7 @@ class MenuController extends Controller
         $data = $request->all();
         $data['parent_id'] = null;
         $data['sort'] = 200;
+        $data['nofollow'] = $request->has('ref') && $request->ref == 'on' ? 1 : 0;
         Menu::create($data);
         $menu_list = $this->getMenuTree($request->category);
         return response()->json(['success' => 'Thêm mới menu thành công', 'menus' => $menu_list]);
@@ -77,6 +78,9 @@ class MenuController extends Controller
     {
         $menu = Menu::findOrFail($request->id);
         $data = $request->all();
+        
+        $data['nofollow'] = $request->has('ref') && $request->ref == 'on' ? 1 : 0;
+        // return response()->json($data);
         $menu->update($data);
 
         $menu_list = $this->getMenuTree($request->category);
