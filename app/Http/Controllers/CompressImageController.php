@@ -88,6 +88,8 @@ class CompressImageController extends Controller
                             'link' => $newImageLink
                         ]);
                     }
+                }else{
+                    $image->delete();
                 }
 
                 
@@ -96,6 +98,13 @@ class CompressImageController extends Controller
             
             // return view('customer.pages.compressimage',['result'=>$result,'total_compress'=>$totalCompressted,'total_image'=>$totalImage]);
 
+    }
+
+    public function emptyImage()
+    {
+        # code...
+        Image::truncate();
+        // return back();
     }
 
     public function showPage()

@@ -45,6 +45,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('toi-uu-hinh-anh',[CompressImageController::class,'showPage']);
     Route::get('di-chuyen-hinh-anh',[CompressImageController::class,'moveImage']);
     Route::get('toi-uu-avatar',[CompressImageController::class,'compressAvata']);
+    Route::get('remove-image',[CompressImageController::class,'emptyImage']);
 
     // slug
     Route::post('slug/get', [SlugController::class, 'create'])->name('admin.slug.create');
