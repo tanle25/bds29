@@ -28,9 +28,9 @@
                             @foreach ($item->childs as $child)
                             <h4 class="font-9" style="line-height: 25px !important;">
                                 @if ($child->icon)
-                                <i class="text-white {{$child->icon}}"></i>
+                                <i class="text-white {{$child->icon}} mr-2"></i>
                                 @endif
-                                <a class="" href="{{$child->href ?? ''}}" style="word-wrap: break-word">{{$child->title ?? ''}}</a> 
+                                <a class="" href="{{$child->href ?? ''}}" style="word-break: break-all">{{$child->title ?? ''}}</a> 
                             </h4>
                             @endforeach
                         @endif

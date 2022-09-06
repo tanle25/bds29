@@ -62,12 +62,9 @@
 					<ul class="row bds-hot-district p-0 mt-3">
                         @foreach ($realties as $index => $realty_post)
                         
-                        {{-- @if($index>=1 && $realties[$index-1]->created_at == $realties[$index]->created_at) --}}
-                        {{-- @else --}}
                             <li class="col-md-4 mb-3">
                                 @include('customer.components.realty_post.realty_block', ['item' => $realty_post])
                             </li>
-                        {{-- @endif --}}
 						@endforeach
                         </ul>
 				</div>
