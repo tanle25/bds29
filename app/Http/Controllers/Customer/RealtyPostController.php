@@ -371,6 +371,8 @@ class RealtyPostController extends Controller
 
         // Log::alert('show');
 
+        // dd('test');
+
         $realty_post = RealtyPost::with(
             'tags',
             'author',
@@ -378,6 +380,7 @@ class RealtyPostController extends Controller
             'featured_by',
         )
             ->where('slug', $slug)->where('status',3)->firstOrFail();
+
             $post_ward = Str::slug($realty_post->realty->commune->name_with_type,'-');
             $post_type = $realty_post->type == 1? 'ban' : 'cho-thue';
         if($post_type != $type || $post_ward != $ward){

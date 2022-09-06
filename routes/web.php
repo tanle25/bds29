@@ -32,12 +32,18 @@ use App\Http\Controllers\Customer\ProjectController as ProjectCustomerController
  */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('test', [HomeController::class, 'test']);
+// Route::get('test', [HomeController::class, 'test']);
 
 
 Route::get('realty', function () {
     return view('customer/pages/realty');
 });
+
+// Post controller
+Route::get('/tin-tuc', [CustomerPostController::class, 'index'])->name('customer.post.index');
+Route::get('tin-tuc/tag/{slug}', [CustomerPostController::class, 'getPostByTag'])->name('customer.post_tag.get_all');
+Route::get('/tin-tuc/{cat_slug}', [CustomerPostController::class, 'showByCategory'])->name('customer.post.show_by_category');
+Route::get('/tin-tuc/{cat_slug}/{post_slug}', [CustomerPostController::class, 'show'])->name('customer.post.show');
 
 Route::get('tim-kiem', [RealtyPostController::class, 'getRealtyPosts'])->name('customer.realty_post.get_list')->middleware('filter_query');
 Route::get('{type}/{ward}/{slug}', [RealtyPostController::class, 'show'])->name('customer.realty_post.show');
@@ -120,11 +126,7 @@ Route::get('payment/callback', [CustomerRechargeController::class, 'thirdPartyCa
 //advisory controller
 Route::post('/advisory/send-request-to-realty-owner', [AdvisoryController::class, 'sendRequestToRealtyOwner'])->name('customer.advisory.send_request_to_realty_owner');
 
-// Post controller
-Route::get('/tin-tuc', [CustomerPostController::class, 'index'])->name('customer.post.index');
-Route::get('tin-tuc/tag/{slug}', [CustomerPostController::class, 'getPostByTag'])->name('customer.post_tag.get_all');
-Route::get('/tin-tuc/{cat_slug}', [CustomerPostController::class, 'showByCategory'])->name('customer.post.show_by_category');
-Route::get('/tin-tuc/{cat_slug}/{post_slug}', [CustomerPostController::class, 'show'])->name('customer.post.show');
+
 
 Route::get('/lien-he', [ContactController::class, 'showFrontend'])->name('admin.class_request.show_frontend');
 Route::post('/lien-he', [ContactController::class, 'store'])->name('admin.class_request.store');

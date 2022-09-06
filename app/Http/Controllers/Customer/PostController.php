@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function show($cat_slug, $post_slug)
     {
-
+        // dd('test');
         $post = Post::where('slug', $post_slug)->where('status', 1)->with('tags', 'categories', 'categories.posts', 'categories.posts.categories')->first();
         if (!$post) {
             return abort(404);
