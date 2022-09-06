@@ -19,7 +19,7 @@ class SEO
     {
         if(Str::endsWith($request->getRequestUri(),'?')){
             $url = Str::replaceLast('?','',$request->requestUri);
-            dd($request);
+            // dd($request);
             return redirect($request->url());
         }
         return $next($request);
