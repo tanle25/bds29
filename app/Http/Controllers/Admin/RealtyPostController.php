@@ -26,7 +26,7 @@ class RealtyPostController extends Controller
         return DataTables::eloquent($posts)
             ->addIndexColumn()
             ->editColumn('title', function ($post) {
-                $link = route('customer.realty_post.show', $post->slug ?? 'bat-dong-san');
+                $link = $post->link;
                 return "<a href='{$link}'>{$post->title}</a>";
             })
             ->filterColumn('realty_posts.created_at', function ($query, $keyword) {
@@ -92,7 +92,7 @@ class RealtyPostController extends Controller
             })
             ->addColumn('action', function ($post) {
                 return '
-                <a target="_blank" data-toggle-for="tooltip" title="Xem trang" href="' . route('customer.realty_post.show', $post->slug) . '"class="btn text-success customer-edit"><i class="fas fa-eye" data-toggle="modal" data-target="#customer-model"></i></a>
+                <a target="_blank" data-toggle-for="tooltip" title="Xem trang" href="' . $post->link . '"class="btn text-success customer-edit"><i class="fas fa-eye" data-toggle="modal" data-target="#customer-model"></i></a>
                 <a data-toggle-for="tooltip" title="Sửa thông tin" href="' . route('admin.realty_post.edit', $post->id) . '"class="btn text-info customer-edit"><i class="fas fa-edit" data-toggle="modal" data-target="#customer-model"></i></a>
                 <a data-toggle-for="tooltip" title="Xóa" href="' . route('admin.realty_post.destroy', $post->id) . '"class="btn text-danger realty-post-destroy"><i class="fas fa-trash" data-toggle="modal" data-target="#customer-model"></i></a>
                 ';
@@ -164,8 +164,9 @@ class RealtyPostController extends Controller
     {
         $realty_post = RealtyPost::with('realty', 'realty.district', 'realty.province', 'realty.commune')->findOrFail($id);
         $realty = $realty_post->realty;
-        $house_image = explode(',', $realty_post->realty->house_image);
-        $house_design_image = explode(',', $realty_post->realty->house_design_image);
+        // $house_image = explode(',', $realty_post->realty->house_image);
+        $house_image = $realty_post->images()->where('type',1)->get()->toArray();
+        $house_design_image = $realty_post->images()->where('type',2)->get()->toArray();
 
         if (!empty(config('constant.provinces'))) {
             $provinces = Province::whereIn('code', config('constant.provinces'))->get();
@@ -176,24 +177,23 @@ class RealtyPostController extends Controller
         $communes = Commune::where('parent_code', $realty->commune->parent_code ?? 0)->get();
 
         $house_image = array_map(function ($item) {
-            if ($item == '') {
-                return;
-            }
+            // dd($item);
             return [
-                'path' => $item,
-                'storage_path' => Str::replaceFirst('/storage/', '', $item),
-                'thumb' => Str::replaceLast('/', '/thumbs/', $item),
+                'path' => $item['link'],
+                'storage_path' => Str::replaceFirst('/storage/', '', $item['link']),
+                'thumb' => Str::replaceLast('/', '/thumbs/', $item['link']),
+                'alt'=>$item['alt'],
+                'title'=>$item['title']
             ];
         }, $house_image);
 
         $house_design_image = array_map(function ($item) {
-            if ($item == '') {
-                return;
-            }
             return [
-                'path' => $item,
-                'storage_path' => Str::replaceFirst('/storage/', '', $item),
-                'thumb' => Str::replaceLast('/', '/thumbs/', $item),
+                'path' => $item['link'],
+                'storage_path' => Str::replaceFirst('/storage/', '', $item['link']),
+                'thumb' => Str::replaceLast('/', '/thumbs/', $item['link']),
+                'alt'=>$item['alt'],
+                'title'=>$item['title']
             ];
         }, $house_design_image);
         return view('admin.pages.realty_post.edit', compact(

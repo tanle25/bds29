@@ -52,6 +52,7 @@
             init: function () {
                 @isset($mock_file)
                     var mock_file = @json($mock_file);
+                    console.log(mock_file);
                     mock_file.forEach(element => {
                         if(element){
                             // this.displayExistingFile(element, element.path);

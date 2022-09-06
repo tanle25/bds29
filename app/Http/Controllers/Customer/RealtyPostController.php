@@ -238,10 +238,10 @@ class RealtyPostController extends Controller
         $realty_post = RealtyPost::with('realty', 'realty.district', 'realty.province', 'realty.commune')->findOrFail($id);
         $realty = $realty_post->realty;
         // $house_image = explode(',', $realty_post->realty->house_image);
-        $house_image = $realty_post->images->toArray();
+        $house_image = $realty_post->images()->where('type',1)->get()->toArray();
 
         // dd($house_image, $images);
-        $house_design_image = explode(',', $realty_post->realty->house_design_image);
+        $house_design_image = $realty_post->images()->where('type',2)->get()->toArray();
 
         if (!empty(config('constant.provinces'))) {
             $provinces = Province::whereIn('code', config('constant.provinces'))->get();
@@ -379,7 +379,7 @@ class RealtyPostController extends Controller
             'realty',
             'featured_by',
         )
-            ->where('slug', $slug)->where('status',3)->firstOrFail();
+            ->where('slug', $slug)->where('status',3)->whereHas('realty')->firstOrFail();
 
             $post_ward = Str::slug($realty_post->realty->commune->name_with_type,'-');
             $post_type = $realty_post->type == 1? 'ban' : 'cho-thue';

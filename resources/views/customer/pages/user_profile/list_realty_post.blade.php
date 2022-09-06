@@ -27,7 +27,7 @@
                         <img  class="img-fluid" src="{{$post->thumb ?? ''}}" alt="{{$post->title ?? ''}}">
                     </div>
                 </td>
-                <td><a class="font-8 main-text" href="{{route('customer.realty_post.show', $post->slug)}}">{{$post->title ?? ''}}</a> </td>
+                <td><a class="font-8 main-text" href="{{$post->link}}">{{$post->title ?? ''}}</a> </td>
                 <td class="font-8">{{Carbon\Carbon::parse($post->open_at)->format('d/m/Y') ?? ''}} - {{ Carbon\Carbon::parse($post->close_at ?? '')->format('d/m/Y') ?? ''}}</td>
                 <td><span class="font-8">{{config('constant.realty_post_status.' . $post->status)}}</span></td>
                 <td><a class="font-8" href="{{route('customer.realty_post.edit', $post->id)}}">Sửa</a></td>
