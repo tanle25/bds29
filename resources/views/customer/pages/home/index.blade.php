@@ -180,13 +180,14 @@
                                     @endforeach
                                 </select>
                             </div>
-
+                           
                             <div class="form-group mb-2 py-2 search-input px-2 ">
                                 <i class="fal fa-building ml-2"></i>
                                 <select class="form-control select2 select2-info" id="project" name="du-an"
                                     data-dropdown-css-class="select2-info" style="width: 100%;">
                                     <option value="" selected="">Dự án</option>
                                     @foreach ($home_projects as $home_project)
+
                                         <option data-slug="{{ $home_project->slug }}"
                                             value="{{ $home_project->province_code }}">{{ $home_project->name }}
                                         </option>
