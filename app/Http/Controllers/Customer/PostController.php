@@ -16,6 +16,10 @@ class PostController extends Controller
         if (!$post) {
             return abort(404);
         }
+        // dd($post->categories->first()->slug );
+        if($post->categories->first()->slug != $cat_slug){
+            return redirect(url('tin-tuc/'.$post->categories->first()->slug.'/'.$post_slug));
+        }
         $created_at = $post->created_at;
 
         $date_string = __($created_at->format('l')) . ', ngày ' . $created_at->format('d/m/Y g:i A');
