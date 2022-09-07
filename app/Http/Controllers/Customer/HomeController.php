@@ -59,11 +59,11 @@ class HomeController extends Controller
         $home_search_projects = Project::where('district_code', 19)->get();
 
         // $home_projects = $this->project_service->getProjectDetails($home_projects)->chunk(3);
-        $random_realties_type1 = RealtyPost::with('realty', 'realty.district')->where('type','=',1)->where('status',3)->orderByDesc('id')->take(50)->get();
-        $random_realties_type2 = RealtyPost::with('realty', 'realty.district')->where('type','=',2)->where('status',3)->orderByDesc('id')->take(50)->get();
-        if ($random_realties_type1->count() >= 8) {
-            $random_realties_type1 = $random_realties_type1->random(8)->sortByDesc('rank');
-        }
+        // $random_realties_type1 = RealtyPost::with('realty', 'realty.district')->where('type','=',1)->where('status',3)->orderByDesc('id')->take(50)->get();
+        $random_realties_type2 = RealtyPost::with('realty', 'realty.district')->where('type','=',2)->where('status',3)->orderByDesc('id')->take(10)->get();
+        // if ($random_realties_type1->count() >= 8) {
+        //     $random_realties_type1 = $random_realties_type1->random(8)->sortByDesc('rank');
+        // }
         if ($random_realties_type2->count() >= 8) {
             $random_realties_type2 = $random_realties_type2->random(8)->sortByDesc('rank');
         }
