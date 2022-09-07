@@ -61,8 +61,11 @@ class DistrictController extends Controller
 
     public function update(DistrictRequest $request, $id)
     {
+        // dd(explode(',',$request->avatar));
         $district = District::with('details')->findOrFail($id);
+        $avatar = explode(',',$request->avatar);
         $data = $request->all();
+        $data['avatar'] = $avatar[0];
         $district->update($data);
 
         if ($district->details) {
