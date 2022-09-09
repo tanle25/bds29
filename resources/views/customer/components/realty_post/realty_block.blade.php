@@ -21,7 +21,7 @@
             @endif
         </div>
         <div class="order-1 col-12 bg-white px-2 pt-2 pb-2 pb-md-0">
-            <h2>
+            <h2 class="m-0">
             <a href="{{url($item->link) }}" class="d-block font-9 main-text w-100 hrm-truncate
                 @if ($item->rank == 4)
                 text-danger
