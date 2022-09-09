@@ -92,7 +92,7 @@
                 @foreach ($banner_mobile as $item)
                     @if ($item)
                         <div class="item img-responsive">
-                            <img class="lazy" data-src="{{ $item }}" src="{{$item}}" title="bất động sản 29" alt="bất động sản 29" srcset="" width="100%" height="250" >
+                            <img src="{{ $item }}" src="{{$item}}" title="bất động sản 29" alt="bất động sản 29" srcset="" width="100%" height="250" >
                         </div>
                     @endif
                 @endforeach
