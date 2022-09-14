@@ -51,6 +51,7 @@ return array(
     'Spatie\\QueryBuilder\\' => array($vendorDir . '/spatie/laravel-query-builder/src'),
     'Spatie\\EloquentSortable\\' => array($vendorDir . '/spatie/eloquent-sortable/src'),
     'Spatie\\Activitylog\\' => array($vendorDir . '/spatie/laravel-activitylog/src'),
+    'RenatoMarinho\\LaravelPageSpeed\\' => array($vendorDir . '/renatomarinho/laravel-page-speed/src'),
     'ReeceM\\Mocker\\' => array($vendorDir . '/reecem/mocker/src'),
     'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
     'Ramsey\\Collection\\' => array($vendorDir . '/ramsey/collection/src'),

@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Console\\Commands\\ConvertImage' => $baseDir . '/app/Console/Commands/ConvertImage.php',
     'App\\Console\\Commands\\CreateSiteMap' => $baseDir . '/app/Console/Commands/CreateSiteMap.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -4317,6 +4318,17 @@ return array(
     'ReeceM\\Mocker\\Traits\\ArrayMagic' => $vendorDir . '/reecem/mocker/src/Traits/ArrayMagic.php',
     'ReeceM\\Mocker\\Traits\\ObjectMagic' => $vendorDir . '/reecem/mocker/src/Traits/ObjectMagic.php',
     'ReeceM\\Mocker\\Utils\\VarStore' => $vendorDir . '/reecem/mocker/src/Utils/VarStore.php',
+    'RenatoMarinho\\LaravelPageSpeed\\Entities\\HtmlSpecs' => $vendorDir . '/renatomarinho/laravel-page-speed/src/Entities/HtmlSpecs.php',
+    'RenatoMarinho\\LaravelPageSpeed\\Middleware\\CollapseWhitespace' => $vendorDir . '/renatomarinho/laravel-page-speed/src/Middleware/CollapseWhitespace.php',
+    'RenatoMarinho\\LaravelPageSpeed\\Middleware\\DeferJavascript' => $vendorDir . '/renatomarinho/laravel-page-speed/src/Middleware/DeferJavascript.php',
+    'RenatoMarinho\\LaravelPageSpeed\\Middleware\\ElideAttributes' => $vendorDir . '/renatomarinho/laravel-page-speed/src/Middleware/ElideAttributes.php',
+    'RenatoMarinho\\LaravelPageSpeed\\Middleware\\InlineCss' => $vendorDir . '/renatomarinho/laravel-page-speed/src/Middleware/InlineCss.php',
+    'RenatoMarinho\\LaravelPageSpeed\\Middleware\\InsertDNSPrefetch' => $vendorDir . '/renatomarinho/laravel-page-speed/src/Middleware/InsertDNSPrefetch.php',
+    'RenatoMarinho\\LaravelPageSpeed\\Middleware\\PageSpeed' => $vendorDir . '/renatomarinho/laravel-page-speed/src/Middleware/PageSpeed.php',
+    'RenatoMarinho\\LaravelPageSpeed\\Middleware\\RemoveComments' => $vendorDir . '/renatomarinho/laravel-page-speed/src/Middleware/RemoveComments.php',
+    'RenatoMarinho\\LaravelPageSpeed\\Middleware\\RemoveQuotes' => $vendorDir . '/renatomarinho/laravel-page-speed/src/Middleware/RemoveQuotes.php',
+    'RenatoMarinho\\LaravelPageSpeed\\Middleware\\TrimUrls' => $vendorDir . '/renatomarinho/laravel-page-speed/src/Middleware/TrimUrls.php',
+    'RenatoMarinho\\LaravelPageSpeed\\ServiceProvider' => $vendorDir . '/renatomarinho/laravel-page-speed/src/ServiceProvider.php',
     'ReturnTypeWillChange' => $vendorDir . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
     'SebastianBergmann\\CliParser\\AmbiguousOptionException' => $vendorDir . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',
     'SebastianBergmann\\CliParser\\Exception' => $vendorDir . '/sebastian/cli-parser/src/exceptions/Exception.php',

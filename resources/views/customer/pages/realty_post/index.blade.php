@@ -68,6 +68,7 @@
 						@endforeach
                         </ul>
 				</div>
+                {{-- @dd($realties->links()) --}}
 				{{$realties->onEachSide(5)->links()}}
 				{{-- @include('customer.pages.pagination') --}}
             </div>

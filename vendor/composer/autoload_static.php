@@ -112,6 +112,7 @@ class ComposerStaticInit3751a186cd3ac68515ea41f2b6b2e1b3
         ),
         'R' => 
         array (
+            'RenatoMarinho\\LaravelPageSpeed\\' => 31,
             'ReeceM\\Mocker\\' => 14,
             'Ramsey\\Uuid\\' => 12,
             'Ramsey\\Collection\\' => 18,
@@ -399,6 +400,10 @@ class ComposerStaticInit3751a186cd3ac68515ea41f2b6b2e1b3
         array (
             0 => __DIR__ . '/..' . '/spatie/laravel-activitylog/src',
         ),
+        'RenatoMarinho\\LaravelPageSpeed\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/renatomarinho/laravel-page-speed/src',
+        ),
         'ReeceM\\Mocker\\' => 
         array (
             0 => __DIR__ . '/..' . '/reecem/mocker/src',
@@ -653,6 +658,7 @@ class ComposerStaticInit3751a186cd3ac68515ea41f2b6b2e1b3
     );
 
     public static $classMap = array (
+        'App\\Console\\Commands\\ConvertImage' => __DIR__ . '/../..' . '/app/Console/Commands/ConvertImage.php',
         'App\\Console\\Commands\\CreateSiteMap' => __DIR__ . '/../..' . '/app/Console/Commands/CreateSiteMap.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -4964,6 +4970,17 @@ class ComposerStaticInit3751a186cd3ac68515ea41f2b6b2e1b3
         'ReeceM\\Mocker\\Traits\\ArrayMagic' => __DIR__ . '/..' . '/reecem/mocker/src/Traits/ArrayMagic.php',
         'ReeceM\\Mocker\\Traits\\ObjectMagic' => __DIR__ . '/..' . '/reecem/mocker/src/Traits/ObjectMagic.php',
         'ReeceM\\Mocker\\Utils\\VarStore' => __DIR__ . '/..' . '/reecem/mocker/src/Utils/VarStore.php',
+        'RenatoMarinho\\LaravelPageSpeed\\Entities\\HtmlSpecs' => __DIR__ . '/..' . '/renatomarinho/laravel-page-speed/src/Entities/HtmlSpecs.php',
+        'RenatoMarinho\\LaravelPageSpeed\\Middleware\\CollapseWhitespace' => __DIR__ . '/..' . '/renatomarinho/laravel-page-speed/src/Middleware/CollapseWhitespace.php',
+        'RenatoMarinho\\LaravelPageSpeed\\Middleware\\DeferJavascript' => __DIR__ . '/..' . '/renatomarinho/laravel-page-speed/src/Middleware/DeferJavascript.php',
+        'RenatoMarinho\\LaravelPageSpeed\\Middleware\\ElideAttributes' => __DIR__ . '/..' . '/renatomarinho/laravel-page-speed/src/Middleware/ElideAttributes.php',
+        'RenatoMarinho\\LaravelPageSpeed\\Middleware\\InlineCss' => __DIR__ . '/..' . '/renatomarinho/laravel-page-speed/src/Middleware/InlineCss.php',
+        'RenatoMarinho\\LaravelPageSpeed\\Middleware\\InsertDNSPrefetch' => __DIR__ . '/..' . '/renatomarinho/laravel-page-speed/src/Middleware/InsertDNSPrefetch.php',
+        'RenatoMarinho\\LaravelPageSpeed\\Middleware\\PageSpeed' => __DIR__ . '/..' . '/renatomarinho/laravel-page-speed/src/Middleware/PageSpeed.php',
+        'RenatoMarinho\\LaravelPageSpeed\\Middleware\\RemoveComments' => __DIR__ . '/..' . '/renatomarinho/laravel-page-speed/src/Middleware/RemoveComments.php',
+        'RenatoMarinho\\LaravelPageSpeed\\Middleware\\RemoveQuotes' => __DIR__ . '/..' . '/renatomarinho/laravel-page-speed/src/Middleware/RemoveQuotes.php',
+        'RenatoMarinho\\LaravelPageSpeed\\Middleware\\TrimUrls' => __DIR__ . '/..' . '/renatomarinho/laravel-page-speed/src/Middleware/TrimUrls.php',
+        'RenatoMarinho\\LaravelPageSpeed\\ServiceProvider' => __DIR__ . '/..' . '/renatomarinho/laravel-page-speed/src/ServiceProvider.php',
         'ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
         'SebastianBergmann\\CliParser\\AmbiguousOptionException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',
         'SebastianBergmann\\CliParser\\Exception' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/Exception.php',

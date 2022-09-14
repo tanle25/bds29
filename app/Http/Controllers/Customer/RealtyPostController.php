@@ -407,10 +407,11 @@ class RealtyPostController extends Controller
         |--------------------------------------------------------------------------
         | update form search bds
         */
+        // dd(request()->query());
 
-        if(count($request->query) > 0){
-            return redirect()->route('home');
-        }
+        // if(count($request->query) > 0){
+        //     return redirect()->route('home');
+        // }
 
         
 
@@ -459,9 +460,9 @@ class RealtyPostController extends Controller
 
         $search_address = $this->filter_service->getSearchAddress();
 
-        $realties = $query->paginate(12)->onEachSide(5)->appends(request()->query());
+        $realties = $query->paginate(12)->onEachSide(5);
+        // $realties->withPath('pages');
 
-        // dd($realties);
 
         if (!$realties) {
             return abort(404);
