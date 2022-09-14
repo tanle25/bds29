@@ -409,9 +409,9 @@ class RealtyPostController extends Controller
         */
         // dd(request()->query());
 
-        // if(count($request->query) > 0){
-        //     return redirect()->route('home');
-        // }
+        if(count($request->query) > 0 && !$request->has('page')){
+            return redirect()->route('home');
+        }
 
         
 
