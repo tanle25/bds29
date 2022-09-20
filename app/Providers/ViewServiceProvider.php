@@ -135,7 +135,8 @@ class ViewServiceProvider extends ServiceProvider
                     $widgets = Widget::all();
                     $featured_district_code = $widgets->where('name', 'bds_noi_bat')->first()->data_array->districts ?? [];
                     $featured_district = District::withCount('realty_posts')->whereIn('code', $featured_district_code)->get();
-                    $view->with(['featured_district' => $featured_district, 'featured_posts' => $featured_posts]);
+                    $suggestPost = RealtyPost::where('status',3)->inRandomOrder()->limit(6)->get();
+                    $view->with(['featured_district' => $featured_district, 'featured_posts' => $featured_posts,'suggestPost'=>$suggestPost]);
                 }
             );
            

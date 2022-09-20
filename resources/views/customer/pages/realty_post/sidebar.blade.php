@@ -10,15 +10,20 @@
         @endforeach
     </div>
 </div>
-
-@if (!empty($links))
-    @if ( $links[count($links) - 1]['name'] == 'Quận Cầu Giấy')
+{{-- @dd($links) --}}
+{{-- @if (!empty($links)) --}}
+    {{-- @if ( $links[count($links) - 1]['name'] == 'Quận Cầu Giấy') --}}
         <div class="p-3 my-3 rounded bg-white border">
             <span class="font-12 py-2 border-bottom">
                 Liên kết nổi bật
             </span>
             <div class="">
+                @foreach ($suggestPost as $rand )
                 <h4>
+                    <a class="d-block secondary-text py-1 font-9" href="{{$rand->link}}">{{$rand->title}}</a>
+                </h4>
+                @endforeach
+                {{-- <h4>
                     <a class="d-block secondary-text py-1 font-9" href="http://bds29.net/cho-thue-cau-giay-ha-noi?du-an=67">Cho thuê căn hộ FLC 265 Cầu Giấy</a>
                 </h4>
                 <h4>
@@ -38,11 +43,11 @@
                 </h4>
                 <h4>
                     <a class="d-block secondary-text py-1 font-9" href="http://bds29.net/cho-thue-cau-giay-ha-noi?du-an=158">Cho thuê căn hộ Center Point 110 Cầu Giấy</a>
-                </h4>
+                </h4> --}}
             </div>
         </div>
-    @endif
-@endif
+    {{-- @endif
+@endif --}}
 
 
 @section('script')
