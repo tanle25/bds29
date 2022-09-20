@@ -173,21 +173,61 @@
 <div class="row px-4">
     <div class="card col-lg-4 p-0">
         <div class="card-header">
-            BDS nổi bật
+            {{-- BDS nổi bật --}}
+            <div class="d-flex justify-content-between">
+                <span>Liên kết nổi bật</span> 
+                <button class="btn btn btn-primary" data-toggle="modal" data-target="#featured-link">
+                    Thêm
+                </button>
+            </div>
         </div>
-        <div class="card-body">
-            <form action="{{url('admin/store-feautured-realty')}}" method="post">
-            @csrf
-            <select class="form-control select2 select2-info" id="featured" name="featured[]" multiple>
-                @foreach ($realtyPosts as $post )
-                    <option @if($fealtured->where('realty_post_id',$post->id)->count() >= 1) selected @endif value="{{$post->id}}">{{$post->title}}</option>
-                @endforeach
-              </select>
-              <button class="btn btn-primary  mt-3" type="submit">Save</button>
-            </form>
+        <div class="card-body " style="max-height: 500px; overflow-x: hidden; overflow-y: auto;">
+           <ul class="p-0">
+            @foreach ($fealtured as $post )
+            <li class="d-flex mb-2 px-3 py-2 justify-content-between listview rounded" style="border: 1px solid #ddd">
+                <span>{{$post->title}}</span>
+                <a role="button" href="{{url('admin/delete-featured',$post->id)}}" class="btn-danger btn-sm">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </li>
+            @endforeach
+
+           </ul>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="featured-link" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Thêm liên kết nổi bật</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form action="{{url('admin/store-feautured-realty')}}" method="post">
+                @csrf
+                <select class="form-control select2 select2-info" id="featured" name="featured">
+                    @foreach ($realtyPosts as $post )
+                        <option value="{{$post->id}}">{{$post->title}}</option>
+                    @endforeach
+                  </select>
+                  <input class="form-control mt-3" type="text" name="title" id="" placeholder="title">
+                  <div class="d-flex justify-content-end mt-3">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đón</button>
+                  </div>
+                </form>
+        </div>
+        {{-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> --}}
+      </div>
+    </div>
+  </div>
 
 
 @endsection
@@ -265,3 +305,4 @@
 
     </script>
 @endsection
+

@@ -58,10 +58,14 @@ class WidgetController extends Controller
     {
         # code...
         // dd($request);
-        RealtyFeatured::query()->truncate();
-        foreach($request->featured as $featured){
-            RealtyFeatured::create(['realty_post_id'=>$featured]);
-        }
+        RealtyFeatured::updateOrCreate(['realty_post_id'=>$request->featured],['title'=>$request->title]);
+        return redirect()->back();
+    }
+
+    public function deleteFeatured($id)
+    {
+        # code...
+        RealtyFeatured::find($id)->delete();
         return redirect()->back();
     }
 

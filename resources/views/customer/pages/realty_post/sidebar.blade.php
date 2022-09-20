@@ -20,7 +20,7 @@
             <div class="">
                 @foreach ($suggestPost as $rand )
                 <h4>
-                    <a class="d-block secondary-text py-1 font-9" href="{{$rand->reltyPost->link}}">{{$rand->reltyPost->title}}</a>
+                    <a class="d-block secondary-text py-1 font-9" href="{{$rand->reltyPost->link}}">{{$rand->title}}</a>
                 </h4>
                 @endforeach
                 {{-- <h4>

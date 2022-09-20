@@ -71,6 +71,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('widget/store', [WidgetController::class, 'store'])->name('admin.widget.store');
     Route::get('widget/destroy', [WidgetController::class, 'destroy'])->name('admin.widget.destroy');
     Route::post('store-feautured-realty',[WidgetController::class,'storeFeautured']);
+    Route::get('delete-featured/{id}',[WidgetController::class,'deleteFeatured']);
     // File manager
     Route::group(['prefix' => 'laravel-filemanager'], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();

@@ -17,6 +17,7 @@ class CreateRealtyFeaturedsTable extends Migration
         Schema::create('realty_featureds', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(RealtyPost::class)->constrained()->cascadeOnDelete();
+            $table->string('title');
             $table->timestamps();
         });
     }
