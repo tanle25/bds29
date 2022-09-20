@@ -70,6 +70,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('widget', [WidgetController::class, 'index'])->name('admin.widget.index');
     Route::get('widget/store', [WidgetController::class, 'store'])->name('admin.widget.store');
     Route::get('widget/destroy', [WidgetController::class, 'destroy'])->name('admin.widget.destroy');
+    Route::post('store-feautured-realty',[WidgetController::class,'storeFeautured']);
     // File manager
     Route::group(['prefix' => 'laravel-filemanager'], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();

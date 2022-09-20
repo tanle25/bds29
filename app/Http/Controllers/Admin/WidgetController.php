@@ -7,6 +7,8 @@ use App\Models\District;
 use App\Models\PostCategory;
 use App\Models\Project;
 use App\Models\Province;
+use App\Models\RealtyFeatured;
+use App\Models\RealtyPost;
 use App\Models\Widget;
 use Illuminate\Http\Request;
 
@@ -34,6 +36,9 @@ class WidgetController extends Controller
 
         $post_categories = PostCategory::all()->sortBy('slug');
         $current_post_categories = $widgets->where('name', 'tin_tuc_noi_bat')->first()->data_array->post_categories ?? [];
+        $realtyPosts = RealtyPost::where('status',3)->get();
+        $fealtured = RealtyFeatured::all();
+        // dd($fealtured);
 
         return view('admin.pages.widgets.index', compact('widgets',
             'provinces',
@@ -43,8 +48,21 @@ class WidgetController extends Controller
             'post_categories',
             'current_post_categories',
             'projects',
-            'current_projects'
+            'current_projects',
+            'realtyPosts',
+            'fealtured'
         ));
+    }
+
+    public function storeFeautured(Request $request)
+    {
+        # code...
+        // dd($request);
+        RealtyFeatured::query()->truncate();
+        foreach($request->featured as $featured){
+            RealtyFeatured::create(['realty_post_id'=>$featured]);
+        }
+        return redirect()->back();
     }
 
     public function store(Request $request)

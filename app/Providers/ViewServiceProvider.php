@@ -13,6 +13,7 @@ use App\Models\SeoManager;
 use App\Models\ThemeOption;
 use App\Models\Widget;
 use App\Models\Project;
+use App\Models\RealtyFeatured;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Tags\Tag;
@@ -135,7 +136,7 @@ class ViewServiceProvider extends ServiceProvider
                     $widgets = Widget::all();
                     $featured_district_code = $widgets->where('name', 'bds_noi_bat')->first()->data_array->districts ?? [];
                     $featured_district = District::withCount('realty_posts')->whereIn('code', $featured_district_code)->get();
-                    $suggestPost = RealtyPost::where('status',3)->inRandomOrder()->limit(6)->get();
+                    $suggestPost = RealtyFeatured::inRandomOrder()->limit(6)->get();
                     $view->with(['featured_district' => $featured_district, 'featured_posts' => $featured_posts,'suggestPost'=>$suggestPost]);
                 }
             );

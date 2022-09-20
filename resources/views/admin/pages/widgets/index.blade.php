@@ -170,6 +170,26 @@
         <!-- /.card-body -->
       </div>
 </div>
+<div class="row px-4">
+    <div class="card col-lg-4 p-0">
+        <div class="card-header">
+            BDS nổi bật
+        </div>
+        <div class="card-body">
+            <form action="{{url('admin/store-feautured-realty')}}" method="post">
+            @csrf
+            <select class="form-control select2 select2-info" id="featured" name="featured[]" multiple>
+                @foreach ($realtyPosts as $post )
+                    <option @if($fealtured->where('realty_post_id',$post->id)->count() >= 1) selected @endif value="{{$post->id}}">{{$post->title}}</option>
+                @endforeach
+              </select>
+              <button class="btn btn-primary  mt-3" type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 @endsection
 
 @section('script')
@@ -187,6 +207,7 @@
                 type: 'get',
             })
         }
+        $('#feautured').select2();
         $('#province').on('change', function () {
             var province_code = $(this).val();
             var district_inputs = `<option value=""></option>`;
