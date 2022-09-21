@@ -707,6 +707,7 @@
                 data.forEach(element => {
                     project_inputs += `<option data-name="${element.name}" data-street="${element.street}" data-commune-code="${element.commune_code}" value="${element.id}">${element.name}</option>`;
                 });
+                console.log(data);
                 $('#project').html(project_inputs);
             })
         })
