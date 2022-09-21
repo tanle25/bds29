@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Mail\ResetPassword;
-use App\Models\AccountBalance;
-use App\Models\User;
-use Auth;
-use Hash;
-use Illuminate\Http\Request;
-use Mail;
-use Password;
-use Session;
 use Str;
+use Hash;
+use Mail;
+use Session;
+use Password;
+use App\Models\User;
+use App\Mail\ResetPassword;
+use Illuminate\Http\Request;
+use App\Models\AccountBalance;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerLoginController extends Controller
 {
@@ -100,6 +100,7 @@ class CustomerLoginController extends Controller
 
     public function logout(Request $request)
     {
+        // dd('test');
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

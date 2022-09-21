@@ -26,7 +26,7 @@
                     <tr>
                         <th>STT</th>
                         <th>Tên</th>
-                        <th>Ảnh đại diện</th>
+                        {{-- <th>Ảnh đại diện</th> --}}
                         <th>Email</th>
                         <th>Số điện thoại</th>
                         <th>Thao tác</th>
@@ -64,7 +64,7 @@
                 columns: [
                     { "data": "DT_RowIndex","name": 'DT_Row_Index' , "orderable": false, "searchable": false, 'width': '10px'},
                     { "data": "name",  },
-                    { "data": "avatar", 'width': '80px' },
+                    // { "data": "", 'width': '80px' },
                     { "data": "email"},
                     { "data": "phone_number"},
                     { "data": 'action', 'width' : '150px'}

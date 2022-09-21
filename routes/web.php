@@ -33,7 +33,12 @@ use App\Http\Controllers\Customer\ProjectController as ProjectCustomerController
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::get('test', [HomeController::class, 'test']);
+// Route::get('sing-out',[HomeController::class,'logout'])->name('customer.logout');
 
+Route::post('register', [CustomerLoginController::class, 'register'])->name('customer.login.register');
+Route::get('login', [CustomerLoginController::class, 'showLoginForm'])->name('customer.login.show');
+Route::post('login', [CustomerLoginController::class, 'authenticate'])->name('customer.login.post');
+Route::post('logout', [CustomerLoginController::class, 'logout'])->name('customer.logout');
 
 Route::get('realty', function () {
     return view('customer/pages/realty');
@@ -52,10 +57,7 @@ Route::get('realty-details', function () {
     return view('customer/pages/realty-details');
 });
 
-Route::post('register', [CustomerLoginController::class, 'register'])->name('customer.login.register');
-Route::get('login', [CustomerLoginController::class, 'showLoginForm'])->name('customer.login.show');
-Route::post('login', [CustomerLoginController::class, 'authenticate'])->name('customer.login.post');
-Route::get('logout', [CustomerLoginController::class, 'logout'])->name('customer.logout');
+
 
 Route::get('forgot-password', [CustomerLoginController::class, 'showResetForm'])->name('customer.password.request');
 Route::post('forgot-password', [CustomerLoginController::class, 'sendRequestMail'])->name('customer.password.send_request_mail');
@@ -90,6 +92,7 @@ Route::post('admin/login', [AdminLoginController::class, 'authenticate'])->name(
 
 Route::group(['middleware' => 'auth:web'], function () {
     // Account controller
+
     Route::get('/tai-khoan', [CustomerProfileController::class, 'showInformation'])->name('customer.profile.information');
     Route::post('/tai-khoan', [CustomerProfileController::class, 'updateInformation'])->name('customer.profile.information.store');
     // Acount recharge
@@ -116,9 +119,9 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('get-geo-by-name', [LocationController::class, 'getGeoByName'])->name('customer.location.get_geo_by_name');
 });
 
-Route::get('/v2/{any}', function () {
-    return view('app.main');
-});
+// Route::get('/v2/{any}', function () {
+//     return view('app.main');
+// });
 
 // Payment callback
 Route::get('payment/callback', [CustomerRechargeController::class, 'thirdPartyCallback'])->name('customer.payment.callback_from_online_payment');

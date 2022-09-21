@@ -98,8 +98,11 @@
                             <strong class="px-2">{{auth()->user()->name}}</strong>
                             <img data-src="{{auth()->user()->profile_image_path ?? '/images/empty-avatar.jpg'}}" style="width: 40px; height:40px" class="lazy rounded-circle" alt="">
                         </a>
-                        <a class="text-dark font-14 ml-2" href="/logout"><i class="h-100 px-2 far fa-sign-out-alt"></i></a>
+                        <span class="text-dark font-14 ml-2" onclick="document.getElementById('logout-form').submit()"><i class="h-100 px-2 far fa-sign-out-alt"></i></span>
                         <a href="/dang-tin" class="ml-2 font-9 hrm-btn-info p-2" rel="nofollow"><strong>Đăng tin</strong></a>
+                        <form id="logout-form" action="{{route('customer.logout')}}" method="post">
+                            @csrf
+                        </form>
                     </div>
                     @else
                     <div class="login-logout">
