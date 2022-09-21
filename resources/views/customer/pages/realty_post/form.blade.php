@@ -684,6 +684,7 @@
 
         function getProject(district_code){
             url = '/get-project-of-district/' + district_code;
+            // "{{url('get-project-of-district')}}/"+ district_code
             return $.ajax({
                 url: url,
                 type: 'get',
