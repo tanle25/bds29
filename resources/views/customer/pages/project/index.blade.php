@@ -19,7 +19,13 @@ Danh sách dự án bất động sản
     .img-width{
         max-width: 100%;
         height: 100%;
+        object-fit: cover;
     }
+    /* @media (max-width: 1024px){
+        .img-width{
+            height: auto;
+        }
+    } */
 
 
 </style>
