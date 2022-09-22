@@ -59,13 +59,13 @@
                             <span class="text-secondary mr-2">Loại hình dự án: </span> <span>{{config('constant.project_type.'. $project->project_type)['name'] ?? '---'}}</span>
                         </li>
                         <li class="my-3">
-                            <span class="text-secondary mr-2">Số tòa: </span> <span>{{$project->number_of_buildings . 'tòa' ?? '---'}}</span>
+                            <span class="text-secondary mr-2">Số tòa: </span> <span>{{$project->number_of_buildings . ' tòa' ?? '---'}}</span>
                         </li>
                         <li class="my-3">
-                            <span class="text-secondary mr-2">Số căn: </span> <span>{{$project->number_of_apartments . 'căn' ?? '---'}}</span>
+                            <span class="text-secondary mr-2">Số căn: </span> <span>{{$project->number_of_apartments . ' căn' ?? '---'}}</span>
                         </li>
                         <li class="my-3">
-                            <span class="text-secondary mr-2">Số tầng: </span> <span>{{$project->number_of_buildings . 'tầng' ?? '---'}}</span>
+                            <span class="text-secondary mr-2">Số tầng: </span> <span>{{$project->number_of_buildings . ' tầng' ?? '---'}}</span>
                         </li>
                         <li class="my-3">
                             <span class="text-secondary mr-2">Tổng diện tích: </span> <span>{!!$project->site_area . ' m<sup>2</sup>' ?? '---'!!}</span>
