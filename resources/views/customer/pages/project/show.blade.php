@@ -5,7 +5,11 @@
 @endsection
 @section('css')
 <link rel="stylesheet" href="{{asset('plugins/lightgallery/dist/css/lightgallery.min.css')}}">
-
+<style>
+    img{
+        max-width: 100%;
+    }
+</style>
 @endsection
 @section('content')
 <div class="page-details project-detail pt-3 hrm-bg-secondary">
