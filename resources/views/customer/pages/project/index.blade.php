@@ -21,6 +21,17 @@ Danh sách dự án bất động sản
         height: 100%;
         object-fit: cover;
     }
+    .project-thumb{
+        position: relative;
+        padding-top: 70%;
+
+    }
+    .project-thumb .img-width{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+    }
     /* @media (max-width: 1024px){
         .img-width{
             height: auto;
@@ -158,7 +169,9 @@ Danh sách dự án bất động sản
                     <div class=" mb-4 row p-0 rounded bg-white mx-0">
                         <div class="col-md-3 p-0">
                             {{-- <a href="{{route('customer.project.show', $project->slug ?? '')}}" class="img-wraper h-100" > --}}
-                                <img class="img-wraper img-width" src="{{$project->avatar}}" alt="{{$project->name}}" title="{{$project->name}}" alt="{{$project->avatar}}" srcset="">
+                                <div class="project-thumb">
+                                    <img class="img-wraper img-width" src="{{$project->avatar}}" alt="{{$project->name}}" title="{{$project->name}}" alt="{{$project->avatar}}" srcset="">
+                                </div>
                             {{-- </a> --}}
                         </div>
                         <div class="col-md-9 px-3 py-2">
