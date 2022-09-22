@@ -42,7 +42,7 @@ Danh sách dự án bất động sản
 @endsection
 
 @section('content')
-<div class="search-top row container mx-auto py-3 align-items-center">
+<div class="search-top row container mx-auto py-3 align-items-center pt-5 pt-md-2">
     <div class="col-md-2 mb-2">
         <select name="tinh" class="form-control project-input" id="project_province">
             <option value="">Tỉnh</option>
