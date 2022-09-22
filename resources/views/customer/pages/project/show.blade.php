@@ -349,7 +349,7 @@
                     items: 2
                 },
                 // breakpoint from 768 up
-                768 : {
+                900 : {
                     items: 3,
                 }
             }
