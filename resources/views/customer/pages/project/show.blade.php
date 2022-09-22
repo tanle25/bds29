@@ -6,8 +6,9 @@
 @section('css')
 <link rel="stylesheet" href="{{asset('plugins/lightgallery/dist/css/lightgallery.min.css')}}">
 <style>
-    img{
+    #project-utilities img{
         max-width: 100%;
+        height: auto !important;
     }
 </style>
 @endsection
