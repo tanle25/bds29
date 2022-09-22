@@ -19,11 +19,10 @@ Danh sách dự án bất động sản
     .img-width{
         max-width: 100%;
         height: 100%;
-        object-fit: cover;
     }
     .project-thumb{
         position: relative;
-        padding-top: 70%;
+        padding-top: 85%;
 
     }
     .project-thumb .img-width{
