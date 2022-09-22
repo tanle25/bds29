@@ -157,6 +157,35 @@
                         </div>
     
                     </div>
+
+                    <div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h2 class="d-block pr-5 py-0">Tiện ích</h2>
+                            <hr class="w-100 d-block" style="flex: 1">
+                        </div>
+                        <div>
+                            <h2 class="font-11 py-2">
+                                <a  data-toggle="collapse" href="#project-utilities" role="button" aria-expanded="false" aria-controls="project-overview" class="text-dark d-flex justify-content-between align-itens-center">
+                                    Chi tiết <i class="far fa-chevron-down"></i>
+                                </a>
+                            </h2>
+                            <div id="project-utilities">
+                                {!! $project->utilities_desc !!}
+                            </div>
+                        </div>
+    
+                        {{-- <div>
+                            <h2 class="font-11 py-2">
+                                <a  data-toggle="collapse" href="#project-position" role="button" aria-expanded="false" aria-controls="project-position" class="text-dark d-flex justify-content-between align-itens-center">
+                                    Vị trí dự án <i class="far fa-chevron-down"></i>
+                                </a>
+                            </h2>
+                            <div id="project-position">
+                                {!! $project->location_description !!}
+                            </div>
+                        </div> --}}
+    
+                    </div>
     
                     <div>
                         <div class="d-flex align-items-center justify-content-between">
@@ -205,6 +234,7 @@
     
     
                     </div>
+                    
     
                     <div>
                         <div class="d-flex align-items-center justify-content-between">
