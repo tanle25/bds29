@@ -10,6 +10,10 @@
         max-width: 100%;
         height: auto !important;
     }
+    .hrm-menu-item .submenu-bottom {
+        left: auto;
+        right: 0;
+    }
 </style>
 @endsection
 @section('content')
