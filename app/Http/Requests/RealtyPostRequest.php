@@ -46,7 +46,7 @@ class RealtyPostRequest extends FormRequest
             'province' => 'required|numeric',
             'district' => 'required|numeric',
             'commune' => 'required|numeric',
-            'project' => 'required',
+            'project_id' => 'required',
             'apartment_number' => 'nullable|numeric',
             'street' => 'required|string|max:256',
 
