@@ -200,7 +200,7 @@ $custom_og_image = $realty_post->thumb ?? '';
                         @endphp
                         <img class="py-1 border d-block rounded-circle" width="60px" height="60px"
                             src="{{$author->profile_image_path ?? '/images/empty-avatar.jpg'}}" alt="{{$author->name ?? ''}}"
-                            title="{{$author->name}}">
+                            title="{{$author->name ?? ''}}">
                         <div class="pl-3">
                             <h5 class="font-10 pt-2 text-dark">
                                 {{$author->name ?? ''}}
