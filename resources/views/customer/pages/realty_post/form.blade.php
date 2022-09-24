@@ -267,7 +267,7 @@
 
             <div class="row">
                 <div class="col-md-8 col-sm-12 select-ward-fav">
-                    <select class="form-control address_input" id="project" name="project_id">
+                    <select class="form-control address_input" id="project" name="project[]" multiple="multiple">
                         <option value="">Dự án trong khu vực</option>
                         @isset($projects)
                         @foreach ($projects as $project)
@@ -276,7 +276,7 @@
                         @endforeach
                         @endisset
                     </select>
-                    @error('project_id')
+                    @error('project')
                     <div class="text-danger">
                         {{$message}}
                     </div>
@@ -517,13 +517,14 @@
 @parent
 <script src="{{asset('plugins/jquery-validation/dist/jquery.validate.min.js')}}"></script>
 <script src="{{asset('plugins/jquery-validation/dist/additional-methods.min.js')}}"></script>
-
+<script src="{{asset('template/ckeditor/ckeditor.js')}}"></script>
 <script src="{{asset('template/AdminLTE/plugins/moment/moment.min.js')}}"></script>
 <script src="{{asset('template/AdminLTE/plugins/daterangepicker/daterangepicker.js')}}"></script>
 <script defer src="https://maps.googleapis.com/maps/api/js?key={{config('api_keys.google_map')}}&callback=initMap">
 </script>
 <script src="{{asset('template/dropzone-5.7.0/dist/dropzone.js')}}"></script>
 <script>
+
     // console.log($("#realty-post-form"));
     $("#realty-post-form").validate({
         messages: {
@@ -684,11 +685,11 @@
 
         function getProject(district_code){
             url = '/get-project-of-district/' + district_code;
-            // "{{url('get-project-of-district')}}/"+ district_code
             return $.ajax({
                 url: url,
                 type: 'get',
             })
+            console.log(url);
         }
 
         $(document).on('change', "#district" , function(){

@@ -21,7 +21,7 @@
         // Your custom settings go here
         });
     })
-    $('form').bind("keypress", function(e) {
+    $('#form-search').bind("keypress", function(e) {
         if (e.keyCode == 13) {               
             e.preventDefault();
             return false;
