@@ -267,7 +267,7 @@
 
             <div class="row">
                 <div class="col-md-8 col-sm-12 select-ward-fav">
-                    <select class="form-control address_input" id="project" name="project[]" multiple="multiple">
+                    <select class="form-control address_input" id="project" name="project_id">
                         <option value="">Dự án trong khu vực</option>
                         @isset($projects)
                         @foreach ($projects as $project)
