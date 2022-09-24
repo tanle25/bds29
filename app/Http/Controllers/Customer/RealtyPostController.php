@@ -471,8 +471,9 @@ class RealtyPostController extends Controller
         $query_list = request()->filter;
         $title = $this->getTitleFromQuery($query_list);
         $project_name = '';
+        // dd($request->all());
         if($request->has('du-an') && $request->input('du-an') != null){
-            $project_name = Project::find($request->input('du-an'))->name;
+            $project_name = Project::findOrFail($request->input('du-an'))->name;
         }
 
         $listProjectOfDistrictFilter = Project::all();
@@ -481,6 +482,7 @@ class RealtyPostController extends Controller
             $listProjectOfDistrictFilter = Project::where('district_code', $query_from_slug['huyen'])->get();
         }
 
+        
         // dd($listProjectOfDistrictFilter);
         
         return view('customer.pages.realty_post.index', compact('realties', 'side_lists', 'title', 'user', 'filter_search', 'search_address', 'listProjectOfDistrictFilter','project_name'));
@@ -541,6 +543,8 @@ class RealtyPostController extends Controller
         if ($request->has('us')) {
             $user = User::find($request->us);
         }
+
+        // dd($request->all());
         
 
         $query = $this->filter_service->filter($query);
@@ -578,7 +582,7 @@ class RealtyPostController extends Controller
     public function showListCustomer()
     {
         $user = auth()->user();
-        $realty_posts = RealtyPost::where('created_by', $user->id)->with('realty')->where('status',3)->orderByDesc('realty_posts.id')->get();
+        $realty_posts = RealtyPost::where('created_by', $user->id)->with('realty')->orderByDesc('realty_posts.id')->get();
         return view('customer.pages.user_profile.list_realty_post', compact('realty_posts'));
     }
 
