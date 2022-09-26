@@ -333,6 +333,27 @@ class RealtyPostController extends Controller
             'contact_email' => $request->contact_email,
             'contact_address' => $request->contact_address,
         ]);
+        $realty_post->images()->delete();
+        $house_images = array_filter(explode(',',$request->house_image));
+            $design_images = array_filter(explode(',',$request->house_design_image));
+            foreach ($house_images as $key => $image) {
+                # code...
+                $realty_post->images()->create([
+                    'type'=>1,
+                    'link'=>$image,
+                    'alt'=>isset($request->house_image_alt[$key])  ? $request->house_image_alt[$key] : $request->title,
+                    'title'=>isset($request->house_image_title[$key])  ? $request->house_image_title[$key] : $request->title
+                ]);
+            }
+            foreach ($design_images as $key => $image) {
+                # code...
+                $realty_post->images()->create([
+                    'type'=>2,
+                    'link'=>$image,
+                    'alt'=>isset($request->house_design_image_alt[$key])  ? $request->house_design_image_alt[$key] : $request->title,
+                    'title'=>isset($request->house_design_image_title[$key])  ? $request->house_design_image_title[$key] : $request->title
+                ]);
+            }
 
         $realty_post->save();
 

@@ -167,6 +167,7 @@ class RealtyPostController extends Controller
         // $house_image = explode(',', $realty_post->realty->house_image);
         $house_image = $realty_post->images()->where('type',1)->get()->toArray();
         $house_design_image = $realty_post->images()->where('type',2)->get()->toArray();
+        // dd($house_design_image);
 
         if (!empty(config('constant.provinces'))) {
             $provinces = Province::whereIn('code', config('constant.provinces'))->get();
@@ -250,6 +251,27 @@ class RealtyPostController extends Controller
             'open_at' => Carbon::createFromFormat('d/m/Y', $request->open_at)->format('Y-m-d H:i:s'),
             'close_at' => Carbon::createFromFormat('d/m/Y', $request->close_at)->format('Y-m-d H:i:s'),
         ]);
+        $realty_post->images()->delete();
+        $house_images = array_filter(explode(',',$request->house_image));
+            $design_images = array_filter(explode(',',$request->house_design_image));
+            foreach ($house_images as $key => $image) {
+                # code...
+                $realty_post->images()->create([
+                    'type'=>1,
+                    'link'=>$image,
+                    'alt'=>isset($request->house_image_alt[$key])  ? $request->house_image_alt[$key] : $request->title,
+                    'title'=>isset($request->house_image_title[$key])  ? $request->house_image_title[$key] : $request->title
+                ]);
+            }
+            foreach ($design_images as $key => $image) {
+                # code...
+                $realty_post->images()->create([
+                    'type'=>2,
+                    'link'=>$image,
+                    'alt'=>isset($request->house_design_image_alt[$key])  ? $request->house_design_image_alt[$key] : $request->title,
+                    'title'=>isset($request->house_design_image_title[$key])  ? $request->house_design_image_title[$key] : $request->title
+                ]);
+            }
         $realty_post->status = $request->status;
         $realty_post->save();
 
