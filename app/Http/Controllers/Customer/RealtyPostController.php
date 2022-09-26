@@ -156,8 +156,8 @@ class RealtyPostController extends Controller
                 'created_by' => auth()->user()->id ?? null,
             ]);
     
-            $house_images = explode(',',$request->house_image);
-            $design_images = explode(',',$request->house_design_image);
+            $house_images = array_filter(explode(',',$request->house_image));
+            $design_images = array_filter(explode(',',$request->house_design_image));
             foreach ($house_images as $key => $image) {
                 # code...
                 $new_realty_post->images()->create([
