@@ -512,6 +512,9 @@ class RealtyPostController extends Controller
         if (!$request->sort) {
             $request->request->add(['sort' => '-rank']);
         }
+        $project_id = Project::whereSlug($realty_slug)->first();
+        // dd($project_id);
+        $request->merge(['du-an'=>$project_id->id]);
         $query_from_slug = $this->realty_slug_helper->getFilterStringFromSlug($search_slug);
         $request->request->add(['filter' => $query_from_slug]);
         $side_lists = $this->related_realty_service->getRelatedRealty($query_from_slug['loai-tin-dang'] ?? null, null, $query_from_slug['tinh'] ?? null, $query_from_slug['huyen'] ?? null);
