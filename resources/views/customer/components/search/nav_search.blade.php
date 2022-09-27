@@ -9,7 +9,8 @@
           </div>
           <!-- Modal body -->
           <div class="modal-body">
-              <form action="" id="nav-form-search">
+              <form action="" id="nav-form-search" method="POST">
+                @csrf
                   <div class="search-type d-flex px-2">
                     <div class="search-type-item mr-1">
                         <input type="radio"  class="d-none" name="loai-tin-dang" value="1" id="realty-sell"
@@ -287,7 +288,7 @@
             getProjects(district_code)
                 .done(function (data) {
                     data.forEach(element => {
-                        project_inputs += `<option value="${element.id}" >${element.name}</option>`
+                        project_inputs += `<option value="${element.id}"  data-slug="${element.slug}" >${element.name}</option>`
                     });
                     $('#nav_project').html(project_inputs);
                 });
@@ -338,6 +339,7 @@
         // Apply search
         function getQueryNav() {
             var data = $('#nav-form-search').serializeArray();
+            let realty_slug ='';
             var result = {};
             data.forEach(function (item) {
                 if (result[item.name]) {
@@ -360,7 +362,10 @@
                 var realtyTypeSlug = $('#nav_district option:selected').data('slug');
                 queryElem.push(realtyTypeSlug)
             }
-            var slug = '/' + queryElem.join('-') + '?';
+            if(result['du-an']){
+                realty_slug = $('#nav_project option:selected').data('slug');
+            }
+            var slug = '/' + queryElem.join('-');
             var query = '';
             var validParam = ['so-phong-ngu', 'so-ve-sinh', 'du-an', 'gia', 'dia-chi', 'noi-that']
             Object.entries(result).forEach(function (item, index) {
@@ -376,10 +381,20 @@
                     }
                 }
             });
-            window.location = slug + query ;
+            let url = window.location.origin + slug
+
+            if(realty_slug != ""){
+                url += '/'+realty_slug
+            }
+            $('#nav-form-search').attr('action',url)
+            $('#nav-form-search').submit();
+            // window.location = slug + query ;
+            // console.log(url);
+            
         }
         $(document).on('click', '#apply-nav-search', function () {
             getQueryNav();
+            // console.log('test');
         })
 
         $('.search-type .cho_thue').trigger('click');
