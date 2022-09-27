@@ -40,6 +40,7 @@ class ImageUploadController extends Controller
             'bottom-left',
             'bottom-right',
         ];
+        
 
         if (isset($theme_options['watermark_position']) && in_array($theme_options['watermark_position'], $position_list)) {
             $this->watermark_position = $theme_options['watermark_position'];
@@ -78,16 +79,13 @@ class ImageUploadController extends Controller
             //save image
 
             $ext = pathinfo($image_name,PATHINFO_EXTENSION);
+            $image_name = Str::random(21).'.'.$ext;
             $image->save(storage_path('app/public/image_uploads/' . $image_name));
             $thumb->save(storage_path('app/public/image_uploads/thumbs/' . $image_name));
 
             $imageService = new ImageCompression();
             $imageFileSize =  $imageService::compress(storage_path('app/public/image_uploads/' . $image_name),true);
             $thumbFileSize =  $imageService::compress(storage_path('app/public/image_uploads/thumbs/' . $image_name),true,400);
-            // return [
-            //     'imagesize'=>$imageFileSize,
-            //     'thumbsize'=>$thumbFileSize
-            // ];
             $image_name = Str::replace($ext,'webp',$image_name);
             return [
                 'path' => Storage::url('image_uploads/' . $image_name),
