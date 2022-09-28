@@ -128,13 +128,14 @@ $custom_og_image = $realty_post->thumb ?? '';
                                     {{config('constant.price_type.'. $realty_post->price_type)['front_view']}}
                                 </span>
                             </div>
+                            {{-- @dd($realty_post->realty) --}}
                             <div class="pr-3 d-flex flex-column">
                                 <span class="mb-1">Diện tích</span>
                                 <strong class="font-1 font-weight-bold">{{$realty_post->realty->area}}m<sup>2</sup></strong>
                             </div>
                             <div class="pr-3 d-flex flex-column">
                                 <span class="mb-1">Phòng ngủ</span>
-                                <strong class="font-1 font-weight-bold">{{$realty->number_of_bed_rooms ?? 0}} PN</sup></strong>
+                                <strong class="font-1 font-weight-bold">{{$realty_post->realty->number_of_bed_rooms ?? 0}} PN</sup></strong>
                             </div>
                             <div class="pl-3 furniture">
                                 <p class="mb-1">Nội thất</p>
