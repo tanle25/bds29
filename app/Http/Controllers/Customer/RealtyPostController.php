@@ -251,6 +251,7 @@ class RealtyPostController extends Controller
         $districts = District::where('parent_code', $realty->district->parent_code ?? 0)->get();
         $communes = Commune::where('parent_code', $realty->commune->parent_code ?? 0)->get();
 
+        // dd($house_design_image);
         $house_image = array_map(function ($item) {
             // dd($item);
             return [
@@ -267,10 +268,13 @@ class RealtyPostController extends Controller
             if ($item == '') {
                 return;
             }
+            // dd($item);
             return [
-                'path' => $item,
-                'storage_path' => Str::replaceFirst('/storage/', '', $item),
-                'thumb' => Str::replaceLast('/', '/thumbs/', $item),
+                'path' => $item['link'],
+                'storage_path' => Str::replaceFirst('/storage/', '', $item['link']),
+                'thumb' => Str::replaceLast('/', '/thumbs/', $item['link']),
+                'alt'=>$item['alt'],
+                'title'=>$item['title']
             ];
         }, $house_design_image);
 
