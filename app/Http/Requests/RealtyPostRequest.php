@@ -72,7 +72,11 @@ class RealtyPostRequest extends FormRequest
                     foreach ($image_list as $item) {
                         // dd($item);
                         // $this->image_service->delete(Str::replaceFirst('/storage', 'public', $item));
-                        unlink(public_path().$item);
+                        // dd(public_path(),$item);
+                        if(\File::exists(public_path().$item)){
+                            unlink(public_path().$item);
+                        }
+                        
                     }
                 }
 
@@ -81,7 +85,9 @@ class RealtyPostRequest extends FormRequest
                     foreach ($image_list as $item) {
                         // $this->image_service->delete(Str::replaceFirst('/storage', 'public', $item));
                         // Storage::delete(Str::replaceFirst('/storage', 'public', $item));
-                        unlink(public_path().$item);
+                        if(\File::exists(public_path().$item)){
+                            unlink(public_path().$item);
+                        }
                     }
                 }
             }

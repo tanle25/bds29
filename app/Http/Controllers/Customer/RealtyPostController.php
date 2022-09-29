@@ -252,6 +252,7 @@ class RealtyPostController extends Controller
         $communes = Commune::where('parent_code', $realty->commune->parent_code ?? 0)->get();
 
         // dd($house_design_image);
+        $projects = Project::where('district_code',$realty->district_code)->get();
         $house_image = array_map(function ($item) {
             // dd($item);
             return [
@@ -288,19 +289,21 @@ class RealtyPostController extends Controller
             'provinces',
             'communes',
             'realty',
-            'post_ranks'
+            'post_ranks',
+            'projects'
         ));
     }
 
+
+
     public function update($id, RealtyPostRequest $request)
     {
-        // dd($request->all());
-        
-        $commune = Commune::where('code', $request->commune)->first();
+
+
+            $commune = Commune::where('code', $request->commune)->first();
         $realty_post = RealtyPost::findOrFail($id);
         $realty = $realty_post->realty;
         $slug = $this->slug_service->getSlug($request->title);
-        $projects = implode(",", $request->project);
         $realty->update([
             'type' => $request->realty_type,
             'province_code' => $request->province,
@@ -320,7 +323,7 @@ class RealtyPostController extends Controller
             'full_address' => 'Số nhà' . $request->apartment_number . ", " . $request->street . ", " . $commune->path_with_type,
             'google_map_lat' => $request->google_map_lat,
             'google_map_lng' => $request->google_map_lng,
-            'project_id' => $projects,
+            'project_id' => $request->project_id,
             'furniture' => $request->furniture,
         ]);
         // store realty post
@@ -359,7 +362,9 @@ class RealtyPostController extends Controller
                 ]);
             }
 
-        $realty_post->save();
+        // $realty_post->save();
+
+        
 
         return redirect()->back()->with('success', 'Cập nhật thành công tin rao');
     }
@@ -396,7 +401,6 @@ class RealtyPostController extends Controller
 
         // Log::alert('show');
 
-        // dd('test');
 
         $realty_post = RealtyPost::with(
             'tags',
