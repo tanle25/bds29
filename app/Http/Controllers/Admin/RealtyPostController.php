@@ -242,7 +242,7 @@ class RealtyPostController extends Controller
             'type' => $request->realty_post_type,
             'price' => $request->price,
             'description' => $request->description,
-
+            'price_type'=>$request->price_type,
             'contact_name' => $request->contact_name,
             'contact_phone_number' => $request->contact_phone_number,
             'contact_email' => $request->contact_email,

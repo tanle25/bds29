@@ -166,23 +166,37 @@
                     @enderror
                 </div>
             </div>
-
-            <div class="form-group">
-                <label for="price">Giá(<span class="text-red">*</span>)</label>
-                <input
-                name="price"
-                type="number"
-                class="form-control @error('price') is-invalid @enderror"
-                id="price"
-                placeholder="Nhập giá bất động sản"
-                value="{{$realty_post->price ?? old('price')}}"
-                >
-                @error('price')
-                <div id="" class="error invalid-feedback d-block">
-                        {{$message}}
+            <div class="row">
+                <div class="form-group col-9">
+                    <label for="price">Giá(<span class="text-red">*</span>)</label>
+                    <input
+                    name="price"
+                    type="number"
+                    class="form-control @error('price') is-invalid @enderror"
+                    id="price"
+                    placeholder="Nhập giá bất động sản"
+                    value="{{$realty_post->price ?? old('price')}}"
+                    >
+                    @error('price')
+                    <div id="" class="error invalid-feedback d-block">
+                            {{$message}}
+                    </div>
+                    @enderror
                 </div>
-                @enderror
+                <div class="col-3">
+                    <label class="control-label">Đơn vị <span class="text-danger">*</span></label>
+                            <select class="form-control" id="price_type" name="price_type">
+                                @foreach (config('constant.price_type') as $index => $item)
+                                <option @isset($realty_post) @if ($realty_post->price_type == $index)
+                                    selected
+                                    @endif
+                                    @endisset
+                                    value="{{$index}}">{{$item['back_view']}}</option>
+                                @endforeach
+                            </select>
+                </div>
             </div>
+            
 
             <div class="row">
                 <div class="col-12"><label>Địa chỉ BĐS</label></div>
