@@ -1,7 +1,7 @@
 @extends('customer.layouts.main')
 
 @section('title')
-Danh sách dự án
+Dự án {{$projects->first()->district->name_with_type}}
 @endsection
 
 @section('css')
@@ -157,7 +157,7 @@ Danh sách dự án
 			<div class="col-12">
 				<div class="entry-head-3">
 					<h1 class="ht title font-20">
-						Danh sách dự án
+						Danh sách dự án {{$projects->first()->district->name_with_type}}
 					</h1>
                 </div>
             </div>
