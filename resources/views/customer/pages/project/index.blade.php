@@ -1,7 +1,7 @@
 @extends('customer.layouts.main')
 
 @section('title')
-Dự án {{$projects->first()->district->name_with_type}}
+Danh sách dự án {{$projects->first()->district->name_with_type}}
 @endsection
 
 @section('css')
