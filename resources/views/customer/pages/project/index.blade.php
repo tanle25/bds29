@@ -1,7 +1,7 @@
 @extends('customer.layouts.main')
 
 @section('title')
-Danh sách dự án bất động sản
+Danh sách dự án
 @endsection
 
 @section('css')
@@ -271,7 +271,7 @@ Danh sách dự án bất động sản
                 slug += '-' + province;
             }
 
-            var query = '?';
+            var query = '';
 
             if (min) {
                 query += 'gia=';
